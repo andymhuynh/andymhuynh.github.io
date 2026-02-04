@@ -10,30 +10,31 @@
     <style>
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .sjsu-blue { color: #0055A2; }
+        section { min-height: 40vh; padding-top: 80px; } /* Gives space for the tabs to "jump" */
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 leading-relaxed">
 
-    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-sm border-b z-50">
-        <div class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b z-50">
+        <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
             <span class="font-bold text-lg tracking-tight">Andy <span class="sjsu-blue">Huynh</span></span>
-            <div class="flex space-x-6 text-[11px] font-bold uppercase tracking-widest text-slate-500">
+            <div class="flex space-x-8 text-[11px] font-bold uppercase tracking-widest text-slate-500">
                 <a href="#about" class="hover:text-blue-600 transition">About</a>
                 <a href="#skills" class="hover:text-blue-600 transition">Skills</a>
-                <a href="mailto:ahuyn5@gmail.com" class="hover:text-blue-600 transition">Contact</a>
+                <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto px-6 pt-32 pb-20">
+    <main class="max-w-4xl mx-auto px-6 pb-20">
         
-        <header class="flex flex-col md:flex-row items-center gap-10 mb-20">
-            <div class="w-32 h-32 flex-shrink-0 bg-slate-200 rounded-2xl overflow-hidden shadow-inner rotate-1 hover:rotate-0 transition-transform duration-300">
+        <header class="pt-32 flex flex-col md:flex-row items-center gap-10 mb-10">
+            <div class="w-32 h-32 flex-shrink-0 bg-slate-200 rounded-2xl overflow-hidden shadow-inner border-4 border-white">
                 <img src="profile.png" alt="Andy Huynh" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Andy+Huynh&background=0055A2&color=fff'">
             </div>
             <div>
-                <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 mb-2">Andy Huynh</h1>
-                <p class="text-lg text-slate-500 font-medium">Applied Mathematics @ SJSU</p>
+                <h1 class="text-4xl font-extrabold tracking-tight text-slate-900">Andy Huynh</h1>
+                <p class="text-lg text-slate-500 font-medium mt-1">Applied Mathematics Student @ SJSU</p>
                 <div class="flex gap-4 mt-4 text-slate-400">
                     <a href="https://github.com/andymhuynh" class="hover:text-slate-900 transition"><i class="fab fa-github text-xl"></i></a>
                     <a href="https://www.linkedin.com/in/andymhuynh/" class="hover:text-blue-600 transition"><i class="fab fa-linkedin text-xl"></i></a>
@@ -42,52 +43,63 @@
             </div>
         </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
-            
-            <div class="md:col-span-2 space-y-12">
-                <section id="about">
-                    <h2 class="text-[10px] font-bold text-blue-600 uppercase tracking-[0.3em] mb-4">The Work</h2>
-                    <p class="text-lg text-slate-600">
-                        I am currently studying **Applied Mathematics** with a concentration in **Discrete Mathematics**. I focus on the logical foundations of computation—specifically graph theory and algorithm optimization. 
-                    </p>
-                    <p class="mt-4 text-slate-600">
-                        My goal is to translate mathematical rigor into efficient, scalable software solutions.
-                    </p>
-                </section>
+        <section id="about">
+            <h2 class="text-[10px] font-bold text-blue-600 uppercase tracking-[0.3em] mb-6">The Focus</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="md:col-span-2 text-lg text-slate-600 space-y-4">
+                    <p>I am pursuing a B.S. in <strong>Applied Mathematics</strong> with a concentration in <strong>Discrete Mathematics</strong>. My academic work centers on graph theory, combinatorics, and the mathematical logic that powers modern algorithms.</p>
+                    <p>Currently seeking 2026 internships where I can apply rigorous mathematical optimization to software development and data challenges.</p>
+                </div>
+                <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100">
+                    <h3 class="text-xs font-bold uppercase mb-3 sjsu-blue">Education</h3>
+                    <p class="text-sm font-bold">San José State University</p>
+                    <p class="text-xs text-slate-500 mt-1 italic leading-tight text-pretty">Expected Graduation: [Your Date]</p>
+                </div>
+            </div>
+        </section>
 
-                <section id="skills">
-                    <h2 class="text-[10px] font-bold text-blue-600 uppercase tracking-[0.3em] mb-6">Technical Breadth</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="p-5 bg-white border border-slate-100 rounded-xl shadow-sm">
-                            <h4 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Math Core</h4>
-                            <p class="text-sm font-medium">Discrete Math, Graph Theory, Combinatorics, Optimization</p>
-                        </div>
-                        <div class="p-5 bg-white border border-slate-100 rounded-xl shadow-sm">
-                            <h4 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Development</h4>
-                            <p class="text-sm font-medium">Python, C++, Java, Git, LaTeX</p>
-                        </div>
+        <section id="skills">
+            <h2 class="text-[10px] font-bold text-blue-600 uppercase tracking-[0.3em] mb-10">Technical Toolkit</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="p-6 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition">
+                    <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-diagram-project"></i>
                     </div>
-                </section>
+                    <h4 class="font-bold mb-2">Discrete Math</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Graph Theory, Combinatorics, Logic, and Optimization.</p>
+                </div>
+                <div class="p-6 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition">
+                    <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h4 class="font-bold mb-2">Development</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Python, C++, Java, and Git Version Control.</p>
+                </div>
+                <div class="p-6 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition">
+                    <div class="w-10 h-10 bg-purple-50 text-purple-600 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <h4 class="font-bold mb-2">Documentation</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Technical writing and research using LaTeX.</p>
+                </div>
             </div>
+        </section>
 
-            <div class="space-y-10">
-                <section>
-                    <h2 class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em] mb-4">Education</h2>
-                    <p class="text-sm font-bold text-slate-800">San José State University</p>
-                    <p class="text-xs text-slate-500 mt-1 italic leading-relaxed">B.S. Applied Math<br>Concentration: Discrete Math</p>
-                </section>
-
-                <section>
-                    <h2 class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em] mb-4">Seeking</h2>
-                    <p class="text-xs font-medium text-slate-600 leading-relaxed bg-blue-50 p-4 rounded-xl border border-blue-100">
-                        Summer 2026 Internships in Software Engineering or Data Science.
-                    </p>
-                </section>
+        <section id="contact" class="pb-32">
+            <h2 class="text-[10px] font-bold text-blue-600 uppercase tracking-[0.3em] mb-10">Get in Touch</h2>
+            <div class="bg-slate-900 rounded-3xl p-10 text-white flex flex-col md:flex-row items-center justify-between gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">Ready to collaborate?</h3>
+                    <p class="text-slate-400">I'm currently open to internship opportunities for 2026.</p>
+                </div>
+                <a href="mailto:ahuyn5@gmail.com" class="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition shadow-lg shadow-blue-900/20">
+                    Send an Email
+                </a>
             </div>
-        </div>
+        </section>
 
-        <footer class="mt-32 pt-10 border-t border-slate-100 text-center text-[10px] text-slate-300 uppercase tracking-[0.4em]">
-            &copy; 2026 Andy Huynh
+        <footer class="pt-10 border-t border-slate-100 text-center text-[10px] text-slate-300 uppercase tracking-[0.4em]">
+            &copy; 2026 Andy Huynh // San José State University
         </footer>
     </main>
 
