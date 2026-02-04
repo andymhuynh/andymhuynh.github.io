@@ -10,7 +10,7 @@
     <style>
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .sjsu-blue { color: #0055A2; }
-        section { min-height: 40vh; padding-top: 80px; } /* Gives space for the tabs to "jump" */
+        section { min-height: 30vh; padding-top: 100px; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 leading-relaxed">
@@ -21,7 +21,7 @@
             <div class="flex space-x-8 text-[11px] font-bold uppercase tracking-widest text-slate-500">
                 <a href="#about" class="hover:text-blue-600 transition">About</a>
                 <a href="#skills" class="hover:text-blue-600 transition">Skills</a>
-                <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+                <a href="#contact" class="hover:text-blue-600 transition text-blue-600">Contact</a>
             </div>
         </div>
     </nav>
@@ -44,62 +44,60 @@
         </header>
 
         <section id="about">
-            <h2 class="text-[10px] font-bold text-blue-600 uppercase tracking-[0.3em] mb-6">The Focus</h2>
+            <h2 class="text-[10px] font-bold text-blue-600 uppercase tracking-[0.3em] mb-6">Introduction</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <div class="md:col-span-2 text-lg text-slate-600 space-y-4">
-                    <p>I am pursuing a B.S. in <strong>Applied Mathematics</strong> with a concentration in <strong>Discrete Mathematics</strong>. My academic work centers on graph theory, combinatorics, and the mathematical logic that powers modern algorithms.</p>
-                    <p>Currently seeking 2026 internships where I can apply rigorous mathematical optimization to software development and data challenges.</p>
+                    <p>I am a B.S. candidate in <strong>Applied Mathematics</strong> at San José State University, specializing in <strong>Discrete Mathematics</strong>. My focus is on the intersection of mathematical theory and practical technology—specifically how graph theory and logic optimize modern algorithms.</p>
+                    <p>I am currently building my foundation in data structures and abstract proofs to prepare for future roles in software engineering and AI.</p>
                 </div>
                 <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100">
-                    <h3 class="text-xs font-bold uppercase mb-3 sjsu-blue">Education</h3>
+                    <h3 class="text-xs font-bold uppercase mb-3 sjsu-blue tracking-wider">Education</h3>
                     <p class="text-sm font-bold">San José State University</p>
-                    <p class="text-xs text-slate-500 mt-1 italic leading-tight text-pretty">Expected Graduation: [Your Date]</p>
+                    <p class="text-xs text-slate-500 mt-1 italic leading-tight">B.S. Applied Math</p>
+                    <p class="text-[10px] font-bold text-blue-600 mt-4 uppercase tracking-tighter">Expected Graduation: 2028</p>
                 </div>
             </div>
         </section>
 
         <section id="skills">
-            <h2 class="text-[10px] font-bold text-blue-600 uppercase tracking-[0.3em] mb-10">Technical Toolkit</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="p-6 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition">
-                    <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-diagram-project"></i>
-                    </div>
-                    <h4 class="font-bold mb-2">Discrete Math</h4>
-                    <p class="text-xs text-slate-500 leading-relaxed">Graph Theory, Combinatorics, Logic, and Optimization.</p>
+            <h2 class="text-[10px] font-bold text-blue-600 uppercase tracking-[0.3em] mb-10">Technical Foundation</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <h3 class="text-sm font-bold text-slate-900 uppercase tracking-widest border-b pb-2">Mathematics Track</h3>
+                    <ul class="text-sm text-slate-600 space-y-2">
+                        <li>• Discrete Mathematics (MATH 42)</li>
+                        <li>• Abstract Math & Proofs (MATH 108)</li>
+                        <li>• Linear Algebra (MATH 39)</li>
+                        <li>• Calculus I, II, & III</li>
+                    </ul>
                 </div>
-                <div class="p-6 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition">
-                    <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h4 class="font-bold mb-2">Development</h4>
-                    <p class="text-xs text-slate-500 leading-relaxed">Python, C++, Java, and Git Version Control.</p>
-                </div>
-                <div class="p-6 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition">
-                    <div class="w-10 h-10 bg-purple-50 text-purple-600 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-file-invoice"></i>
-                    </div>
-                    <h4 class="font-bold mb-2">Documentation</h4>
-                    <p class="text-xs text-slate-500 leading-relaxed">Technical writing and research using LaTeX.</p>
+                <div class="space-y-4">
+                    <h3 class="text-sm font-bold text-slate-900 uppercase tracking-widest border-b pb-2">CS Track</h3>
+                    <ul class="text-sm text-slate-600 space-y-2">
+                        <li>• Intro to Programming (CS 46A)</li>
+                        <li>• Data Structures (CS 46B)</li>
+                        <li>• Object-Oriented Design (CS 151)</li>
+                        <li>• Python & C++ Development</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
         <section id="contact" class="pb-32">
-            <h2 class="text-[10px] font-bold text-blue-600 uppercase tracking-[0.3em] mb-10">Get in Touch</h2>
+            <h2 class="text-[10px] font-bold text-blue-600 uppercase tracking-[0.3em] mb-10">Availability</h2>
             <div class="bg-slate-900 rounded-3xl p-10 text-white flex flex-col md:flex-row items-center justify-between gap-8">
                 <div>
-                    <h3 class="text-2xl font-bold mb-2">Ready to collaborate?</h3>
-                    <p class="text-slate-400">I'm currently open to internship opportunities for 2026.</p>
+                    <h3 class="text-2xl font-bold mb-2 italic">Looking Ahead</h3>
+                    <p class="text-slate-400">Interested in Summer 2026 internships and open-source collaboration.</p>
                 </div>
                 <a href="mailto:ahuyn5@gmail.com" class="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition shadow-lg shadow-blue-900/20">
-                    Send an Email
+                    Contact via Email
                 </a>
             </div>
         </section>
 
         <footer class="pt-10 border-t border-slate-100 text-center text-[10px] text-slate-300 uppercase tracking-[0.4em]">
-            &copy; 2026 Andy Huynh // San José State University
+            &copy; 2026 Andy Huynh // SJSU Applied Math
         </footer>
     </main>
 
