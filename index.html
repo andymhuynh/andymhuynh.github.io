@@ -3,111 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andy Huynh</title>
+    <title>Andy Huynh | Applied Math Disruptor</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { 
-            font-family: 'Inter', sans-serif; 
-            letter-spacing: -0.01em;
-            -webkit-font-smoothing: antialiased;
-        }
-        .section-fade { border-top: 1px solid #e2e8f0; padding-top: 4rem; margin-top: 4rem; }
-        .text-dim { color: #64748b; }
-        a { transition: all 0.2s ease; }
+        body { font-family: 'Space Grotesk', sans-serif; background-color: #050505; color: #ffffff; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .grid-bg { background-image: radial-gradient(#1e293b 1px, transparent 1px); background-size: 30px 30px; }
+        .border-neon { border: 1px solid rgba(59, 130, 246, 0.5); }
+        .glow:hover { box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); border-color: #3b82f6; transition: all 0.3s ease; }
+        .text-gradient { background: linear-gradient(to right, #3b82f6, #60a5fa, #93c5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
-<body class="bg-white text-black selection:bg-blue-100">
+<body class="grid-bg">
 
-    <nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-md">
-        <div class="max-w-3xl mx-auto px-8 h-20 flex items-center justify-between">
-            <a href="#" class="font-bold tracking-tighter text-lg">Andy Huynh</a>
-            <div class="flex gap-8 text-[12px] font-medium tracking-tight">
-                <a href="mailto:ahuyn5@gmail.com" class="hover:text-blue-600">Email</a>
-                <a href="https://linkedin.com/in/andymhuynh" class="hover:text-blue-600">LinkedIn</a>
-                <a href="https://github.com/andymhuynh" class="hover:text-blue-600">GitHub</a>
+    <nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-black/50 backdrop-blur-xl">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="mono font-bold text-xl tracking-tighter uppercase group">
+                ANDY<span class="text-blue-500">_HUYNH</span><span class="animate-pulse">_</span>
+            </div>
+            <div class="hidden md:flex gap-10 text-[10px] font-bold uppercase tracking-[0.4em]">
+                <a href="#vision" class="hover:text-blue-400 transition">Vision</a>
+                <a href="#stack" class="hover:text-blue-400 transition">Stack</a>
+                <a href="mailto:ahuyn5@gmail.com" class="px-4 py-2 bg-white text-black hover:bg-blue-500 hover:text-white transition rounded">Contact</a>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-3xl mx-auto px-8 pt-48 pb-32">
+    <main class="max-w-6xl mx-auto px-6">
         
-        <header class="mb-24">
-            <h1 class="text-5xl font-extrabold tracking-tightest mb-8">
-                Applied Mathematics student at San José State.
-            </h1>
-            <p class="text-2xl text-dim leading-snug max-w-2xl font-medium">
-                Concentrating in Discrete Mathematics. Focusing on the intersection of theoretical logic and scalable software systems. 
-            </p>
+        <header id="vision" class="pt-48 pb-32">
+            <div class="flex flex-col md:flex-row gap-12 items-start">
+                <div class="flex-1">
+                    <span class="mono text-blue-500 text-sm font-bold tracking-widest mb-4 block uppercase">// RELENTLESS INNOVATION</span>
+                    <h1 class="text-7xl md:text-8xl font-bold tracking-tighter leading-[0.9] mb-8">
+                        REDEFINING <br><span class="text-gradient">INDUSTRIES</span> <br>THROUGH MATH.
+                    </h1>
+                    <p class="text-xl text-slate-400 max-w-xl leading-relaxed mb-10">
+                        Applied Mathematics @ SJSU. Leveraging Discrete Structures, Graph Theory, and Object-Oriented Engineering to build utopian tech solutions for global scale. 
+                    </p>
+                    <div class="flex gap-6">
+                        <a href="https://github.com/andymhuynh" class="text-2xl hover:text-blue-500 transition"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/andymhuynh/" class="text-2xl hover:text-blue-500 transition"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/3 relative group">
+                    <div class="absolute -inset-1 bg-blue-500 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                    <img src="profile.png" alt="Andy Huynh" class="relative rounded-3xl w-full grayscale hover:grayscale-0 transition duration-500 border border-white/10" onerror="this.src='https://ui-avatars.com/api/?name=Andy+Huynh&background=000&color=fff&size=400'">
+                </div>
+            </div>
         </header>
 
-        <div class="section-fade">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div class="text-xs font-bold uppercase tracking-widest text-dim pt-1">Academic</div>
-                <div class="md:col-span-3">
-                    <h3 class="text-xl font-bold mb-1">San José State University</h3>
-                    <p class="text-dim mb-4">B.S. Applied Mathematics, Concentration in Discrete Math </p>
-                    <p class="text-sm font-medium">Expected Graduation 2028</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="section-fade">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div class="text-xs font-bold uppercase tracking-widest text-dim pt-1">Coursework</div>
-                <div class="md:col-span-3">
-                    
-                    <div class="mb-10">
-                        <h4 class="text-sm font-bold uppercase tracking-widest mb-6 text-blue-600 italic">Mathematics</h4>
-                        <div class="space-y-6">
-                            <div>
-                                <p class="text-xs font-bold text-dim mb-2 uppercase">In Progress — Spring 2026</p>
-                                <p class="text-lg font-medium">Applied Prob & Stats I (MATH 161A) </p>
-                                <p class="text-lg font-medium">Ordinary Differential Equations (MATH 33A) </p>
-                            </div>
-                            <div>
-                                <p class="text-xs font-bold text-dim mb-2 uppercase">Completed Foundation</p>
-                                <p class="text-lg text-dim">Calculus I, II, III (30, 31, 32) </p>
-                                <p class="text-lg text-dim">Linear Algebra I (39) </p>
-                                <p class="text-lg text-dim">Discrete Mathematics (42) </p>
-                            </div>
-                        </div>
+        <section id="stack" class="py-20 border-t border-white/5">
+            <h2 class="mono text-blue-500 text-xs font-bold uppercase tracking-[0.5em] mb-16">// CORE_ENGINEERING_DRIVEN_SOLUTIONS</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="p-8 bg-white/5 border border-white/10 rounded-2xl glow">
+                    <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-8">
+                        <i class="fas fa-square-root-variable text-xl text-white"></i>
                     </div>
+                    <h3 class="text-2xl font-bold mb-4 uppercase">Logic & Theory</h3>
+                    <ul class="mono text-xs text-slate-400 space-y-4">
+                        <li class="flex justify-between">Discrete Math <span class="text-blue-500">MATH 42</span></li>
+                        <li class="flex justify-between">Linear Algebra <span class="text-blue-500">MATH 39</span></li>
+                        <li class="flex justify-between">Appl Prob & Stats I <span class="text-blue-500">SPRING_26</span></li>
+                        <li class="flex justify-between">Ord Diff Eq <span class="text-blue-500">SPRING_26</span></li>
+                    </ul>
+                </div>
 
+                <div class="p-8 bg-white/5 border border-white/10 rounded-2xl glow">
+                    <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-8">
+                        <i class="fas fa-microchip text-xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 uppercase">Architecture</h3>
+                    <ul class="mono text-xs text-slate-400 space-y-4">
+                        <li class="flex justify-between">Data Structures <span class="text-blue-500">CS 46B</span></li>
+                        <li class="flex justify-between">Comp Systems <span class="text-blue-500">CS 47</span></li>
+                        <li class="flex justify-between">Programming in C <span class="text-blue-500">CS 49C</span></li>
+                        <li class="flex justify-between">Java Specialization <span class="text-blue-500">SPRING_26</span></li>
+                    </ul>
+                </div>
+
+                <div class="p-8 bg-blue-600 rounded-2xl shadow-2xl shadow-blue-900/40 flex flex-col justify-between">
                     <div>
-                        <h4 class="text-sm font-bold uppercase tracking-widest mb-6 text-blue-600 italic">Computer Science</h4>
-                        <div class="space-y-6">
-                            <div>
-                                <p class="text-xs font-bold text-dim mb-2 uppercase">In Progress — Spring 2026</p>
-                                <p class="text-lg font-medium">Programming in Java (CS 49J) </p>
-                            </div>
-                            <div>
-                                <p class="text-xs font-bold text-dim mb-2 uppercase">Completed Foundation</p>
-                                <p class="text-lg text-dim">Data Structures & Intro Programming (46A, 46B) </p>
-                                <p class="text-lg text-dim">Computer Systems & C Programming (47, 49C) </p>
-                            </div>
-                        </div>
+                        <h3 class="text-2xl font-bold text-white uppercase leading-tight mb-4">Move Fast.<br>Optimize Everything.</h3>
+                        <p class="text-blue-100 text-sm leading-relaxed mb-6">
+                            Utilizing engineering-driven solutions to foster a culture of risk-taking and entrepreneurship. Targeted Graduation: 2028.
+                        </p>
                     </div>
-
+                    <div class="mono text-[10px] text-blue-200 border-t border-blue-400/30 pt-4 uppercase">
+                        Status: Seeking_Internship_2026
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="section-fade">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div class="text-xs font-bold uppercase tracking-widest text-dim pt-1">Connect</div>
-                <div class="md:col-span-3">
-                    <p class="text-2xl font-medium mb-8">Currently seeking Summer 2026 internship opportunities in software and data engineering.</p>
-                    <a href="mailto:ahuyn5@gmail.com" class="text-xl font-bold border-b-2 border-black pb-1 hover:text-blue-600 hover:border-blue-600">ahuyn5@gmail.com</a>
-                </div>
             </div>
-        </div>
+        </section>
 
-        <footer class="mt-48 text-[11px] text-dim font-medium uppercase tracking-[0.2em]">
-            &copy; 2026 Andy Huynh &mdash; San José, CA
-        </footer>
+        <section class="py-40 text-center">
+            <h2 class="text-5xl md:text-7xl font-bold tracking-tighter mb-10 uppercase">Let's <span class="text-blue-500 italic">Disrupt</span> Together.</h2>
+            <a href="mailto:ahuyn5@gmail.com" class="inline-block px-12 py-5 bg-white text-black text-sm font-bold uppercase tracking-widest hover:bg-blue-600 hover:text-white transition rounded-full">
+                Initiate Collaboration
+            </a>
+        </section>
 
     </main>
+
+    <footer class="py-10 border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="mono text-[10px] text-slate-500 uppercase tracking-widest">© 2026 Andy Huynh // Engineering-Driven Math</p>
+            <div class="flex gap-8 text-[9px] font-bold text-slate-500 uppercase tracking-widest">
+                <span>San Jose, CA</span>
+                <span>Silicon Valley</span>
+                <span>SJSU Student</span>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
