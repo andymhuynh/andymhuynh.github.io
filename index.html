@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andy Huynh | Applied Math</title>
+    <title>Andy Huynh | Applied Math @ SJSU</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -11,16 +11,17 @@
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .sjsu-blue { color: #0055A2; }
         section { min-height: 30vh; padding-top: 100px; }
+        .skill-tag { background: #f1f5f9; color: #475569; padding: 4px 12px; rounded-full; font-size: 0.75rem; font-weight: 600; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 leading-relaxed">
 
-    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b z-50">
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-sm border-b z-50">
         <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
-            <span class="font-bold text-lg tracking-tight">Andy <span class="sjsu-blue">Huynh</span></span>
+            <span class="font-bold text-lg tracking-tight text-slate-900">Andy <span class="sjsu-blue">Huynh</span></span>
             <div class="flex space-x-8 text-[11px] font-bold uppercase tracking-widest text-slate-500">
                 <a href="#about" class="hover:text-blue-600 transition">About</a>
-                <a href="#skills" class="hover:text-blue-600 transition">Skills</a>
+                <a href="#coursework" class="hover:text-blue-600 transition">Coursework</a>
                 <a href="#contact" class="hover:text-blue-600 transition text-blue-600">Contact</a>
             </div>
         </div>
@@ -47,39 +48,66 @@
             <h2 class="text-[10px] font-bold text-blue-600 uppercase tracking-[0.3em] mb-6">Introduction</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <div class="md:col-span-2 text-lg text-slate-600 space-y-4">
-                    <p>I am a B.S. candidate in <strong>Applied Mathematics</strong> at San José State University, specializing in <strong>Discrete Mathematics</strong>. My focus is on the intersection of mathematical theory and practical technology—specifically how graph theory and logic optimize modern algorithms.</p>
-                    <p>I am currently building my foundation in data structures and abstract proofs to prepare for future roles in software engineering and AI.</p>
+                    <p>I am a B.S. candidate in <strong>Applied Mathematics</strong> at San José State University with a concentration in <strong>Discrete Mathematics</strong>. My background combines a rigorous mathematical foundation with core computer science training.</p>
+                    <p>Currently, I am focusing on bridging the gap between theoretical math and technical implementation, specifically in the areas of algorithms and probabilistic modeling.</p>
                 </div>
                 <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100">
-                    <h3 class="text-xs font-bold uppercase mb-3 sjsu-blue tracking-wider">Education</h3>
-                    <p class="text-sm font-bold">San José State University</p>
-                    <p class="text-xs text-slate-500 mt-1 italic leading-tight">B.S. Applied Math</p>
-                    <p class="text-[10px] font-bold text-blue-600 mt-4 uppercase tracking-tighter">Expected Graduation: 2028</p>
+                    <h3 class="text-xs font-bold uppercase mb-3 sjsu-blue tracking-wider">Academics</h3>
+                    <p class="text-sm font-bold">SJSU</p>
+                    <p class="text-xs text-slate-500 mt-1 italic">B.S. Applied Math</p>
+                    <p class="text-[10px] font-bold text-blue-600 mt-4 uppercase tracking-tighter">Graduation: 2028</p>
                 </div>
             </div>
         </section>
 
-        <section id="skills">
-            <h2 class="text-[10px] font-bold text-blue-600 uppercase tracking-[0.3em] mb-10">Technical Foundation</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="space-y-4">
-                    <h3 class="text-sm font-bold text-slate-900 uppercase tracking-widest border-b pb-2">Mathematics Track</h3>
-                    <ul class="text-sm text-slate-600 space-y-2">
-                        <li>• Discrete Mathematics (MATH 42)</li>
-                        <li>• Abstract Math & Proofs (MATH 108)</li>
-                        <li>• Linear Algebra (MATH 39)</li>
-                        <li>• Calculus I, II, & III</li>
-                    </ul>
+        <section id="coursework">
+            <h2 class="text-[10px] font-bold text-blue-600 uppercase tracking-[0.3em] mb-10">Technical Coursework</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                
+                <div class="space-y-6">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fas fa-calculator sjsu-blue"></i>
+                        <h3 class="text-sm font-bold text-slate-900 uppercase tracking-widest">Mathematics</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="border-l-2 border-blue-200 pl-4">
+                            <p class="text-xs font-bold text-blue-600">IN PROGRESS - SPRING 2026</p>
+                            <p class="text-sm font-semibold text-slate-800">Appl Prob & Stats I (MATH 161A)</p>
+                            <p class="text-sm font-semibold text-slate-800">Ord Diff Eq (MATH 33A)</p>
+                        </div>
+                        <div class="border-l-2 border-slate-200 pl-4">
+                            <p class="text-xs font-bold text-slate-400">COMPLETED</p>
+                            <ul class="text-sm text-slate-600 space-y-1">
+                                <li>Calculus I, II, & III (MATH 30, 31, 32)</li>
+                                <li>Linear Algebra I (MATH 39)</li>
+                                <li>Discrete Math (MATH 42)</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="space-y-4">
-                    <h3 class="text-sm font-bold text-slate-900 uppercase tracking-widest border-b pb-2">CS Track</h3>
-                    <ul class="text-sm text-slate-600 space-y-2">
-                        <li>• Intro to Programming (CS 46A)</li>
-                        <li>• Data Structures (CS 46B)</li>
-                        <li>• Object-Oriented Design (CS 151)</li>
-                        <li>• Python & C++ Development</li>
-                    </ul>
+
+                <div class="space-y-6">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fas fa-code sjsu-blue"></i>
+                        <h3 class="text-sm font-bold text-slate-900 uppercase tracking-widest">Computer Science</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="border-l-2 border-blue-200 pl-4">
+                            <p class="text-xs font-bold text-blue-600">IN PROGRESS - SPRING 2026</p>
+                            <p class="text-sm font-semibold text-slate-800">Programming in Java (CS 49J)</p>
+                        </div>
+                        <div class="border-l-2 border-slate-200 pl-4">
+                            <p class="text-xs font-bold text-slate-400">COMPLETED</p>
+                            <ul class="text-sm text-slate-600 space-y-1">
+                                <li>Intro to Programming (CS 46A)</li>
+                                <li>Intro to Data Structures (CS 46B)</li>
+                                <li>Intro to Computer Systems (CS 47)</li>
+                                <li>Programming in C (CS 49C)</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </section>
 
@@ -87,11 +115,11 @@
             <h2 class="text-[10px] font-bold text-blue-600 uppercase tracking-[0.3em] mb-10">Availability</h2>
             <div class="bg-slate-900 rounded-3xl p-10 text-white flex flex-col md:flex-row items-center justify-between gap-8">
                 <div>
-                    <h3 class="text-2xl font-bold mb-2 italic">Looking Ahead</h3>
-                    <p class="text-slate-400">Interested in Summer 2026 internships and open-source collaboration.</p>
+                    <h3 class="text-2xl font-bold mb-2 italic">Open for Collaboration</h3>
+                    <p class="text-slate-400">Seeking technical internships and open-source opportunities.</p>
                 </div>
                 <a href="mailto:ahuyn5@gmail.com" class="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition shadow-lg shadow-blue-900/20">
-                    Contact via Email
+                    Get in Touch
                 </a>
             </div>
         </section>
