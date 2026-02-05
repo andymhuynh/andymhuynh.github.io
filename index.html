@@ -5,78 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Andy Huynh</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; letter-spacing: -0.01em; }
-        .section-title { border-bottom: 1px solid #f1f5f9; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
-        .in-progress { color: #3b82f6; font-weight: 600; }
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .border-subtle { border-color: #f1f5f9; }
     </style>
 </head>
-<body class="bg-white text-slate-700 antialiased">
+<body class="bg-white text-slate-800">
 
-    <main class="max-w-2xl mx-auto px-8 py-20">
+    <main class="max-w-xl mx-auto px-8 py-24">
         
-        <header class="mb-16">
-            <h1 class="text-2xl font-semibold text-black tracking-tight mb-1">Andy Huynh</h1>
-            <p class="text-slate-500 font-light">Applied Mathematics candidate &bull; San José State University</p>
+        <header class="mb-24">
+            <h1 class="text-xl font-medium text-black mb-1">Andy Huynh</h1>
+            <p class="text-sm text-slate-400 font-light italic">Applied Mathematics @ SJSU</p>
             
-            <div class="flex gap-4 mt-4 text-xs">
-                <a href="https://github.com/andymhuynh" class="text-slate-400 hover:text-black transition">GitHub</a>
-                <a href="https://www.linkedin.com/in/andymhuynh/" class="text-slate-400 hover:text-black transition">LinkedIn</a>
-                <a href="mailto:ahuyn5@gmail.com" class="text-slate-400 hover:text-black transition">Email</a>
+            <div class="flex gap-6 mt-8">
+                <a href="https://github.com/andymhuynh" class="text-[11px] uppercase tracking-widest text-slate-400 hover:text-blue-500 transition">GitHub</a>
+                <a href="https://www.linkedin.com/in/andymhuynh/" class="text-[11px] uppercase tracking-widest text-slate-400 hover:text-blue-500 transition">LinkedIn</a>
+                <a href="mailto:ahuyn5@gmail.com" class="text-[11px] uppercase tracking-widest text-slate-400 hover:text-blue-500 transition">Email</a>
             </div>
         </header>
 
-        <section class="mb-16">
-            <p class="text-base leading-relaxed font-light">
-                I am pursuing a B.S. in <strong>Applied Mathematics</strong> (Discrete Mathematics concentration). My academic focus is on graph theory, combinatorics, and algorithmic foundations. Expected graduation: 2028.
+        <section class="mb-24">
+            <p class="text-sm leading-relaxed text-slate-500 font-light">
+                Degree candidate specializing in <span class="text-slate-800">Discrete Mathematics</span>. 
+                Focusing on the intersection of mathematical theory and computational logic. 
+                Available for technical internships Summer 2026.
             </p>
         </section>
 
-        <section class="mb-16">
-            <h2 class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold section-title">Mathematics Track</h2>
-            <div class="space-y-4">
-                <div>
-                    <p class="text-[10px] uppercase tracking-wider text-blue-500 font-bold mb-2">Spring 2026</p>
-                    <ul class="text-sm space-y-1.5 text-slate-800">
-                        <li>Appl Prob & Stats I (MATH 161A) </li>
-                        <li>Ord Diff Equations (MATH 33A) </li>
-                    </ul>
+        <div class="space-y-16">
+            
+            <section>
+                <h2 class="text-[10px] uppercase tracking-[0.3em] text-blue-500 font-semibold mb-6">Current / Spring 2026</h2>
+                <div class="space-y-4 border-l border-subtle pl-6">
+                    <div>
+                        <p class="text-xs font-medium text-slate-900">Applied Probability & Stats I</p>
+                        <p class="text-[10px] text-slate-400 mono">MATH 161A</p>
+                    </div>
+                    <div>
+                        <p class="text-xs font-medium text-slate-900">Ordinary Differential Equations</p>
+                        <p class="text-[10px] text-slate-400 mono">MATH 33A</p>
+                    </div>
+                    <div>
+                        <p class="text-xs font-medium text-slate-900">Programming in Java</p>
+                        <p class="text-[10px] text-slate-400 mono">CS 49J</p>
+                    </div>
                 </div>
-                <div>
-                    <p class="text-[10px] uppercase tracking-wider text-slate-400 font-bold mb-2">Completed</p>
-                    <ul class="text-sm space-y-1 text-slate-500">
-                        <li>Calculus I, II, III (MATH 30, 31, 32) </li>
-                        <li>Linear Algebra I (MATH 39) </li>
-                        <li>Discrete Mathematics (MATH 42) </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="mb-16">
-            <h2 class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold section-title">Computer Science Track</h2>
-            <div class="space-y-4">
-                <div>
-                    <p class="text-[10px] uppercase tracking-wider text-blue-500 font-bold mb-2">Spring 2026</p>
-                    <ul class="text-sm space-y-1.5 text-slate-800">
-                        <li>Programming in Java (CS 49J) </li>
-                    </ul>
+            <section>
+                <h2 class="text-[10px] uppercase tracking-[0.3em] text-slate-300 font-semibold mb-6">Completed Foundations</h2>
+                <div class="space-y-6 border-l border-subtle pl-6">
+                    <div>
+                        <p class="text-[10px] uppercase text-slate-400 mb-2">Mathematics</p>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Calculus I, II, III (30-32) &bull; Linear Algebra I (39) &bull; Discrete Mathematics (42)
+                        </p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase text-slate-400 mb-2">Computer Science</p>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Data Structures (46B) &bull; Intro to Programming (46A) &bull; Systems (47) &bull; C Programming (49C)
+                        </p>
+                    </div>
                 </div>
-                <div>
-                    <p class="text-[10px] uppercase tracking-wider text-slate-400 font-bold mb-2">Completed</p>
-                    <ul class="text-sm space-y-1 text-slate-500">
-                        <li>Intro Data Structures (CS 46B) </li>
-                        <li>Intro to Programming (CS 46A) </li>
-                        <li>Intro to Computer Systems (CS 47) </li>
-                        <li>Programming in C (CS 49C) </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <footer class="pt-10 border-t border-slate-50">
-            <p class="text-[10px] text-slate-300 uppercase tracking-[0.3em]">&copy; 2026 Andy Huynh &bull; SJSU</p>
+        </div>
+
+        <footer class="mt-32 pt-8 border-t border-subtle">
+            <p class="text-[9px] text-slate-300 uppercase tracking-[0.4em]">San José State University &bull; 2028</p>
         </footer>
 
     </main>
