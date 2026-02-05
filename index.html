@@ -5,90 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Andy Huynh</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-color: #fafafa; color: #1a1a1a; }
-        .mono { font-family: 'JetBrains Mono', monospace; }
-        .fade-in { animation: fadeIn 0.8s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .hover-line:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+        :root { --line-color: #f1f5f9; }
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .nav-link { position: relative; transition: color 0.3s ease; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -2px; left: 0; background-color: #000; transition: width 0.3s ease; }
+        .nav-link:hover::after { width: 100%; }
+        .course-item { padding: 0.75rem 0; border-bottom: 1px solid var(--line-color); transition: padding-left 0.3s ease; }
+        .course-item:hover { padding-left: 0.5rem; background-color: #fafafa; }
+        .course-item:last-child { border-bottom: none; }
     </style>
 </head>
-<body class="antialiased selection:bg-blue-100">
+<body class="bg-white text-slate-800">
 
-    <main class="max-w-xl mx-auto px-6 py-24 md:py-32 fade-in">
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50">
+        <div class="max-w-2xl mx-auto px-8 h-16 flex items-center justify-between">
+            <span class="text-sm font-semibold tracking-tight uppercase">AH</span>
+            <div class="flex gap-6 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+                <a href="#about" class="nav-link hover:text-black">About</a>
+                <a href="#track" class="nav-link hover:text-black">Track</a>
+                <a href="mailto:ahuyn5@gmail.com" class="nav-link hover:text-black">Email</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-2xl mx-auto px-8 py-32 space-y-24">
         
-        <header class="mb-24">
-            <h1 class="text-xl font-semibold tracking-tight mb-1">Andy Huynh</h1>
-            <p class="text-sm text-slate-500 font-normal">Applied Mathematics candidate at San José State University</p>
-            
-            <nav class="flex gap-5 mt-6 mono text-[11px] uppercase tracking-widest text-slate-400">
-                <a href="https://github.com/andymhuynh" class="hover:text-black transition">GitHub</a>
-                <a href="https://www.linkedin.com/in/andymhuynh/" class="hover:text-black transition">LinkedIn</a>
-                <a href="mailto:ahuyn5@gmail.com" class="hover:text-black transition">Email</a>
-            </nav>
-        </header>
-
-        <section class="mb-24">
-            <p class="text-[15px] leading-relaxed font-light text-slate-600 italic">
-                Focusing on the intersection of mathematical theory and computation. Specializing in <span class="text-black font-normal">Discrete Mathematics</span> with a focus on graph theory and algorithmic logic.
+        <section id="about" class="pt-8">
+            <h1 class="text-3xl font-semibold text-black tracking-tight mb-4">Andy Huynh</h1>
+            <p class="text-base leading-relaxed font-light text-slate-500 max-w-lg">
+                Applied Mathematics candidate at San José State University. 
+                Focusing on the intersection of discrete mathematical theory and computational practice.
+                Expected graduation: 2028.
             </p>
         </section>
 
-        <section class="mb-16">
-            <div class="flex items-center justify-between border-b border-slate-200 pb-2 mb-6">
-                <h2 class="mono text-[10px] uppercase tracking-[0.3em] text-slate-400">Mathematics</h2>
-                <span class="mono text-[9px] text-slate-300">SJSU / BS</span>
-            </div>
+        <section id="track" class="space-y-12">
             
-            <div class="space-y-6">
-                <div>
-                    <h3 class="mono text-[11px] text-blue-500 font-medium mb-3">Currently Taking</h3>
-                    <ul class="text-[13px] space-y-2">
-                        <li class="flex justify-between">Applied Probability & Stats I <span class="text-slate-400">MATH 161A</span></li>
-                        <li class="flex justify-between">Ordinary Differential Equations <span class="text-slate-400">MATH 33A</span></li>
-                    </ul>
+            <div>
+                <div class="flex items-center justify-between border-b border-slate-900 pb-2 mb-6">
+                    <h2 class="text-[10px] uppercase tracking-[0.3em] font-bold text-black">Mathematics</h2>
+                    <span class="text-[9px] font-bold text-blue-500 uppercase tracking-widest">In Progress</span>
                 </div>
-                <div>
-                    <h3 class="mono text-[11px] text-slate-400 font-medium mb-3">Completed Foundations</h3>
-                    <ul class="text-[13px] space-y-2 text-slate-500">
-                        <li>Discrete Mathematics (MATH 42)</li>
-                        <li>Linear Algebra I (MATH 39)</li>
-                        <li>Calculus Series (MATH 30, 31, 32)</li>
-                    </ul>
+                <div class="space-y-0 text-sm">
+                    <div class="course-item flex justify-between italic">
+                        <span>Appl Prob & Stats I (MATH 161A)</span>
+                        <span class="text-slate-400">Spring 2026</span>
+                    </div>
+                    <div class="course-item flex justify-between italic">
+                        <span>Ord Diff Equations (MATH 33A)</span>
+                        <span class="text-slate-400">Spring 2026</span>
+                    </div>
+                    <div class="course-item flex justify-between text-slate-500">
+                        <span>Discrete Mathematics (MATH 42)</span>
+                        <span class="text-slate-300">Completed</span>
+                    </div>
+                    <div class="course-item flex justify-between text-slate-500">
+                        <span>Linear Algebra I (MATH 39)</span>
+                        <span class="text-slate-300">Completed</span>
+                    </div>
+                    <div class="course-item flex justify-between text-slate-500">
+                        <span>Calculus Series (MATH 30, 31, 32)</span>
+                        <span class="text-slate-300">Completed</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="flex items-center justify-between border-b border-slate-900 pb-2 mb-6">
+                    <h2 class="text-[10px] uppercase tracking-[0.3em] font-bold text-black">Computer Science</h2>
+                    <span class="text-[9px] font-bold text-blue-500 uppercase tracking-widest">In Progress</span>
+                </div>
+                <div class="space-y-0 text-sm">
+                    <div class="course-item flex justify-between italic">
+                        <span>Programming in Java (CS 49J)</span>
+                        <span class="text-slate-400">Spring 2026</span>
+                    </div>
+                    <div class="course-item flex justify-between text-slate-500">
+                        <span>Intro Data Structures (CS 46B)</span>
+                        <span class="text-slate-300">Completed</span>
+                    </div>
+                    <div class="course-item flex justify-between text-slate-500">
+                        <span>Intro to Programming (CS 46A)</span>
+                        <span class="text-slate-300">Completed</span>
+                    </div>
+                    <div class="course-item flex justify-between text-slate-500">
+                        <span>Intro to Computer Systems (CS 47)</span>
+                        <span class="text-slate-300">Completed</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="mb-24">
-            <div class="flex items-center justify-between border-b border-slate-200 pb-2 mb-6">
-                <h2 class="mono text-[10px] uppercase tracking-[0.3em] text-slate-400">Computer Science</h2>
-                <span class="mono text-[9px] text-slate-300">CORE / LOGIC</span>
+        <footer class="pt-16 border-t border-slate-100 flex justify-between items-center">
+            <span class="text-[9px] text-slate-300 uppercase tracking-widest">AH &bull; SJSU &bull; 2026</span>
+            <div class="flex gap-4">
+                <a href="https://github.com/andymhuynh" class="text-[10px] text-slate-400 hover:text-black transition uppercase font-bold tracking-tighter">GH</a>
+                <a href="https://www.linkedin.com/in/andymhuynh/" class="text-[10px] text-slate-400 hover:text-black transition uppercase font-bold tracking-tighter">LI</a>
             </div>
-            
-            <div class="space-y-6">
-                <div>
-                    <h3 class="mono text-[11px] text-blue-500 font-medium mb-3">Currently Taking</h3>
-                    <ul class="text-[13px] space-y-2">
-                        <li class="flex justify-between">Programming in Java <span class="text-slate-400">CS 49J</span></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="mono text-[11px] text-slate-400 font-medium mb-3">Systems & Structures</h3>
-                    <ul class="text-[13px] space-y-2 text-slate-500">
-                        <li>Data Structures (CS 46B)</li>
-                        <li>Intro to Computer Systems (CS 47)</li>
-                        <li>Programming in C (CS 49C)</li>
-                        <li>Intro to Programming (CS 46A)</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <footer class="pt-12 border-t border-slate-100 flex justify-between items-center">
-            <p class="mono text-[10px] text-slate-300 uppercase tracking-widest italic">Expected Graduation 2028</p>
-            <p class="mono text-[9px] text-slate-200 uppercase tracking-widest">AH &bull; SJSU</p>
         </footer>
 
     </main>
