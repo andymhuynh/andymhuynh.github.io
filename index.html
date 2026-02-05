@@ -5,105 +5,149 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Andy Huynh</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root { --line-color: #f1f5f9; }
-        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
-        .nav-link { position: relative; transition: color 0.3s ease; }
-        .nav-link::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -2px; left: 0; background-color: #000; transition: width 0.3s ease; }
+        :root {
+            --bg: #ffffff;
+            --text-main: #1a1a1a;
+            --text-muted: #666666;
+            --accent: #0055A2; /* SJSU Blue */
+            --border: #eeeeee;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+        
+        /* Subtle line animation for links */
+        .nav-link {
+            position: relative;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--text-main);
+            transition: width 0.3s ease;
+        }
         .nav-link:hover::after { width: 100%; }
-        .course-item { padding: 0.75rem 0; border-bottom: 1px solid var(--line-color); transition: padding-left 0.3s ease; }
-        .course-item:hover { padding-left: 0.5rem; background-color: #fafafa; }
-        .course-item:last-child { border-bottom: none; }
+
+        /* Course list item styling */
+        .course-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 4px 0;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        .course-item:hover {
+            border-bottom-color: var(--border);
+            padding-left: 4px;
+        }
+
+        .status-dot {
+            height: 6px;
+            width: 6px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
     </style>
 </head>
-<body class="bg-white text-slate-800">
+<body class="selection:bg-blue-100">
 
-    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50">
-        <div class="max-w-2xl mx-auto px-8 h-16 flex items-center justify-between">
-            <span class="text-sm font-semibold tracking-tight uppercase">AH</span>
-            <div class="flex gap-6 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
-                <a href="#about" class="nav-link hover:text-black">About</a>
-                <a href="#track" class="nav-link hover:text-black">Track</a>
-                <a href="mailto:ahuyn5@gmail.com" class="nav-link hover:text-black">Email</a>
-            </div>
-        </div>
-    </nav>
-
-    <main class="max-w-2xl mx-auto px-8 py-32 space-y-24">
+    <main class="max-w-3xl mx-auto px-6 py-24 md:py-32">
         
-        <section id="about" class="pt-8">
-            <h1 class="text-3xl font-semibold text-black tracking-tight mb-4">Andy Huynh</h1>
-            <p class="text-base leading-relaxed font-light text-slate-500 max-w-lg">
-                Applied Mathematics candidate at San José State University. 
-                Focusing on the intersection of discrete mathematical theory and computational practice.
-                Expected graduation: 2028.
+        <header class="mb-24">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tighter uppercase mb-1">Andy Huynh</h1>
+                    <p class="text-sm text-slate-500 mono tracking-tight">
+                        BS Applied Mathematics / Discrete Math 
+                    </p>
+                </div>
+                <nav class="flex gap-6 text-[10px] uppercase tracking-[0.2em] font-bold text-slate-400">
+                    <a href="https://github.com/andymhuynh" class="nav-link text-slate-500">GitHub</a>
+                    <a href="https://www.linkedin.com/in/andymhuynh/" class="nav-link text-slate-500">LinkedIn</a>
+                    <a href="mailto:ahuyn5@gmail.com" class="nav-link text-slate-500">Email</a>
+                </nav>
+            </div>
+        </header>
+
+        <section class="mb-24 max-w-xl">
+            <p class="text-lg font-light text-slate-600 leading-relaxed">
+                Focused on high-level discrete mathematics and its intersection with disruptive technology. 
+                Developing a foundation in theory and practice to solve complex computational problems.
             </p>
         </section>
 
-        <section id="track" class="space-y-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
             
-            <div>
-                <div class="flex items-center justify-between border-b border-slate-900 pb-2 mb-6">
-                    <h2 class="text-[10px] uppercase tracking-[0.3em] font-bold text-black">Mathematics</h2>
-                    <span class="text-[9px] font-bold text-blue-500 uppercase tracking-widest">In Progress</span>
-                </div>
-                <div class="space-y-0 text-sm">
-                    <div class="course-item flex justify-between italic">
-                        <span>Appl Prob & Stats I (MATH 161A)</span>
-                        <span class="text-slate-400">Spring 2026</span>
+            <section>
+                <h2 class="text-[10px] uppercase tracking-[0.3em] text-slate-400 font-black mb-8 border-b border-slate-100 pb-2">01 / Mathematics</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="mono text-[10px] text-blue-600 font-bold mb-3 tracking-widest">CURRENT_TERM</h3>
+                        <div class="space-y-1">
+                            <div class="course-item">
+                                <span class="text-sm font-medium"><span class="status-dot"></span>Appl Prob & Stats I</span>
+                                <span class="mono text-[10px] text-slate-400">MATH 161A</span>
+                            </div>
+                            <div class="course-item">
+                                <span class="text-sm font-medium"><span class="status-dot"></span>Ord Diff Equations</span>
+                                <span class="mono text-[10px] text-slate-400">MATH 33A</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="course-item flex justify-between italic">
-                        <span>Ord Diff Equations (MATH 33A)</span>
-                        <span class="text-slate-400">Spring 2026</span>
-                    </div>
-                    <div class="course-item flex justify-between text-slate-500">
-                        <span>Discrete Mathematics (MATH 42)</span>
-                        <span class="text-slate-300">Completed</span>
-                    </div>
-                    <div class="course-item flex justify-between text-slate-500">
-                        <span>Linear Algebra I (MATH 39)</span>
-                        <span class="text-slate-300">Completed</span>
-                    </div>
-                    <div class="course-item flex justify-between text-slate-500">
-                        <span>Calculus Series (MATH 30, 31, 32)</span>
-                        <span class="text-slate-300">Completed</span>
+                    <div>
+                        <h3 class="mono text-[10px] text-slate-300 font-bold mb-3 tracking-widest">HISTORICAL</h3>
+                        <div class="space-y-1 text-slate-400">
+                            <div class="course-item text-xs"><span>Discrete Math</span><span class="mono">42</span></div>
+                            <div class="course-item text-xs"><span>Linear Algebra I</span><span class="mono">39</span></div>
+                            <div class="course-item text-xs"><span>Calculus I-III</span><span class="mono">30-32</span></div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div>
-                <div class="flex items-center justify-between border-b border-slate-900 pb-2 mb-6">
-                    <h2 class="text-[10px] uppercase tracking-[0.3em] font-bold text-black">Computer Science</h2>
-                    <span class="text-[9px] font-bold text-blue-500 uppercase tracking-widest">In Progress</span>
-                </div>
-                <div class="space-y-0 text-sm">
-                    <div class="course-item flex justify-between italic">
-                        <span>Programming in Java (CS 49J)</span>
-                        <span class="text-slate-400">Spring 2026</span>
+            <section>
+                <h2 class="text-[10px] uppercase tracking-[0.3em] text-slate-400 font-black mb-8 border-b border-slate-100 pb-2">02 / Computer Science</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="mono text-[10px] text-blue-600 font-bold mb-3 tracking-widest">CURRENT_TERM</h3>
+                        <div class="course-item">
+                            <span class="text-sm font-medium"><span class="status-dot"></span>Programming in Java</span>
+                            <span class="mono text-[10px] text-slate-400">CS 49J</span>
+                        </div>
                     </div>
-                    <div class="course-item flex justify-between text-slate-500">
-                        <span>Intro Data Structures (CS 46B)</span>
-                        <span class="text-slate-300">Completed</span>
-                    </div>
-                    <div class="course-item flex justify-between text-slate-500">
-                        <span>Intro to Programming (CS 46A)</span>
-                        <span class="text-slate-300">Completed</span>
-                    </div>
-                    <div class="course-item flex justify-between text-slate-500">
-                        <span>Intro to Computer Systems (CS 47)</span>
-                        <span class="text-slate-300">Completed</span>
+                    <div>
+                        <h3 class="mono text-[10px] text-slate-300 font-bold mb-3 tracking-widest">HISTORICAL</h3>
+                        <div class="space-y-1 text-slate-400">
+                            <div class="course-item text-xs"><span>Intro Data Structures</span><span class="mono">46B</span></div>
+                            <div class="course-item text-xs"><span>Programming in C</span><span class="mono">49C</span></div>
+                            <div class="course-item text-xs"><span>Intro Computer Systems</span><span class="mono">47</span></div>
+                            <div class="course-item text-xs"><span>Intro to Programming</span><span class="mono">46A</span></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
-        <footer class="pt-16 border-t border-slate-100 flex justify-between items-center">
-            <span class="text-[9px] text-slate-300 uppercase tracking-widest">AH &bull; SJSU &bull; 2026</span>
-            <div class="flex gap-4">
-                <a href="https://github.com/andymhuynh" class="text-[10px] text-slate-400 hover:text-black transition uppercase font-bold tracking-tighter">GH</a>
-                <a href="https://www.linkedin.com/in/andymhuynh/" class="text-[10px] text-slate-400 hover:text-black transition uppercase font-bold tracking-tighter">LI</a>
-            </div>
+        <footer class="mt-32 pt-8 border-t border-slate-50 flex justify-between items-center">
+            <span class="mono text-[9px] text-slate-300 uppercase tracking-widest">SJSU // 2028_GRAD</span>
+            <span class="mono text-[9px] text-slate-300 uppercase tracking-widest">Loc: San Jose, CA</span>
         </footer>
 
     </main>
