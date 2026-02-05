@@ -5,100 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Andy Huynh</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #fafafa; }
-        .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; }
-        .card { background: white; border: 1px solid #e5e7eb; border-radius: 12px; transition: all 0.2s; }
-        .card:hover { border-color: #3b82f6; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        :root { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #fafafa; color: #1a1a1a; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .fade-in { animation: fadeIn 0.8s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .hover-line:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
     </style>
 </head>
-<body class="text-slate-900 antialiased">
+<body class="antialiased selection:bg-blue-100">
 
-    <main class="max-w-2xl mx-auto px-6 py-24">
+    <main class="max-w-xl mx-auto px-6 py-24 md:py-32 fade-in">
         
-        <header class="mb-20">
-            <h1 class="text-3xl font-bold tracking-tight text-slate-900 mb-2">Andy Huynh</h1>
-            <p class="text-slate-500 font-medium italic">Applied Mathematics @ SJSU</p>
+        <header class="mb-24">
+            <h1 class="text-xl font-semibold tracking-tight mb-1">Andy Huynh</h1>
+            <p class="text-sm text-slate-500 font-normal">Applied Mathematics candidate at San José State University</p>
             
-            <div class="flex gap-5 mt-6">
-                <a href="https://github.com/andymhuynh" class="text-slate-400 hover:text-blue-600 transition-colors"><i class="fab fa-github text-xl"></i></a>
-                <a href="https://www.linkedin.com/in/andymhuynh/" class="text-slate-400 hover:text-blue-600 transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
-                <a href="mailto:ahuyn5@gmail.com" class="text-slate-400 hover:text-blue-600 transition-colors"><i class="fas fa-envelope text-xl"></i></a>
-            </div>
+            <nav class="flex gap-5 mt-6 mono text-[11px] uppercase tracking-widest text-slate-400">
+                <a href="https://github.com/andymhuynh" class="hover:text-black transition">GitHub</a>
+                <a href="https://www.linkedin.com/in/andymhuynh/" class="hover:text-black transition">LinkedIn</a>
+                <a href="mailto:ahuyn5@gmail.com" class="hover:text-black transition">Email</a>
+            </nav>
         </header>
 
-        <section class="mb-20">
-            <p class="text-lg text-slate-600 leading-relaxed font-light">
-                I am a student at San José State University specializing in <strong>Discrete Mathematics</strong>. My academic interests lie at the intersection of mathematical theory and computational efficiency, with a focus on graph theory and algorithmic logic. Expected graduation: 2028.
+        <section class="mb-24">
+            <p class="text-[15px] leading-relaxed font-light text-slate-600 italic">
+                Focusing on the intersection of mathematical theory and computation. Specializing in <span class="text-black font-normal">Discrete Mathematics</span> with a focus on graph theory and algorithmic logic.
             </p>
         </section>
 
-        <div class="space-y-12">
-            
-            <section>
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="h-px flex-1 bg-slate-100"></div>
-                    <span class="mono uppercase tracking-widest text-slate-400">Mathematics</span>
-                    <div class="h-px flex-1 bg-slate-100"></div>
-                </div>
-                
-                <div class="grid grid-cols-1 gap-3">
-                    <div class="card p-4 flex justify-between items-center">
-                        <span class="text-sm font-medium">Applied Prob & Stats I</span>
-                        <span class="mono text-blue-500 font-bold bg-blue-50 px-2 py-0.5 rounded">MATH 161A</span>
-                    </div>
-                    <div class="card p-4 flex justify-between items-center">
-                        <span class="text-sm font-medium">Ordinary Differential Equations</span>
-                        <span class="mono text-blue-500 font-bold bg-blue-50 px-2 py-0.5 rounded">MATH 33A</span>
-                    </div>
-                    <div class="p-4 flex justify-between items-center opacity-50 grayscale">
-                        <span class="text-sm">Discrete Math / Linear Algebra I</span>
-                        <span class="mono text-slate-400">MATH 42 / 39</span>
-                    </div>
-                    <div class="p-4 flex justify-between items-center opacity-50 grayscale">
-                        <span class="text-sm">Calculus Series (I, II, III)</span>
-                        <span class="mono text-slate-400">MATH 30, 31, 32</span>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="h-px flex-1 bg-slate-100"></div>
-                    <span class="mono uppercase tracking-widest text-slate-400">Computer Science</span>
-                    <div class="h-px flex-1 bg-slate-100"></div>
-                </div>
-                
-                <div class="grid grid-cols-1 gap-3">
-                    <div class="card p-4 flex justify-between items-center">
-                        <span class="text-sm font-medium">Programming in Java</span>
-                        <span class="mono text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded">CS 49J</span>
-                    </div>
-                    <div class="p-4 flex justify-between items-center opacity-50 grayscale">
-                        <span class="text-sm">Intro Data Structures</span>
-                        <span class="mono text-slate-400">CS 46B</span>
-                    </div>
-                    <div class="p-4 flex justify-between items-center opacity-50 grayscale">
-                        <span class="text-sm">Programming in C / Comp Systems</span>
-                        <span class="mono text-slate-400">CS 49C / 47</span>
-                    </div>
-                </div>
-            </section>
-
-        </div>
-
-        <footer class="mt-32 pt-10 border-t border-slate-100">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <p class="text-xs text-slate-400 max-w-xs">
-                    Actively seeking Summer 2026 internships in software engineering and data analysis.
-                </p>
-                <p class="mono text-[10px] text-slate-300 uppercase tracking-widest">© 2026 Andy Huynh</p>
+        <section class="mb-16">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-2 mb-6">
+                <h2 class="mono text-[10px] uppercase tracking-[0.3em] text-slate-400">Mathematics</h2>
+                <span class="mono text-[9px] text-slate-300">SJSU / BS</span>
             </div>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="mono text-[11px] text-blue-500 font-medium mb-3">Currently Taking</h3>
+                    <ul class="text-[13px] space-y-2">
+                        <li class="flex justify-between">Applied Probability & Stats I <span class="text-slate-400">MATH 161A</span></li>
+                        <li class="flex justify-between">Ordinary Differential Equations <span class="text-slate-400">MATH 33A</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="mono text-[11px] text-slate-400 font-medium mb-3">Completed Foundations</h3>
+                    <ul class="text-[13px] space-y-2 text-slate-500">
+                        <li>Discrete Mathematics (MATH 42)</li>
+                        <li>Linear Algebra I (MATH 39)</li>
+                        <li>Calculus Series (MATH 30, 31, 32)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-24">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-2 mb-6">
+                <h2 class="mono text-[10px] uppercase tracking-[0.3em] text-slate-400">Computer Science</h2>
+                <span class="mono text-[9px] text-slate-300">CORE / LOGIC</span>
+            </div>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="mono text-[11px] text-blue-500 font-medium mb-3">Currently Taking</h3>
+                    <ul class="text-[13px] space-y-2">
+                        <li class="flex justify-between">Programming in Java <span class="text-slate-400">CS 49J</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="mono text-[11px] text-slate-400 font-medium mb-3">Systems & Structures</h3>
+                    <ul class="text-[13px] space-y-2 text-slate-500">
+                        <li>Data Structures (CS 46B)</li>
+                        <li>Intro to Computer Systems (CS 47)</li>
+                        <li>Programming in C (CS 49C)</li>
+                        <li>Intro to Programming (CS 46A)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer class="pt-12 border-t border-slate-100 flex justify-between items-center">
+            <p class="mono text-[10px] text-slate-300 uppercase tracking-widest italic">Expected Graduation 2028</p>
+            <p class="mono text-[9px] text-slate-200 uppercase tracking-widest">AH &bull; SJSU</p>
         </footer>
 
     </main>
 
-    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
 </body>
 </html>
