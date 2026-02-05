@@ -3,151 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andy Huynh</title>
+    <title>andy_huynh.sh</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg: #ffffff;
-            --text-main: #1a1a1a;
-            --text-muted: #666666;
-            --accent: #0055A2; /* SJSU Blue */
-            --border: #eeeeee;
+        body { 
+            font-family: 'JetBrains Mono', monospace; 
+            background-color: #0f172a; /* Deep dark blue-slate */
+            color: #94a3b8; 
         }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg);
-            color: var(--text-main);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+        .code-keyword { color: #c678dd; } /* Purple */
+        .code-string { color: #98c379; }  /* Green */
+        .code-comment { color: #5c6370; font-style: italic; }
+        .code-func { color: #61afef; }    /* Blue */
+        .code-bracket { color: #abb2bf; }
         
-        /* Subtle line animation for links */
-        .nav-link {
-            position: relative;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -2px;
-            left: 0;
-            background-color: var(--text-main);
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after { width: 100%; }
-
-        /* Course list item styling */
-        .course-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            padding: 4px 0;
-            border-bottom: 1px solid transparent;
-            transition: all 0.2s ease;
-        }
-        .course-item:hover {
-            border-bottom-color: var(--border);
-            padding-left: 4px;
-        }
-
-        .status-dot {
-            height: 6px;
-            width: 6px;
-            background-color: var(--accent);
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 8px;
-        }
+        ::selection { background: #3e4451; }
     </style>
 </head>
-<body class="selection:bg-blue-100">
+<body class="p-6 md:p-16 antialiased leading-relaxed">
 
-    <main class="max-w-3xl mx-auto px-6 py-24 md:py-32">
+    <main class="max-w-3xl mx-auto">
         
-        <header class="mb-24">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-                <div>
-                    <h1 class="text-2xl font-bold tracking-tighter uppercase mb-1">Andy Huynh</h1>
-                    <p class="text-sm text-slate-500 mono tracking-tight">
-                        BS Applied Mathematics / Discrete Math 
-                    </p>
-                </div>
-                <nav class="flex gap-6 text-[10px] uppercase tracking-[0.2em] font-bold text-slate-400">
-                    <a href="https://github.com/andymhuynh" class="nav-link text-slate-500">GitHub</a>
-                    <a href="https://www.linkedin.com/in/andymhuynh/" class="nav-link text-slate-500">LinkedIn</a>
-                    <a href="mailto:ahuyn5@gmail.com" class="nav-link text-slate-500">Email</a>
-                </nav>
+        <header class="mb-12">
+            <div class="text-sm code-comment mb-2">// Personal Identity</div>
+            <h1 class="text-2xl font-semibold text-white tracking-tight">
+                <span class="code-keyword">const</span> <span class="code-func">andyHuynh</span> = <span class="code-bracket">{</span>
+            </h1>
+            <div class="pl-6 space-y-1 mt-1">
+                <div><span class="text-slate-400 font-bold">role:</span> <span class="code-string">"Applied Mathematics Student @ SJSU"</span>,</div>
+                <div><span class="text-slate-400 font-bold">focus:</span> <span class="code-string">"Discrete Mathematics"</span>,</div>
+                <div><span class="text-slate-400 font-bold">graduation:</span> <span class="text-orange-300">2028</span></div>
             </div>
+            <div class="code-bracket text-2xl">};</div>
         </header>
 
-        <section class="mb-24 max-w-xl">
-            <p class="text-lg font-light text-slate-600 leading-relaxed">
-                Focused on high-level discrete mathematics and its intersection with disruptive technology. 
-                Developing a foundation in theory and practice to solve complex computational problems.
-            </p>
+        <section class="mb-12">
+            <div class="text-sm code-comment mb-4">/* * Bridging mathematical rigor with technical implementation.
+ * Currently focused on algorithmic foundations and logic.
+ */</div>
+            <div class="flex gap-6 text-xs uppercase tracking-widest font-bold">
+                <a href="https://github.com/andymhuynh" class="hover:text-blue-400 transition underline decoration-slate-700">github</a>
+                <a href="https://www.linkedin.com/in/andymhuynh/" class="hover:text-blue-400 transition underline decoration-slate-700">linkedin</a>
+                <a href="mailto:ahuyn5@gmail.com" class="hover:text-blue-400 transition underline decoration-slate-700">email</a>
+            </div>
         </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
+        <section class="space-y-10">
             
-            <section>
-                <h2 class="text-[10px] uppercase tracking-[0.3em] text-slate-400 font-black mb-8 border-b border-slate-100 pb-2">01 / Mathematics</h2>
-                <div class="space-y-6">
+            <div>
+                <h2 class="text-white text-sm font-bold mb-4 border-b border-slate-800 pb-2 flex items-center gap-2">
+                    <span class="code-keyword">import</span> <span class="text-slate-300">Mathematics</span> <span class="code-keyword">from</span> <span class="code-string">'SJSU'</span>;
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pl-4">
                     <div>
-                        <h3 class="mono text-[10px] text-blue-600 font-bold mb-3 tracking-widest">CURRENT_TERM</h3>
-                        <div class="space-y-1">
-                            <div class="course-item">
-                                <span class="text-sm font-medium"><span class="status-dot"></span>Appl Prob & Stats I</span>
-                                <span class="mono text-[10px] text-slate-400">MATH 161A</span>
-                            </div>
-                            <div class="course-item">
-                                <span class="text-sm font-medium"><span class="status-dot"></span>Ord Diff Equations</span>
-                                <span class="mono text-[10px] text-slate-400">MATH 33A</span>
-                            </div>
-                        </div>
+                        <div class="text-[10px] code-comment mb-2">// In Progress (Spring 2026)</div>
+                        <ul class="text-xs space-y-2 text-blue-300">
+                            <li>&gt; MATH_161A (Appl Prob & Stats I) </li>
+                            <li>&gt; MATH_33A (Ord Diff Equations) </li>
+                        </ul>
                     </div>
                     <div>
-                        <h3 class="mono text-[10px] text-slate-300 font-bold mb-3 tracking-widest">HISTORICAL</h3>
-                        <div class="space-y-1 text-slate-400">
-                            <div class="course-item text-xs"><span>Discrete Math</span><span class="mono">42</span></div>
-                            <div class="course-item text-xs"><span>Linear Algebra I</span><span class="mono">39</span></div>
-                            <div class="course-item text-xs"><span>Calculus I-III</span><span class="mono">30-32</span></div>
-                        </div>
+                        <div class="text-[10px] code-comment mb-2">// Completed Foundations</div>
+                        <ul class="text-xs space-y-2 text-slate-500">
+                            <li>&gt; MATH_42 (Discrete Math) </li>
+                            <li>&gt; MATH_39 (Linear Algebra I) </li>
+                            <li>&gt; MATH_30_32 (Calculus I-III) </li>
+                        </ul>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <section>
-                <h2 class="text-[10px] uppercase tracking-[0.3em] text-slate-400 font-black mb-8 border-b border-slate-100 pb-2">02 / Computer Science</h2>
-                <div class="space-y-6">
+            <div>
+                <h2 class="text-white text-sm font-bold mb-4 border-b border-slate-800 pb-2 flex items-center gap-2">
+                    <span class="code-keyword">import</span> <span class="text-slate-300">ComputerScience</span> <span class="code-keyword">from</span> <span class="code-string">'SJSU'</span>;
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pl-4">
                     <div>
-                        <h3 class="mono text-[10px] text-blue-600 font-bold mb-3 tracking-widest">CURRENT_TERM</h3>
-                        <div class="course-item">
-                            <span class="text-sm font-medium"><span class="status-dot"></span>Programming in Java</span>
-                            <span class="mono text-[10px] text-slate-400">CS 49J</span>
-                        </div>
+                        <div class="text-[10px] code-comment mb-2">// In Progress (Spring 2026)</div>
+                        <ul class="text-xs space-y-2 text-blue-300">
+                            <li>&gt; CS_49J (Java Programming) </li>
+                        </ul>
                     </div>
                     <div>
-                        <h3 class="mono text-[10px] text-slate-300 font-bold mb-3 tracking-widest">HISTORICAL</h3>
-                        <div class="space-y-1 text-slate-400">
-                            <div class="course-item text-xs"><span>Intro Data Structures</span><span class="mono">46B</span></div>
-                            <div class="course-item text-xs"><span>Programming in C</span><span class="mono">49C</span></div>
-                            <div class="course-item text-xs"><span>Intro Computer Systems</span><span class="mono">47</span></div>
-                            <div class="course-item text-xs"><span>Intro to Programming</span><span class="mono">46A</span></div>
-                        </div>
+                        <div class="text-[10px] code-comment mb-2">// Completed Technical Prep</div>
+                        <ul class="text-xs space-y-2 text-slate-500">
+                            <li>&gt; CS_46B (Data Structures) </li>
+                            <li>&gt; CS_47 (Computer Systems) </li>
+                            <li>&gt; CS_49C (C Programming) </li>
+                        </ul>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
 
-        <footer class="mt-32 pt-8 border-t border-slate-50 flex justify-between items-center">
-            <span class="mono text-[9px] text-slate-300 uppercase tracking-widest">SJSU // 2028_GRAD</span>
-            <span class="mono text-[9px] text-slate-300 uppercase tracking-widest">Loc: San Jose, CA</span>
+        </section>
+
+        <footer class="mt-24 pt-8 border-t border-slate-800 text-[10px] text-slate-600 font-mono">
+            <span>root@andy-huynh:~$ ./contact --internships-2026</span>
+            <div class="mt-2">© 2026 // Built with HTML & Tailwind</div>
         </footer>
 
     </main>
