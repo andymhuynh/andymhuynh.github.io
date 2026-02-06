@@ -3,142 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>andy_huynh.sh</title>
+    <title>andy_huynh ~ /dev/sjsu</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        body { 
-            font-family: 'JetBrains Mono', monospace; 
-            background-color: #0d1117; /* GitHub Dark Dimmed theme */
-            color: #c9d1d9; 
-        }
-        .line-number { color: #484f58; text-align: right; padding-right: 1.5rem; user-select: none; }
-        .code-keyword { color: #ff7b72; } /* Red/Pink */
-        .code-string { color: #a5d6ff; }  /* Blue */
-        .code-comment { color: #8b949e; }
-        .code-func { color: #d2a8ff; }    /* Purple */
-        .code-class { color: #ffa657; }   /* Orange */
-        
-        /* New: Status Bar Styling */
-        .status-bar { background-color: #21262d; font-size: 10px; color: #8b949e; }
-        .status-item { padding: 0 10px; border-right: 1px solid #30363d; height: 100%; display: flex; align-items: center; }
-        
-        /* New: Course Tag */
-        .tag-in-progress { color: #58a6ff; border: 1px solid #58a6ff; padding: 0 4px; border-radius: 3px; font-size: 10px; }
-        .tag-done { color: #3fb950; border: 1px solid #3fb950; padding: 0 4px; border-radius: 3px; font-size: 10px; }
+        body { font-family: 'JetBrains Mono', monospace; background-color: #0d1117; color: #c9d1d9; }
+        .cursor { display: inline-block; width: 8px; height: 18px; background: #58a6ff; animation: blink 1s infinite; vertical-align: middle; }
+        @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+        .math-node { border-left: 2px solid #30363d; padding-left: 1rem; position: relative; }
+        .math-node::before { content: '├─'; position: absolute; left: -2px; color: #30363d; }
     </style>
 </head>
-<body class="antialiased selection:bg-blue-500/30">
+<body class="p-6 md:p-20 antialiased">
 
-    <div class="flex flex-col min-h-screen">
-        <main class="flex-grow p-6 md:p-12 max-w-4xl">
+    <main class="max-w-3xl mx-auto">
+        
+        <header class="mb-16">
+            <div class="flex gap-2 mb-4">
+                <div class="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50"></div>
+            </div>
+            <div class="text-xl font-bold text-white mb-2">
+                <span class="text-green-400">andy@sjsu:</span><span class="text-blue-400">~</span>$ whoami<span class="cursor ml-2"></span>
+            </div>
+            <p class="text-slate-400 leading-relaxed">
+                Applied Mathematics candidate at San José State University. 
+                Focusing on <span class="text-blue-400 font-bold">Discrete Mathematics</span> and 
+                its application in modern software engineering.
+            </p>
+        </header>
+
+        <section class="mb-16">
+            <h2 class="text-xs uppercase tracking-widest text-slate-500 mb-6 font-bold flex items-center gap-2">
+                <span class="text-purple-400">01.</span> Concentration Focus [Discrete_Math]
+            </h2>
+            <div class="space-y-4 text-sm bg-slate-900/50 p-6 rounded-xl border border-slate-800">
+                <div class="math-node">
+                    <span class="text-blue-400 font-bold">Logic:</span> Abstract Math & Proofs (MATH 108)
+                </div>
+                <div class="math-node">
+                    <span class="text-blue-400 font-bold">Theory:</span> Graph Theory & Combinatorics (MATH 179, 142)
+                </div>
+                <div class="math-node">
+                    <span class="text-blue-400 font-bold">Systems:</span> Algorithms & Numerical Analysis (CS 146, MATH 143M)
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-xs uppercase tracking-widest text-slate-500 mb-6 font-bold flex items-center gap-2">
+                <span class="text-purple-400">02.</span> Current_Session --spring-2026
+            </h2>
             
-            <div class="flex items-center gap-2 mb-8 border-b border-gray-800 pb-2">
-                <span class="text-xs text-gray-500 italic">src / profile / andy_huynh.json</span>
-            </div>
-
-            <div class="flex">
-                <div class="line-number text-xs pt-1">01<br>02<br>03<br>04<br>05<br>06<br>07</div>
-                <div class="pl-4">
-                    <h1 class="text-2xl font-bold text-white mb-2">
-                        <span class="code-keyword">struct</span> <span class="code-class">Student</span> <span class="text-gray-400">{</span>
-                    </h1>
-                    <div class="pl-6 space-y-1">
-                        <div>name: <span class="code-string">"Andy Huynh"</span>,</div>
-                        <div>major: <span class="code-string">"Applied Mathematics"</span>,</div>
-                        <div>track: <span class="code-string">"Discrete Mathematics Concentration"</span>,</div>
-                        <div>location: <span class="code-string">"San Jose, CA"</span>,</div>
-                        <div>status: <span class="code-string">"Degree Candidate 2028"</span></div>
-                    </div>
-                    <div class="text-gray-400">};</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-4 rounded-lg bg-[#161b22] border border-slate-800">
+                    <div class="text-[10px] text-slate-500 mb-2 uppercase tracking-tighter">Computer Science</div>
+                    <div class="text-sm text-white font-bold">CS_49J <span class="ml-2 text-[10px] px-2 py-0.5 rounded border border-blue-500 text-blue-500 uppercase">In Progress</span></div>
+                    <div class="text-xs text-slate-400 mt-1 italic">Programming in Java </div>
+                </div>
+                
+                <div class="p-4 rounded-lg bg-[#161b22] border border-slate-800">
+                    <div class="text-[10px] text-slate-500 mb-2 uppercase tracking-tighter">Mathematics</div>
+                    <div class="text-sm text-white font-bold">MATH_161A <span class="ml-2 text-[10px] px-2 py-0.5 rounded border border-blue-500 text-blue-500 uppercase">In Progress</span></div>
+                    <div class="text-xs text-slate-400 mt-1 italic">Applied Probability & Stats I </div>
                 </div>
             </div>
+        </section>
 
-            <div class="mt-16">
-                <div class="text-xs code-comment mb-6">// Load Coursework Records </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    
-                    <div class="space-y-4">
-                        <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                            <span class="text-blue-500">#</span> math_stream
-                        </h3>
-                        <ul class="text-xs space-y-3">
-                            <li class="flex items-center justify-between">
-                                <span>MATH_161A (Prob & Stats I)</span>
-                                <span class="tag-in-progress">RUNNING</span>
-                            </li>
-                            <li class="flex items-center justify-between">
-                                <span>MATH_33A (Diff Equations)</span>
-                                <span class="tag-in-progress">RUNNING</span>
-                            </li>
-                            <li class="flex items-center justify-between opacity-50">
-                                <span>MATH_42 (Discrete Math)</span>
-                                <span class="tag-done">EXIT_0</span>
-                            </li>
-                            <li class="flex items-center justify-between opacity-50">
-                                <span>MATH_39 (Linear Algebra)</span>
-                                <span class="tag-done">EXIT_0</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="space-y-4">
-                        <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                            <span class="text-green-500">#</span> cs_stream
-                        </h3>
-                        <ul class="text-xs space-y-3">
-                            <li class="flex items-center justify-between">
-                                <span>CS_49J (Java)</span>
-                                <span class="tag-in-progress">RUNNING</span>
-                            </li>
-                            <li class="flex items-center justify-between opacity-50">
-                                <span>CS_46B (Data Structures)</span>
-                                <span class="tag-done">EXIT_0</span>
-                            </li>
-                            <li class="flex items-center justify-between opacity-50">
-                                <span>CS_47 (Comp Systems)</span>
-                                <span class="tag-done">EXIT_0</span>
-                            </li>
-                            <li class="flex items-center justify-between opacity-50">
-                                <span>CS_49C (C Programming)</span>
-                                <span class="tag-done">EXIT_0</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        <footer class="mt-20 pt-8 border-t border-slate-800">
+            <div class="flex gap-6 text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">
+                <a href="https://github.com/andymhuynh" class="hover:text-white transition underline decoration-slate-800">github</a>
+                <a href="https://www.linkedin.com/in/andymhuynh/" class="hover:text-white transition underline decoration-slate-800">linkedin</a>
+                <a href="mailto:ahuyn5@gmail.com" class="hover:text-white transition underline decoration-slate-800">email</a>
             </div>
-
-            <div class="mt-20 p-6 bg-black/40 border border-gray-800 rounded-lg shadow-2xl">
-                <div class="flex gap-1.5 mb-4">
-                    <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
-                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
-                    <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
-                </div>
-                <div class="text-xs font-mono space-y-1">
-                    <p class="text-gray-500">andy@sjsu:~$ grep "concentration_info" requirements.txt</p>
-                    <p class="text-blue-400">"Empowers students to grasp high-level discrete mathematics and its intersection with technology." </p>
-                    <p class="text-gray-500">andy@sjsu:~$ ./get_contact_info</p>
-                    <p>
-                        <a href="mailto:ahuyn5@gmail.com" class="text-green-400 hover:underline">ahuyn5@gmail.com</a> | 
-                        <a href="https://github.com/andymhuynh" class="text-green-400 hover:underline">github.com/andymhuynh</a>
-                    </p>
-                </div>
-            </div>
-        </main>
-
-        <footer class="status-bar h-6 w-full fixed bottom-0 flex justify-between items-center px-2">
-            <div class="flex h-full items-center">
-                <div class="status-item bg-blue-600 text-white font-bold"><i class="fas fa-code-branch mr-1"></i> main</div>
-                <div class="status-item"><i class="fas fa-sync-alt mr-1"></i> Syncing...</div>
-                <div class="status-item text-white">0 Errors</div>
-            </div>
-            <div class="flex h-full items-center">
-                <div class="status-item italic">SJSU Applied Math BS</div>
-                <div class="status-item">UTF-8</div>
-                <div class="status-item bg-blue-600 px-3"><i class="fas fa-bell text-white"></i></div>
+            <div class="text-[10px] text-slate-600">
+                Graduation_Target: 2028 | Status: 2.0+ GPA_Compliant
             </div>
         </footer>
-    </div>
+
+    </main>
 
 </body>
 </html>
