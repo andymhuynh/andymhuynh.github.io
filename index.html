@@ -3,86 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>andy_huynh ~ /dev/sjsu</title>
+    <title>andyhuynh.sh</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'JetBrains Mono', monospace; background-color: #0d1117; color: #c9d1d9; }
-        .cursor { display: inline-block; width: 8px; height: 18px; background: #58a6ff; animation: blink 1s infinite; vertical-align: middle; }
-        @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
-        .math-node { border-left: 2px solid #30363d; padding-left: 1rem; position: relative; }
-        .math-node::before { content: '├─'; position: absolute; left: -2px; color: #30363d; }
+        body { 
+            font-family: 'JetBrains Mono', monospace; 
+            background-color: #000000; 
+            color: #d1d1d1; 
+        }
+        .prompt { color: #50fa7b; } /* Green */
+        .dir { color: #8be9fd; }    /* Cyan */
+        .cmd { color: #f1fa8c; }    /* Yellow */
+        .comment { color: #6272a4; } /* Blue-Gray */
+        .in-progress { color: #ff79c6; } /* Pink */
+        
+        /* Cursor animation */
+        .cursor::after {
+            content: "█";
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
     </style>
 </head>
-<body class="p-6 md:p-20 antialiased">
+<body class="p-4 md:p-12 selection:bg-gray-700">
 
-    <main class="max-w-3xl mx-auto">
-        
-        <header class="mb-16">
-            <div class="flex gap-2 mb-4">
-                <div class="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50"></div>
-                <div class="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50"></div>
-                <div class="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50"></div>
-            </div>
-            <div class="text-xl font-bold text-white mb-2">
-                <span class="text-green-400">andy@sjsu:</span><span class="text-blue-400">~</span>$ whoami<span class="cursor ml-2"></span>
-            </div>
-            <p class="text-slate-400 leading-relaxed">
-                Applied Mathematics candidate at San José State University. 
-                Focusing on <span class="text-blue-400 font-bold">Discrete Mathematics</span> and 
-                its application in modern software engineering.
-            </p>
-        </header>
+    <div class="max-w-3xl mx-auto">
+        <div class="mb-10 text-xs">
+            <span class="comment"># Last login: Fri Feb 06 00:47:00 on ttys001</span><br>
+            <span class="comment"># Profile for: Andy Minh Triet Huynh</span>
+        </div>
 
-        <section class="mb-16">
-            <h2 class="text-xs uppercase tracking-widest text-slate-500 mb-6 font-bold flex items-center gap-2">
-                <span class="text-purple-400">01.</span> Concentration Focus [Discrete_Math]
-            </h2>
-            <div class="space-y-4 text-sm bg-slate-900/50 p-6 rounded-xl border border-slate-800">
-                <div class="math-node">
-                    <span class="text-blue-400 font-bold">Logic:</span> Abstract Math & Proofs (MATH 108)
-                </div>
-                <div class="math-node">
-                    <span class="text-blue-400 font-bold">Theory:</span> Graph Theory & Combinatorics (MATH 179, 142)
-                </div>
-                <div class="math-node">
-                    <span class="text-blue-400 font-bold">Systems:</span> Algorithms & Numerical Analysis (CS 146, MATH 143M)
-                </div>
+        <section class="mb-12">
+            <div class="mb-1">
+                <span class="prompt">andy@sjsu</span>:<span class="dir">~</span>$ whoami
+            </div>
+            <div class="pl-4 mt-2 border-l border-gray-800">
+                <p class="text-white font-bold">Andy Huynh</p>
+                <p class="text-sm mt-1">Applied Mathematics @ SJSU</p>
+                <p class="text-sm">Concentration: Discrete Mathematics</p>
+                <p class="text-xs comment mt-2 italic">"Flexible problem-solver bridging theory and practice in disruptive tech."</p>
             </div>
         </section>
 
-        <section class="mb-16">
-            <h2 class="text-xs uppercase tracking-widest text-slate-500 mb-6 font-bold flex items-center gap-2">
-                <span class="text-purple-400">02.</span> Current_Session --spring-2026
-            </h2>
+        <section class="mb-12">
+            <div class="mb-4">
+                <span class="prompt">andy@sjsu</span>:<span class="dir">/academics</span>$ cat transcript.log
+            </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="p-4 rounded-lg bg-[#161b22] border border-slate-800">
-                    <div class="text-[10px] text-slate-500 mb-2 uppercase tracking-tighter">Computer Science</div>
-                    <div class="text-sm text-white font-bold">CS_49J <span class="ml-2 text-[10px] px-2 py-0.5 rounded border border-blue-500 text-blue-500 uppercase">In Progress</span></div>
-                    <div class="text-xs text-slate-400 mt-1 italic">Programming in Java </div>
+            <div class="mb-8 pl-4">
+                <p class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">[ Mathematics ]</p>
+                <div class="grid grid-cols-1 gap-2 text-sm">
+                    <div class="flex justify-between border-b border-gray-900 pb-1">
+                        <span>Calculus Series (30, 31, 32)</span>
+                        <span class="cmd">PASSED</span>
+                    </div>
+                    <div class="flex justify-between border-b border-gray-900 pb-1">
+                        <span>Linear Algebra I (39)</span>
+                        <span class="cmd">PASSED</span>
+                    </div>
+                    <div class="flex justify-between border-b border-gray-900 pb-1">
+                        <span>Discrete Mathematics (42)</span>
+                        <span class="cmd">PASSED</span>
+                    </div>
+                    <div class="flex justify-between text-pink-400">
+                        <span>Appl Prob & Stats I (161A)</span>
+                        <span class="in-progress">RUNNING...</span>
+                    </div>
+                    <div class="flex justify-between text-pink-400">
+                        <span>Ord Diff Equations (33A)</span>
+                        <span class="in-progress">RUNNING...</span>
+                    </div>
                 </div>
-                
-                <div class="p-4 rounded-lg bg-[#161b22] border border-slate-800">
-                    <div class="text-[10px] text-slate-500 mb-2 uppercase tracking-tighter">Mathematics</div>
-                    <div class="text-sm text-white font-bold">MATH_161A <span class="ml-2 text-[10px] px-2 py-0.5 rounded border border-blue-500 text-blue-500 uppercase">In Progress</span></div>
-                    <div class="text-xs text-slate-400 mt-1 italic">Applied Probability & Stats I </div>
+            </div>
+
+            <div class="pl-4">
+                <p class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">[ Comp_Science ]</p>
+                <div class="grid grid-cols-1 gap-2 text-sm">
+                    <div class="flex justify-between border-b border-gray-900 pb-1">
+                        <span>Intro to Programming (46A)</span>
+                        <span class="cmd">DONE</span>
+                    </div>
+                    <div class="flex justify-between border-b border-gray-900 pb-1">
+                        <span>Data Structures (46B)</span>
+                        <span class="cmd">DONE</span>
+                    </div>
+                    <div class="flex justify-between border-b border-gray-900 pb-1">
+                        <span>Comp Systems (47) / C (49C)</span>
+                        <span class="cmd">DONE</span>
+                    </div>
+                    <div class="flex justify-between text-pink-400">
+                        <span>Java Programming (49J)</span>
+                        <span class="in-progress">RUNNING...</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <footer class="mt-20 pt-8 border-t border-slate-800">
-            <div class="flex gap-6 text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">
-                <a href="https://github.com/andymhuynh" class="hover:text-white transition underline decoration-slate-800">github</a>
-                <a href="https://www.linkedin.com/in/andymhuynh/" class="hover:text-white transition underline decoration-slate-800">linkedin</a>
-                <a href="mailto:ahuyn5@gmail.com" class="hover:text-white transition underline decoration-slate-800">email</a>
+        <section class="mb-20">
+            <div class="mb-1">
+                <span class="prompt">andy@sjsu</span>:<span class="dir">/contact</span>$ ls -la
             </div>
-            <div class="text-[10px] text-slate-600">
-                Graduation_Target: 2028 | Status: 2.0+ GPA_Compliant
+            <div class="mt-4 text-sm space-y-1">
+                <div><span class="comment">drwxr-xr-x</span> <a href="https://github.com/andymhuynh" class="hover:text-white transition">github.lnk</a></div>
+                <div><span class="comment">drwxr-xr-x</span> <a href="https://www.linkedin.com/in/andymhuynh/" class="hover:text-white transition">linkedin.lnk</a></div>
+                <div><span class="comment">-rw-r--r--</span> <a href="mailto:ahuyn5@gmail.com" class="hover:text-white transition">email.txt</a></div>
             </div>
-        </footer>
+        </section>
 
-    </main>
+        <div class="text-[10px] text-gray-600">
+            <span class="prompt">andy@sjsu</span>:<span class="dir">~</span>$ <span class="cursor"></span>
+        </div>
+    </div>
 
 </body>
 </html>
