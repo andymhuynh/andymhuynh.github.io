@@ -8,12 +8,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
     <style>
         /* Exact Tokyo Night / Arch RGB Palette */
-        body { font-family: 'Fira Code', monospace; background-color: #1a1b26; color: #a9b1d6; }
-        .fetch-os { color: #7aa2f7; } 
-        .fetch-shell { color: #7dcfff; } 
-        .fetch-label { color: #9ece6a; font-weight: bold; } 
-        .fetch-data { color: #c0caf5; }
+        body { 
+            font-family: 'Fira Code', monospace; 
+            background-color: #1a1b26; /* Deep Background */
+            color: #a9b1d6; /* Main Foreground */
+        }
+        .fetch-os { color: #7aa2f7; }      /* Arch Blue */
+        .fetch-kernel { color: #bb9af7; }  /* Purple */
+        .fetch-shell { color: #7dcfff; }   /* Cyan */
+        .fetch-label { color: #9ece6a; font-weight: bold; } /* Green */
+        .fetch-data { color: #c0caf5; }    /* Off-white/Blue */
         
+        /* ANSI Color Blocks (Exact RGB) */
         .ansi-0 { background: #15161e; } .ansi-1 { background: #f7768e; }
         .ansi-2 { background: #9ece6a; } .ansi-3 { background: #e0af68; }
         .ansi-4 { background: #7aa2f7; } .ansi-5 { background: #bb9af7; }
@@ -23,6 +29,7 @@
 <body class="p-8 md:p-20 antialiased">
 
     <main class="max-w-4xl mx-auto flex flex-col md:flex-row gap-12">
+        
         <div class="fetch-os text-sm leading-tight whitespace-pre select-none">
                    - 
                   .o+
@@ -46,12 +53,16 @@
         </div>
 
         <div class="flex-1 space-y-1">
-            <h1 class="text-xl font-bold mb-4"><span class="fetch-os">andy</span><span class="text-white">@</span><span class="fetch-os">arch-sjsu</span></h1>
+            <h1 class="text-xl font-bold mb-4">
+                <span class="fetch-os">andy</span><span class="text-white">@</span><span class="fetch-os">arch-sjsu</span>
+            </h1>
             <div class="border-b border-slate-700 w-full mb-4"></div>
             
             <div><span class="fetch-label">OS:</span> <span class="fetch-data">Applied Math (Discrete) @ SJSU</span></div>
             <div><span class="fetch-label">Kernel:</span> <span class="fetch-data">B.S. Candidate (Grad 2028)</span></div>
-            <div><span class="fetch-label">Uptime:</span> <span id="uptime" class="fetch-data"></span></div>
+            
+            <div><span class="fetch-label">Uptime:</span> <span id="uptime" class="fetch-data">Calculating...</span></div>
+            
             <div><span class="fetch-label">Shell:</span> <span class="fetch-data">zsh (ahuyn5@gmail.com)</span></div>
             
             <div class="pt-4"><span class="fetch-label">Coursework:</span></div>
@@ -73,24 +84,44 @@
                 <div class="w-8 h-4 ansi-4"></div><div class="w-8 h-4 ansi-5"></div>
                 <div class="w-8 h-4 ansi-6"></div><div class="w-8 h-4 ansi-7"></div>
             </div>
+            <div class="flex gap-0 opacity-50">
+                <div class="w-8 h-4 ansi-0"></div><div class="w-8 h-4 ansi-1"></div>
+                <div class="w-8 h-4 ansi-2"></div><div class="w-8 h-4 ansi-3"></div>
+                <div class="w-8 h-4 ansi-4"></div><div class="w-8 h-4 ansi-5"></div>
+                <div class="w-8 h-4 ansi-6"></div><div class="w-8 h-4 ansi-7"></div>
+            </div>
         </div>
+
     </main>
+
+    <div class="fixed bottom-8 right-8 text-[10px] uppercase tracking-widest opacity-20 select-none">
+        root@arch-sjsu:~$ ./contact_andy
+    </div>
 
     <script>
         function updateUptime() {
-            // SJSU Spring 2026 Start Date
-            const startDate = new Date('2026-01-26T00:00:00'); 
+            // Hardcoded Semester Start: Jan 26, 2026
+            const startDate = new Date('2026-01-26T08:00:00'); 
             const now = new Date();
             const diff = now - startDate;
+
+            if (diff < 0) {
+                document.getElementById('uptime').innerText = "Semester starting soon...";
+                return;
+            }
 
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
             const mins = Math.floor((diff / (1000 * 60)) % 60);
 
-            document.getElementById('uptime').innerText = `${days}d, ${hours}h, ${mins}m`;
+            document.getElementById('uptime').innerText = `${days} days, ${hours} hours, ${mins} mins`;
         }
+
+        // Run on load
         updateUptime();
-        setInterval(updateUptime, 60000); 
+        // Update live every minute while the tab is open
+        setInterval(updateUptime, 60000);
     </script>
+
 </body>
 </html>
