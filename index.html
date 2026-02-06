@@ -14,7 +14,7 @@
         .fetch-label { color: #9ece6a; font-weight: bold; } /* Green */
         .fetch-data { color: #c0caf5; }
         
-        /* ANSI Color Blocks at the bottom */
+        /* ANSI Color Blocks */
         .ansi-0 { background: #15161e; } .ansi-1 { background: #f7768e; }
         .ansi-2 { background: #9ece6a; } .ansi-3 { background: #e0af68; }
         .ansi-4 { background: #7aa2f7; } .ansi-5 { background: #bb9af7; }
@@ -53,14 +53,14 @@
             
             <div><span class="fetch-label">OS:</span> <span class="fetch-data">Applied Math (Discrete) @ SJSU</span></div>
             <div><span class="fetch-label">Kernel:</span> <span class="fetch-data">B.S. Candidate (Grad 2028)</span></div>
-            <div><span class="fetch-label">Uptime:</span> <span class="fetch-data">Spring 2026 Semester</span></div>
+            <div><span class="fetch-label">Uptime:</span> <span id="uptime" class="fetch-data">Calculating...</span></div>
             <div><span class="fetch-label">Shell:</span> <span class="fetch-data">zsh (ahuyn5@gmail.com)</span></div>
             
             <div class="pt-4"><span class="fetch-label">Coursework:</span></div>
             <div class="pl-4 space-y-1">
                 <div><span class="fetch-shell">Math:</span> <span class="fetch-data">Calc I-III , Linear Algebra , Discrete Math </span></div>
                 <div><span class="fetch-shell">CS:</span> <span class="fetch-data">Data Structures , Comp Systems , C Programming </span></div>
-                <div><span class="fetch-shell">Active:</span> <span class="fetch-data">Prob & Stats, Diff Eq, Java </span></div>
+                <div><span class="fetch-shell">Active:</span> <span class="fetch-data">Prob & Stats , Diff Eq , Java </span></div>
             </div>
 
             <div class="pt-4"><span class="fetch-label">Terminal:</span> <span class="fetch-data">GitHub Pages</span></div>
@@ -88,6 +88,24 @@
     <div class="fixed bottom-8 right-8 text-[10px] uppercase tracking-widest opacity-20 select-none">
         root@arch-sjsu:~$ ./contact_andy
     </div>
+
+    <script>
+        function updateUptime() {
+            // Setting start date to the beginning of Spring 2026 Semester (Jan 26, 2026)
+            const startDate = new Date('2026-01-26T00:00:00'); 
+            const now = new Date();
+            const diff = now - startDate;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const mins = Math.floor((diff / (1000 * 60)) % 60);
+
+            document.getElementById('uptime').innerText = `${days} days, ${hours} hours, ${mins} mins`;
+        }
+
+        updateUptime();
+        setInterval(updateUptime, 60000); // Update every minute
+    </script>
 
 </body>
 </html>
