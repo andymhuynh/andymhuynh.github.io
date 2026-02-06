@@ -3,51 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>andy@archlinux: ~</title>
+    <title>andy@arch-sjsu: ~</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Exact RGB Color Palette from your provided images */
-        :root {
-            --bg: #1a1b26;
-            --foreground: #a9b1d6;
-            --arch-cyan: #7dcfff;
-            --arch-blue: #7aa2f7;
-            --arch-green: #9ece6a;
-            --arch-purple: #bb9af7;
-            --arch-red: #f7768e;
-            --arch-yellow: #e0af68;
-            --arch-white: #c0caf5;
-            --arch-black: #15161e;
-        }
-
-        body { 
-            font-family: 'Fira Code', monospace; 
-            background-color: var(--bg); 
-            color: var(--foreground); 
-        }
+        body { font-family: 'Fira Code', monospace; background-color: #1a1b26; color: #a9b1d6; }
+        .fetch-os { color: #7aa2f7; } /* Blue */
+        .fetch-kernel { color: #bb9af7; } /* Purple */
+        .fetch-shell { color: #7dcfff; } /* Cyan */
+        .fetch-label { color: #9ece6a; font-weight: bold; } /* Green */
+        .fetch-data { color: #c0caf5; }
         
-        .label { color: var(--arch-green); font-weight: bold; }
-        .data { color: var(--arch-white); }
-        .user { color: var(--arch-green); font-weight: bold; }
-        .host { color: var(--arch-green); font-weight: bold; }
-        .separator { color: var(--foreground); opacity: 0.8; }
-        .logo { color: var(--arch-cyan); line-height: 1.2; }
-
-        /* ANSI Color Blocks */
-        .block { width: 40px; height: 16px; display: inline-block; }
-        .bg-0 { background: var(--arch-black); } .bg-1 { background: var(--arch-red); }
-        .bg-2 { background: var(--arch-green); } .bg-3 { background: var(--arch-yellow); }
-        .bg-4 { background: var(--arch-blue); } .bg-5 { background: var(--arch-purple); }
-        .bg-6 { background: var(--arch-cyan); } .bg-7 { background: var(--arch-white); }
+        /* ANSI Color Blocks at the bottom */
+        .ansi-0 { background: #15161e; } .ansi-1 { background: #f7768e; }
+        .ansi-2 { background: #9ece6a; } .ansi-3 { background: #e0af68; }
+        .ansi-4 { background: #7aa2f7; } .ansi-5 { background: #bb9af7; }
+        .ansi-6 { background: #7dcfff; } .ansi-7 { background: #a9b1d6; }
     </style>
 </head>
-<body class="p-10 md:p-24 antialiased">
+<body class="p-8 md:p-20 antialiased">
 
-    <main class="max-w-5xl mx-auto flex flex-col md:flex-row gap-12 items-start">
+    <main class="max-w-4xl mx-auto flex flex-col md:flex-row gap-12">
         
-        <div class="logo text-sm whitespace-pre select-none">
-                   -
+        <div class="fetch-os text-sm leading-tight whitespace-pre select-none">
+                   - 
                   .o+
                  `ooo/
                 `+oooo:
@@ -69,50 +48,45 @@
         </div>
 
         <div class="flex-1 space-y-1">
-            <div class="text-lg mb-2">
-                <span class="user">andymhuynh</span><span class="text-white">@</span><span class="host">arch-sjsu</span>
-            </div>
-            <div class="separator mb-4">----------------------</div>
+            <h1 class="text-xl font-bold mb-4"><span class="fetch-os">andy</span><span class="text-white">@</span><span class="fetch-os">arch-sjsu</span></h1>
+            <div class="border-b border-slate-700 w-full mb-4"></div>
             
-            <div><span class="label">OS:</span> <span class="data">Applied Mathematics BS (Discrete Math)</span></div>
-            <div><span class="label">Host:</span> <span class="data">San José State University</span></div>
-            <div><span class="label">Kernel:</span> <span class="data">B.S. Candidate (Grad May 2028)</span></div>
-            <div><span class="label">Uptime:</span> <span class="data">Spring 2026 Semester</span></div>
+            <div><span class="fetch-label">OS:</span> <span class="fetch-data">Applied Math (Discrete) @ SJSU</span></div>
+            <div><span class="fetch-label">Kernel:</span> <span class="fetch-data">B.S. Candidate (Grad 2028)</span></div>
+            <div><span class="fetch-label">Uptime:</span> <span class="fetch-data">Spring 2026 Semester</span></div>
+            <div><span class="fetch-label">Shell:</span> <span class="fetch-data">zsh (ahuyn5@gmail.com)</span></div>
             
-            <div class="pt-4"><span class="label">Packages:</span> <span class="data">12 (Completed), 3 (Active)</span></div>
-            <div class="pl-4 space-y-0.5">
-                <div><span class="text-[#7dcfff]">Math:</span> <span class="data">MATH 30, 31, 32, 39, 42 </span></div>
-                <div><span class="text-[#7dcfff]">CS:</span> <span class="data">CS 46A, 46B, 47, 49C </span></div>
-                <div><span class="text-[#7dcfff]">Active:</span> <span class="data">MATH 161A, MATH 33A, CS 49J </span></div>
+            <div class="pt-4"><span class="fetch-label">Coursework:</span></div>
+            <div class="pl-4 space-y-1">
+                <div><span class="fetch-shell">Math:</span> <span class="fetch-data">Calc I-III , Linear Algebra , Discrete Math </span></div>
+                <div><span class="fetch-shell">CS:</span> <span class="fetch-data">Data Structures , Comp Systems , C Programming </span></div>
+                <div><span class="fetch-shell">Active:</span> <span class="fetch-data">Prob & Stats, Diff Eq, Java </span></div>
             </div>
 
-            <div class="pt-4"><span class="label">Shell:</span> <span class="data">zsh (ahuyn5@gmail.com)</span></div>
-            <div><span class="label">Terminal:</span> <span class="data">GitHub Pages</span></div>
-            <div><span class="label">Links:</span> <span class="data">
+            <div class="pt-4"><span class="fetch-label">Terminal:</span> <span class="fetch-data">GitHub Pages</span></div>
+            <div><span class="fetch-label">Links:</span> <span class="fetch-data">
                 <a href="[https://github.com/andymhuynh](https://github.com/andymhuynh)" class="underline hover:text-white transition">github</a>, 
-                <a href="[https://linkedin.com/in/andymhuynh](https://linkedin.com/in/andymhuynh)" class="underline hover:text-white transition">linkedin</a>
+                <a href="[https://www.linkedin.com/in/andymhuynh/](https://www.linkedin.com/in/andymhuynh/)" class="underline hover:text-white transition">linkedin</a>
             </span></div>
 
-            <div class="pt-8 flex flex-col gap-0">
-                <div class="flex">
-                    <div class="block bg-0"></div><div class="block bg-1"></div>
-                    <div class="block bg-2"></div><div class="block bg-3"></div>
-                    <div class="block bg-4"></div><div class="block bg-5"></div>
-                    <div class="block bg-6"></div><div class="block bg-7"></div>
-                </div>
-                <div class="flex opacity-50">
-                    <div class="block bg-0"></div><div class="block bg-1"></div>
-                    <div class="block bg-2"></div><div class="block bg-3"></div>
-                    <div class="block bg-4"></div><div class="block bg-5"></div>
-                    <div class="block bg-6"></div><div class="block bg-7"></div>
-                </div>
+            <div class="flex mt-8 gap-0">
+                <div class="w-8 h-4 ansi-0"></div><div class="w-8 h-4 ansi-1"></div>
+                <div class="w-8 h-4 ansi-2"></div><div class="w-8 h-4 ansi-3"></div>
+                <div class="w-8 h-4 ansi-4"></div><div class="w-8 h-4 ansi-5"></div>
+                <div class="w-8 h-4 ansi-6"></div><div class="w-8 h-4 ansi-7"></div>
+            </div>
+            <div class="flex gap-0 opacity-50">
+                <div class="w-8 h-4 ansi-0"></div><div class="w-8 h-4 ansi-1"></div>
+                <div class="w-8 h-4 ansi-2"></div><div class="w-8 h-4 ansi-3"></div>
+                <div class="w-8 h-4 ansi-4"></div><div class="w-8 h-4 ansi-5"></div>
+                <div class="w-8 h-4 ansi-6"></div><div class="w-8 h-4 ansi-7"></div>
             </div>
         </div>
 
     </main>
 
-    <div class="fixed bottom-8 right-8 text-[10px] opacity-20 uppercase tracking-[0.4em]">
-        andy_huynh // arch-rice-v2026
+    <div class="fixed bottom-8 right-8 text-[10px] uppercase tracking-widest opacity-20 select-none">
+        root@arch-sjsu:~$ ./contact_andy
     </div>
 
 </body>
