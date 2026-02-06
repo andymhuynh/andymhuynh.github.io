@@ -10,35 +10,27 @@
         /* Exact Tokyo Night / Arch RGB Palette */
         body { 
             font-family: 'Fira Code', monospace; 
-            background-color: #1a1b26; 
-            color: #a9b1d6; 
-            margin: 0;
+            background-color: #1a1b26; /* Deep Background */
+            color: #a9b1d6; /* Main Foreground */
         }
         .fetch-os { color: #7aa2f7; }      /* Arch Blue */
         .fetch-kernel { color: #bb9af7; }  /* Purple */
         .fetch-shell { color: #7dcfff; }   /* Cyan */
         .fetch-label { color: #9ece6a; font-weight: bold; } /* Green */
-        .fetch-data { color: #c0caf5; }    /* Off-white */
+        .fetch-data { color: #c0caf5; }    /* Off-white/Blue */
         
-        /* ANSI Color Blocks */
+        /* ANSI Color Blocks (Exact RGB) */
         .ansi-0 { background: #15161e; } .ansi-1 { background: #f7768e; }
         .ansi-2 { background: #9ece6a; } .ansi-3 { background: #e0af68; }
         .ansi-4 { background: #7aa2f7; } .ansi-5 { background: #bb9af7; }
         .ansi-6 { background: #7dcfff; } .ansi-7 { background: #a9b1d6; }
-
-        /* Prevent ASCII logo from wrapping on tiny screens */
-        .logo-container {
-            white-space: pre;
-            line-height: 1.2;
-            font-size: min(3.5vw, 14px); /* Scales with screen width but caps at 14px */
-        }
     </style>
 </head>
-<body class="p-6 md:p-12 lg:p-24 antialiased min-h-screen flex items-center justify-center">
+<body class="p-8 md:p-20 antialiased">
 
-    <main class="w-full max-w-5xl flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16 items-center md:items-start">
+    <main class="max-w-4xl mx-auto flex flex-col md:flex-row gap-12">
         
-        <div class="logo-container fetch-os select-none text-center md:text-left">
+        <div class="fetch-os text-sm leading-tight whitespace-pre select-none">
                    - 
                   .o+
                  `ooo/
@@ -60,61 +52,61 @@
  .`                                 `/
         </div>
 
-        <div class="flex-1 space-y-1.5 w-full text-sm md:text-base">
-            <h1 class="text-xl md:text-2xl font-bold mb-4 text-center md:text-left">
+        <div class="flex-1 space-y-1">
+            <h1 class="text-xl font-bold mb-4">
                 <span class="fetch-os">andy</span><span class="text-white">@</span><span class="fetch-os">arch-sjsu</span>
             </h1>
             <div class="border-b border-slate-700 w-full mb-4"></div>
             
-            <div class="flex flex-wrap gap-x-2"><span class="fetch-label">OS:</span> <span class="fetch-data">Applied Math (Discrete) @ SJSU</span></div>
-            <div class="flex flex-wrap gap-x-2"><span class="fetch-label">Kernel:</span> <span class="fetch-data">B.S. Candidate (Grad May 2028)</span></div>
-            <div class="flex flex-wrap gap-x-2"><span class="fetch-label">Uptime:</span> <span id="uptime" class="fetch-data">Calculating...</span></div>
-            <div class="flex flex-wrap gap-x-2"><span class="fetch-label">Shell:</span> <span class="fetch-data">zsh (ahuyn5@gmail.com)</span></div>
+            <div><span class="fetch-label">OS:</span> <span class="fetch-data">Applied Math (Discrete) @ SJSU</span></div>
+            <div><span class="fetch-label">Kernel:</span> <span class="fetch-data">B.S. Candidate (Grad 2028)</span></div>
+            
+            <div><span class="fetch-label">Uptime:</span> <span id="uptime" class="fetch-data">Calculating...</span></div>
+            
+            <div><span class="fetch-label">Shell:</span> <span class="fetch-data">zsh (ahuyn5@gmail.com)</span></div>
             
             <div class="pt-4"><span class="fetch-label">Coursework:</span></div>
             <div class="pl-4 space-y-1">
-                [cite_start]<div class="flex flex-wrap gap-x-2"><span class="fetch-shell">Math:</span> <span class="fetch-data">Calc I-III, Linear Algebra, Discrete Math [cite: 1]</span></div>
-                [cite_start]<div class="flex flex-wrap gap-x-2"><span class="fetch-shell">CS:</span> <span class="fetch-data">Data Structures, Comp Systems, C Programming [cite: 1]</span></div>
-                [cite_start]<div class="flex flex-wrap gap-x-2"><span class="fetch-shell">Active:</span> <span class="fetch-data">Prob & Stats, Diff Eq, Java [cite: 1]</span></div>
+                <div><span class="fetch-shell">Math:</span> <span class="fetch-data">Calc I-III, Linear Algebra, Discrete Math</span></div>
+                <div><span class="fetch-shell">CS:</span> <span class="fetch-data">Data Structures, Comp Systems, C Programming</span></div>
+                <div><span class="fetch-shell">Active:</span> <span class="fetch-data">Prob & Stats, Diff Eq, Java</span></div>
             </div>
 
-            [cite_start]<div class="pt-4 flex flex-wrap gap-x-2"><span class="fetch-label">Terminal:</span> <span class="fetch-data">GitHub Pages [cite: 1]</span></div>
-            <div class="flex flex-wrap gap-x-2"><span class="fetch-label">Links:</span> <span class="fetch-data">
+            <div class="pt-4"><span class="fetch-label">Terminal:</span> <span class="fetch-data">GitHub Pages</span></div>
+            <div><span class="fetch-label">Links:</span> <span class="fetch-data">
                 <a href="[https://github.com/andymhuynh](https://github.com/andymhuynh)" class="underline hover:text-white transition">github</a>, 
                 <a href="[https://www.linkedin.com/in/andymhuynh/](https://www.linkedin.com/in/andymhuynh/)" class="underline hover:text-white transition">linkedin</a>
             </span></div>
 
-            <div class="pt-8 flex flex-col items-center md:items-start">
-                <div class="flex flex-wrap justify-center md:justify-start">
-                    <div class="w-8 h-4 md:w-10 md:h-5 ansi-0"></div><div class="w-8 h-4 md:w-10 md:h-5 ansi-1"></div>
-                    <div class="w-8 h-4 md:w-10 md:h-5 ansi-2"></div><div class="w-8 h-4 md:w-10 md:h-5 ansi-3"></div>
-                    <div class="w-8 h-4 md:w-10 md:h-5 ansi-4"></div><div class="w-8 h-4 md:w-10 md:h-5 ansi-5"></div>
-                    <div class="w-8 h-4 md:w-10 md:h-5 ansi-6"></div><div class="w-8 h-4 md:w-10 md:h-5 ansi-7"></div>
-                </div>
-                <div class="flex flex-wrap justify-center md:justify-start opacity-50">
-                    <div class="w-8 h-4 md:w-10 md:h-5 ansi-0"></div><div class="w-8 h-4 md:w-10 md:h-5 ansi-1"></div>
-                    <div class="w-8 h-4 md:w-10 md:h-5 ansi-2"></div><div class="w-8 h-4 md:w-10 md:h-5 ansi-3"></div>
-                    <div class="w-8 h-4 md:w-10 md:h-5 ansi-4"></div><div class="w-8 h-4 md:w-10 md:h-5 ansi-5"></div>
-                    <div class="w-8 h-4 md:w-10 md:h-5 ansi-6"></div><div class="w-8 h-4 md:w-10 md:h-5 ansi-7"></div>
-                </div>
+            <div class="flex mt-8 gap-0">
+                <div class="w-8 h-4 ansi-0"></div><div class="w-8 h-4 ansi-1"></div>
+                <div class="w-8 h-4 ansi-2"></div><div class="w-8 h-4 ansi-3"></div>
+                <div class="w-8 h-4 ansi-4"></div><div class="w-8 h-4 ansi-5"></div>
+                <div class="w-8 h-4 ansi-6"></div><div class="w-8 h-4 ansi-7"></div>
+            </div>
+            <div class="flex gap-0 opacity-50">
+                <div class="w-8 h-4 ansi-0"></div><div class="w-8 h-4 ansi-1"></div>
+                <div class="w-8 h-4 ansi-2"></div><div class="w-8 h-4 ansi-3"></div>
+                <div class="w-8 h-4 ansi-4"></div><div class="w-8 h-4 ansi-5"></div>
+                <div class="w-8 h-4 ansi-6"></div><div class="w-8 h-4 ansi-7"></div>
             </div>
         </div>
 
     </main>
 
-    <div class="hidden sm:block fixed bottom-8 right-8 text-[10px] uppercase tracking-widest opacity-20 select-none">
+    <div class="fixed bottom-8 right-8 text-[10px] uppercase tracking-widest opacity-20 select-none">
         root@arch-sjsu:~$ ./contact_andy
     </div>
 
     <script>
         function updateUptime() {
-            // Semester Start: Jan 26, 2026
+            // Hardcoded Semester Start: Jan 26, 2026
             const startDate = new Date('2026-01-26T08:00:00'); 
             const now = new Date();
             const diff = now - startDate;
 
             if (diff < 0) {
-                document.getElementById('uptime').innerText = "Semester initializing...";
+                document.getElementById('uptime').innerText = "Semester starting soon...";
                 return;
             }
 
@@ -125,8 +117,10 @@
             document.getElementById('uptime').innerText = `${days} days, ${hours} hours, ${mins} mins`;
         }
 
+        // Run on load
         updateUptime();
-        setInterval(updateUptime, 60000); // Live updates every 60s
+        // Update live every minute while the tab is open
+        setInterval(updateUptime, 60000);
     </script>
 
 </body>
