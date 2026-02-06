@@ -3,101 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>andy@arch-sjsu ~</title>
+    <title>andy@arch-sjsu: ~</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Fira Code', monospace; background-color: #1a1b26; color: #a9b1d6; }
-        .arch-blue { color: #1793d1; } /* The official Arch Linux blue */
-        .system-bar { background: #16161e; border-bottom: 2px solid #1793d1; }
-        .prompt::before { content: "λ "; color: #1793d1; font-weight: bold; }
-        .dir-tree { border-left: 1px dashed #414868; margin-left: 0.5rem; padding-left: 1rem; }
-        .node-active { color: #7aa2f7; font-weight: bold; }
-        .node-done { color: #9ece6a; }
-        .status-pill { background: #24283b; border: 1px solid #414868; padding: 2px 8px; border-radius: 4px; font-size: 10px; }
+        .fetch-os { color: #7aa2f7; } /* Blue */
+        .fetch-kernel { color: #bb9af7; } /* Purple */
+        .fetch-shell { color: #7dcfff; } /* Cyan */
+        .fetch-label { color: #9ece6a; font-weight: bold; } /* Green */
+        .fetch-data { color: #c0caf5; }
+        
+        /* ANSI Color Blocks at the bottom */
+        .ansi-0 { background: #15161e; } .ansi-1 { background: #f7768e; }
+        .ansi-2 { background: #9ece6a; } .ansi-3 { background: #e0af68; }
+        .ansi-4 { background: #7aa2f7; } .ansi-5 { background: #bb9af7; }
+        .ansi-6 { background: #7dcfff; } .ansi-7 { background: #a9b1d6; }
     </style>
 </head>
-<body class="antialiased">
+<body class="p-8 md:p-20 antialiased">
 
-    <nav class="system-bar fixed top-0 w-full px-4 py-1 flex justify-between items-center z-50 text-[10px] font-bold uppercase tracking-wider">
-        <div class="flex gap-4">
-            <span class="arch-blue underline">Arch Linux</span>
-            <span class="text-slate-500">Workspace: 01_Academics</span>
-        </div>
-        <div class="flex gap-4 items-center">
-            <span class="status-pill text-blue-400">CPU: 2028_GRAD</span>
-            <span class="status-pill text-green-400">GPA: COMPLIANT</span>
-            <span class="status-pill text-purple-400">SJSU_WIFI</span>
-            <span class="text-slate-400">00:54 AM</span>
-        </div>
-    </nav>
-
-    <main class="max-w-3xl mx-auto pt-24 px-6 pb-20">
+    <main class="max-w-4xl mx-auto flex flex-col md:flex-row gap-12">
         
-        <section class="flex flex-col md:flex-row gap-8 mb-16 items-start">
-            <div class="arch-blue text-xs leading-none whitespace-pre font-bold">
-      .      
-     / \     
-    /   \    
-   /  ^  \   
-  /  / \  \  
- /  /   \  \ 
-/_ /     \ _\
-            </div>
-            <div>
-                <h1 class="text-2xl font-bold text-white mb-2 underline decoration-blue-500 underline-offset-8">Andy Huynh</h1>
-                <div class="text-xs space-y-1">
-                    <p><span class="arch-blue font-bold">OS:</span> Applied Mathematics (BS)</p>
-                    <p><span class="arch-blue font-bold">Host:</span> San José State University</p>
-                    <p><span class="arch-blue font-bold">Kernel:</span> Discrete Mathematics Concentration</p>
-                    <p><span class="arch-blue font-bold">Shell:</span> zsh (ahuyn5@gmail.com)</p>
-                    <p><span class="arch-blue font-bold">Links:</span> <a href="https://github.com/andymhuynh" class="hover:text-white underline">github</a> / <a href="https://linkedin.com/in/andymhuynh" class="hover:text-white underline">linkedin</a></p>
-                </div>
-            </div>
-        </section>
+        <div class="fetch-os text-sm leading-tight whitespace-pre select-none">
+                   - 
+                  .o+
+                 `ooo/
+                `+oooo:
+               `+oooooo:
+               -+oooooo+:
+             `/:-:++oooo+:
+            `/++++/+++++++:
+           `/++++++++++++++:
+          `/+++ooooooooooooo/`
+         ./ooosssso++osssssso+`
+        .ooosssso-````/ossssss+`
+       -osssssso.      :ssssssso.
+      :osssssss/        osssso+++.
+     /ossssssss/        +sssssso/-
+   `/ossssso+/:-        -:/+osssso+-
+  `+sso+:-`                 `.-/+oso:
+ `++:.                           `-/+/
+ .`                                 `/
+        </div>
 
-        <section class="mb-12">
-            <div class="prompt mb-4 text-white font-bold text-sm">ls -R coursework/</div>
+        <div class="flex-1 space-y-1">
+            <h1 class="text-xl font-bold mb-4"><span class="fetch-os">andy</span><span class="text-white">@</span><span class="fetch-os">arch-sjsu</span></h1>
+            <div class="border-b border-slate-700 w-full mb-4"></div>
             
-            <div class="space-y-8 text-sm">
-                <div>
-                    <span class="text-purple-400 font-bold">./cs_preparation/</span>
-                    <div class="dir-tree mt-2 space-y-2">
-                        <div class="node-done">├── cs_46a_programming.bin</div>
-                        <div class="node-done">├── cs_46b_data_structures.bin</div>
-                        <div class="node-done">├── cs_47_comp_systems.bin</div>
-                        <div class="node-done">├── cs_49c_programming_c.bin</div>
-                        <div class="node-active">└── cs_49j_java_dev.run [ACTIVE]</div>
-                    </div>
-                </div>
-
-                <div>
-                    <span class="text-purple-400 font-bold">./math_foundations/</span>
-                    <div class="dir-tree mt-2 space-y-2">
-                        <div class="node-done">├── math_30_32_calculus.lib</div>
-                        <div class="node-done">├── math_39_linear_algebra.lib</div>
-                        <div class="node-done">├── math_42_discrete_math.lib</div>
-                        <div class="node-active">├── math_33a_diff_equations.run [ACTIVE]</div>
-                        <div class="node-active">└── math_161a_prob_stats.run [ACTIVE]</div>
-                    </div>
-                </div>
+            <div><span class="fetch-label">OS:</span> <span class="fetch-data">Applied Math (Discrete) @ SJSU</span></div>
+            <div><span class="fetch-label">Kernel:</span> <span class="fetch-data">B.S. Candidate (Grad 2028)</span></div>
+            <div><span class="fetch-label">Uptime:</span> <span class="fetch-data">Spring 2026 Semester</span></div>
+            <div><span class="fetch-label">Shell:</span> <span class="fetch-data">zsh (ahuyn5@gmail.com)</span></div>
+            
+            <div class="pt-4"><span class="fetch-label">Coursework:</span></div>
+            <div class="pl-4 space-y-1">
+                <div><span class="fetch-shell">Math:</span> <span class="fetch-data">Calc I-III , Linear Algebra , Discrete Math </span></div>
+                <div><span class="fetch-shell">CS:</span> <span class="fetch-data">Data Structures , Comp Systems , C Programming </span></div>
+                <div><span class="fetch-shell">Active:</span> <span class="fetch-data">Prob & Stats, Diff Eq, Java </span></div>
             </div>
-        </section>
 
-        <section class="mt-20 p-6 bg-[#16161e] border border-[#414868] rounded">
-            <div class="text-[10px] uppercase text-slate-500 mb-4 font-bold tracking-widest">cat theory_focus.txt</div>
-            <p class="text-xs leading-relaxed italic">
-                "Graduates will have the skill set to do both applied industry work in computer science 
-                and graduate study in applied discrete mathematics... providing flexible problem-solvers 
-                robust under disruptive technologies."
-            </p>
-        </section>
+            <div class="pt-4"><span class="fetch-label">Terminal:</span> <span class="fetch-data">GitHub Pages</span></div>
+            <div><span class="fetch-label">Links:</span> <span class="fetch-data">
+                <a href="[https://github.com/andymhuynh](https://github.com/andymhuynh)" class="underline hover:text-white transition">github</a>, 
+                <a href="[https://www.linkedin.com/in/andymhuynh/](https://www.linkedin.com/in/andymhuynh/)" class="underline hover:text-white transition">linkedin</a>
+            </span></div>
 
-        <footer class="mt-24 text-[10px] opacity-30 text-center uppercase tracking-[0.5em]">
-            andy_huynh // arch-linux-v2026 // sjsu
-        </footer>
+            <div class="flex mt-8 gap-0">
+                <div class="w-8 h-4 ansi-0"></div><div class="w-8 h-4 ansi-1"></div>
+                <div class="w-8 h-4 ansi-2"></div><div class="w-8 h-4 ansi-3"></div>
+                <div class="w-8 h-4 ansi-4"></div><div class="w-8 h-4 ansi-5"></div>
+                <div class="w-8 h-4 ansi-6"></div><div class="w-8 h-4 ansi-7"></div>
+            </div>
+            <div class="flex gap-0 opacity-50">
+                <div class="w-8 h-4 ansi-0"></div><div class="w-8 h-4 ansi-1"></div>
+                <div class="w-8 h-4 ansi-2"></div><div class="w-8 h-4 ansi-3"></div>
+                <div class="w-8 h-4 ansi-4"></div><div class="w-8 h-4 ansi-5"></div>
+                <div class="w-8 h-4 ansi-6"></div><div class="w-8 h-4 ansi-7"></div>
+            </div>
+        </div>
 
     </main>
+
+    <div class="fixed bottom-8 right-8 text-[10px] uppercase tracking-widest opacity-20 select-none">
+        root@arch-sjsu:~$ ./contact_andy
+    </div>
 
 </body>
 </html>
