@@ -19,7 +19,7 @@
         .fetch-label { color: #9ece6a; font-weight: bold; } /* Green */
         .fetch-data { color: #c0caf5; }    /* Off-white/Blue */
         
-        /* ANSI Color Blocks (Exact RGB) */
+        /* ANSI Color Blocks */
         .ansi-0 { background: #15161e; } .ansi-1 { background: #f7768e; }
         .ansi-2 { background: #9ece6a; } .ansi-3 { background: #e0af68; }
         .ansi-4 { background: #7aa2f7; } .ansi-5 { background: #bb9af7; }
@@ -74,8 +74,8 @@
 
             <div class="pt-4"><span class="fetch-label">Terminal:</span> <span class="fetch-data">GitHub Pages</span></div>
             <div><span class="fetch-label">Links:</span> <span class="fetch-data">
-                <a href="[https://github.com/andymhuynh](https://github.com/andymhuynh)" target="_blank" class="underline hover:text-white transition">github</a>, 
-                <a href="[https://www.linkedin.com/in/andymhuynh/](https://www.linkedin.com/in/andymhuynh/)" target="_blank" class="underline hover:text-white transition">linkedin</a>
+                <a href="[https://github.com/andymhuynh](https://github.com/andymhuynh)" class="underline hover:text-white transition">github</a>, 
+                <a href="[https://www.linkedin.com/in/andymhuynh/](https://www.linkedin.com/in/andymhuynh/)" class="underline hover:text-white transition">linkedin</a>
             </span></div>
 
             <div class="flex mt-8 gap-0">
@@ -100,25 +100,26 @@
 
     <script>
         function updateUptime() {
-            // Hardcoded Semester Start: Jan 26, 2026
+            // Semester Start: Jan 26, 2026
             const startDate = new Date('2026-01-26T08:00:00'); 
             const now = new Date();
-            let diff = now - startDate;
+            const diff = now - startDate;
 
             if (diff < 0) {
                 document.getElementById('uptime').innerText = "Semester starting soon...";
                 return;
             }
 
-            // Reset every 7 days (7 days * 24h * 60m * 60s * 1000ms)
-            const sevenDaysInMs = 7 * 24 * 60 * 60 * 1000;
-            diff = diff % sevenDaysInMs;
-
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            // Convert total ms to total components
+            const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+            
+            // Apply the 7-day reset (0 to 6 days)
+            const cycleDays = totalDays % 7;
+            
             const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
             const mins = Math.floor((diff / (1000 * 60)) % 60);
 
-            document.getElementById('uptime').innerText = `${days} days, ${hours} hours, ${mins} mins`;
+            document.getElementById('uptime').innerText = `${cycleDays} days, ${hours} hours, ${mins} mins`;
         }
 
         updateUptime();
