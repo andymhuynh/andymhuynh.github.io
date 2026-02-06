@@ -7,19 +7,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Exact Tokyo Night / Arch RGB Palette */
         body { 
             font-family: 'Fira Code', monospace; 
-            background-color: #1a1b26; /* Deep Background */
-            color: #a9b1d6; /* Main Foreground */
+            background-color: #1a1b26; 
+            color: #a9b1d6; 
         }
-        .fetch-os { color: #7aa2f7; }      /* Arch Blue */
-        .fetch-kernel { color: #bb9af7; }  /* Purple */
-        .fetch-shell { color: #7dcfff; }   /* Cyan */
-        .fetch-label { color: #9ece6a; font-weight: bold; } /* Green */
-        .fetch-data { color: #c0caf5; }    /* Off-white/Blue */
+        .fetch-os { color: #7aa2f7; }      
+        .fetch-kernel { color: #bb9af7; }  
+        .fetch-shell { color: #7dcfff; }   
+        .fetch-label { color: #9ece6a; font-weight: bold; } 
+        .fetch-data { color: #c0caf5; }    
         
-        /* ANSI Color Blocks (Exact RGB) */
         .ansi-0 { background: #15161e; } .ansi-1 { background: #f7768e; }
         .ansi-2 { background: #9ece6a; } .ansi-3 { background: #e0af68; }
         .ansi-4 { background: #7aa2f7; } .ansi-5 { background: #bb9af7; }
@@ -29,7 +27,6 @@
 <body class="p-8 md:p-20 antialiased">
 
     <main class="max-w-4xl mx-auto flex flex-col md:flex-row gap-12">
-        
         <div class="fetch-os text-sm leading-tight whitespace-pre select-none">
                    - 
                   .o+
@@ -47,8 +44,8 @@
       :osssssss/        osssso+++.
      /ossssssss/        +sssssso/-
    `/ossssso+/:-        -:/+osssso+-
-  `+sso+:-`                 `.-/+oso:
- `++:.                           `-/+/
+  `+sso+:-`                  `.-/+oso:
+ `++:.                            `-/+/
  .`                                 `/
         </div>
 
@@ -74,8 +71,8 @@
 
             <div class="pt-4"><span class="fetch-label">Terminal:</span> <span class="fetch-data">GitHub Pages</span></div>
             <div><span class="fetch-label">Links:</span> <span class="fetch-data">
-                <a href="[https://github.com/andymhuynh](https://github.com/andymhuynh)" class="underline hover:text-white transition">github</a>, 
-                <a href="[https://www.linkedin.com/in/andymhuynh/](https://www.linkedin.com/in/andymhuynh/)" class="underline hover:text-white transition">linkedin</a>
+                <a href="[https://github.com/andymhuynh](https://github.com/andymhuynh)" target="_blank" class="underline hover:text-white transition">github</a>, 
+                <a href="[https://www.linkedin.com/in/andymhuynh/](https://www.linkedin.com/in/andymhuynh/)" target="_blank" class="underline hover:text-white transition">linkedin</a>
             </span></div>
 
             <div class="flex mt-8 gap-0">
@@ -91,7 +88,6 @@
                 <div class="w-8 h-4 ansi-6"></div><div class="w-8 h-4 ansi-7"></div>
             </div>
         </div>
-
     </main>
 
     <div class="fixed bottom-8 right-8 text-[10px] uppercase tracking-widest opacity-20 select-none">
@@ -100,28 +96,28 @@
 
     <script>
         function updateUptime() {
-            // Hardcoded Semester Start: Jan 26, 2026
             const startDate = new Date('2026-01-26T08:00:00'); 
             const now = new Date();
-            const diff = now - startDate;
+            let diff = now - startDate;
 
             if (diff < 0) {
                 document.getElementById('uptime').innerText = "Semester starting soon...";
                 return;
             }
 
+            // Reset every 7 days (7 days in milliseconds)
+            const weekInMs = 7 * 24 * 60 * 60 * 1000;
+            diff = diff % weekInMs;
+
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
             const mins = Math.floor((diff / (1000 * 60)) % 60);
 
-            document.getElementById('uptime').innerText = `${days} days, ${hours} hours, ${mins} mins`;
+            document.getElementById('uptime').innerText = `${days}d, ${hours}h, ${mins}m (Weekly Cycle)`;
         }
 
-        // Run on load
         updateUptime();
-        // Update live every minute while the tab is open
         setInterval(updateUptime, 60000);
     </script>
-
 </body>
 </html>
