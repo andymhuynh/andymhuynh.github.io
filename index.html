@@ -162,6 +162,11 @@
       max-width: min(420px, calc(100vw - 36px));
     }
     .toast.show{ opacity:1; transform: translateY(0); }
+
+    /* boot line colors */
+    .ok{ color: var(--green); font-weight: 700; }
+    .warn{ color: var(--ansi3); font-weight: 700; }
+    .info{ color: var(--cyan); }
   </style>
 </head>
 
@@ -300,6 +305,7 @@
           <span class="kbd">ls</span>
           <span class="kbd">cd projects</span>
           <span class="kbd">cat about.txt</span>
+          <span class="kbd">boot</span>
           <span class="kbd">clear</span>
           <span class="kbd">Tab</span>
           <span class="kbd">↑</span>/<span class="kbd">↓</span>
@@ -333,7 +339,7 @@
       </div>
     </section>
 
-    <!-- RIGHT: CONTENT -->
+    <!-- RIGHT: CONTENT (unchanged from your page) -->
     <section class="glass p-5 lg:col-span-2">
       <div class="mb-5">
         <div class="text-xs uppercase tracking-widest muted mb-2">summary</div>
@@ -353,6 +359,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+
           <div class="card p-4">
             <div class="flex items-center justify-between mb-1">
               <div class="fetch-shell font-semibold">Sudoku Solver</div>
@@ -388,6 +395,7 @@
               <li>Reduced application crashes by <span class="fetch-data">100%</span> via strict validation/error handling.</li>
             </ul>
           </div>
+
         </div>
       </div>
 
@@ -449,7 +457,7 @@
 
   <script>
     // ============================================================
-    // SETTINGS (persisted) — feature #3
+    // SETTINGS (persisted)
     // ============================================================
     const SETTINGS_KEY = "andy_terminal_settings_v1";
     function loadSettings(){
@@ -514,7 +522,7 @@
     }
 
     // ============================================================
-    // THEME TOGGLE (persisted) — part of feature #3
+    // THEME TOGGLE (persisted)
     // ============================================================
     const btnTheme = document.getElementById("btnTheme");
     function setTheme(now){
@@ -536,7 +544,7 @@
     btnTheme.addEventListener("click", toggleTheme);
 
     // ============================================================
-    // MATRIX MODE (Canvas) (persisted) — part of feature #3
+    // MATRIX MODE (persisted)
     // ============================================================
     const btnMatrix = document.getElementById("btnMatrix");
     const matrixWrap = document.getElementById("matrix-wrap");
@@ -608,7 +616,7 @@
     window.addEventListener("resize", ()=>{ if (MATRIX_ON) resizeMatrix(); });
 
     // ============================================================
-    // SOUND TOGGLE (persisted) — part of feature #3
+    // SOUND TOGGLE (persisted)
     // ============================================================
     const btnSound = document.getElementById("btnSound");
     function renderSoundButton(){
@@ -637,7 +645,7 @@
     setInterval(updateClock, 1000);
 
     // ============================================================
-    // UPTIME (kept)
+    // UPTIME
     // ============================================================
     function updateUptime() {
       const startDate = new Date('2026-01-26T08:00:00');
@@ -660,7 +668,7 @@
     setInterval(updateUptime, 60000);
 
     // ============================================================
-    // BLINKING KAOMOJI + TYPING MULTILINGUAL MOTD (kept)
+    // BLINKING KAOMOJI + TYPING MULTILINGUAL MOTD
     // ============================================================
     const kaomojiEl = document.getElementById('kaomoji');
     const textEl = document.getElementById('jpText');
@@ -788,11 +796,11 @@
     motdLoop();
 
     // ============================================================
-    // GitHub Live Stats + Cache (rate-limit friendly) — feature #5
+    // GitHub Live Stats + Cache
     // ============================================================
     const GH_USER = "andymhuynh";
     const GH_CACHE_KEY = "andy_github_cache_v1";
-    const GH_CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
+    const GH_CACHE_TTL_MS = 10 * 60 * 1000;
 
     function loadGitHubCache(){
       try{
@@ -817,26 +825,18 @@
     async function fetchGitHubStats(){
       const latestEl = document.getElementById("ghLatest");
 
-      // Show cache immediately (if fresh-ish)
       const cached = loadGitHubCache();
       if (cached){
         renderGitHubStats(cached);
         const age = Date.now() - cached.t;
-        if (age < GH_CACHE_TTL_MS){
-          latestEl.textContent = `${cached.latest} (cached ${Math.round(age/60000)}m ago)`;
-        } else {
-          latestEl.textContent = `${cached.latest} (stale cache)`;
-        }
+        latestEl.textContent = `${cached.latest} (cached ${Math.round(age/60000)}m ago)`;
       }
 
       try{
-        // user
         const u = await fetch(`https://api.github.com/users/${GH_USER}`, { headers: { "Accept":"application/vnd.github+json" }});
-        const remaining = Number(u.headers.get("X-RateLimit-Remaining") || "1");
         if (!u.ok) throw new Error("User fetch failed");
         const ud = await u.json();
 
-        // repos
         let stars = 0;
         let page = 1;
         while (page <= 3) {
@@ -849,7 +849,6 @@
           page++;
         }
 
-        // events
         let latest = "No recent public events.";
         const e = await fetch(`https://api.github.com/users/${GH_USER}/events/public?per_page=10`, { headers: { "Accept":"application/vnd.github+json" }});
         if (e.ok){
@@ -873,13 +872,12 @@
           repos: ud.public_repos ?? "—",
           followers: ud.followers ?? "—",
           stars,
-          latest: (remaining === 0 ? `${latest} (rate-limit)` : latest),
+          latest,
         };
 
         renderGitHubStats(payload);
         saveGitHubCache(payload);
       }catch(_){
-        // fall back (already rendered cache if present)
         if (!loadGitHubCache()){
           latestEl.textContent = "GitHub fetch blocked (rate limit / CORS / offline).";
         }
@@ -887,9 +885,7 @@
     }
 
     // ============================================================
-    // Interactive Terminal + 5 best features:
-    //  #1 history (↑/↓), #2 autocomplete (Tab), #3 persistence,
-    //  #4 mini filesystem (ls/cd/cat/tree/pwd), #5 github cache
+    // TERMINAL
     // ============================================================
     const termInput = document.getElementById("terminal-input");
     const termOut = document.getElementById("terminal-output");
@@ -901,16 +897,18 @@
       termOut.appendChild(div);
       termOut.scrollTop = termOut.scrollHeight;
     }
+    function writeHTML(html, cls="term-line"){
+      const div = document.createElement("div");
+      div.className = cls + " term-line";
+      div.innerHTML = html;
+      termOut.appendChild(div);
+      termOut.scrollTop = termOut.scrollHeight;
+    }
     function writePrompt(cmd){
       writeLine(`andy@arch-sjsu:~$ ${cmd}`, "term-line term-dim");
     }
-    function setTerminalThemeInputColor(){
-      const theme = document.body.getAttribute("data-theme");
-      termInput.classList.toggle("text-white", theme === "dark");
-      termInput.classList.toggle("text-black", theme === "light");
-    }
 
-    // ---------- Feature #4: Mini filesystem ----------
+    // ---------- Mini filesystem ----------
     const FS = {
       type: "dir",
       children: {
@@ -932,7 +930,7 @@ LinkedIn: https://www.linkedin.com/in/andymhuynh/
 Location: San Jose, CA` },
                 "resume.txt": { type:"file", content:
 `TODO: add your public resume link.
-Tip: upload /resume.pdf on your site and set: open resume` },
+Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
                 projects: {
                   type:"dir",
                   children: {
@@ -964,7 +962,7 @@ Tip: upload /resume.pdf on your site and set: open resume` },
       github: "https://github.com/andymhuynh",
       linkedin: "https://www.linkedin.com/in/andymhuynh/",
       email: "mailto:ahuyn5@gmail.com"
-      // resume: "/resume.pdf" // <- set this if you host a PDF
+      // resume: "/resume.pdf"
     };
 
     let CWD = "/home/andy";
@@ -1030,11 +1028,11 @@ Tip: upload /resume.pdf on your site and set: open resume` },
       return { ok:true, content: lines.join("\n") };
     }
 
-    // ---------- Feature #1: History ----------
+    // ---------- History ----------
     const HISTORY = [];
-    let histIdx = 0; // points to "next slot"
+    let histIdx = 0;
 
-    // ---------- Feature #2: Autocomplete ----------
+    // ---------- Autocomplete ----------
     function commonPrefix(arr){
       if (!arr.length) return "";
       let p = arr[0];
@@ -1043,12 +1041,9 @@ Tip: upload /resume.pdf on your site and set: open resume` },
       }
       return p;
     }
-
     function splitCmd(input){
-      // minimal tokenizer (keeps it simple)
       return input.trim().split(/\s+/).filter(Boolean);
     }
-
     function pathCompletions(partial){
       const base = partial.includes("/") ? partial.slice(0, partial.lastIndexOf("/")+1) : "";
       const frag = partial.includes("/") ? partial.slice(partial.lastIndexOf("/")+1) : partial;
@@ -1059,22 +1054,102 @@ Tip: upload /resume.pdf on your site and set: open resume` },
 
       const kids = Object.keys(dirNode.children || {});
       const matches = kids.filter(n => n.startsWith(frag)).sort();
-      // return as user-facing completion (keep relative/typed base)
       return matches.map(m => base + m);
     }
 
-    // Core commands (existing + new FS ones)
+    // ============================================================
+    // INSANE FEATURE: systemd-style BOOT + login + live "loading"
+    // - Runs once on page load, and also via command: boot
+    // ============================================================
+    let BOOT_LOCK = false;
+
+    function randInt(a,b){ return Math.floor(a + Math.random()*(b-a+1)); }
+    function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
+
+    async function bootSequence({fast=false} = {}){
+      if (BOOT_LOCK) return;
+      BOOT_LOCK = true;
+
+      termInput.disabled = true;
+      termInput.placeholder = "booting…";
+
+      // clear but keep it dramatic
+      writeLine("");
+      writeLine("Arch Linux 6.x (arch-sjsu) tty1");
+      writeLine(`Last login: ${new Date().toLocaleString()} on tty1`);
+      writeLine("");
+
+      const steps = [
+        { name: "Mounting /home", ms: randInt(120, 260) },
+        { name: "Starting udev Kernel Device Manager", ms: randInt(120, 260) },
+        { name: "Loading kernel modules", ms: randInt(160, 320) },
+        { name: "Initializing entropy pool", ms: randInt(120, 240) },
+        { name: "Starting Network Manager", ms: randInt(160, 320) },
+        { name: "Applying sysctl settings", ms: randInt(120, 220) },
+        { name: "Starting GitHub stats daemon", ms: randInt(180, 340) },
+        { name: "Warming algorithm cache", ms: randInt(160, 320) },
+        { name: "Launching portfolio services", ms: randInt(200, 360) },
+        { name: "Reaching target Graphical Interface", ms: randInt(160, 280) },
+      ];
+
+      // fancy “spinner” effect on each line
+      for (const s of steps){
+        const line = document.createElement("div");
+        line.className = "term-line term-dim";
+        const spinner = ["⠋","⠙","⠹","⠸","⠼","⠴","⠦","⠧","⠇","⠏"];
+        let i = 0;
+        line.textContent = `${spinner[i]} ${s.name}…`;
+        termOut.appendChild(line);
+        termOut.scrollTop = termOut.scrollHeight;
+
+        const total = fast ? Math.round(s.ms * 0.45) : s.ms;
+        const ticks = fast ? 6 : 10;
+        const per = Math.max(18, Math.round(total / ticks));
+
+        for (let t=0; t<ticks; t++){
+          await sleep(per);
+          i = (i+1) % spinner.length;
+          line.textContent = `${spinner[i]} ${s.name}…`;
+          blip(240 + Math.random()*40, 6, 0.006);
+        }
+
+        // finish line
+        const tag = Math.random() < 0.06 ? "warn" : "ok";
+        const msg = tag === "warn" ? "DEGRADED" : "OK";
+        line.innerHTML = `<span class="${tag}">[ ${msg} ]</span> <span class="info">${s.name}</span>`;
+        blip(tag === "ok" ? 720 : 420, 14, 0.012);
+      }
+
+      writeLine("");
+      writeLine("Welcome. Type 'help' for commands.");
+      writeLine("Tip: 'make portfolio' looks sick in interviews.");
+      writeLine("Tip: cd projects; ls; cat sudoku.txt");
+      writeLine("");
+
+      termInput.disabled = false;
+      termInput.placeholder = "";
+      termInput.focus();
+      BOOT_LOCK = false;
+
+      // kick github refresh after boot
+      fetchGitHubStats();
+    }
+
+    // ============================================================
+    // Core commands
+    // ============================================================
     const baseCommands = {
       help: () => {
         writeLine("Available commands:");
         writeLine("  help, about, projects, skills, contact, resume, clear");
         writeLine("  ls [path], cd <dir>, pwd, cat <file>, tree [path]");
         writeLine("  open <github|linkedin|email|resume>, copy <email|phone|github|linkedin>");
-        writeLine("  make portfolio   (compile animation)");
-        writeLine("  github           (refresh live stats)");
-        writeLine("  matrix           (toggle matrix overlay)");
-        writeLine("  theme            (toggle theme)");
-        writeLine("  sound            (toggle sound)");
+        writeLine("  boot            (replay boot animation)");
+        writeLine("  make portfolio  (compile animation)");
+        writeLine("  github          (refresh live stats)");
+        writeLine("  matrix          (toggle matrix overlay)");
+        writeLine("  theme           (toggle theme)");
+        writeLine("  sound           (toggle sound)");
         writeLine("Tips:");
         writeLine("  - Use ↑/↓ for history, Tab for autocomplete.");
       },
@@ -1090,19 +1165,23 @@ Tip: upload /resume.pdf on your site and set: open resume` },
       resume: () => writeLine("Set a resume link: add LINKS.resume = '/resume.pdf' then run: open resume"),
       clear: () => { termOut.innerHTML = ""; },
 
-      // toggles
       theme: () => toggleTheme(),
       matrix: () => setMatrix(!MATRIX_ON),
       sound: () => toggleSound(),
 
-      // GitHub
       github: async () => {
         writeLine("Refreshing GitHub stats…");
         await fetchGitHubStats();
         writeLine("Done.");
       },
 
-      // FS commands — feature #4
+      // insane
+      boot: async () => {
+        termOut.innerHTML = "";
+        await bootSequence({fast:false});
+      },
+
+      // FS
       pwd: () => writeLine(CWD),
       ls: (args) => {
         const p = normPath(args[0] || ".");
@@ -1132,7 +1211,6 @@ Tip: upload /resume.pdf on your site and set: open resume` },
         writeLine(res.content);
       },
 
-      // convenience
       open: (args) => {
         const key = (args[0] || "").toLowerCase();
         const url = LINKS[key];
@@ -1170,7 +1248,7 @@ Tip: upload /resume.pdf on your site and set: open resume` },
       for (const s of steps){
         writeLine(s.msg);
         blip(660, 18, 0.02);
-        await new Promise(r => setTimeout(r, s.ms));
+        await sleep(s.ms);
       }
     }
 
@@ -1178,12 +1256,10 @@ Tip: upload /resume.pdf on your site and set: open resume` },
       const cmd = cmdRaw.trim();
       if (!cmd) return;
 
-      // push history — feature #1
       HISTORY.push(cmdRaw);
       histIdx = HISTORY.length;
 
       const lower = cmd.toLowerCase();
-
       if (lower === "make portfolio" || lower === "make" || lower === "make all"){
         return compileAnimation();
       }
@@ -1209,13 +1285,11 @@ Tip: upload /resume.pdf on your site and set: open resume` },
       const endsWithSpace = /\s$/.test(raw);
       const parts = splitCmd(raw);
 
-      // if user typed nothing
       if (!raw.trim()){
         writeLine(allCommandNames().join("  "));
         return;
       }
 
-      // completing command name
       if (parts.length === 1 && !endsWithSpace){
         const frag = parts[0].toLowerCase();
         const options = allCommandNames().filter(c => c.startsWith(frag)).sort();
@@ -1226,7 +1300,6 @@ Tip: upload /resume.pdf on your site and set: open resume` },
           blip(540, 16, 0.015);
           return;
         }
-
         const cp = commonPrefix(options);
         termInput.value = cp;
         writeLine(options.join("  "));
@@ -1234,14 +1307,10 @@ Tip: upload /resume.pdf on your site and set: open resume` },
         return;
       }
 
-      // completing path for fs-ish commands
       const cmd = (parts[0] || "").toLowerCase();
       const fsCmds = new Set(["cd","ls","cat","tree"]);
       if (!fsCmds.has(cmd)) return;
 
-      // decide which token to complete:
-      // - if ends with space, start a new arg
-      // - else complete last token
       let partial = "";
       if (endsWithSpace){
         partial = "";
@@ -1253,7 +1322,6 @@ Tip: upload /resume.pdf on your site and set: open resume` },
       if (!opts.length) return;
 
       if (opts.length === 1){
-        // replace last token or append
         if (endsWithSpace){
           termInput.value = raw + opts[0] + " ";
         } else {
@@ -1277,22 +1345,13 @@ Tip: upload /resume.pdf on your site and set: open resume` },
       blip(420, 12, 0.012);
     }
 
-    // nice first boot message
-    writeLine("Welcome. Type 'help' for commands.");
-    writeLine("Tip: 'make portfolio' looks sick in interviews.");
-    writeLine(`Tip: cd projects; ls; cat sudoku.txt`);
-    writeLine("");
-
-    // Keyboard handler: Enter + history + autocomplete
     termInput.addEventListener("keydown", async (e) => {
-      // Tab autocomplete — feature #2
       if (e.key === "Tab") {
         e.preventDefault();
         doAutocomplete();
         return;
       }
 
-      // History nav — feature #1
       if (e.key === "ArrowUp") {
         e.preventDefault();
         if (!HISTORY.length) return;
@@ -1312,7 +1371,6 @@ Tip: upload /resume.pdf on your site and set: open resume` },
         const cmdRaw = termInput.value.trim();
         if (!cmdRaw) return;
 
-        // allow audio to initialize on user gesture
         blip(880, 16, 0.02);
 
         writePrompt(cmdRaw);
@@ -1323,26 +1381,29 @@ Tip: upload /resume.pdf on your site and set: open resume` },
         return;
       }
 
-      // tiny typing tick (very subtle)
       if (e.key.length === 1) blip(220 + Math.random()*50, 6, 0.008);
     });
 
-    // click terminal card to focus input
     termOut.parentElement.addEventListener("mousedown", () => termInput.focus());
 
     // ============================================================
-    // APPLY PERSISTED SETTINGS (theme/matrix/sound) — feature #3
+    // APPLY PERSISTED SETTINGS
     // ============================================================
     setTheme(SETTINGS.theme);
-    setTerminalThemeInputColor();
     renderSoundButton();
     btnMatrix.innerHTML = `<span class="fetch-label">matrix</span><span class="muted">: ${SETTINGS.matrix ? "on" : "off"}</span>`;
     if (SETTINGS.matrix) setMatrix(true);
 
     // ============================================================
-    // Start GitHub stats (cached + refresh) — feature #5
+    // Start GitHub stats
     // ============================================================
     fetchGitHubStats();
+
+    // ============================================================
+    // AUTO-BOOT ON PAGE LOAD (insane)
+    // ============================================================
+    termOut.innerHTML = "";
+    bootSequence({fast:true});
   </script>
 </body>
 </html>
