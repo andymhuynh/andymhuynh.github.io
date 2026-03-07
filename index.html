@@ -10,9 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Noto+Sans+Mono:wght@400;600&family=Noto+Sans+Mono+CJK+JP:wght@400&display=swap" rel="stylesheet">
 
   <style>
-    /* ---------------------------
-      THEME SYSTEM (Tokyo Night default + Light Terminal alt)
-    ---------------------------- */
     :root{
       --bg: #1a1b26;
       --fg: #a9b1d6;
@@ -82,11 +79,9 @@
     .ansi-4{ background:var(--ansi4); } .ansi-5{ background:var(--ansi5); }
     .ansi-6{ background:var(--ansi6); } .ansi-7{ background:var(--ansi7); }
 
-    /* typing caret */
     .caret{ display:inline-block; width:.6ch; transform:translateY(1px); animation:caretBlink 1s steps(1) infinite; }
     @keyframes caretBlink{ 0%,49%{opacity:1} 50%,100%{opacity:0} }
 
-    /* terminal chrome */
     .glass{
       background: linear-gradient(180deg, var(--panel-grad-top), var(--panel-grad-bot));
       border: 1px solid var(--border);
@@ -121,7 +116,6 @@
 
     .ascii{ white-space: pre; line-height: 1.15; }
 
-    /* small cards */
     .card{
       border:1px solid var(--border);
       background:rgba(255,255,255,.02);
@@ -129,7 +123,6 @@
     }
     [data-theme="light"] .card{ background: rgba(17,24,39,.02); }
 
-    /* terminal output formatting */
     .term-line { white-space: pre-wrap; word-break: break-word; }
     .term-dim  { opacity: .85; }
     .kbd {
@@ -141,7 +134,6 @@
     }
     [data-theme="light"] .kbd{ background: rgba(17,24,39,.03); }
 
-    /* Matrix overlay */
     #matrix-wrap{
       position:fixed;
       inset:0;
@@ -153,7 +145,6 @@
     #matrix-wrap.active{ opacity:1; }
     #matrix-canvas{ width:100%; height:100%; display:block; }
 
-    /* Toast */
     .toast{
       position:fixed;
       right: 18px;
@@ -197,7 +188,6 @@
         <span class="pill"><span class="fetch-label">focus</span><span class="muted">: SWE · Systems · Algorithms</span></span>
         <span class="pill"><span class="fetch-label">loc</span><span class="muted">: San José</span></span>
 
-        <!-- NEW: controls -->
         <button id="btnTheme" class="pill text-xs">
           <span class="fetch-label">theme</span><span class="muted">: toggle</span>
         </button>
@@ -228,7 +218,6 @@
         </div>
       </div>
 
-      <!-- AA with blink + typing multilingual MOTD -->
       <div class="fetch-os text-sm ascii select-none mb-4">
 <span id="kaomoji">(｀・ω・´)</span><span class="quote">「</span><span id="langTag" class="lang-tag">EN</span><span id="jpText"></span><span class="caret">▌</span><span class="quote">」</span>
       </div>
@@ -236,10 +225,7 @@
       <div class="space-y-2 text-sm">
         <div><span class="fetch-label">OS:</span> <span class="fetch-data">Applied Mathematics (Discrete)</span></div>
         <div><span class="fetch-label">Kernel:</span> <span class="fetch-data">SJSU · Grad 2028</span></div>
-
-        <!-- NEW: realtime clock -->
         <div><span class="fetch-label">Clock:</span> <span id="clock" class="fetch-data">--:--:--</span></div>
-
         <div><span class="fetch-label">Uptime:</span> <span id="uptime" class="fetch-data">Calculating...</span></div>
         <div><span class="fetch-label">Shell:</span> <span class="fetch-data">zsh</span></div>
       </div>
@@ -260,7 +246,7 @@
 
       <div class="hr my-4"></div>
 
-      <!-- NEW: GitHub live stats -->
+      <!-- GitHub live stats -->
       <div class="text-xs uppercase tracking-widest muted mb-2">github (live)</div>
       <div class="card p-3 text-xs space-y-1">
         <div class="flex items-center justify-between">
@@ -298,13 +284,25 @@
         </div>
       </div>
 
-      <!-- NEW: Interactive terminal -->
       <div class="hr my-4"></div>
 
+      <!-- Interactive terminal -->
       <div class="text-xs uppercase tracking-widest muted mb-2">terminal</div>
       <div class="card p-3">
         <div class="text-[11px] muted mb-2">
-          try: <span class="kbd">help</span> <span class="kbd">projects</span> <span class="kbd">make portfolio</span> <span class="kbd">matrix</span> <span class="kbd">theme</span> <span class="kbd">github</span> <span class="kbd">clear</span>
+          try:
+          <span class="kbd">help</span>
+          <span class="kbd">projects</span>
+          <span class="kbd">make portfolio</span>
+          <span class="kbd">matrix</span>
+          <span class="kbd">theme</span>
+          <span class="kbd">github</span>
+          <span class="kbd">ls</span>
+          <span class="kbd">cd projects</span>
+          <span class="kbd">cat about.txt</span>
+          <span class="kbd">clear</span>
+          <span class="kbd">Tab</span>
+          <span class="kbd">↑</span>/<span class="kbd">↓</span>
         </div>
 
         <div id="terminal-output" class="space-y-1 text-xs max-h-56 overflow-auto pr-1"></div>
@@ -335,10 +333,8 @@
       </div>
     </section>
 
-    <!-- RIGHT: COMPETITIVE CONTENT -->
+    <!-- RIGHT: CONTENT -->
     <section class="glass p-5 lg:col-span-2">
-
-      <!-- SUMMARY -->
       <div class="mb-5">
         <div class="text-xs uppercase tracking-widest muted mb-2">summary</div>
         <p class="text-sm leading-relaxed">
@@ -350,7 +346,6 @@
 
       <div class="hr my-5"></div>
 
-      <!-- PROJECTS -->
       <div class="mb-5">
         <div class="flex items-baseline justify-between gap-3 mb-2">
           <div class="text-xs uppercase tracking-widest muted">projects</div>
@@ -358,7 +353,6 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-
           <div class="card p-4">
             <div class="flex items-center justify-between mb-1">
               <div class="fetch-shell font-semibold">Sudoku Solver</div>
@@ -394,13 +388,11 @@
               <li>Reduced application crashes by <span class="fetch-data">100%</span> via strict validation/error handling.</li>
             </ul>
           </div>
-
         </div>
       </div>
 
       <div class="hr my-5"></div>
 
-      <!-- EDUCATION -->
       <div class="mb-5">
         <div class="text-xs uppercase tracking-widest muted mb-2">education</div>
 
@@ -429,7 +421,6 @@
 
       <div class="hr my-5"></div>
 
-      <!-- COURSEWORK -->
       <div>
         <div class="text-xs uppercase tracking-widest muted mb-2">coursework</div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
@@ -447,7 +438,6 @@
           </div>
         </div>
       </div>
-
     </section>
   </main>
 
@@ -458,6 +448,29 @@
   </footer>
 
   <script>
+    // ============================================================
+    // SETTINGS (persisted) — feature #3
+    // ============================================================
+    const SETTINGS_KEY = "andy_terminal_settings_v1";
+    function loadSettings(){
+      try{
+        const raw = localStorage.getItem(SETTINGS_KEY);
+        if (!raw) return { theme:"dark", matrix:false, sound:true };
+        const s = JSON.parse(raw);
+        return {
+          theme: s.theme === "light" ? "light" : "dark",
+          matrix: !!s.matrix,
+          sound: s.sound !== false
+        };
+      }catch(_){
+        return { theme:"dark", matrix:false, sound:true };
+      }
+    }
+    function saveSettings(next){
+      try{ localStorage.setItem(SETTINGS_KEY, JSON.stringify(next)); }catch(_){}
+    }
+    let SETTINGS = loadSettings();
+
     // ============================================================
     // Tiny UX helpers
     // ============================================================
@@ -471,9 +484,8 @@
 
     // ============================================================
     // SUBTLE SOUND (no external files)
-    // - Uses WebAudio oscillator (tasteful click/enter blips)
     // ============================================================
-    let SOUND_ON = true;
+    let SOUND_ON = SETTINGS.sound;
     let audioCtx = null;
 
     function ensureAudio(){
@@ -502,26 +514,29 @@
     }
 
     // ============================================================
-    // THEME TOGGLE
+    // THEME TOGGLE (persisted) — part of feature #3
     // ============================================================
     const btnTheme = document.getElementById("btnTheme");
-    function toggleTheme(){
+    function setTheme(now){
       const root = document.body;
-      const now = root.getAttribute("data-theme") === "light" ? "dark" : "light";
       root.setAttribute("data-theme", now);
+      SETTINGS.theme = now;
+      saveSettings(SETTINGS);
 
-      // keep terminal input readable
       const input = document.getElementById("terminal-input");
       input.classList.toggle("text-white", now === "dark");
       input.classList.toggle("text-black", now === "light");
-
+    }
+    function toggleTheme(){
+      const now = document.body.getAttribute("data-theme") === "light" ? "dark" : "light";
+      setTheme(now);
       blip(520, 26, 0.025);
       toast(`theme: ${now}`);
     }
     btnTheme.addEventListener("click", toggleTheme);
 
     // ============================================================
-    // MATRIX MODE (Canvas)
+    // MATRIX MODE (Canvas) (persisted) — part of feature #3
     // ============================================================
     const btnMatrix = document.getElementById("btnMatrix");
     const matrixWrap = document.getElementById("matrix-wrap");
@@ -530,15 +545,14 @@
 
     let MATRIX_ON = false;
     let matrixCols = [];
-    let matrixW = 0, matrixH = 0;
     let matrixTimer = null;
 
     const glyphs = "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     function resizeMatrix(){
       const dpr = Math.max(1, window.devicePixelRatio || 1);
-      matrixW = canvas.width = Math.floor(window.innerWidth * dpr);
-      matrixH = canvas.height = Math.floor(window.innerHeight * dpr);
+      canvas.width = Math.floor(window.innerWidth * dpr);
+      canvas.height = Math.floor(window.innerHeight * dpr);
       canvas.style.width = window.innerWidth + "px";
       canvas.style.height = window.innerHeight + "px";
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -550,7 +564,6 @@
     }
 
     function drawMatrix(){
-      // subtle trail
       ctx.fillStyle = "rgba(0,0,0,0.08)";
       ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
 
@@ -569,9 +582,11 @@
 
     function setMatrix(on){
       MATRIX_ON = on;
+      SETTINGS.matrix = on;
+      saveSettings(SETTINGS);
+
       matrixWrap.classList.toggle("active", on);
       btnMatrix.innerHTML = `<span class="fetch-label">matrix</span><span class="muted">: ${on ? "on" : "off"}</span>`;
-
       blip(on ? 680 : 320, 30, 0.03);
 
       if (on){
@@ -593,12 +608,18 @@
     window.addEventListener("resize", ()=>{ if (MATRIX_ON) resizeMatrix(); });
 
     // ============================================================
-    // SOUND TOGGLE BUTTON
+    // SOUND TOGGLE (persisted) — part of feature #3
     // ============================================================
     const btnSound = document.getElementById("btnSound");
+    function renderSoundButton(){
+      btnSound.innerHTML = `<span class="fetch-label">sound</span><span class="muted">: ${SOUND_ON ? "on" : "off"}</span>`;
+    }
     function toggleSound(){
       SOUND_ON = !SOUND_ON;
-      btnSound.innerHTML = `<span class="fetch-label">sound</span><span class="muted">: ${SOUND_ON ? "on" : "off"}</span>`;
+      SETTINGS.sound = SOUND_ON;
+      saveSettings(SETTINGS);
+
+      renderSoundButton();
       if (SOUND_ON) blip(880, 24, 0.03);
       toast(`sound: ${SOUND_ON ? "on" : "off"}`);
     }
@@ -610,19 +631,15 @@
     function pad2(n){ return String(n).padStart(2,"0"); }
     function updateClock(){
       const now = new Date();
-      const hh = pad2(now.getHours());
-      const mm = pad2(now.getMinutes());
-      const ss = pad2(now.getSeconds());
-      document.getElementById("clock").innerText = `${hh}:${mm}:${ss}`;
+      document.getElementById("clock").innerText = `${pad2(now.getHours())}:${pad2(now.getMinutes())}:${pad2(now.getSeconds())}`;
     }
     updateClock();
     setInterval(updateClock, 1000);
 
     // ============================================================
-    // UPTIME (your original; kept)
+    // UPTIME (kept)
     // ============================================================
     function updateUptime() {
-      // Semester Start: Jan 26, 2026
       const startDate = new Date('2026-01-26T08:00:00');
       const now = new Date();
       const diff = now - startDate;
@@ -643,14 +660,13 @@
     setInterval(updateUptime, 60000);
 
     // ============================================================
-    // BLINKING KAOMOJI + TYPING MULTILINGUAL MOTD (your original; kept)
+    // BLINKING KAOMOJI + TYPING MULTILINGUAL MOTD (kept)
     // ============================================================
     const kaomojiEl = document.getElementById('kaomoji');
     const textEl = document.getElementById('jpText');
     const langTagEl = document.getElementById('langTag');
 
     const motd = [
-      // EN
       { lang: "EN", text: "Environment ready." },
       { lang: "EN", text: "Build one small thing." },
       { lang: "EN", text: "Discrete math: ON." },
@@ -660,7 +676,6 @@
       { lang: "EN", text: "One bug at a time." },
       { lang: "EN", text: "Keep it simple." },
 
-      // VI
       { lang: "VI", text: "Môi trường sẵn sàng." },
       { lang: "VI", text: "Làm một thứ nhỏ thôi." },
       { lang: "VI", text: "Chế độ toán rời rạc: bật." },
@@ -670,7 +685,6 @@
       { lang: "VI", text: "Sửa từng lỗi một." },
       { lang: "VI", text: "Cứ triển khai đã." },
 
-      // JP
       { lang: "JP", text: "環境は整った。" },
       { lang: "JP", text: "小さく作ろう。" },
       { lang: "JP", text: "離散数学モード：ON。" },
@@ -680,7 +694,6 @@
       { lang: "JP", text: "バグは友達。" },
       { lang: "JP", text: "シンプルにいこう。" },
 
-      // ZH-TW
       { lang: "ZH-TW", text: "環境就緒。" },
       { lang: "ZH-TW", text: "先做小一步。" },
       { lang: "ZH-TW", text: "離散數學模式：ON。" },
@@ -690,7 +703,6 @@
       { lang: "ZH-TW", text: "一個 bug 一個解。" },
       { lang: "ZH-TW", text: "保持簡單。" },
 
-      // KO
       { lang: "KO", text: "환경 세팅 완료." },
       { lang: "KO", text: "작은 것부터 만들자." },
       { lang: "KO", text: "이산수학 모드: ON." },
@@ -776,65 +788,108 @@
     motdLoop();
 
     // ============================================================
-    // GitHub Live Stats (user + stars + latest activity)
+    // GitHub Live Stats + Cache (rate-limit friendly) — feature #5
     // ============================================================
     const GH_USER = "andymhuynh";
+    const GH_CACHE_KEY = "andy_github_cache_v1";
+    const GH_CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
+
+    function loadGitHubCache(){
+      try{
+        const raw = localStorage.getItem(GH_CACHE_KEY);
+        if (!raw) return null;
+        const obj = JSON.parse(raw);
+        if (!obj || typeof obj.t !== "number") return null;
+        return obj;
+      }catch(_){ return null; }
+    }
+    function saveGitHubCache(payload){
+      try{ localStorage.setItem(GH_CACHE_KEY, JSON.stringify(payload)); }catch(_){}
+    }
+    function renderGitHubStats(st){
+      document.getElementById("ghUser").textContent = GH_USER;
+      document.getElementById("ghRepos").textContent = st.repos ?? "—";
+      document.getElementById("ghFollowers").textContent = st.followers ?? "—";
+      document.getElementById("ghStars").textContent = st.stars ?? "—";
+      document.getElementById("ghLatest").textContent = st.latest ?? "—";
+    }
+
     async function fetchGitHubStats(){
-      const userEl = document.getElementById("ghUser");
-      const reposEl = document.getElementById("ghRepos");
-      const folEl = document.getElementById("ghFollowers");
-      const starsEl = document.getElementById("ghStars");
       const latestEl = document.getElementById("ghLatest");
 
-      userEl.textContent = GH_USER;
+      // Show cache immediately (if fresh-ish)
+      const cached = loadGitHubCache();
+      if (cached){
+        renderGitHubStats(cached);
+        const age = Date.now() - cached.t;
+        if (age < GH_CACHE_TTL_MS){
+          latestEl.textContent = `${cached.latest} (cached ${Math.round(age/60000)}m ago)`;
+        } else {
+          latestEl.textContent = `${cached.latest} (stale cache)`;
+        }
+      }
 
       try{
-        const u = await fetch(`https://api.github.com/users/${GH_USER}`);
+        // user
+        const u = await fetch(`https://api.github.com/users/${GH_USER}`, { headers: { "Accept":"application/vnd.github+json" }});
+        const remaining = Number(u.headers.get("X-RateLimit-Remaining") || "1");
+        if (!u.ok) throw new Error("User fetch failed");
         const ud = await u.json();
 
-        reposEl.textContent = ud.public_repos ?? "—";
-        folEl.textContent = ud.followers ?? "—";
-
-        // total stars = sum of stargazers across public repos (1 call + paginated repos)
+        // repos
         let stars = 0;
         let page = 1;
-        while (page <= 3) { // keep it light (up to 300 repos if needed)
-          const r = await fetch(`https://api.github.com/users/${GH_USER}/repos?per_page=100&page=${page}&sort=updated`);
+        while (page <= 3) {
+          const r = await fetch(`https://api.github.com/users/${GH_USER}/repos?per_page=100&page=${page}&sort=updated`, { headers: { "Accept":"application/vnd.github+json" }});
+          if (!r.ok) break;
           const rd = await r.json();
           if (!Array.isArray(rd) || rd.length === 0) break;
           for (const repo of rd) stars += (repo.stargazers_count || 0);
           if (rd.length < 100) break;
           page++;
         }
-        starsEl.textContent = stars;
 
-        // latest activity (public events)
-        const e = await fetch(`https://api.github.com/users/${GH_USER}/events/public?per_page=10`);
-        const ed = await e.json();
-        if (Array.isArray(ed) && ed.length){
-          const push = ed.find(x => x.type === "PushEvent");
-          if (push){
-            const repo = push.repo?.name || "repo";
-            const n = push.payload?.commits?.length || 1;
-            const when = new Date(push.created_at);
-            latestEl.textContent = `PushEvent → ${repo} (${n} commit${n===1?"":"s"}) · ${when.toLocaleString()}`;
-          } else {
-            const top = ed[0];
-            latestEl.textContent = `${top.type} → ${top.repo?.name || "repo"} · ${new Date(top.created_at).toLocaleString()}`;
+        // events
+        let latest = "No recent public events.";
+        const e = await fetch(`https://api.github.com/users/${GH_USER}/events/public?per_page=10`, { headers: { "Accept":"application/vnd.github+json" }});
+        if (e.ok){
+          const ed = await e.json();
+          if (Array.isArray(ed) && ed.length){
+            const push = ed.find(x => x.type === "PushEvent");
+            if (push){
+              const repo = push.repo?.name || "repo";
+              const n = push.payload?.commits?.length || 1;
+              const when = new Date(push.created_at);
+              latest = `PushEvent → ${repo} (${n} commit${n===1?"":"s"}) · ${when.toLocaleString()}`;
+            } else {
+              const top = ed[0];
+              latest = `${top.type} → ${top.repo?.name || "repo"} · ${new Date(top.created_at).toLocaleString()}`;
+            }
           }
-        } else {
-          latestEl.textContent = "No recent public events.";
         }
-      }catch(err){
-        latestEl.textContent = "GitHub fetch blocked (rate limit / CORS / offline).";
+
+        const payload = {
+          t: Date.now(),
+          repos: ud.public_repos ?? "—",
+          followers: ud.followers ?? "—",
+          stars,
+          latest: (remaining === 0 ? `${latest} (rate-limit)` : latest),
+        };
+
+        renderGitHubStats(payload);
+        saveGitHubCache(payload);
+      }catch(_){
+        // fall back (already rendered cache if present)
+        if (!loadGitHubCache()){
+          latestEl.textContent = "GitHub fetch blocked (rate limit / CORS / offline).";
+        }
       }
     }
-    fetchGitHubStats();
 
     // ============================================================
-    // Interactive Terminal
-    // - Commands: help, about, projects, skills, contact, resume, clear
-    // - Special: make portfolio, matrix, theme, github, sound
+    // Interactive Terminal + 5 best features:
+    //  #1 history (↑/↓), #2 autocomplete (Tab), #3 persistence,
+    //  #4 mini filesystem (ls/cd/cat/tree/pwd), #5 github cache
     // ============================================================
     const termInput = document.getElementById("terminal-input");
     const termOut = document.getElementById("terminal-output");
@@ -846,27 +901,182 @@
       termOut.appendChild(div);
       termOut.scrollTop = termOut.scrollHeight;
     }
-
     function writePrompt(cmd){
       writeLine(`andy@arch-sjsu:~$ ${cmd}`, "term-line term-dim");
     }
-
     function setTerminalThemeInputColor(){
       const theme = document.body.getAttribute("data-theme");
       termInput.classList.toggle("text-white", theme === "dark");
       termInput.classList.toggle("text-black", theme === "light");
     }
-    setTerminalThemeInputColor();
 
+    // ---------- Feature #4: Mini filesystem ----------
+    const FS = {
+      type: "dir",
+      children: {
+        home: {
+          type: "dir",
+          children: {
+            andy: {
+              type: "dir",
+              children: {
+                "about.txt": { type:"file", content:
+`andy@arch-sjsu
+Applied Mathematics (Discrete) @ SJSU
+Focus: SWE · Systems · Algorithms
+Shipping optimized code with measurable results.` },
+                "contact.txt": { type:"file", content:
+`Email: ahuyn5@gmail.com
+GitHub: https://github.com/andymhuynh
+LinkedIn: https://www.linkedin.com/in/andymhuynh/
+Location: San Jose, CA` },
+                "resume.txt": { type:"file", content:
+`TODO: add your public resume link.
+Tip: upload /resume.pdf on your site and set: open resume` },
+                projects: {
+                  type:"dir",
+                  children: {
+                    "sudoku.txt": { type:"file", content:
+`Sudoku Solver (Python · Algorithm X)
+- Exact cover formulation (DLX style logic)
+- <15ms solves on hard 9x9
+- Early constraint checks: -98% runtime errors` },
+                    "huffman.txt": { type:"file", content:
+`Huffman Coding (C++)
+- Encoder/decoder + tree build
+- ~30% size reduction vs raw
+- 15% lower peak RAM via smart pointers` },
+                    "bst.txt": { type:"file", content:
+`Binary Search Tree (C++)
+- Insert/search/delete + validation
+- +45% retrieval on 10k+ records
+- 100% crash reduction via strict handling` },
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    };
+
+    const LINKS = {
+      github: "https://github.com/andymhuynh",
+      linkedin: "https://www.linkedin.com/in/andymhuynh/",
+      email: "mailto:ahuyn5@gmail.com"
+      // resume: "/resume.pdf" // <- set this if you host a PDF
+    };
+
+    let CWD = "/home/andy";
+
+    function normPath(p){
+      if (!p) return CWD;
+      let path = p.startsWith("/") ? p : (CWD.replace(/\/+$/,"") + "/" + p);
+      const parts = path.split("/").filter(Boolean);
+      const out = [];
+      for (const part of parts){
+        if (part === ".") continue;
+        if (part === "..") { out.pop(); continue; }
+        out.push(part);
+      }
+      return "/" + out.join("/");
+    }
+
+    function getNode(path){
+      const parts = path.split("/").filter(Boolean);
+      let node = FS;
+      for (const part of parts){
+        if (!node || node.type !== "dir") return null;
+        node = node.children?.[part];
+      }
+      return node || null;
+    }
+
+    function listDir(path){
+      const node = getNode(path);
+      if (!node) return { ok:false, err:`ls: cannot access '${path}': No such file or directory` };
+      if (node.type !== "dir") return { ok:false, err:`ls: '${path}': Not a directory` };
+      const names = Object.keys(node.children || {}).sort();
+      return { ok:true, items:names };
+    }
+
+    function readFile(path){
+      const node = getNode(path);
+      if (!node) return { ok:false, err:`cat: ${path}: No such file or directory` };
+      if (node.type !== "file") return { ok:false, err:`cat: ${path}: Is a directory` };
+      return { ok:true, content: node.content || "" };
+    }
+
+    function tree(path, maxDepth=4){
+      const node = getNode(path);
+      if (!node) return { ok:false, err:`tree: '${path}': No such file or directory` };
+
+      const lines = [];
+      function walk(n, prefix, depth){
+        if (depth > maxDepth) return;
+        if (n.type !== "dir") return;
+        const keys = Object.keys(n.children || {}).sort();
+        keys.forEach((k, idx) => {
+          const last = idx === keys.length - 1;
+          const branch = last ? "└── " : "├── ";
+          const nextPrefix = prefix + (last ? "    " : "│   ");
+          lines.push(prefix + branch + k);
+          const child = n.children[k];
+          if (child.type === "dir") walk(child, nextPrefix, depth + 1);
+        });
+      }
+      lines.push(path);
+      if (node.type === "dir") walk(node, "", 1);
+      return { ok:true, content: lines.join("\n") };
+    }
+
+    // ---------- Feature #1: History ----------
+    const HISTORY = [];
+    let histIdx = 0; // points to "next slot"
+
+    // ---------- Feature #2: Autocomplete ----------
+    function commonPrefix(arr){
+      if (!arr.length) return "";
+      let p = arr[0];
+      for (let i=1;i<arr.length;i++){
+        while (!arr[i].startsWith(p) && p.length) p = p.slice(0,-1);
+      }
+      return p;
+    }
+
+    function splitCmd(input){
+      // minimal tokenizer (keeps it simple)
+      return input.trim().split(/\s+/).filter(Boolean);
+    }
+
+    function pathCompletions(partial){
+      const base = partial.includes("/") ? partial.slice(0, partial.lastIndexOf("/")+1) : "";
+      const frag = partial.includes("/") ? partial.slice(partial.lastIndexOf("/")+1) : partial;
+
+      const baseResolved = normPath(base || ".");
+      const dirNode = getNode(baseResolved);
+      if (!dirNode || dirNode.type !== "dir") return [];
+
+      const kids = Object.keys(dirNode.children || {});
+      const matches = kids.filter(n => n.startsWith(frag)).sort();
+      // return as user-facing completion (keep relative/typed base)
+      return matches.map(m => base + m);
+    }
+
+    // Core commands (existing + new FS ones)
     const baseCommands = {
       help: () => {
         writeLine("Available commands:");
         writeLine("  help, about, projects, skills, contact, resume, clear");
+        writeLine("  ls [path], cd <dir>, pwd, cat <file>, tree [path]");
+        writeLine("  open <github|linkedin|email|resume>, copy <email|phone|github|linkedin>");
         writeLine("  make portfolio   (compile animation)");
         writeLine("  github           (refresh live stats)");
         writeLine("  matrix           (toggle matrix overlay)");
         writeLine("  theme            (toggle theme)");
         writeLine("  sound            (toggle sound)");
+        writeLine("Tips:");
+        writeLine("  - Use ↑/↓ for history, Tab for autocomplete.");
       },
       about: () => writeLine("Applied Math @ SJSU. Systems + algorithms + performance. Shipping optimized code."),
       skills: () => writeLine("C++, Python, Java, Assembly · Linux · Git · Data Structures · Algorithms"),
@@ -874,22 +1084,82 @@
         writeLine("- Sudoku Solver (Algorithm X) · <15ms");
         writeLine("- Huffman Compression (C++) · ~30% smaller");
         writeLine("- BST Optimization (C++) · +45% retrieval on 10k+ records");
+        writeLine("Try: cd projects; ls; cat sudoku.txt");
       },
       contact: () => writeLine("ahuyn5@gmail.com · github.com/andymhuynh · linkedin.com/in/andymhuynh"),
-      resume: () => writeLine("Add your resume link here: e.g. /resume.pdf or Google Drive public link."),
+      resume: () => writeLine("Set a resume link: add LINKS.resume = '/resume.pdf' then run: open resume"),
       clear: () => { termOut.innerHTML = ""; },
+
+      // toggles
       theme: () => toggleTheme(),
       matrix: () => setMatrix(!MATRIX_ON),
       sound: () => toggleSound(),
+
+      // GitHub
       github: async () => {
         writeLine("Refreshing GitHub stats…");
         await fetchGitHubStats();
         writeLine("Done.");
       },
+
+      // FS commands — feature #4
+      pwd: () => writeLine(CWD),
+      ls: (args) => {
+        const p = normPath(args[0] || ".");
+        const res = listDir(p);
+        if (!res.ok) return writeLine(res.err);
+        writeLine(res.items.join("  "));
+      },
+      cd: (args) => {
+        if (!args[0]) { CWD = "/home/andy"; return; }
+        const p = normPath(args[0]);
+        const node = getNode(p);
+        if (!node) return writeLine(`cd: no such file or directory: ${args[0]}`);
+        if (node.type !== "dir") return writeLine(`cd: not a directory: ${args[0]}`);
+        CWD = p;
+      },
+      cat: (args) => {
+        if (!args[0]) return writeLine("cat: missing file operand");
+        const p = normPath(args[0]);
+        const res = readFile(p);
+        if (!res.ok) return writeLine(res.err);
+        writeLine(res.content);
+      },
+      tree: (args) => {
+        const p = normPath(args[0] || ".");
+        const res = tree(p, 5);
+        if (!res.ok) return writeLine(res.err);
+        writeLine(res.content);
+      },
+
+      // convenience
+      open: (args) => {
+        const key = (args[0] || "").toLowerCase();
+        const url = LINKS[key];
+        if (!url) return writeLine("open: usage: open github | linkedin | email | resume");
+        window.open(url, "_blank", "noopener,noreferrer");
+        toast(`opened: ${key}`);
+      },
+      copy: async (args) => {
+        const key = (args[0] || "").toLowerCase();
+        const map = {
+          email: "ahuyn5@gmail.com",
+          phone: "(669) 251-7811",
+          github: "https://github.com/andymhuynh",
+          linkedin: "https://www.linkedin.com/in/andymhuynh/"
+        };
+        const val = map[key];
+        if (!val) return writeLine("copy: usage: copy email | phone | github | linkedin");
+        try{
+          await navigator.clipboard.writeText(val);
+          toast(`copied: ${key}`);
+        }catch(_){
+          writeLine("copy: clipboard blocked by browser permissions");
+        }
+      }
     };
 
     async function compileAnimation(){
-      // Simulated "make portfolio"
       const steps = [
         { msg: "Compiling projects…", ms: 420 },
         { msg: "Linking achievements…", ms: 420 },
@@ -897,7 +1167,6 @@
         { msg: "Running tests…", ms: 420 },
         { msg: "Build successful. ✅", ms: 300 },
       ];
-
       for (const s of steps){
         writeLine(s.msg);
         blip(660, 18, 0.02);
@@ -905,11 +1174,140 @@
       }
     }
 
+    function runCommand(cmdRaw){
+      const cmd = cmdRaw.trim();
+      if (!cmd) return;
+
+      // push history — feature #1
+      HISTORY.push(cmdRaw);
+      histIdx = HISTORY.length;
+
+      const lower = cmd.toLowerCase();
+
+      if (lower === "make portfolio" || lower === "make" || lower === "make all"){
+        return compileAnimation();
+      }
+
+      const parts = splitCmd(cmd);
+      const name = (parts[0] || "").toLowerCase();
+      const args = parts.slice(1);
+
+      const fn = baseCommands[name];
+      if (fn){
+        return fn(args);
+      } else {
+        writeLine(`command not found: ${cmdRaw}`);
+      }
+    }
+
+    function allCommandNames(){
+      return Object.keys(baseCommands).concat(["make portfolio"]).sort();
+    }
+
+    function doAutocomplete(){
+      const raw = termInput.value;
+      const endsWithSpace = /\s$/.test(raw);
+      const parts = splitCmd(raw);
+
+      // if user typed nothing
+      if (!raw.trim()){
+        writeLine(allCommandNames().join("  "));
+        return;
+      }
+
+      // completing command name
+      if (parts.length === 1 && !endsWithSpace){
+        const frag = parts[0].toLowerCase();
+        const options = allCommandNames().filter(c => c.startsWith(frag)).sort();
+        if (!options.length) return;
+
+        if (options.length === 1){
+          termInput.value = options[0] + " ";
+          blip(540, 16, 0.015);
+          return;
+        }
+
+        const cp = commonPrefix(options);
+        termInput.value = cp;
+        writeLine(options.join("  "));
+        blip(420, 12, 0.012);
+        return;
+      }
+
+      // completing path for fs-ish commands
+      const cmd = (parts[0] || "").toLowerCase();
+      const fsCmds = new Set(["cd","ls","cat","tree"]);
+      if (!fsCmds.has(cmd)) return;
+
+      // decide which token to complete:
+      // - if ends with space, start a new arg
+      // - else complete last token
+      let partial = "";
+      if (endsWithSpace){
+        partial = "";
+      } else {
+        partial = parts[parts.length - 1] || "";
+      }
+
+      const opts = pathCompletions(partial);
+      if (!opts.length) return;
+
+      if (opts.length === 1){
+        // replace last token or append
+        if (endsWithSpace){
+          termInput.value = raw + opts[0] + " ";
+        } else {
+          const before = raw.slice(0, raw.lastIndexOf(partial));
+          termInput.value = before + opts[0] + " ";
+        }
+        blip(540, 16, 0.015);
+        return;
+      }
+
+      const cp = commonPrefix(opts);
+      if (cp && cp !== partial){
+        if (endsWithSpace){
+          termInput.value = raw + cp;
+        } else {
+          const before = raw.slice(0, raw.lastIndexOf(partial));
+          termInput.value = before + cp;
+        }
+      }
+      writeLine(opts.join("  "));
+      blip(420, 12, 0.012);
+    }
+
     // nice first boot message
     writeLine("Welcome. Type 'help' for commands.");
     writeLine("Tip: 'make portfolio' looks sick in interviews.");
+    writeLine(`Tip: cd projects; ls; cat sudoku.txt`);
+    writeLine("");
 
+    // Keyboard handler: Enter + history + autocomplete
     termInput.addEventListener("keydown", async (e) => {
+      // Tab autocomplete — feature #2
+      if (e.key === "Tab") {
+        e.preventDefault();
+        doAutocomplete();
+        return;
+      }
+
+      // History nav — feature #1
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        if (!HISTORY.length) return;
+        histIdx = Math.max(0, histIdx - 1);
+        termInput.value = HISTORY[histIdx] ?? "";
+        return;
+      }
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        if (!HISTORY.length) return;
+        histIdx = Math.min(HISTORY.length, histIdx + 1);
+        termInput.value = (histIdx === HISTORY.length) ? "" : (HISTORY[histIdx] ?? "");
+        return;
+      }
+
       if (e.key === "Enter") {
         const cmdRaw = termInput.value.trim();
         if (!cmdRaw) return;
@@ -920,34 +1318,31 @@
         writePrompt(cmdRaw);
         termInput.value = "";
 
-        // Parse
-        const cmd = cmdRaw.toLowerCase();
-
-        if (cmd === "make portfolio" || cmd === "make" || cmd === "make all"){
-          await compileAnimation();
-          return;
-        }
-
-        const fn = baseCommands[cmd];
-        if (fn){
-          const res = fn();
-          if (res instanceof Promise) await res;
-        } else {
-          writeLine(`command not found: ${cmdRaw}`);
-        }
-      } else if (e.key.length === 1) {
-        // tiny typing tick (very subtle)
-        blip(220 + Math.random()*50, 6, 0.008);
+        const res = runCommand(cmdRaw);
+        if (res instanceof Promise) await res;
+        return;
       }
+
+      // tiny typing tick (very subtle)
+      if (e.key.length === 1) blip(220 + Math.random()*50, 6, 0.008);
     });
 
-    // allow clicking anywhere in terminal card to focus input
-    termOut.parentElement.addEventListener("mousedown", () => {
-      termInput.focus();
-    });
+    // click terminal card to focus input
+    termOut.parentElement.addEventListener("mousedown", () => termInput.focus());
 
-    // Keep matrix black trail consistent on theme switch (optional)
-    // (Matrix is its own vibe; leave it green/black always.)
+    // ============================================================
+    // APPLY PERSISTED SETTINGS (theme/matrix/sound) — feature #3
+    // ============================================================
+    setTheme(SETTINGS.theme);
+    setTerminalThemeInputColor();
+    renderSoundButton();
+    btnMatrix.innerHTML = `<span class="fetch-label">matrix</span><span class="muted">: ${SETTINGS.matrix ? "on" : "off"}</span>`;
+    if (SETTINGS.matrix) setMatrix(true);
+
+    // ============================================================
+    // Start GitHub stats (cached + refresh) — feature #5
+    // ============================================================
+    fetchGitHubStats();
   </script>
 </body>
 </html>
