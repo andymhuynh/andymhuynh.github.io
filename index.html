@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>andy@arch-sjsu: ~</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Mono fonts: Latin + CJK -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Noto+Sans+Mono:wght@400;600&family=Noto+Sans+Mono+CJK+JP:wght@400&display=swap" rel="stylesheet">
+
+  <style>
+    /* Tokyo Night-ish */
+    body{
+      font-family:'Fira Code','Noto Sans Mono','Noto Sans Mono CJK JP',monospace;
+      background:#1a1b26;
+      color:#a9b1d6;
+    }
+    .fetch-os{ color:#7aa2f7; }
+    .fetch-kernel{ color:#bb9af7; }
+    .fetch-shell{ color:#7dcfff; }
+    .fetch-label{ color:#9ece6a; font-weight:700; }
+    .fetch-data{ color:#c0caf5; }
+
+    .ansi-0{ background:#15161e; } .ansi-1{ background:#f7768e; }
+    .ansi-2{ background:#9ece6a; } .ansi-3{ background:#e0af68; }
+    .ansi-4{ background:#7aa2f7; } .ansi-5{ background:#bb9af7; }
+    .ansi-6{ background:#7dcfff; } .ansi-7{ background:#a9b1d6; }
+
+    /* typing caret */
+    .caret{ display:inline-block; width:.6ch; transform:translateY(1px); animation:caretBlink 1s steps(1) infinite; }
+    @keyframes caretBlink{ 0%,49%{opacity:1} 50%,100%{opacity:0} }
+
+    /* terminal chrome */
+    .glass{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid rgba(148,163,184,.18);
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      border-radius: 18px;
+    }
+    .pill{
+      border: 1px solid rgba(148,163,184,.18);
+      background: rgba(255,255,255,.03);
+      border-radius: 999px;
+      padding: .22rem .55rem;
+    }
+    .tag{
+      border:1px solid rgba(148,163,184,.18);
+      background: rgba(255,255,255,.03);
+      border-radius: 999px;
+      padding:.18rem .55rem;
+    }
+    .muted{ color: rgba(169,177,214,.75); }
+    .hr{ border-top: 1px dashed rgba(148,163,184,.28); }
+    .quote{ opacity:.85; }
+    .lang-tag{ opacity:.55; margin-right:.6ch; }
+
+    a.link{ text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a.link:hover{ color:#ffffff; }
+
+    .ascii{ white-space: pre; line-height: 1.15; }
+
+    /* small cards */
+    .card{
+      border:1px solid rgba(148,163,184,.18);
+      background:rgba(255,255,255,.02);
+      border-radius: 18px;
+    }
+  </style>
+</head>
+
+<body class="p-6 md:p-12 antialiased">
+
+  <!-- TOP BAR -->
+  <header class="max-w-6xl mx-auto mb-6 md:mb-8">
+    <div class="glass px-4 py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="fetch-os font-semibold">andy</span><span class="text-white">@</span><span class="fetch-os font-semibold">arch-sjsu</span>
+        <span class="pill text-xs muted">Applied Math (Discrete) @ SJSU</span>
+        <span class="pill text-xs muted">B.S. Candidate · 2028</span>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2 text-xs">
+        <span class="pill"><span class="fetch-label">status</span><span class="muted">: open to internships</span></span>
+        <span class="pill"><span class="fetch-label">focus</span><span class="muted">: SWE · Systems · Algorithms</span></span>
+        <span class="pill"><span class="fetch-label">loc</span><span class="muted">: San José</span></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+    <!-- LEFT: TERMINAL / MOTD -->
+    <section class="glass p-5 lg:col-span-1">
+      <div class="flex items-center justify-between mb-3">
+        <div class="text-sm">
+          <span class="muted">root@arch-sjsu</span><span class="muted">:</span><span class="fetch-kernel">~</span><span class="muted">$</span>
+          <span class="fetch-shell"> neofetch</span>
+        </div>
+
+        <div class="flex gap-1">
+          <span class="w-2.5 h-2.5 rounded-full" style="background:#f7768e"></span>
+          <span class="w-2.5 h-2.5 rounded-full" style="background:#e0af68"></span>
+          <span class="w-2.5 h-2.5 rounded-full" style="background:#9ece6a"></span>
+        </div>
+      </div>
+
+      <!-- AA with blink + typing multilingual MOTD -->
+      <div class="fetch-os text-sm ascii select-none mb-4">
+<span id="kaomoji">(｀・ω・´)</span><span class="quote">「</span><span id="langTag" class="lang-tag">EN</span><span id="jpText"></span><span class="caret">▌</span><span class="quote">」</span>
+      </div>
+
+      <div class="space-y-2 text-sm">
+        <div><span class="fetch-label">OS:</span> <span class="fetch-data">Applied Mathematics (Discrete)</span></div>
+        <div><span class="fetch-label">Kernel:</span> <span class="fetch-data">SJSU · Grad 2028</span></div>
+        <div><span class="fetch-label">Uptime:</span> <span id="uptime" class="fetch-data">Calculating...</span></div>
+        <div><span class="fetch-label">Shell:</span> <span class="fetch-data">zsh</span></div>
+      </div>
+
+      <div class="hr my-4"></div>
+
+      <div class="text-xs uppercase tracking-widest muted mb-2">core stack</div>
+      <div class="flex flex-wrap gap-2 text-sm">
+        <span class="tag">C++</span>
+        <span class="tag">Python</span>
+        <span class="tag">Java</span>
+        <span class="tag">Assembly</span>
+        <span class="tag">Algorithms</span>
+        <span class="tag">Data Structures</span>
+        <span class="tag">Linux</span>
+        <span class="tag">Git</span>
+      </div>
+
+      <div class="hr my-4"></div>
+
+      <div class="text-xs uppercase tracking-widest muted mb-2">contact</div>
+      <div class="flex flex-col gap-2 text-sm">
+        <a class="link" href="mailto:ahuyn5@gmail.com">ahuyn5@gmail.com</a>
+        <div class="flex gap-3">
+          <a class="link" href="https://github.com/andymhuynh" target="_blank" rel="noreferrer">github</a>
+          <a class="link" href="https://www.linkedin.com/in/andymhuynh/" target="_blank" rel="noreferrer">linkedin</a>
+        </div>
+        <div class="text-xs muted">
+          San Jose, CA · <span class="muted">(669)</span> 251-7811
+        </div>
+      </div>
+
+      <div class="flex mt-5 gap-0">
+        <div class="w-7 h-3 ansi-0"></div><div class="w-7 h-3 ansi-1"></div>
+        <div class="w-7 h-3 ansi-2"></div><div class="w-7 h-3 ansi-3"></div>
+        <div class="w-7 h-3 ansi-4"></div><div class="w-7 h-3 ansi-5"></div>
+        <div class="w-7 h-3 ansi-6"></div><div class="w-7 h-3 ansi-7"></div>
+      </div>
+      <div class="flex gap-0 opacity-50">
+        <div class="w-7 h-3 ansi-0"></div><div class="w-7 h-3 ansi-1"></div>
+        <div class="w-7 h-3 ansi-2"></div><div class="w-7 h-3 ansi-3"></div>
+        <div class="w-7 h-3 ansi-4"></div><div class="w-7 h-3 ansi-5"></div>
+        <div class="w-7 h-3 ansi-6"></div><div class="w-7 h-3 ansi-7"></div>
+      </div>
+    </section>
+
+    <!-- RIGHT: COMPETITIVE CONTENT -->
+    <section class="glass p-5 lg:col-span-2">
+
+      <!-- SUMMARY -->
+      <div class="mb-5">
+        <div class="text-xs uppercase tracking-widest muted mb-2">summary</div>
+        <p class="text-sm leading-relaxed">
+          Applied Mathematics student focused on algorithms, systems, and performance.
+          Built optimized solvers and compression/data-structure implementations in <span class="fetch-data">C++</span> and
+          <span class="fetch-data">Python</span>, with measurable speed, memory, and reliability improvements.
+        </p>
+      </div>
+
+      <div class="hr my-5"></div>
+
+      <!-- PROJECTS -->
+      <div class="mb-5">
+        <div class="flex items-baseline justify-between gap-3 mb-2">
+          <div class="text-xs uppercase tracking-widest muted">projects</div>
+          <div class="text-xs muted">algorithmic + quantified</div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+
+          <div class="card p-4">
+            <div class="flex items-center justify-between mb-1">
+              <div class="fetch-shell font-semibold">Sudoku Solver</div>
+              <span class="pill text-[11px] muted">Python · Algorithm X</span>
+            </div>
+            <div class="muted text-xs mb-2">Exact-cover solver using Knuth’s Algorithm X with constraints validation.</div>
+            <ul class="list-disc pl-5 space-y-1 text-xs">
+              <li>Solved complex 9×9 puzzles in <span class="fetch-data">&lt;15ms</span>.</li>
+              <li>Reduced runtime error rate by <span class="fetch-data">98%</span> via early constraint checks.</li>
+            </ul>
+          </div>
+
+          <div class="card p-4">
+            <div class="flex items-center justify-between mb-1">
+              <div class="fetch-shell font-semibold">Huffman Coding Algorithm</div>
+              <span class="pill text-[11px] muted">C++ · Compression</span>
+            </div>
+            <div class="muted text-xs mb-2">Built Huffman encoder/decoder with efficient tree construction.</div>
+            <ul class="list-disc pl-5 space-y-1 text-xs">
+              <li>Decreased file sizes by <span class="fetch-data">~30%</span> vs uncompressed data.</li>
+              <li>Lowered peak RAM usage by <span class="fetch-data">15%</span> using smart pointers.</li>
+            </ul>
+          </div>
+
+          <div class="card p-4 md:col-span-2">
+            <div class="flex items-center justify-between mb-1">
+              <div class="fetch-shell font-semibold">Binary Search Tree</div>
+              <span class="pill text-[11px] muted">C++ · Data Structures</span>
+            </div>
+            <div class="muted text-xs mb-2">Optimized recursive insertion/search/deletion + robust input validation.</div>
+            <ul class="list-disc pl-5 space-y-1 text-xs">
+              <li>Improved retrieval speed by <span class="fetch-data">45%</span> on simulated datasets (10,000+ records).</li>
+              <li>Reduced application crashes by <span class="fetch-data">100%</span> via strict validation/error handling.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="hr my-5"></div>
+
+      <!-- EDUCATION -->
+      <div class="mb-5">
+        <div class="text-xs uppercase tracking-widest muted mb-2">education</div>
+
+        <div class="grid grid-cols-1 gap-3 text-sm">
+          <div class="card p-4">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <div class="fetch-shell font-semibold">San José State University</div>
+              <div class="text-xs muted">Aug 2025 – Present · San Jose, CA</div>
+            </div>
+            <div class="text-xs muted mt-1">
+              B.S. in Applied Mathematics · Discrete Mathematics Concentration
+            </div>
+          </div>
+
+          <div class="card p-4">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <div class="fetch-shell font-semibold">Ohlone College</div>
+              <div class="text-xs muted">Aug 2020 – Jun 2025 · Fremont, CA</div>
+            </div>
+            <div class="text-xs muted mt-1">
+              A.S. in Mathematics for Transfer · Ohlone Math Gateway Program (OMG)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hr my-5"></div>
+
+      <!-- COURSEWORK -->
+      <div>
+        <div class="text-xs uppercase tracking-widest muted mb-2">coursework</div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+          <div class="card p-3">
+            <div class="fetch-shell font-semibold mb-1">Math</div>
+            <div class="text-xs muted">Calc I–III · Linear Algebra · Discrete Math</div>
+          </div>
+          <div class="card p-3">
+            <div class="fetch-shell font-semibold mb-1">CS</div>
+            <div class="text-xs muted">Data Structures · Comp Systems · C Programming</div>
+          </div>
+          <div class="card p-3">
+            <div class="fetch-shell font-semibold mb-1">Active</div>
+            <div class="text-xs muted">Prob & Stats · Diff Eq · Java</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="max-w-6xl mx-auto mt-6">
+    <div class="text-[10px] uppercase tracking-widest opacity-30 select-none text-right">
+      root@arch-sjsu:~$ ./contact_andy
+    </div>
+  </footer>
+
+  <script>
+    // ----------------------------
+    // UPTIME
+    // ----------------------------
+    function updateUptime() {
+      // Semester Start: Jan 26, 2026
+      const startDate = new Date('2026-01-26T08:00:00');
+      const now = new Date();
+      const diff = now - startDate;
+
+      if (diff < 0) {
+        document.getElementById('uptime').innerText = "Semester starting soon...";
+        return;
+      }
+
+      const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const cycleDays = totalDays % 7;
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / (1000 * 60)) % 60);
+
+      document.getElementById('uptime').innerText = `${cycleDays} days, ${hours} hours, ${mins} mins`;
+    }
+    updateUptime();
+    setInterval(updateUptime, 60000);
+
+    // ----------------------------
+    // BLINKING KAOMOJI + TYPING MULTILINGUAL MOTD
+    // Language-cycled: EN → VI → JP → ZH-TW → KO
+    // Random inside each language
+    // ----------------------------
+    const kaomojiEl = document.getElementById('kaomoji');
+    const textEl = document.getElementById('jpText');
+    const langTagEl = document.getElementById('langTag');
+
+    const motd = [
+      // EN
+      { lang: "EN", text: "Environment ready." },
+      { lang: "EN", text: "Build one small thing." },
+      { lang: "EN", text: "Discrete math: ON." },
+      { lang: "EN", text: "Ship, then polish." },
+      { lang: "EN", text: "Breathe, then commit." },
+      { lang: "EN", text: "Less talk, more code." },
+      { lang: "EN", text: "One bug at a time." },
+      { lang: "EN", text: "Keep it simple." },
+
+      // VI
+      { lang: "VI", text: "Môi trường sẵn sàng." },
+      { lang: "VI", text: "Làm một thứ nhỏ thôi." },
+      { lang: "VI", text: "Chế độ toán rời rạc: bật." },
+      { lang: "VI", text: "Viết code từ tốn." },
+      { lang: "VI", text: "Hít thở rồi commit." },
+      { lang: "VI", text: "Đừng vội, cứ làm." },
+      { lang: "VI", text: "Sửa từng lỗi một." },
+      { lang: "VI", text: "Cứ triển khai đã." },
+
+      // JP
+      { lang: "JP", text: "環境は整った。" },
+      { lang: "JP", text: "小さく作ろう。" },
+      { lang: "JP", text: "離散数学モード：ON。" },
+      { lang: "JP", text: "まず動かす。" },
+      { lang: "JP", text: "深呼吸してcommit。" },
+      { lang: "JP", text: "一歩ずつ進む。" },
+      { lang: "JP", text: "バグは友達。" },
+      { lang: "JP", text: "シンプルにいこう。" },
+
+      // ZH-TW
+      { lang: "ZH-TW", text: "環境就緒。" },
+      { lang: "ZH-TW", text: "先做小一步。" },
+      { lang: "ZH-TW", text: "離散數學模式：ON。" },
+      { lang: "ZH-TW", text: "先跑起來再說。" },
+      { lang: "ZH-TW", text: "深呼吸再 commit。" },
+      { lang: "ZH-TW", text: "慢慢來就好。" },
+      { lang: "ZH-TW", text: "一個 bug 一個解。" },
+      { lang: "ZH-TW", text: "保持簡單。" },
+
+      // KO
+      { lang: "KO", text: "환경 세팅 완료." },
+      { lang: "KO", text: "작은 것부터 만들자." },
+      { lang: "KO", text: "이산수학 모드: ON." },
+      { lang: "KO", text: "먼저 돌아가게 하자." },
+      { lang: "KO", text: "커밋 전 심호흡." },
+      { lang: "KO", text: "천천히 해도 돼." },
+      { lang: "KO", text: "버그는 하나씩." },
+      { lang: "KO", text: "단순하게 가자." }
+    ];
+
+    const TYPE_MS = 45;
+    const HOLD_MS = 2200;
+    const ERASE_MS = 18;
+    const GAP_MS = 350;
+
+    // --- Language-cycled randomizer ---
+    const languageOrder = ["EN", "VI", "JP", "ZH-TW", "KO"];
+    let currentLangIndex = 0;
+
+    // Group sentences by language
+    const grouped = {};
+    for (const entry of motd) {
+      if (!grouped[entry.lang]) grouped[entry.lang] = [];
+      grouped[entry.lang].push(entry.text);
+    }
+
+    function getRandomFromLang(lang) {
+      const arr = grouped[lang] || [];
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function setLangTag(tag) {
+      langTagEl.textContent = tag;
+    }
+
+    // blink: (｀・ω・´) -> (｀-ω-´)
+    function startBlinking() {
+      function blinkOnce() {
+        kaomojiEl.textContent = "(｀-ω-´)";
+        setTimeout(() => { kaomojiEl.textContent = "(｀・ω・´)"; }, 140);
+      }
+      function scheduleBlink() {
+        const nextIn = 3000 + Math.random() * 4000;
+        setTimeout(() => {
+          blinkOnce();
+          if (Math.random() < 0.18) setTimeout(blinkOnce, 260);
+          scheduleBlink();
+        }, nextIn);
+      }
+      scheduleBlink();
+    }
+
+    async function typeText(str) {
+      textEl.textContent = "";
+      for (let i = 0; i < str.length; i++) {
+        textEl.textContent += str[i];
+        await new Promise(r => setTimeout(r, TYPE_MS));
+      }
+    }
+
+    async function eraseText() {
+      const s = textEl.textContent;
+      for (let i = s.length; i > 0; i--) {
+        textEl.textContent = s.slice(0, i - 1);
+        await new Promise(r => setTimeout(r, ERASE_MS));
+      }
+    }
+
+    async function motdLoop() {
+      while (true) {
+        const lang = languageOrder[currentLangIndex];
+        const sentence = getRandomFromLang(lang);
+
+        setLangTag(lang);
+        await typeText(sentence);
+
+        await new Promise(r => setTimeout(r, HOLD_MS));
+        await eraseText();
+        await new Promise(r => setTimeout(r, GAP_MS));
+
+        currentLangIndex = (currentLangIndex + 1) % languageOrder.length;
+      }
+    }
+
+    startBlinking();
+    motdLoop();
+  </script>
+</body>
+</html>
