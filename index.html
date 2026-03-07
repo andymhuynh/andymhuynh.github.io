@@ -66,24 +66,6 @@
       background:rgba(255,255,255,.02);
       border-radius: 18px;
     }
-
-    /* interactive terminal */
-    .term-out{
-      max-height: 170px;
-      overflow: auto;
-      scrollbar-width: thin;
-    }
-    .term-out::-webkit-scrollbar{ height: 8px; width: 8px; }
-    .term-out::-webkit-scrollbar-thumb{ background: rgba(169,177,214,.25); border-radius: 999px; }
-    .term-in{
-      caret-color: #c0caf5;
-    }
-    .term-hint{
-      opacity: .65;
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
   </style>
 </head>
 
@@ -133,28 +115,6 @@
         <div><span class="fetch-label">Kernel:</span> <span class="fetch-data">SJSU · Grad 2028</span></div>
         <div><span class="fetch-label">Uptime:</span> <span id="uptime" class="fetch-data">Calculating...</span></div>
         <div><span class="fetch-label">Shell:</span> <span class="fetch-data">zsh</span></div>
-      </div>
-
-      <!-- NEW: INTERACTIVE TERMINAL (Highly Recommended) -->
-      <div class="hr my-4"></div>
-      <div class="flex items-center justify-between">
-        <div class="term-hint muted">interactive</div>
-        <div class="text-[11px] muted">try: <span class="fetch-data">help</span>, <span class="fetch-data">projects</span>, <span class="fetch-data">contact</span></div>
-      </div>
-
-      <div id="miniTerminal" class="mt-3 text-sm">
-        <div id="miniTerminalOut" class="term-out space-y-1 pr-1"></div>
-
-        <div class="mt-2">
-          <span class="muted">andy@arch-sjsu</span><span class="muted">:</span><span class="fetch-kernel">~</span><span class="muted">$</span>
-          <input
-            id="miniTerminalIn"
-            class="term-in bg-transparent outline-none w-[70%] text-white"
-            autocomplete="off"
-            spellcheck="false"
-            aria-label="terminal input"
-          />
-        </div>
       </div>
 
       <div class="hr my-4"></div>
@@ -215,7 +175,7 @@
       <div class="hr my-5"></div>
 
       <!-- PROJECTS -->
-      <div class="mb-5" id="section-projects">
+      <div class="mb-5">
         <div class="flex items-baseline justify-between gap-3 mb-2">
           <div class="text-xs uppercase tracking-widest muted">projects</div>
           <div class="text-xs muted">algorithmic + quantified</div>
@@ -265,7 +225,7 @@
       <div class="hr my-5"></div>
 
       <!-- EDUCATION -->
-      <div class="mb-5" id="section-education">
+      <div class="mb-5">
         <div class="text-xs uppercase tracking-widest muted mb-2">education</div>
 
         <div class="grid grid-cols-1 gap-3 text-sm">
@@ -294,7 +254,7 @@
       <div class="hr my-5"></div>
 
       <!-- COURSEWORK -->
-      <div id="section-coursework">
+      <div>
         <div class="text-xs uppercase tracking-widest muted mb-2">coursework</div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
           <div class="card p-3">
@@ -483,104 +443,6 @@
 
     startBlinking();
     motdLoop();
-
-    // ----------------------------
-    // NEW: MINI INTERACTIVE TERMINAL
-    // ----------------------------
-    const termIn = document.getElementById("miniTerminalIn");
-    const termOut = document.getElementById("miniTerminalOut");
-
-    function outLine(html) {
-      const div = document.createElement("div");
-      div.innerHTML = html;
-      termOut.appendChild(div);
-      termOut.scrollTop = termOut.scrollHeight;
-    }
-
-    function promptLine(cmd) {
-      outLine(
-        `<span class="muted">andy@arch-sjsu</span><span class="muted">:</span><span class="fetch-kernel">~</span><span class="muted">$</span> <span class="fetch-data">${escapeHtml(cmd)}</span>`
-      );
-    }
-
-    function escapeHtml(s) {
-      return s.replace(/[&<>"']/g, (c) => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-      }[c]));
-    }
-
-    function scrollToId(id) {
-      const el = document.getElementById(id);
-      if (!el) return false;
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-      return true;
-    }
-
-    const termCommands = {
-      help: () => {
-        outLine(`<span class="fetch-label">available</span>: <span class="fetch-data">help</span>, <span class="fetch-data">about</span>, <span class="fetch-data">projects</span>, <span class="fetch-data">education</span>, <span class="fetch-data">coursework</span>, <span class="fetch-data">skills</span>, <span class="fetch-data">contact</span>, <span class="fetch-data">links</span>, <span class="fetch-data">clear</span>`);
-        outLine(`<span class="muted">tip</span>: type <span class="fetch-data">projects</span> to jump right-side.`);
-      },
-      about: () => {
-        outLine(`Applied Math @ <span class="fetch-data">SJSU</span> (Discrete). Building systems + algorithms with a performance mindset.`);
-      },
-      projects: () => {
-        outLine(`<span class="muted">jumping →</span> projects`);
-        scrollToId("section-projects");
-      },
-      education: () => {
-        outLine(`<span class="muted">jumping →</span> education`);
-        scrollToId("section-education");
-      },
-      coursework: () => {
-        outLine(`<span class="muted">jumping →</span> coursework`);
-        scrollToId("section-coursework");
-      },
-      skills: () => {
-        outLine(`<span class="fetch-label">stack</span>: <span class="fetch-data">C++</span>, <span class="fetch-data">Python</span>, <span class="fetch-data">Java</span>, <span class="fetch-data">Assembly</span>, <span class="fetch-data">Linux</span>, <span class="fetch-data">Git</span>`);
-        outLine(`<span class="fetch-label">topics</span>: <span class="fetch-data">Algorithms</span>, <span class="fetch-data">Data Structures</span>, <span class="fetch-data">Systems</span>, <span class="fetch-data">Performance</span>`);
-      },
-      contact: () => {
-        outLine(`<span class="fetch-label">email</span>: <span class="fetch-data">ahuyn5@gmail.com</span>`);
-        outLine(`<span class="fetch-label">phone</span>: <span class="fetch-data">(669) 251-7811</span>`);
-      },
-      links: () => {
-        outLine(`<span class="fetch-label">github</span>: <a class="link" href="https://github.com/andymhuynh" target="_blank" rel="noreferrer">github.com/andymhuynh</a>`);
-        outLine(`<span class="fetch-label">linkedin</span>: <a class="link" href="https://www.linkedin.com/in/andymhuynh/" target="_blank" rel="noreferrer">linkedin.com/in/andymhuynh</a>`);
-      },
-      clear: () => {
-        termOut.innerHTML = "";
-      }
-    };
-
-    // greet + focus
-    outLine(`<span class="muted">type</span> <span class="fetch-data">help</span> <span class="muted">to explore.</span>`);
-    termIn.focus();
-
-    termIn.addEventListener("keydown", (e) => {
-      if (e.key !== "Enter") return;
-      const raw = termIn.value.trim();
-      if (!raw) return;
-
-      promptLine(raw);
-      const cmd = raw.toLowerCase();
-
-      if (termCommands[cmd]) {
-        termCommands[cmd]();
-      } else {
-        outLine(`<span class="muted">command not found</span>: <span class="fetch-data">${escapeHtml(raw)}</span>`);
-        outLine(`<span class="muted">try</span>: <span class="fetch-data">help</span>`);
-      }
-
-      termIn.value = "";
-    });
-
-    // click terminal area to refocus input
-    document.getElementById("miniTerminal").addEventListener("mousedown", () => termIn.focus());
   </script>
 </body>
 </html>
