@@ -10,22 +10,77 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Noto+Sans+Mono:wght@400;600&family=Noto+Sans+Mono+CJK+JP:wght@400&display=swap" rel="stylesheet">
 
   <style>
-    /* Tokyo Night-ish */
+    /* ---------------------------
+      THEME SYSTEM (Tokyo Night default + Light Terminal alt)
+    ---------------------------- */
+    :root{
+      --bg: #1a1b26;
+      --fg: #a9b1d6;
+      --fg2: rgba(169,177,214,.75);
+      --panel-grad-top: rgba(255,255,255,.04);
+      --panel-grad-bot: rgba(255,255,255,.02);
+      --border: rgba(148,163,184,.18);
+      --shadow: rgba(0,0,0,.25);
+      --hr: rgba(148,163,184,.28);
+
+      --blue:#7aa2f7;
+      --purple:#bb9af7;
+      --cyan:#7dcfff;
+      --green:#9ece6a;
+      --white:#c0caf5;
+
+      --ansi0:#15161e;
+      --ansi1:#f7768e;
+      --ansi2:#9ece6a;
+      --ansi3:#e0af68;
+      --ansi4:#7aa2f7;
+      --ansi5:#bb9af7;
+      --ansi6:#7dcfff;
+      --ansi7:#a9b1d6;
+    }
+
+    [data-theme="light"]{
+      --bg: #f7f7fb;
+      --fg: #1f2937;
+      --fg2: rgba(31,41,55,.72);
+      --panel-grad-top: rgba(17,24,39,.03);
+      --panel-grad-bot: rgba(17,24,39,.01);
+      --border: rgba(17,24,39,.12);
+      --shadow: rgba(0,0,0,.08);
+      --hr: rgba(17,24,39,.18);
+
+      --blue:#2563eb;
+      --purple:#7c3aed;
+      --cyan:#0891b2;
+      --green:#16a34a;
+      --white:#111827;
+
+      --ansi0:#f1f5f9;
+      --ansi1:#ef4444;
+      --ansi2:#22c55e;
+      --ansi3:#f59e0b;
+      --ansi4:#2563eb;
+      --ansi5:#7c3aed;
+      --ansi6:#0891b2;
+      --ansi7:#334155;
+    }
+
     body{
       font-family:'Fira Code','Noto Sans Mono','Noto Sans Mono CJK JP',monospace;
-      background:#1a1b26;
-      color:#a9b1d6;
+      background:var(--bg);
+      color:var(--fg);
     }
-    .fetch-os{ color:#7aa2f7; }
-    .fetch-kernel{ color:#bb9af7; }
-    .fetch-shell{ color:#7dcfff; }
-    .fetch-label{ color:#9ece6a; font-weight:700; }
-    .fetch-data{ color:#c0caf5; }
 
-    .ansi-0{ background:#15161e; } .ansi-1{ background:#f7768e; }
-    .ansi-2{ background:#9ece6a; } .ansi-3{ background:#e0af68; }
-    .ansi-4{ background:#7aa2f7; } .ansi-5{ background:#bb9af7; }
-    .ansi-6{ background:#7dcfff; } .ansi-7{ background:#a9b1d6; }
+    .fetch-os{ color:var(--blue); }
+    .fetch-kernel{ color:var(--purple); }
+    .fetch-shell{ color:var(--cyan); }
+    .fetch-label{ color:var(--green); font-weight:700; }
+    .fetch-data{ color:var(--white); }
+
+    .ansi-0{ background:var(--ansi0); } .ansi-1{ background:var(--ansi1); }
+    .ansi-2{ background:var(--ansi2); } .ansi-3{ background:var(--ansi3); }
+    .ansi-4{ background:var(--ansi4); } .ansi-5{ background:var(--ansi5); }
+    .ansi-6{ background:var(--ansi6); } .ansi-7{ background:var(--ansi7); }
 
     /* typing caret */
     .caret{ display:inline-block; width:.6ch; transform:translateY(1px); animation:caretBlink 1s steps(1) infinite; }
@@ -33,43 +88,100 @@
 
     /* terminal chrome */
     .glass{
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border: 1px solid rgba(148,163,184,.18);
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      background: linear-gradient(180deg, var(--panel-grad-top), var(--panel-grad-bot));
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px var(--shadow);
       border-radius: 18px;
+      backdrop-filter: blur(10px);
     }
     .pill{
-      border: 1px solid rgba(148,163,184,.18);
+      border: 1px solid var(--border);
       background: rgba(255,255,255,.03);
       border-radius: 999px;
       padding: .22rem .55rem;
     }
+    [data-theme="light"] .pill{ background: rgba(17,24,39,.03); }
+
     .tag{
-      border:1px solid rgba(148,163,184,.18);
+      border:1px solid var(--border);
       background: rgba(255,255,255,.03);
       border-radius: 999px;
       padding:.18rem .55rem;
     }
-    .muted{ color: rgba(169,177,214,.75); }
-    .hr{ border-top: 1px dashed rgba(148,163,184,.28); }
+    [data-theme="light"] .tag{ background: rgba(17,24,39,.03); }
+
+    .muted{ color: var(--fg2); }
+    .hr{ border-top: 1px dashed var(--hr); }
     .quote{ opacity:.85; }
     .lang-tag{ opacity:.55; margin-right:.6ch; }
 
     a.link{ text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-    a.link:hover{ color:#ffffff; }
+    a.link:hover{ color: #ffffff; }
+    [data-theme="light"] a.link:hover{ color:#000000; }
 
     .ascii{ white-space: pre; line-height: 1.15; }
 
     /* small cards */
     .card{
-      border:1px solid rgba(148,163,184,.18);
+      border:1px solid var(--border);
       background:rgba(255,255,255,.02);
       border-radius: 18px;
     }
+    [data-theme="light"] .card{ background: rgba(17,24,39,.02); }
+
+    /* terminal output formatting */
+    .term-line { white-space: pre-wrap; word-break: break-word; }
+    .term-dim  { opacity: .85; }
+    .kbd {
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      padding: .08rem .35rem;
+      border-radius: .5rem;
+      font-size: 11px;
+    }
+    [data-theme="light"] .kbd{ background: rgba(17,24,39,.03); }
+
+    /* Matrix overlay */
+    #matrix-wrap{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:50;
+      opacity:0;
+      transition: opacity .25s ease;
+    }
+    #matrix-wrap.active{ opacity:1; }
+    #matrix-canvas{ width:100%; height:100%; display:block; }
+
+    /* Toast */
+    .toast{
+      position:fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index:60;
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, var(--panel-grad-top), var(--panel-grad-bot));
+      box-shadow: 0 10px 30px var(--shadow);
+      border-radius: 16px;
+      padding: 10px 12px;
+      opacity:0;
+      transform: translateY(8px);
+      transition: opacity .2s ease, transform .2s ease;
+      pointer-events:none;
+      max-width: min(420px, calc(100vw - 36px));
+    }
+    .toast.show{ opacity:1; transform: translateY(0); }
   </style>
 </head>
 
-<body class="p-6 md:p-12 antialiased">
+<body class="p-6 md:p-12 antialiased" data-theme="dark">
+
+  <!-- Matrix overlay -->
+  <div id="matrix-wrap" aria-hidden="true">
+    <canvas id="matrix-canvas"></canvas>
+  </div>
+
+  <div id="toast" class="toast text-xs"></div>
 
   <!-- TOP BAR -->
   <header class="max-w-6xl mx-auto mb-6 md:mb-8">
@@ -84,6 +196,17 @@
         <span class="pill"><span class="fetch-label">status</span><span class="muted">: open to internships</span></span>
         <span class="pill"><span class="fetch-label">focus</span><span class="muted">: SWE · Systems · Algorithms</span></span>
         <span class="pill"><span class="fetch-label">loc</span><span class="muted">: San José</span></span>
+
+        <!-- NEW: controls -->
+        <button id="btnTheme" class="pill text-xs">
+          <span class="fetch-label">theme</span><span class="muted">: toggle</span>
+        </button>
+        <button id="btnMatrix" class="pill text-xs">
+          <span class="fetch-label">matrix</span><span class="muted">: off</span>
+        </button>
+        <button id="btnSound" class="pill text-xs">
+          <span class="fetch-label">sound</span><span class="muted">: on</span>
+        </button>
       </div>
     </div>
   </header>
@@ -113,6 +236,10 @@
       <div class="space-y-2 text-sm">
         <div><span class="fetch-label">OS:</span> <span class="fetch-data">Applied Mathematics (Discrete)</span></div>
         <div><span class="fetch-label">Kernel:</span> <span class="fetch-data">SJSU · Grad 2028</span></div>
+
+        <!-- NEW: realtime clock -->
+        <div><span class="fetch-label">Clock:</span> <span id="clock" class="fetch-data">--:--:--</span></div>
+
         <div><span class="fetch-label">Uptime:</span> <span id="uptime" class="fetch-data">Calculating...</span></div>
         <div><span class="fetch-label">Shell:</span> <span class="fetch-data">zsh</span></div>
       </div>
@@ -133,6 +260,32 @@
 
       <div class="hr my-4"></div>
 
+      <!-- NEW: GitHub live stats -->
+      <div class="text-xs uppercase tracking-widest muted mb-2">github (live)</div>
+      <div class="card p-3 text-xs space-y-1">
+        <div class="flex items-center justify-between">
+          <div class="muted">User</div>
+          <div id="ghUser" class="fetch-data">andymhuynh</div>
+        </div>
+        <div class="flex items-center justify-between">
+          <div class="muted">Repos</div>
+          <div id="ghRepos" class="fetch-data">—</div>
+        </div>
+        <div class="flex items-center justify-between">
+          <div class="muted">Followers</div>
+          <div id="ghFollowers" class="fetch-data">—</div>
+        </div>
+        <div class="flex items-center justify-between">
+          <div class="muted">Stars</div>
+          <div id="ghStars" class="fetch-data">—</div>
+        </div>
+        <div class="hr my-2"></div>
+        <div class="muted">Latest activity</div>
+        <div id="ghLatest" class="fetch-data">Fetching…</div>
+      </div>
+
+      <div class="hr my-4"></div>
+
       <div class="text-xs uppercase tracking-widest muted mb-2">contact</div>
       <div class="flex flex-col gap-2 text-sm">
         <a class="link" href="mailto:ahuyn5@gmail.com">ahuyn5@gmail.com</a>
@@ -142,6 +295,29 @@
         </div>
         <div class="text-xs muted">
           San Jose, CA · <span class="muted">(669)</span> 251-7811
+        </div>
+      </div>
+
+      <!-- NEW: Interactive terminal -->
+      <div class="hr my-4"></div>
+
+      <div class="text-xs uppercase tracking-widest muted mb-2">terminal</div>
+      <div class="card p-3">
+        <div class="text-[11px] muted mb-2">
+          try: <span class="kbd">help</span> <span class="kbd">projects</span> <span class="kbd">make portfolio</span> <span class="kbd">matrix</span> <span class="kbd">theme</span> <span class="kbd">github</span> <span class="kbd">clear</span>
+        </div>
+
+        <div id="terminal-output" class="space-y-1 text-xs max-h-56 overflow-auto pr-1"></div>
+
+        <div class="mt-2 text-xs flex items-center gap-2">
+          <span class="muted">andy@arch-sjsu</span><span class="muted">:</span><span class="fetch-kernel">~</span><span class="muted">$</span>
+          <input
+            id="terminal-input"
+            class="bg-transparent outline-none w-full text-[12px] text-white"
+            autocomplete="off"
+            spellcheck="false"
+            aria-label="terminal input"
+          />
         </div>
       </div>
 
@@ -282,9 +458,169 @@
   </footer>
 
   <script>
-    // ----------------------------
-    // UPTIME
-    // ----------------------------
+    // ============================================================
+    // Tiny UX helpers
+    // ============================================================
+    const toastEl = document.getElementById("toast");
+    function toast(msg){
+      toastEl.textContent = msg;
+      toastEl.classList.add("show");
+      clearTimeout(toastEl._t);
+      toastEl._t = setTimeout(()=>toastEl.classList.remove("show"), 1400);
+    }
+
+    // ============================================================
+    // SUBTLE SOUND (no external files)
+    // - Uses WebAudio oscillator (tasteful click/enter blips)
+    // ============================================================
+    let SOUND_ON = true;
+    let audioCtx = null;
+
+    function ensureAudio(){
+      if (!audioCtx){
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === "suspended") audioCtx.resume();
+    }
+
+    function blip(freq=440, ms=30, gain=0.03){
+      if (!SOUND_ON) return;
+      try{
+        ensureAudio();
+        const o = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        o.type = "square";
+        o.frequency.value = freq;
+        g.gain.value = gain;
+
+        o.connect(g);
+        g.connect(audioCtx.destination);
+
+        o.start();
+        setTimeout(()=>{ o.stop(); }, ms);
+      }catch(_){}
+    }
+
+    // ============================================================
+    // THEME TOGGLE
+    // ============================================================
+    const btnTheme = document.getElementById("btnTheme");
+    function toggleTheme(){
+      const root = document.body;
+      const now = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+      root.setAttribute("data-theme", now);
+
+      // keep terminal input readable
+      const input = document.getElementById("terminal-input");
+      input.classList.toggle("text-white", now === "dark");
+      input.classList.toggle("text-black", now === "light");
+
+      blip(520, 26, 0.025);
+      toast(`theme: ${now}`);
+    }
+    btnTheme.addEventListener("click", toggleTheme);
+
+    // ============================================================
+    // MATRIX MODE (Canvas)
+    // ============================================================
+    const btnMatrix = document.getElementById("btnMatrix");
+    const matrixWrap = document.getElementById("matrix-wrap");
+    const canvas = document.getElementById("matrix-canvas");
+    const ctx = canvas.getContext("2d");
+
+    let MATRIX_ON = false;
+    let matrixCols = [];
+    let matrixW = 0, matrixH = 0;
+    let matrixTimer = null;
+
+    const glyphs = "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    function resizeMatrix(){
+      const dpr = Math.max(1, window.devicePixelRatio || 1);
+      matrixW = canvas.width = Math.floor(window.innerWidth * dpr);
+      matrixH = canvas.height = Math.floor(window.innerHeight * dpr);
+      canvas.style.width = window.innerWidth + "px";
+      canvas.style.height = window.innerHeight + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const fontSize = 16;
+      const cols = Math.floor(window.innerWidth / fontSize);
+      matrixCols = new Array(cols).fill(0).map(()=>Math.random()*window.innerHeight);
+      ctx.font = `${fontSize}px "Fira Code", monospace`;
+    }
+
+    function drawMatrix(){
+      // subtle trail
+      ctx.fillStyle = "rgba(0,0,0,0.08)";
+      ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
+
+      ctx.fillStyle = "rgba(34,197,94,0.92)";
+      const fontSize = 16;
+      for (let i=0; i<matrixCols.length; i++){
+        const x = i * fontSize;
+        const y = matrixCols[i];
+        const ch = glyphs[Math.floor(Math.random() * glyphs.length)];
+        ctx.fillText(ch, x, y);
+
+        if (y > window.innerHeight + Math.random()*2000) matrixCols[i] = 0;
+        matrixCols[i] += fontSize;
+      }
+    }
+
+    function setMatrix(on){
+      MATRIX_ON = on;
+      matrixWrap.classList.toggle("active", on);
+      btnMatrix.innerHTML = `<span class="fetch-label">matrix</span><span class="muted">: ${on ? "on" : "off"}</span>`;
+
+      blip(on ? 680 : 320, 30, 0.03);
+
+      if (on){
+        resizeMatrix();
+        ctx.fillStyle = "black";
+        ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
+        if (matrixTimer) clearInterval(matrixTimer);
+        matrixTimer = setInterval(drawMatrix, 50);
+        toast("matrix: enabled");
+      }else{
+        if (matrixTimer) clearInterval(matrixTimer);
+        matrixTimer = null;
+        ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+        toast("matrix: disabled");
+      }
+    }
+
+    btnMatrix.addEventListener("click", ()=> setMatrix(!MATRIX_ON));
+    window.addEventListener("resize", ()=>{ if (MATRIX_ON) resizeMatrix(); });
+
+    // ============================================================
+    // SOUND TOGGLE BUTTON
+    // ============================================================
+    const btnSound = document.getElementById("btnSound");
+    function toggleSound(){
+      SOUND_ON = !SOUND_ON;
+      btnSound.innerHTML = `<span class="fetch-label">sound</span><span class="muted">: ${SOUND_ON ? "on" : "off"}</span>`;
+      if (SOUND_ON) blip(880, 24, 0.03);
+      toast(`sound: ${SOUND_ON ? "on" : "off"}`);
+    }
+    btnSound.addEventListener("click", toggleSound);
+
+    // ============================================================
+    // CLOCK (Real-time)
+    // ============================================================
+    function pad2(n){ return String(n).padStart(2,"0"); }
+    function updateClock(){
+      const now = new Date();
+      const hh = pad2(now.getHours());
+      const mm = pad2(now.getMinutes());
+      const ss = pad2(now.getSeconds());
+      document.getElementById("clock").innerText = `${hh}:${mm}:${ss}`;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    // ============================================================
+    // UPTIME (your original; kept)
+    // ============================================================
     function updateUptime() {
       // Semester Start: Jan 26, 2026
       const startDate = new Date('2026-01-26T08:00:00');
@@ -306,11 +642,9 @@
     updateUptime();
     setInterval(updateUptime, 60000);
 
-    // ----------------------------
-    // BLINKING KAOMOJI + TYPING MULTILINGUAL MOTD
-    // Language-cycled: EN → VI → JP → ZH-TW → KO
-    // Random inside each language
-    // ----------------------------
+    // ============================================================
+    // BLINKING KAOMOJI + TYPING MULTILINGUAL MOTD (your original; kept)
+    // ============================================================
     const kaomojiEl = document.getElementById('kaomoji');
     const textEl = document.getElementById('jpText');
     const langTagEl = document.getElementById('langTag');
@@ -372,11 +706,9 @@
     const ERASE_MS = 18;
     const GAP_MS = 350;
 
-    // --- Language-cycled randomizer ---
     const languageOrder = ["EN", "VI", "JP", "ZH-TW", "KO"];
     let currentLangIndex = 0;
 
-    // Group sentences by language
     const grouped = {};
     for (const entry of motd) {
       if (!grouped[entry.lang]) grouped[entry.lang] = [];
@@ -392,7 +724,6 @@
       langTagEl.textContent = tag;
     }
 
-    // blink: (｀・ω・´) -> (｀-ω-´)
     function startBlinking() {
       function blinkOnce() {
         kaomojiEl.textContent = "(｀-ω-´)";
@@ -443,6 +774,180 @@
 
     startBlinking();
     motdLoop();
+
+    // ============================================================
+    // GitHub Live Stats (user + stars + latest activity)
+    // ============================================================
+    const GH_USER = "andymhuynh";
+    async function fetchGitHubStats(){
+      const userEl = document.getElementById("ghUser");
+      const reposEl = document.getElementById("ghRepos");
+      const folEl = document.getElementById("ghFollowers");
+      const starsEl = document.getElementById("ghStars");
+      const latestEl = document.getElementById("ghLatest");
+
+      userEl.textContent = GH_USER;
+
+      try{
+        const u = await fetch(`https://api.github.com/users/${GH_USER}`);
+        const ud = await u.json();
+
+        reposEl.textContent = ud.public_repos ?? "—";
+        folEl.textContent = ud.followers ?? "—";
+
+        // total stars = sum of stargazers across public repos (1 call + paginated repos)
+        let stars = 0;
+        let page = 1;
+        while (page <= 3) { // keep it light (up to 300 repos if needed)
+          const r = await fetch(`https://api.github.com/users/${GH_USER}/repos?per_page=100&page=${page}&sort=updated`);
+          const rd = await r.json();
+          if (!Array.isArray(rd) || rd.length === 0) break;
+          for (const repo of rd) stars += (repo.stargazers_count || 0);
+          if (rd.length < 100) break;
+          page++;
+        }
+        starsEl.textContent = stars;
+
+        // latest activity (public events)
+        const e = await fetch(`https://api.github.com/users/${GH_USER}/events/public?per_page=10`);
+        const ed = await e.json();
+        if (Array.isArray(ed) && ed.length){
+          const push = ed.find(x => x.type === "PushEvent");
+          if (push){
+            const repo = push.repo?.name || "repo";
+            const n = push.payload?.commits?.length || 1;
+            const when = new Date(push.created_at);
+            latestEl.textContent = `PushEvent → ${repo} (${n} commit${n===1?"":"s"}) · ${when.toLocaleString()}`;
+          } else {
+            const top = ed[0];
+            latestEl.textContent = `${top.type} → ${top.repo?.name || "repo"} · ${new Date(top.created_at).toLocaleString()}`;
+          }
+        } else {
+          latestEl.textContent = "No recent public events.";
+        }
+      }catch(err){
+        latestEl.textContent = "GitHub fetch blocked (rate limit / CORS / offline).";
+      }
+    }
+    fetchGitHubStats();
+
+    // ============================================================
+    // Interactive Terminal
+    // - Commands: help, about, projects, skills, contact, resume, clear
+    // - Special: make portfolio, matrix, theme, github, sound
+    // ============================================================
+    const termInput = document.getElementById("terminal-input");
+    const termOut = document.getElementById("terminal-output");
+
+    function writeLine(text, cls="term-line"){
+      const div = document.createElement("div");
+      div.className = cls + " term-line";
+      div.textContent = text;
+      termOut.appendChild(div);
+      termOut.scrollTop = termOut.scrollHeight;
+    }
+
+    function writePrompt(cmd){
+      writeLine(`andy@arch-sjsu:~$ ${cmd}`, "term-line term-dim");
+    }
+
+    function setTerminalThemeInputColor(){
+      const theme = document.body.getAttribute("data-theme");
+      termInput.classList.toggle("text-white", theme === "dark");
+      termInput.classList.toggle("text-black", theme === "light");
+    }
+    setTerminalThemeInputColor();
+
+    const baseCommands = {
+      help: () => {
+        writeLine("Available commands:");
+        writeLine("  help, about, projects, skills, contact, resume, clear");
+        writeLine("  make portfolio   (compile animation)");
+        writeLine("  github           (refresh live stats)");
+        writeLine("  matrix           (toggle matrix overlay)");
+        writeLine("  theme            (toggle theme)");
+        writeLine("  sound            (toggle sound)");
+      },
+      about: () => writeLine("Applied Math @ SJSU. Systems + algorithms + performance. Shipping optimized code."),
+      skills: () => writeLine("C++, Python, Java, Assembly · Linux · Git · Data Structures · Algorithms"),
+      projects: () => {
+        writeLine("- Sudoku Solver (Algorithm X) · <15ms");
+        writeLine("- Huffman Compression (C++) · ~30% smaller");
+        writeLine("- BST Optimization (C++) · +45% retrieval on 10k+ records");
+      },
+      contact: () => writeLine("ahuyn5@gmail.com · github.com/andymhuynh · linkedin.com/in/andymhuynh"),
+      resume: () => writeLine("Add your resume link here: e.g. /resume.pdf or Google Drive public link."),
+      clear: () => { termOut.innerHTML = ""; },
+      theme: () => toggleTheme(),
+      matrix: () => setMatrix(!MATRIX_ON),
+      sound: () => toggleSound(),
+      github: async () => {
+        writeLine("Refreshing GitHub stats…");
+        await fetchGitHubStats();
+        writeLine("Done.");
+      },
+    };
+
+    async function compileAnimation(){
+      // Simulated "make portfolio"
+      const steps = [
+        { msg: "Compiling projects…", ms: 420 },
+        { msg: "Linking achievements…", ms: 420 },
+        { msg: "Optimizing algorithms…", ms: 420 },
+        { msg: "Running tests…", ms: 420 },
+        { msg: "Build successful. ✅", ms: 300 },
+      ];
+
+      for (const s of steps){
+        writeLine(s.msg);
+        blip(660, 18, 0.02);
+        await new Promise(r => setTimeout(r, s.ms));
+      }
+    }
+
+    // nice first boot message
+    writeLine("Welcome. Type 'help' for commands.");
+    writeLine("Tip: 'make portfolio' looks sick in interviews.");
+
+    termInput.addEventListener("keydown", async (e) => {
+      if (e.key === "Enter") {
+        const cmdRaw = termInput.value.trim();
+        if (!cmdRaw) return;
+
+        // allow audio to initialize on user gesture
+        blip(880, 16, 0.02);
+
+        writePrompt(cmdRaw);
+        termInput.value = "";
+
+        // Parse
+        const cmd = cmdRaw.toLowerCase();
+
+        if (cmd === "make portfolio" || cmd === "make" || cmd === "make all"){
+          await compileAnimation();
+          return;
+        }
+
+        const fn = baseCommands[cmd];
+        if (fn){
+          const res = fn();
+          if (res instanceof Promise) await res;
+        } else {
+          writeLine(`command not found: ${cmdRaw}`);
+        }
+      } else if (e.key.length === 1) {
+        // tiny typing tick (very subtle)
+        blip(220 + Math.random()*50, 6, 0.008);
+      }
+    });
+
+    // allow clicking anywhere in terminal card to focus input
+    termOut.parentElement.addEventListener("mousedown", () => {
+      termInput.focus();
+    });
+
+    // Keep matrix black trail consistent on theme switch (optional)
+    // (Matrix is its own vibe; leave it green/black always.)
   </script>
 </body>
 </html>
