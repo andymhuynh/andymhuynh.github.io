@@ -449,9 +449,26 @@
     </section>
   </main>
 
-  <footer class="max-w-6xl mx-auto mt-6">
+  <!-- UPDATED FOOTER (original terminal line + copyright/DMCA notice) -->
+  <footer class="max-w-6xl mx-auto mt-6 space-y-2">
     <div class="text-[10px] uppercase tracking-widest opacity-30 select-none text-right">
       root@arch-sjsu:~$ ./contact_andy
+    </div>
+
+    <div class="glass px-4 py-3 text-xs leading-relaxed">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+        <div class="muted">
+          © <span id="copyrightYear"></span> Andy Huynh. All rights reserved.
+        </div>
+        <div class="muted">
+          <a class="link" href="https://andymhuynh.github.io/" target="_blank" rel="noreferrer">andymhuynh.github.io</a>
+        </div>
+      </div>
+
+      <div class="muted mt-2">
+        This website’s content (including text, design, layout, graphics, and code) is protected by applicable copyright laws and the
+        Digital Millennium Copyright Act (DMCA). Unauthorized copying, reproduction, redistribution, or modification is prohibited.
+      </div>
     </div>
   </footer>
 
@@ -1393,6 +1410,12 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
     renderSoundButton();
     btnMatrix.innerHTML = `<span class="fetch-label">matrix</span><span class="muted">: ${SETTINGS.matrix ? "on" : "off"}</span>`;
     if (SETTINGS.matrix) setMatrix(true);
+
+    // ============================================================
+    // Footer year (auto)
+    // ============================================================
+    const y = document.getElementById("copyrightYear");
+    if (y) y.textContent = new Date().getFullYear();
 
     // ============================================================
     // Start GitHub stats
