@@ -202,6 +202,9 @@
         <button id="btnSound" class="pill text-xs">
           <span class="fetch-label">sound</span><span class="muted">: on</span>
         </button>
+        <button id="btnMusic" class="pill text-xs">
+          <span class="fetch-label">music</span><span class="muted">: off</span>
+        </button>
       </div>
     </div>
   </header>
@@ -301,6 +304,8 @@
           <span class="kbd">make portfolio</span>
           <span class="kbd">matrix</span>
           <span class="kbd">theme</span>
+          <span class="kbd">sound</span>
+          <span class="kbd">music</span>
           <span class="kbd">github</span>
           <span class="kbd">ls</span>
           <span class="kbd">cd projects</span>
@@ -339,7 +344,7 @@
       </div>
     </section>
 
-    <!-- RIGHT: CONTENT (unchanged from your page) -->
+    <!-- RIGHT: CONTENT -->
     <section class="glass p-5 lg:col-span-2">
       <div class="mb-5">
         <div class="text-xs uppercase tracking-widest muted mb-2">summary</div>
@@ -449,7 +454,6 @@
     </section>
   </main>
 
-  <!-- UPDATED FOOTER (original terminal line + copyright/DMCA notice) -->
   <footer class="max-w-6xl mx-auto mt-6 space-y-2">
     <div class="text-[10px] uppercase tracking-widest opacity-30 select-none text-right">
       root@arch-sjsu:~$ ./contact_andy
@@ -472,23 +476,32 @@
     </div>
   </footer>
 
+  <!-- Background music (repo root) -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="Morning.mp3" type="audio/mpeg">
+  </audio>
+
   <script>
     // ============================================================
     // SETTINGS (persisted)
     // ============================================================
-    const SETTINGS_KEY = "andy_terminal_settings_v1";
+    const SETTINGS_KEY = "andy_terminal_settings_v2";
+    function clamp(n, a, b){ return Math.max(a, Math.min(b, n)); }
+
     function loadSettings(){
       try{
         const raw = localStorage.getItem(SETTINGS_KEY);
-        if (!raw) return { theme:"dark", matrix:false, sound:true };
+        if (!raw) return { theme:"dark", matrix:false, sound:true, music:false, musicVol:35 };
         const s = JSON.parse(raw);
         return {
           theme: s.theme === "light" ? "light" : "dark",
           matrix: !!s.matrix,
-          sound: s.sound !== false
+          sound: s.sound !== false,
+          music: !!s.music,
+          musicVol: (typeof s.musicVol === "number" ? clamp(s.musicVol, 0, 100) : 35),
         };
       }catch(_){
-        return { theme:"dark", matrix:false, sound:true };
+        return { theme:"dark", matrix:false, sound:true, music:false, musicVol:35 };
       }
     }
     function saveSettings(next){
@@ -649,6 +662,86 @@
       toast(`sound: ${SOUND_ON ? "on" : "off"}`);
     }
     btnSound.addEventListener("click", toggleSound);
+
+    // ============================================================
+    // MUSIC (MP3) TOGGLE + Terminal support (persisted)
+    // ============================================================
+    const btnMusic = document.getElementById("btnMusic");
+    const bgMusic = document.getElementById("bg-music");
+
+    let MUSIC_ON = SETTINGS.music;
+    let MUSIC_VOL = SETTINGS.musicVol;
+    let MUSIC_UNLOCKED = false;
+
+    function applyMusicVolume(){
+      if (!bgMusic) return;
+      bgMusic.volume = clamp(MUSIC_VOL / 100, 0, 1);
+    }
+    function renderMusicButton(){
+      btnMusic.innerHTML = `<span class="fetch-label">music</span><span class="muted">: ${MUSIC_ON ? "on" : "off"}</span>`;
+    }
+
+    async function startMusic(){
+      if (!bgMusic) return;
+      applyMusicVolume();
+      try{
+        await bgMusic.play();
+        toast(`music: on (${MUSIC_VOL}%)`);
+      }catch(_){
+        toast("music blocked (click/keypress once)");
+        throw _;
+      }
+    }
+    function stopMusic(){
+      if (!bgMusic) return;
+      bgMusic.pause();
+      toast("music: off");
+    }
+
+    async function setMusic(on){
+      MUSIC_ON = !!on;
+      SETTINGS.music = MUSIC_ON;
+      SETTINGS.musicVol = MUSIC_VOL;
+      saveSettings(SETTINGS);
+      renderMusicButton();
+
+      if (MUSIC_ON){
+        if (MUSIC_UNLOCKED) { try{ await startMusic(); }catch(_){} }
+        else toast("music: armed (interact once)");
+      } else {
+        stopMusic();
+      }
+    }
+
+    function setMusicVolume(v){
+      MUSIC_VOL = clamp(Math.floor(Number(v)), 0, 100);
+      SETTINGS.musicVol = MUSIC_VOL;
+      saveSettings(SETTINGS);
+      applyMusicVolume();
+      toast(`music volume: ${MUSIC_VOL}%`);
+    }
+
+    btnMusic.addEventListener("click", async () => {
+      MUSIC_UNLOCKED = true;
+      try{ ensureAudio(); }catch(_){}
+      await setMusic(!MUSIC_ON);
+    });
+
+    function unlockOnce(){
+      if (MUSIC_UNLOCKED) return;
+      MUSIC_UNLOCKED = true;
+      try{ ensureAudio(); }catch(_){}
+      if (MUSIC_ON) startMusic().catch(()=>{});
+      window.removeEventListener("keydown", unlockOnce);
+      window.removeEventListener("mousedown", unlockOnce);
+      window.removeEventListener("touchstart", unlockOnce);
+    }
+    window.addEventListener("keydown", unlockOnce);
+    window.addEventListener("mousedown", unlockOnce);
+    window.addEventListener("touchstart", unlockOnce);
+
+    applyMusicVolume();
+    renderMusicButton();
 
     // ============================================================
     // CLOCK (Real-time)
@@ -1076,7 +1169,6 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
 
     // ============================================================
     // INSANE FEATURE: systemd-style BOOT + login + live "loading"
-    // - Runs once on page load, and also via command: boot
     // ============================================================
     let BOOT_LOCK = false;
 
@@ -1090,7 +1182,6 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
       termInput.disabled = true;
       termInput.placeholder = "booting…";
 
-      // clear but keep it dramatic
       writeLine("");
       writeLine("Arch Linux 6.x (arch-sjsu) tty1");
       writeLine(`Last login: ${new Date().toLocaleString()} on tty1`);
@@ -1109,7 +1200,6 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
         { name: "Reaching target Graphical Interface", ms: randInt(160, 280) },
       ];
 
-      // fancy “spinner” effect on each line
       for (const s of steps){
         const line = document.createElement("div");
         line.className = "term-line term-dim";
@@ -1130,7 +1220,6 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
           blip(240 + Math.random()*40, 6, 0.006);
         }
 
-        // finish line
         const tag = Math.random() < 0.06 ? "warn" : "ok";
         const msg = tag === "warn" ? "DEGRADED" : "OK";
         line.innerHTML = `<span class="${tag}">[ ${msg} ]</span> <span class="info">${s.name}</span>`;
@@ -1148,7 +1237,6 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
       termInput.focus();
       BOOT_LOCK = false;
 
-      // kick github refresh after boot
       fetchGitHubStats();
     }
 
@@ -1167,6 +1255,7 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
         writeLine("  matrix          (toggle matrix overlay)");
         writeLine("  theme           (toggle theme)");
         writeLine("  sound           (toggle sound)");
+        writeLine("  music [on|off|play|stop|vol <0-100>]");
         writeLine("Tips:");
         writeLine("  - Use ↑/↓ for history, Tab for autocomplete.");
       },
@@ -1186,19 +1275,43 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
       matrix: () => setMatrix(!MATRIX_ON),
       sound: () => toggleSound(),
 
+      music: async (args) => {
+        const sub = (args[0] || "").toLowerCase();
+        if (!sub){
+          writeLine(`music: ${MUSIC_ON ? "on" : "off"} · volume ${MUSIC_VOL}%`);
+          writeLine("usage: music on|off|play|stop|vol <0-100>");
+          return;
+        }
+        if (sub === "on" || sub === "play"){
+          MUSIC_UNLOCKED = true;
+          try{ ensureAudio(); }catch(_){}
+          await setMusic(true);
+          return;
+        }
+        if (sub === "off" || sub === "stop"){
+          await setMusic(false);
+          return;
+        }
+        if (sub === "vol" || sub === "volume"){
+          const n = Number(args[1]);
+          if (!Number.isFinite(n)) return writeLine("music vol: provide a number 0-100");
+          setMusicVolume(n);
+          return;
+        }
+        writeLine("usage: music on|off|play|stop|vol <0-100>");
+      },
+
       github: async () => {
         writeLine("Refreshing GitHub stats…");
         await fetchGitHubStats();
         writeLine("Done.");
       },
 
-      // insane
       boot: async () => {
         termOut.innerHTML = "";
         await bootSequence({fast:false});
       },
 
-      // FS
       pwd: () => writeLine(CWD),
       ls: (args) => {
         const p = normPath(args[0] || ".");
@@ -1411,6 +1524,9 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
     btnMatrix.innerHTML = `<span class="fetch-label">matrix</span><span class="muted">: ${SETTINGS.matrix ? "on" : "off"}</span>`;
     if (SETTINGS.matrix) setMatrix(true);
 
+    // Music: if it was saved ON, we "arm" it; it starts after first interaction
+    if (SETTINGS.music) toast(`music: armed (${SETTINGS.musicVol}%)`);
+
     // ============================================================
     // Footer year (auto)
     // ============================================================
@@ -1423,7 +1539,7 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
     fetchGitHubStats();
 
     // ============================================================
-    // AUTO-BOOT ON PAGE LOAD (insane)
+    // AUTO-BOOT ON PAGE LOAD
     // ============================================================
     termOut.innerHTML = "";
     bootSequence({fast:true});
