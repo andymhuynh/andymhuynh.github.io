@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Andy Huynh | Software Engineer</title>
+  <title>Andy's Portfolio</title>
 
   <!-- FAVICON -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -94,11 +94,16 @@
       border-radius: 18px;
       backdrop-filter: blur(10px);
     }
+
+    /* ✅ GLOBAL FIX: pills never wrap + align nicely */
     .pill{
       border: 1px solid var(--border);
       background: rgba(255,255,255,.03);
       border-radius: 999px;
       padding: .22rem .55rem;
+      white-space: nowrap;     /* prevent wrapping */
+      display: inline-flex;    /* better alignment */
+      align-items: center;     /* vertically center text */
     }
     [data-theme="light"] .pill{ background: rgba(17,24,39,.03); }
 
@@ -184,7 +189,7 @@
 
   <div id="toast" class="toast text-xs"></div>
 
-  <!-- TOP BAR (single source for role/focus/education) -->
+  <!-- TOP BAR -->
   <header class="max-w-6xl mx-auto mb-6 md:mb-8">
     <div class="glass px-4 py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
       <div class="flex flex-wrap items-center gap-2">
@@ -234,7 +239,6 @@
 <span id="kaomoji">(｀・ω・´)</span><span class="quote">「</span><span id="langTag" class="lang-tag">EN</span><span id="jpText"></span><span class="caret">▌</span><span class="quote">」</span>
       </div>
 
-      <!-- (DE-DUPED) keep only unique system-ish info here -->
       <div class="space-y-2 text-sm">
         <div><span class="fetch-label">Clock:</span> <span id="clock" class="fetch-data">--:--:--</span></div>
         <div><span class="fetch-label">Uptime:</span> <span id="uptime" class="fetch-data">Calculating...</span></div>
@@ -283,7 +287,7 @@
 
       <div class="hr my-4"></div>
 
-      <!-- Contact: keep as the single visible source -->
+      <!-- Contact -->
       <div class="text-xs uppercase tracking-widest muted mb-2">contact</div>
       <div class="flex flex-col gap-2 text-sm">
         <a class="link" href="mailto:ahuyn5@gmail.com">ahuyn5@gmail.com</a>
@@ -368,7 +372,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
 
           <div class="card p-4">
-            <div class="flex items-center justify-between mb-1">
+            <div class="flex items-center justify-between mb-1 gap-2">
               <div class="fetch-shell font-semibold">Sudoku Solver</div>
               <span class="pill text-[11px] muted">Python · Algorithm X</span>
             </div>
@@ -380,7 +384,7 @@
           </div>
 
           <div class="card p-4">
-            <div class="flex items-center justify-between mb-1">
+            <div class="flex items-center justify-between mb-1 gap-2">
               <div class="fetch-shell font-semibold">Huffman Coding Algorithm</div>
               <span class="pill text-[11px] muted">C++ · Compression</span>
             </div>
@@ -392,7 +396,7 @@
           </div>
 
           <div class="card p-4 md:col-span-2">
-            <div class="flex items-center justify-between mb-1">
+            <div class="flex items-center justify-between mb-1 gap-2">
               <div class="fetch-shell font-semibold">Binary Search Tree</div>
               <span class="pill text-[11px] muted">C++ · Data Structures</span>
             </div>
@@ -478,7 +482,7 @@
     </div>
   </footer>
 
-  <!-- Background music (repo root) -->
+  <!-- Background music -->
   <audio id="bg-music" loop preload="auto">
     <source src="Morning.mp3" type="audio/mpeg">
   </audio>
@@ -899,7 +903,6 @@
     // ============================================================
     const GH_USER = "andymhuynh";
     const GH_CACHE_KEY = "andy_github_cache_v1";
-    const GH_CACHE_TTL_MS = 10 * 60 * 1000;
 
     function loadGitHubCache(){
       try{
@@ -978,7 +981,7 @@
         saveGitHubCache(payload);
       }catch(_){
         if (!loadGitHubCache()){
-          latestEl.textContent = "GitHub fetch blocked (rate limit / CORS / offline).";
+          latestEl.textContent = "GitHub fetch blocked (rate limit / offline).";
         }
       }
     }
@@ -1000,7 +1003,7 @@
       writeLine(`andy@portfolio:~$ ${cmd}`, "term-line term-dim");
     }
 
-    // ---------- Mini filesystem (de-duped; no repeated contact/projects details) ----------
+    // ---------- Mini filesystem (de-duped) ----------
     const FS = {
       type: "dir",
       children: {
@@ -1027,8 +1030,7 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
                   type:"dir",
                   children: {
                     "README.txt": { type:"file", content:
-`Projects are shown on the right panel.
-Tip: type 'projects' in terminal to jump.` },
+`Projects are shown on the right panel.` },
                   }
                 }
               }
@@ -1138,7 +1140,7 @@ Tip: type 'projects' in terminal to jump.` },
     }
 
     // ============================================================
-    // systemd-style BOOT
+    // BOOT
     // ============================================================
     let BOOT_LOCK = false;
     function randInt(a,b){ return Math.floor(a + Math.random()*(b-a+1)); }
@@ -1209,7 +1211,7 @@ Tip: type 'projects' in terminal to jump.` },
     }
 
     // ============================================================
-    // Core commands (de-duped: commands point to UI instead of repeating info)
+    // Core commands (de-duped)
     // ============================================================
     const baseCommands = {
       help: () => {
@@ -1224,8 +1226,6 @@ Tip: type 'projects' in terminal to jump.` },
         writeLine("  theme           (toggle theme)");
         writeLine("  sound           (toggle sound)");
         writeLine("  music [on|off|play|stop|vol <0-100>]");
-        writeLine("Tips:");
-        writeLine("  - Use ↑/↓ for history, Tab for autocomplete.");
       },
 
       about: () => writeLine("See the Summary panel (right). Or: cat about.txt"),
@@ -1498,20 +1498,14 @@ Tip: type 'projects' in terminal to jump.` },
     // Music: if it was saved ON, we "arm" it; it starts after first interaction
     if (SETTINGS.music) toast(`music: armed (${SETTINGS.musicVol}%)`);
 
-    // ============================================================
-    // Footer year (auto)
-    // ============================================================
+    // Footer year
     const y = document.getElementById("copyrightYear");
     if (y) y.textContent = new Date().getFullYear();
 
-    // ============================================================
     // Start GitHub stats
-    // ============================================================
     fetchGitHubStats();
 
-    // ============================================================
-    // AUTO-BOOT ON PAGE LOAD
-    // ============================================================
+    // Auto-boot on page load
     termOut.innerHTML = "";
     bootSequence({fast:true});
   </script>
