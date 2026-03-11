@@ -784,45 +784,11 @@
     setInterval(updateUptime, 60000);
 
     // ============================================================
-    // BLINKING KAOMOJI + TYPING MULTILINGUAL MOTD
+    // BLINKING KAOMOJI + TYPING MULTILINGUAL MOTD (FAIR)
     // ============================================================
     const kaomojiEl = document.getElementById('kaomoji');
     const textEl = document.getElementById('jpText');
     const langTagEl = document.getElementById('langTag');
-
-    const motd = [
-      { lang: "EN", text: "Environment ready." },
-      { lang: "EN", text: "Build one small thing." },
-      { lang: "EN", text: "Ship, then polish." },
-      { lang: "EN", text: "Breathe, then commit." },
-      { lang: "EN", text: "Less talk, more code." },
-      { lang: "EN", text: "One bug at a time." },
-      { lang: "EN", text: "Keep it simple." },
-
-      { lang: "VI", text: "Môi trường sẵn sàng." },
-      { lang: "VI", text: "Làm một thứ nhỏ thôi." },
-      { lang: "VI", text: "Cứ triển khai đã." },
-      { lang: "VI", text: "Hít thở rồi commit." },
-      { lang: "VI", text: "Sửa từng lỗi một." },
-
-      { lang: "JP", text: "環境は整った。" },
-      { lang: "JP", text: "小さく作ろう。" },
-      { lang: "JP", text: "まず動かす。" },
-      { lang: "JP", text: "深呼吸してcommit。" },
-      { lang: "JP", text: "シンプルにいこう。" },
-
-      { lang: "ZH-TW", text: "環境就緒。" },
-      { lang: "ZH-TW", text: "先做小一步。" },
-      { lang: "ZH-TW", text: "先跑起來再說。" },
-      { lang: "ZH-TW", text: "深呼吸再 commit。" },
-      { lang: "ZH-TW", text: "保持簡單。" },
-
-      { lang: "KO", text: "환경 세팅 완료." },
-      { lang: "KO", text: "작은 것부터 만들자." },
-      { lang: "KO", text: "먼저 돌아가게 하자." },
-      { lang: "KO", text: "커밋 전 심호흡." },
-      { lang: "KO", text: "단순하게 가자." }
-    ];
 
     const TYPE_MS = 45;
     const HOLD_MS = 2200;
@@ -832,16 +798,59 @@
     const languageOrder = ["EN", "VI", "JP", "ZH-TW", "KO"];
     let currentLangIndex = 0;
 
-    const grouped = {};
-    for (const entry of motd) {
-      if (!grouped[entry.lang]) grouped[entry.lang] = [];
-      grouped[entry.lang].push(entry.text);
-    }
-
-    function getRandomFromLang(lang) {
-      const arr = grouped[lang] || [];
-      return arr[Math.floor(Math.random() * arr.length)];
-    }
+    // ✅ Same keys (ideas) across all languages = consistent + fair
+    const motdSet = [
+      {
+        key: "env_ready",
+        t: {
+          EN: "Environment ready.",
+          VI: "Môi trường sẵn sàng.",
+          JP: "環境は整った。",
+          "ZH-TW": "環境就緒。",
+          KO: "환경 세팅 완료."
+        }
+      },
+      {
+        key: "build_small",
+        t: {
+          EN: "Build one small thing.",
+          VI: "Làm một thứ nhỏ thôi.",
+          JP: "小さく作ろう。",
+          "ZH-TW": "先做小一步。",
+          KO: "작은 것부터 만들자."
+        }
+      },
+      {
+        key: "ship_polish",
+        t: {
+          EN: "Ship, then polish.",
+          VI: "Cứ triển khai đã.",
+          JP: "まず動かす。",
+          "ZH-TW": "先跑起來再說。",
+          KO: "먼저 돌아가게 하자."
+        }
+      },
+      {
+        key: "breathe_commit",
+        t: {
+          EN: "Breathe, then commit.",
+          VI: "Hít thở rồi commit.",
+          JP: "深呼吸してcommit。",
+          "ZH-TW": "深呼吸再 commit。",
+          KO: "커밋 전 심호흡."
+        }
+      },
+      {
+        key: "keep_simple",
+        t: {
+          EN: "Keep it simple.",
+          VI: "Giữ mọi thứ đơn giản.",
+          JP: "シンプルにいこう。",
+          "ZH-TW": "保持簡單。",
+          KO: "단순하게 가자."
+        }
+      }
+    ];
 
     function setLangTag(tag) {
       langTagEl.textContent = tag;
@@ -879,10 +888,15 @@
       }
     }
 
+    function pickMotdForLang(lang){
+      const item = motdSet[Math.floor(Math.random() * motdSet.length)];
+      return item.t[lang] || item.t.EN;
+    }
+
     async function motdLoop() {
       while (true) {
         const lang = languageOrder[currentLangIndex];
-        const sentence = getRandomFromLang(lang);
+        const sentence = pickMotdForLang(lang);
 
         setLangTag(lang);
         await typeText(sentence);
