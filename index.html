@@ -1,7 +1,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>andy@arch-sjsu: ~</title>
+  <title>Andy Huynh | Software Engineer</title>
 
   <!-- FAVICON -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -186,9 +186,9 @@
   <header class="max-w-6xl mx-auto mb-6 md:mb-8">
     <div class="glass px-4 py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
       <div class="flex flex-wrap items-center gap-2">
-        <span class="fetch-os font-semibold">andy</span><span class="text-white">@</span><span class="fetch-os font-semibold">arch-sjsu</span>
-        <span class="pill text-xs muted">Applied Math (Discrete) @ SJSU</span>
-        <span class="pill text-xs muted">B.S. Candidate · 2028</span>
+        <span class="fetch-os font-semibold">Andy Huynh</span>
+        <span class="pill text-xs muted">Software Engineer · Systems · Algorithms</span>
+        <span class="pill text-xs muted">B.S. Applied Mathematics @ SJSU · 2028</span>
       </div>
 
       <div class="flex flex-wrap items-center gap-2 text-xs">
@@ -218,8 +218,8 @@
     <section class="glass p-5 lg:col-span-1">
       <div class="flex items-center justify-between mb-3">
         <div class="text-sm">
-          <span class="muted">root@arch-sjsu</span><span class="muted">:</span><span class="fetch-kernel">~</span><span class="muted">$</span>
-          <span class="fetch-shell"> neofetch</span>
+          <span class="muted">andy@portfolio</span><span class="muted">:</span><span class="fetch-kernel">~</span><span class="muted">$</span>
+          <span class="fetch-shell"> whoami</span>
         </div>
 
         <div class="flex gap-1">
@@ -234,8 +234,9 @@
       </div>
 
       <div class="space-y-2 text-sm">
-        <div><span class="fetch-label">OS:</span> <span class="fetch-data">Applied Mathematics (Discrete)</span></div>
-        <div><span class="fetch-label">Kernel:</span> <span class="fetch-data">SJSU · Grad 2028</span></div>
+        <div><span class="fetch-label">Role:</span> <span class="fetch-data">Software Engineer</span></div>
+        <div><span class="fetch-label">Focus:</span> <span class="fetch-data">Algorithms · Systems · Performance</span></div>
+        <div><span class="fetch-label">Education:</span> <span class="fetch-data">B.S. Applied Mathematics · SJSU (2028)</span></div>
         <div><span class="fetch-label">Clock:</span> <span id="clock" class="fetch-data">--:--:--</span></div>
         <div><span class="fetch-label">Uptime:</span> <span id="uptime" class="fetch-data">Calculating...</span></div>
         <div><span class="fetch-label">Shell:</span> <span class="fetch-data">zsh</span></div>
@@ -322,7 +323,7 @@
         <div id="terminal-output" class="space-y-1 text-xs max-h-56 overflow-auto pr-1"></div>
 
         <div class="mt-2 text-xs flex items-center gap-2">
-          <span class="muted">andy@arch-sjsu</span><span class="muted">:</span><span class="fetch-kernel">~</span><span class="muted">$</span>
+          <span class="muted">andy@portfolio</span><span class="muted">:</span><span class="fetch-kernel">~</span><span class="muted">$</span>
           <input
             id="terminal-input"
             class="bg-transparent outline-none w-full text-[12px] text-white"
@@ -352,9 +353,10 @@
       <div class="mb-5">
         <div class="text-xs uppercase tracking-widest muted mb-2">summary</div>
         <p class="text-sm leading-relaxed">
-          Applied Mathematics student focused on algorithms, systems, and performance.
-          Built optimized solvers and compression/data-structure implementations in <span class="fetch-data">C++</span> and
-          <span class="fetch-data">Python</span>, with measurable speed, memory, and reliability improvements.
+          Software engineering-focused Applied Mathematics student specializing in algorithms,
+          systems programming, and performance optimization. Built measurable solutions in
+          <span class="fetch-data">C++</span> and <span class="fetch-data">Python</span> with an emphasis on
+          reliability, clean architecture, and scalable design.
         </p>
       </div>
 
@@ -459,7 +461,7 @@
 
   <footer class="max-w-6xl mx-auto mt-6 space-y-2">
     <div class="text-[10px] uppercase tracking-widest opacity-30 select-none text-right">
-      root@arch-sjsu:~$ ./contact_andy
+      andy@portfolio:~$ ./contact
     </div>
 
     <div class="glass px-4 py-3 text-xs leading-relaxed">
@@ -1018,8 +1020,9 @@
       termOut.scrollTop = termOut.scrollHeight;
     }
     function writePrompt(cmd){
-      writeLine(`andy@arch-sjsu:~$ ${cmd}`, "term-line term-dim");
+      writeLine(`andy@portfolio:~$ ${cmd}`, "term-line term-dim");
     }
+
 
     // ---------- Mini filesystem ----------
     const FS = {
@@ -1032,10 +1035,12 @@
               type: "dir",
               children: {
                 "about.txt": { type:"file", content:
-`andy@arch-sjsu
-Applied Mathematics (Discrete) @ SJSU
-Focus: SWE · Systems · Algorithms
-Shipping optimized code with measurable results.` },
+`Andy Huynh
+Software Engineer · Systems · Algorithms
+B.S. Applied Mathematics @ SJSU (2028)
+
+I build efficient, measurable solutions in C++ and Python.
+Interested in systems, algorithms, performance, and reliability.` },
                 "contact.txt": { type:"file", content:
 `Email: ahuyn5@gmail.com
 GitHub: https://github.com/andymhuynh
@@ -1186,22 +1191,23 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
       termInput.placeholder = "booting…";
 
       writeLine("");
-      writeLine("Arch Linux 6.x (arch-sjsu) tty1");
-      writeLine(`Last login: ${new Date().toLocaleString()} on tty1`);
+      writeLine("Portfolio Terminal (andy) · tty1");
+      writeLine(`Last login: ${new Date().toLocaleString()} · portfolio session`);
       writeLine("");
 
       const steps = [
-        { name: "Mounting /home", ms: randInt(120, 260) },
-        { name: "Starting udev Kernel Device Manager", ms: randInt(120, 260) },
-        { name: "Loading kernel modules", ms: randInt(160, 320) },
-        { name: "Initializing entropy pool", ms: randInt(120, 240) },
-        { name: "Starting Network Manager", ms: randInt(160, 320) },
-        { name: "Applying sysctl settings", ms: randInt(120, 220) },
-        { name: "Starting GitHub stats daemon", ms: randInt(180, 340) },
-        { name: "Warming algorithm cache", ms: randInt(160, 320) },
+        { name: "Loading profile", ms: randInt(120, 260) },
+        { name: "Initializing UI components", ms: randInt(120, 260) },
+        { name: "Starting interactive terminal", ms: randInt(160, 320) },
+        { name: "Warming performance cache", ms: randInt(120, 240) },
+        { name: "Fetching GitHub activity", ms: randInt(160, 320) },
+        { name: "Indexing projects", ms: randInt(120, 220) },
+        { name: "Verifying links", ms: randInt(180, 340) },
+        { name: "Preparing resume endpoint", ms: randInt(160, 320) },
         { name: "Launching portfolio services", ms: randInt(200, 360) },
-        { name: "Reaching target Graphical Interface", ms: randInt(160, 280) },
+        { name: "Ready", ms: randInt(160, 280) },
       ];
+
 
       for (const s of steps){
         const line = document.createElement("div");
@@ -1262,7 +1268,7 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
         writeLine("Tips:");
         writeLine("  - Use ↑/↓ for history, Tab for autocomplete.");
       },
-      about: () => writeLine("Applied Math @ SJSU. Systems + algorithms + performance. Shipping optimized code."),
+      about: () => writeLine("Software Engineer focused on algorithms, systems, and performance. Building measurable, reliable software."),
       skills: () => writeLine("C++, Python, Java, Assembly · Linux · Git · Data Structures · Algorithms"),
       projects: () => {
         writeLine("- Sudoku Solver (Algorithm X) · <15ms");
@@ -1270,7 +1276,7 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
         writeLine("- BST Optimization (C++) · +45% retrieval on 10k+ records");
         writeLine("Try: cd projects; ls; cat sudoku.txt");
       },
-      contact: () => writeLine("ahuyn5@gmail.com · github.com/andymhuynh · linkedin.com/in/andymhuynh"),
+      contact: () => writeLine("Email: ahuyn5@gmail.com · GitHub: github.com/andymhuynh · LinkedIn: linkedin.com/in/andymhuynh"),
       resume: () => writeLine("Set a resume link: add LINKS.resume = '/resume.pdf' then run: open resume"),
       clear: () => { termOut.innerHTML = ""; },
 
