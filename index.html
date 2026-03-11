@@ -1,3 +1,5 @@
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
@@ -182,7 +184,7 @@
 
   <div id="toast" class="toast text-xs"></div>
 
-  <!-- TOP BAR -->
+  <!-- TOP BAR (single source for role/focus/education) -->
   <header class="max-w-6xl mx-auto mb-6 md:mb-8">
     <div class="glass px-4 py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
       <div class="flex flex-wrap items-center gap-2">
@@ -193,7 +195,6 @@
 
       <div class="flex flex-wrap items-center gap-2 text-xs">
         <span class="pill"><span class="fetch-label">status</span><span class="muted">: open to internships</span></span>
-        <span class="pill"><span class="fetch-label">focus</span><span class="muted">: SWE · Systems · Algorithms</span></span>
         <span class="pill"><span class="fetch-label">loc</span><span class="muted">: San José</span></span>
 
         <button id="btnTheme" class="pill text-xs">
@@ -233,10 +234,8 @@
 <span id="kaomoji">(｀・ω・´)</span><span class="quote">「</span><span id="langTag" class="lang-tag">EN</span><span id="jpText"></span><span class="caret">▌</span><span class="quote">」</span>
       </div>
 
+      <!-- (DE-DUPED) keep only unique system-ish info here -->
       <div class="space-y-2 text-sm">
-        <div><span class="fetch-label">Role:</span> <span class="fetch-data">Software Engineer</span></div>
-        <div><span class="fetch-label">Focus:</span> <span class="fetch-data">Algorithms · Systems · Performance</span></div>
-        <div><span class="fetch-label">Education:</span> <span class="fetch-data">B.S. Applied Mathematics · SJSU (2028)</span></div>
         <div><span class="fetch-label">Clock:</span> <span id="clock" class="fetch-data">--:--:--</span></div>
         <div><span class="fetch-label">Uptime:</span> <span id="uptime" class="fetch-data">Calculating...</span></div>
         <div><span class="fetch-label">Shell:</span> <span class="fetch-data">zsh</span></div>
@@ -284,6 +283,7 @@
 
       <div class="hr my-4"></div>
 
+      <!-- Contact: keep as the single visible source -->
       <div class="text-xs uppercase tracking-widest muted mb-2">contact</div>
       <div class="flex flex-col gap-2 text-sm">
         <a class="link" href="mailto:ahuyn5@gmail.com">ahuyn5@gmail.com</a>
@@ -305,7 +305,6 @@
           try:
           <span class="kbd">help</span>
           <span class="kbd">projects</span>
-          <span class="kbd">make portfolio</span>
           <span class="kbd">matrix</span>
           <span class="kbd">theme</span>
           <span class="kbd">sound</span>
@@ -353,10 +352,8 @@
       <div class="mb-5">
         <div class="text-xs uppercase tracking-widest muted mb-2">summary</div>
         <p class="text-sm leading-relaxed">
-          Software engineering-focused Applied Mathematics student specializing in algorithms,
-          systems programming, and performance optimization. Built measurable solutions in
-          <span class="fetch-data">C++</span> and <span class="fetch-data">Python</span> with an emphasis on
-          reliability, clean architecture, and scalable design.
+          I build measurable, reliable software with an emphasis on clean architecture and performance.
+          Primary tools: <span class="fetch-data">C++</span> and <span class="fetch-data">Python</span>.
         </p>
       </div>
 
@@ -792,7 +789,6 @@
     const motd = [
       { lang: "EN", text: "Environment ready." },
       { lang: "EN", text: "Build one small thing." },
-      { lang: "EN", text: "Discrete math: ON." },
       { lang: "EN", text: "Ship, then polish." },
       { lang: "EN", text: "Breathe, then commit." },
       { lang: "EN", text: "Less talk, more code." },
@@ -801,38 +797,26 @@
 
       { lang: "VI", text: "Môi trường sẵn sàng." },
       { lang: "VI", text: "Làm một thứ nhỏ thôi." },
-      { lang: "VI", text: "Chế độ toán rời rạc: bật." },
-      { lang: "VI", text: "Viết code từ tốn." },
-      { lang: "VI", text: "Hít thở rồi commit." },
-      { lang: "VI", text: "Đừng vội, cứ làm." },
-      { lang: "VI", text: "Sửa từng lỗi một." },
       { lang: "VI", text: "Cứ triển khai đã." },
+      { lang: "VI", text: "Hít thở rồi commit." },
+      { lang: "VI", text: "Sửa từng lỗi một." },
 
       { lang: "JP", text: "環境は整った。" },
       { lang: "JP", text: "小さく作ろう。" },
-      { lang: "JP", text: "離散数学モード：ON。" },
       { lang: "JP", text: "まず動かす。" },
       { lang: "JP", text: "深呼吸してcommit。" },
-      { lang: "JP", text: "一歩ずつ進む。" },
-      { lang: "JP", text: "バグは友達。" },
       { lang: "JP", text: "シンプルにいこう。" },
 
       { lang: "ZH-TW", text: "環境就緒。" },
       { lang: "ZH-TW", text: "先做小一步。" },
-      { lang: "ZH-TW", text: "離散數學模式：ON。" },
       { lang: "ZH-TW", text: "先跑起來再說。" },
       { lang: "ZH-TW", text: "深呼吸再 commit。" },
-      { lang: "ZH-TW", text: "慢慢來就好。" },
-      { lang: "ZH-TW", text: "一個 bug 一個解。" },
       { lang: "ZH-TW", text: "保持簡單。" },
 
       { lang: "KO", text: "환경 세팅 완료." },
       { lang: "KO", text: "작은 것부터 만들자." },
-      { lang: "KO", text: "이산수학 모드: ON." },
       { lang: "KO", text: "먼저 돌아가게 하자." },
       { lang: "KO", text: "커밋 전 심호흡." },
-      { lang: "KO", text: "천천히 해도 돼." },
-      { lang: "KO", text: "버그는 하나씩." },
       { lang: "KO", text: "단순하게 가자." }
     ];
 
@@ -1012,19 +996,11 @@
       termOut.appendChild(div);
       termOut.scrollTop = termOut.scrollHeight;
     }
-    function writeHTML(html, cls="term-line"){
-      const div = document.createElement("div");
-      div.className = cls + " term-line";
-      div.innerHTML = html;
-      termOut.appendChild(div);
-      termOut.scrollTop = termOut.scrollHeight;
-    }
     function writePrompt(cmd){
       writeLine(`andy@portfolio:~$ ${cmd}`, "term-line term-dim");
     }
 
-
-    // ---------- Mini filesystem ----------
+    // ---------- Mini filesystem (de-duped; no repeated contact/projects details) ----------
     const FS = {
       type: "dir",
       children: {
@@ -1036,37 +1012,23 @@
               children: {
                 "about.txt": { type:"file", content:
 `Andy Huynh
-Software Engineer · Systems · Algorithms
-B.S. Applied Mathematics @ SJSU (2028)
 
-I build efficient, measurable solutions in C++ and Python.
-Interested in systems, algorithms, performance, and reliability.` },
+I build measurable, reliable software with an emphasis on performance and clean architecture.
+Primary tools: C++ and Python.` },
                 "contact.txt": { type:"file", content:
-`Email: ahuyn5@gmail.com
-GitHub: https://github.com/andymhuynh
-LinkedIn: https://www.linkedin.com/in/andymhuynh/
-Location: San Jose, CA` },
+`Use the Contact panel (left) for clickable links.
+Terminal tips:
+- open github | open linkedin | open email
+- copy email | copy phone` },
                 "resume.txt": { type:"file", content:
 `TODO: add your public resume link.
 Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
                 projects: {
                   type:"dir",
                   children: {
-                    "sudoku.txt": { type:"file", content:
-`Sudoku Solver (Python · Algorithm X)
-- Exact cover formulation (DLX style logic)
-- <15ms solves on hard 9x9
-- Early constraint checks: -98% runtime errors` },
-                    "huffman.txt": { type:"file", content:
-`Huffman Coding (C++)
-- Encoder/decoder + tree build
-- ~30% size reduction vs raw
-- 15% lower peak RAM via smart pointers` },
-                    "bst.txt": { type:"file", content:
-`Binary Search Tree (C++)
-- Insert/search/delete + validation
-- +45% retrieval on 10k+ records
-- 100% crash reduction via strict handling` },
+                    "README.txt": { type:"file", content:
+`Projects are shown on the right panel.
+Tip: type 'projects' in terminal to jump.` },
                   }
                 }
               }
@@ -1176,10 +1138,9 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
     }
 
     // ============================================================
-    // INSANE FEATURE: systemd-style BOOT + login + live "loading"
+    // systemd-style BOOT
     // ============================================================
     let BOOT_LOCK = false;
-
     function randInt(a,b){ return Math.floor(a + Math.random()*(b-a+1)); }
     function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
 
@@ -1207,7 +1168,6 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
         { name: "Launching portfolio services", ms: randInt(200, 360) },
         { name: "Ready", ms: randInt(160, 280) },
       ];
-
 
       for (const s of steps){
         const line = document.createElement("div");
@@ -1238,7 +1198,6 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
       writeLine("");
       writeLine("Welcome. Type 'help' for commands.");
       writeLine("Tip: 'make portfolio' looks sick in interviews.");
-      writeLine("Tip: cd projects; ls; cat sudoku.txt");
       writeLine("");
 
       termInput.disabled = false;
@@ -1250,7 +1209,7 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
     }
 
     // ============================================================
-    // Core commands
+    // Core commands (de-duped: commands point to UI instead of repeating info)
     // ============================================================
     const baseCommands = {
       help: () => {
@@ -1268,15 +1227,18 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
         writeLine("Tips:");
         writeLine("  - Use ↑/↓ for history, Tab for autocomplete.");
       },
-      about: () => writeLine("Software Engineer focused on algorithms, systems, and performance. Building measurable, reliable software."),
-      skills: () => writeLine("C++, Python, Java, Assembly · Linux · Git · Data Structures · Algorithms"),
+
+      about: () => writeLine("See the Summary panel (right). Or: cat about.txt"),
+      skills: () => writeLine("See Core Stack tags (left)."),
       projects: () => {
-        writeLine("- Sudoku Solver (Algorithm X) · <15ms");
-        writeLine("- Huffman Compression (C++) · ~30% smaller");
-        writeLine("- BST Optimization (C++) · +45% retrieval on 10k+ records");
-        writeLine("Try: cd projects; ls; cat sudoku.txt");
+        writeLine("Projects are listed on the right panel.");
+        writeLine("Tip: cd projects; ls; cat README.txt");
       },
-      contact: () => writeLine("Email: ahuyn5@gmail.com · GitHub: github.com/andymhuynh · LinkedIn: linkedin.com/in/andymhuynh"),
+      contact: () => {
+        writeLine("Contact info is in the left panel.");
+        writeLine("Tip: open github | open linkedin | open email");
+        writeLine("Tip: copy email | copy phone");
+      },
       resume: () => writeLine("Set a resume link: add LINKS.resume = '/resume.pdf' then run: open resume"),
       clear: () => { termOut.innerHTML = ""; },
 
