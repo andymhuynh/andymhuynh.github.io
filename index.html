@@ -335,6 +335,11 @@
             aria-label="terminal input"
           />
         </div>
+
+        <!-- NEW: tiny hint (doesn't change layout much) -->
+        <div id="term-hint" class="mt-2 text-[11px] muted">
+          Tip: click here (or press <span class="kbd">b</span>) to boot the terminal. No auto-scroll on load.
+        </div>
       </div>
 
       <div class="flex mt-5 gap-0">
@@ -800,61 +805,14 @@
 
     // ✅ Same keys (ideas) across all languages = consistent + fair
     const motdSet = [
-      {
-        key: "env_ready",
-        t: {
-          EN: "Environment ready.",
-          VI: "Môi trường sẵn sàng.",
-          JP: "環境は整った。",
-          "ZH-TW": "環境就緒。",
-          KO: "환경 세팅 완료."
-        }
-      },
-      {
-        key: "build_small",
-        t: {
-          EN: "Build one small thing.",
-          VI: "Làm một thứ nhỏ thôi.",
-          JP: "小さく作ろう。",
-          "ZH-TW": "先做小一步。",
-          KO: "작은 것부터 만들자."
-        }
-      },
-      {
-        key: "ship_polish",
-        t: {
-          EN: "Ship, then polish.",
-          VI: "Cứ triển khai đã.",
-          JP: "まず動かす。",
-          "ZH-TW": "先跑起來再說。",
-          KO: "먼저 돌아가게 하자."
-        }
-      },
-      {
-        key: "breathe_commit",
-        t: {
-          EN: "Breathe, then commit.",
-          VI: "Hít thở rồi commit.",
-          JP: "深呼吸してcommit。",
-          "ZH-TW": "深呼吸再 commit。",
-          KO: "커밋 전 심호흡."
-        }
-      },
-      {
-        key: "keep_simple",
-        t: {
-          EN: "Keep it simple.",
-          VI: "Giữ mọi thứ đơn giản.",
-          JP: "シンプルにいこう。",
-          "ZH-TW": "保持簡單。",
-          KO: "단순하게 가자."
-        }
-      }
+      { key: "env_ready",  t: { EN:"Environment ready.", VI:"Môi trường sẵn sàng.", JP:"環境は整った。", "ZH-TW":"環境就緒。", KO:"환경 세팅 완료." } },
+      { key: "build_small", t: { EN:"Build one small thing.", VI:"Làm một thứ nhỏ thôi.", JP:"小さく作ろう。", "ZH-TW":"先做小一步。", KO:"작은 것부터 만들자." } },
+      { key: "ship_polish", t: { EN:"Ship, then polish.", VI:"Cứ triển khai đã.", JP:"まず動かす。", "ZH-TW":"先跑起來再說。", KO:"먼저 돌아가게 하자." } },
+      { key: "breathe_commit", t: { EN:"Breathe, then commit.", VI:"Hít thở rồi commit.", JP:"深呼吸してcommit。", "ZH-TW":"深呼吸再 commit。", KO:"커밋 전 심호흡." } },
+      { key: "keep_simple", t: { EN:"Keep it simple.", VI:"Giữ mọi thứ đơn giản.", JP:"シンプルにいこう。", "ZH-TW":"保持簡單。", KO:"단순하게 가자." } },
     ];
 
-    function setLangTag(tag) {
-      langTagEl.textContent = tag;
-    }
+    function setLangTag(tag) { langTagEl.textContent = tag; }
 
     function startBlinking() {
       function blinkOnce() {
@@ -1005,6 +963,7 @@
     // ============================================================
     const termInput = document.getElementById("terminal-input");
     const termOut = document.getElementById("terminal-output");
+    const termHint = document.getElementById("term-hint");
 
     function writeLine(text, cls="term-line"){
       const div = document.createElement("div");
@@ -1154,15 +1113,28 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
     }
 
     // ============================================================
-    // BOOT
+    // BOOT (UPDATED: no auto-focus + no auto-run on page load)
     // ============================================================
     let BOOT_LOCK = false;
+    let BOOTED = false; // NEW
     function randInt(a,b){ return Math.floor(a + Math.random()*(b-a+1)); }
     function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
+
+    function focusTerminalSafely(){
+      // prevents "scroll-jump to input" on load
+      try{
+        termInput.focus({ preventScroll: true });
+      }catch(_){
+        // fallback for older browsers
+        termInput.focus();
+      }
+    }
 
     async function bootSequence({fast=false} = {}){
       if (BOOT_LOCK) return;
       BOOT_LOCK = true;
+      BOOTED = true;
+      if (termHint) termHint.style.display = "none";
 
       termInput.disabled = true;
       termInput.placeholder = "booting…";
@@ -1218,7 +1190,9 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
 
       termInput.disabled = false;
       termInput.placeholder = "";
-      termInput.focus();
+      // UPDATED: no forced focus that scrolls the page
+      focusTerminalSafely();
+
       BOOT_LOCK = false;
 
       fetchGitHubStats();
@@ -1233,7 +1207,7 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
         writeLine("  help, about, projects, skills, contact, resume, clear");
         writeLine("  ls [path], cd <dir>, pwd, cat <file>, tree [path]");
         writeLine("  open <github|linkedin|email|resume>, copy <email|phone|github|linkedin>");
-        writeLine("  boot            (replay boot animation)");
+        writeLine("  boot            (start/replay boot animation)");
         writeLine("  make portfolio  (compile animation)");
         writeLine("  github          (refresh live stats)");
         writeLine("  matrix          (toggle matrix overlay)");
@@ -1292,6 +1266,7 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
         writeLine("Done.");
       },
 
+      // UPDATED: boot starts if not booted; otherwise replays
       boot: async () => {
         termOut.innerHTML = "";
         await bootSequence({fast:false});
@@ -1499,7 +1474,40 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
       if (e.key.length === 1) blip(220 + Math.random()*50, 6, 0.008);
     });
 
-    termOut.parentElement.addEventListener("mousedown", () => termInput.focus());
+    // ============================================================
+    // UPDATED: Click-to-boot + "b" hotkey (prevents auto-scroll)
+    // ============================================================
+    const termCard = termOut.parentElement; // the .card wrapper
+    let BOOT_ARMED = true;
+
+    function primeTerminal(){
+      // initial state: don't steal focus, don't run boot
+      termOut.innerHTML = "";
+      writeLine("Terminal is idle.");
+      writeLine("Click here or press 'b' to boot.");
+      termInput.disabled = true;
+      termInput.placeholder = "boot first…";
+    }
+
+    async function bootOnceFast(){
+      if (!BOOT_ARMED) return;
+      BOOT_ARMED = false;
+      termOut.innerHTML = "";
+      await bootSequence({ fast:true });
+    }
+
+    termCard.addEventListener("mousedown", () => {
+      // clicking the terminal card should boot (once), then focus
+      if (!BOOTED) bootOnceFast();
+      focusTerminalSafely();
+    });
+
+    window.addEventListener("keydown", (e) => {
+      // press "b" anywhere to boot once (doesn't scroll)
+      if (e.key.toLowerCase() === "b" && !BOOTED && !BOOT_LOCK){
+        bootOnceFast();
+      }
+    });
 
     // ============================================================
     // APPLY PERSISTED SETTINGS
@@ -1516,12 +1524,11 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
     const y = document.getElementById("copyrightYear");
     if (y) y.textContent = new Date().getFullYear();
 
-    // Start GitHub stats
+    // Start GitHub stats (this is fine to auto-run; doesn't scroll)
     fetchGitHubStats();
 
-    // Auto-boot on page load
-    termOut.innerHTML = "";
-    bootSequence({fast:true});
+    // UPDATED: no auto-boot on load (prevents auto-direct to terminal)
+    primeTerminal();
   </script>
 </body>
 </html>
