@@ -95,15 +95,14 @@
       backdrop-filter: blur(10px);
     }
 
-    /* ✅ GLOBAL FIX: pills never wrap + align nicely */
     .pill{
       border: 1px solid var(--border);
       background: rgba(255,255,255,.03);
       border-radius: 999px;
       padding: .22rem .55rem;
-      white-space: nowrap;     /* prevent wrapping */
-      display: inline-flex;    /* better alignment */
-      align-items: center;     /* vertically center text */
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
     }
     [data-theme="light"] .pill{ background: rgba(17,24,39,.03); }
 
@@ -173,7 +172,6 @@
     }
     .toast.show{ opacity:1; transform: translateY(0); }
 
-    /* boot line colors */
     .ok{ color: var(--green); font-weight: 700; }
     .warn{ color: var(--ansi3); font-weight: 700; }
     .info{ color: var(--cyan); }
@@ -209,7 +207,7 @@
           <span class="fetch-label">matrix</span><span class="muted">: off</span>
         </button>
         <button id="btnSound" class="pill text-xs">
-          <span class="fetch-label">sound</span><span class="muted">: on</span>
+          <span class="fetch-label">sound</span><span class="muted">: off</span>
         </button>
         <button id="btnMusic" class="pill text-xs">
           <span class="fetch-label">music</span><span class="muted">: off</span>
@@ -336,7 +334,6 @@
           />
         </div>
 
-        <!-- NEW: tiny hint (doesn't change layout much) -->
         <div id="term-hint" class="mt-2 text-[11px] muted">
           Tip: click here (or press <span class="kbd">b</span>) to boot the terminal. No auto-scroll on load.
         </div>
@@ -494,30 +491,30 @@
 
   <script>
     // ============================================================
-    // SETTINGS (persisted)
+    // SETTINGS (not persisted)
     // ============================================================
-    const SETTINGS_KEY = "andy_terminal_settings_v2";
     function clamp(n, a, b){ return Math.max(a, Math.min(b, n)); }
 
+    // Clear any old saved values from previous site versions
+    try{
+      localStorage.removeItem("andy_terminal_settings_v2");
+      localStorage.removeItem("andy_github_cache_v1");
+    }catch(_){}
+
     function loadSettings(){
-      try{
-        const raw = localStorage.getItem(SETTINGS_KEY);
-        if (!raw) return { theme:"dark", matrix:false, sound:true, music:false, musicVol:35 };
-        const s = JSON.parse(raw);
-        return {
-          theme: s.theme === "light" ? "light" : "dark",
-          matrix: !!s.matrix,
-          sound: s.sound !== false,
-          music: !!s.music,
-          musicVol: (typeof s.musicVol === "number" ? clamp(s.musicVol, 0, 100) : 35),
-        };
-      }catch(_){
-        return { theme:"dark", matrix:false, sound:true, music:false, musicVol:35 };
-      }
+      return {
+        theme: "dark",
+        matrix: false,
+        sound: false,
+        music: false,
+        musicVol: 35
+      };
     }
-    function saveSettings(next){
-      try{ localStorage.setItem(SETTINGS_KEY, JSON.stringify(next)); }catch(_){}
+
+    function saveSettings(){
+      // disabled: do not persist anything
     }
+
     let SETTINGS = loadSettings();
 
     // ============================================================
@@ -563,7 +560,7 @@
     }
 
     // ============================================================
-    // THEME TOGGLE (persisted)
+    // THEME TOGGLE
     // ============================================================
     const btnTheme = document.getElementById("btnTheme");
     function setTheme(now){
@@ -585,7 +582,7 @@
     btnTheme.addEventListener("click", toggleTheme);
 
     // ============================================================
-    // MATRIX MODE (persisted)
+    // MATRIX MODE
     // ============================================================
     const btnMatrix = document.getElementById("btnMatrix");
     const matrixWrap = document.getElementById("matrix-wrap");
@@ -657,7 +654,7 @@
     window.addEventListener("resize", ()=>{ if (MATRIX_ON) resizeMatrix(); });
 
     // ============================================================
-    // SOUND TOGGLE (persisted)
+    // SOUND TOGGLE
     // ============================================================
     const btnSound = document.getElementById("btnSound");
     function renderSoundButton(){
@@ -675,7 +672,7 @@
     btnSound.addEventListener("click", toggleSound);
 
     // ============================================================
-    // MUSIC (MP3) TOGGLE + Terminal support (persisted)
+    // MUSIC (MP3) TOGGLE + Terminal support
     // ============================================================
     const btnMusic = document.getElementById("btnMusic");
     const bgMusic = document.getElementById("bg-music");
@@ -803,7 +800,6 @@
     const languageOrder = ["EN", "VI", "JP", "ZH-TW", "KO"];
     let currentLangIndex = 0;
 
-    // ✅ Same keys (ideas) across all languages = consistent + fair
     const motdSet = [
       { key: "env_ready",  t: { EN:"Environment ready.", VI:"Môi trường sẵn sàng.", JP:"環境は整った。", "ZH-TW":"環境就緒。", KO:"환경 세팅 완료." } },
       { key: "build_small", t: { EN:"Build one small thing.", VI:"Làm một thứ nhỏ thôi.", JP:"小さく作ろう。", "ZH-TW":"先做小一步。", KO:"작은 것부터 만들자." } },
@@ -871,22 +867,15 @@
     motdLoop();
 
     // ============================================================
-    // GitHub Live Stats + Cache
+    // GitHub Live Stats (no local cache)
     // ============================================================
     const GH_USER = "andymhuynh";
-    const GH_CACHE_KEY = "andy_github_cache_v1";
 
     function loadGitHubCache(){
-      try{
-        const raw = localStorage.getItem(GH_CACHE_KEY);
-        if (!raw) return null;
-        const obj = JSON.parse(raw);
-        if (!obj || typeof obj.t !== "number") return null;
-        return obj;
-      }catch(_){ return null; }
+      return null;
     }
-    function saveGitHubCache(payload){
-      try{ localStorage.setItem(GH_CACHE_KEY, JSON.stringify(payload)); }catch(_){}
+    function saveGitHubCache(){
+      // disabled
     }
     function renderGitHubStats(st){
       document.getElementById("ghUser").textContent = GH_USER;
@@ -898,13 +887,6 @@
 
     async function fetchGitHubStats(){
       const latestEl = document.getElementById("ghLatest");
-
-      const cached = loadGitHubCache();
-      if (cached){
-        renderGitHubStats(cached);
-        const age = Date.now() - cached.t;
-        latestEl.textContent = `${cached.latest} (cached ${Math.round(age/60000)}m ago)`;
-      }
 
       try{
         const u = await fetch(`https://api.github.com/users/${GH_USER}`, { headers: { "Accept":"application/vnd.github+json" }});
@@ -942,7 +924,6 @@
         }
 
         const payload = {
-          t: Date.now(),
           repos: ud.public_repos ?? "—",
           followers: ud.followers ?? "—",
           stars,
@@ -952,9 +933,7 @@
         renderGitHubStats(payload);
         saveGitHubCache(payload);
       }catch(_){
-        if (!loadGitHubCache()){
-          latestEl.textContent = "GitHub fetch blocked (rate limit / offline).";
-        }
+        latestEl.textContent = "GitHub fetch blocked (rate limit / offline).";
       }
     }
 
@@ -976,7 +955,6 @@
       writeLine(`andy@portfolio:~$ ${cmd}`, "term-line term-dim");
     }
 
-    // ---------- Mini filesystem (de-duped) ----------
     const FS = {
       type: "dir",
       children: {
@@ -1017,7 +995,6 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
       github: "https://github.com/andymhuynh",
       linkedin: "https://www.linkedin.com/in/andymhuynh/",
       email: "mailto:ahuyn5@gmail.com"
-      // resume: "/resume.pdf"
     };
 
     let CWD = "/home/andy";
@@ -1083,11 +1060,9 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
       return { ok:true, content: lines.join("\n") };
     }
 
-    // ---------- History ----------
     const HISTORY = [];
     let histIdx = 0;
 
-    // ---------- Autocomplete ----------
     function commonPrefix(arr){
       if (!arr.length) return "";
       let p = arr[0];
@@ -1113,19 +1088,17 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
     }
 
     // ============================================================
-    // BOOT (UPDATED: no auto-focus + no auto-run on page load)
+    // BOOT
     // ============================================================
     let BOOT_LOCK = false;
-    let BOOTED = false; // NEW
+    let BOOTED = false;
     function randInt(a,b){ return Math.floor(a + Math.random()*(b-a+1)); }
     function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
 
     function focusTerminalSafely(){
-      // prevents "scroll-jump to input" on load
       try{
         termInput.focus({ preventScroll: true });
       }catch(_){
-        // fallback for older browsers
         termInput.focus();
       }
     }
@@ -1190,7 +1163,6 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
 
       termInput.disabled = false;
       termInput.placeholder = "";
-      // UPDATED: no forced focus that scrolls the page
       focusTerminalSafely();
 
       BOOT_LOCK = false;
@@ -1199,7 +1171,7 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
     }
 
     // ============================================================
-    // Core commands (de-duped)
+    // Core commands
     // ============================================================
     const baseCommands = {
       help: () => {
@@ -1266,7 +1238,6 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
         writeLine("Done.");
       },
 
-      // UPDATED: boot starts if not booted; otherwise replays
       boot: async () => {
         termOut.innerHTML = "";
         await bootSequence({fast:false});
@@ -1475,13 +1446,12 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
     });
 
     // ============================================================
-    // UPDATED: Click-to-boot + "b" hotkey (prevents auto-scroll)
+    // Click-to-boot + "b" hotkey
     // ============================================================
-    const termCard = termOut.parentElement; // the .card wrapper
+    const termCard = termOut.parentElement;
     let BOOT_ARMED = true;
 
     function primeTerminal(){
-      // initial state: don't steal focus, don't run boot
       termOut.innerHTML = "";
       writeLine("Terminal is idle.");
       writeLine("Click here or press 'b' to boot.");
@@ -1497,37 +1467,31 @@ Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
     }
 
     termCard.addEventListener("mousedown", () => {
-      // clicking the terminal card should boot (once), then focus
       if (!BOOTED) bootOnceFast();
       focusTerminalSafely();
     });
 
     window.addEventListener("keydown", (e) => {
-      // press "b" anywhere to boot once (doesn't scroll)
       if (e.key.toLowerCase() === "b" && !BOOTED && !BOOT_LOCK){
         bootOnceFast();
       }
     });
 
     // ============================================================
-    // APPLY PERSISTED SETTINGS
+    // APPLY DEFAULT SETTINGS (fresh every visit)
     // ============================================================
     setTheme(SETTINGS.theme);
     renderSoundButton();
     btnMatrix.innerHTML = `<span class="fetch-label">matrix</span><span class="muted">: ${SETTINGS.matrix ? "on" : "off"}</span>`;
     if (SETTINGS.matrix) setMatrix(true);
 
-    // Music: if it was saved ON, we "arm" it; it starts after first interaction
+    // No auto-arming from saved state; always starts off
     if (SETTINGS.music) toast(`music: armed (${SETTINGS.musicVol}%)`);
 
-    // Footer year
     const y = document.getElementById("copyrightYear");
     if (y) y.textContent = new Date().getFullYear();
 
-    // Start GitHub stats (this is fine to auto-run; doesn't scroll)
     fetchGitHubStats();
-
-    // UPDATED: no auto-boot on load (prevents auto-direct to terminal)
     primeTerminal();
   </script>
 </body>
