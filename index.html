@@ -3,1497 +3,464 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Andy M. Huynh</title>
+  <title>Andy M. Huynh | Software Engineer</title>
 
-  <!-- FAVICON -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <meta name="theme-color" content="#0f172a">
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="Andy M. Huynh — software engineering intern candidate focused on systems, algorithms, C++, Python, Java, and reliable tooling." />
 
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Mono fonts: Latin + CJK -->
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Noto+Sans+Mono:wght@400;600&family=Noto+Sans+Mono+CJK+JP:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      /* Recruiter-friendly dark tech palette */
-      --bg: #0f172a;
-      --fg: #cbd5e1;
-      --fg2: rgba(203,213,225,.72);
-      --panel-grad-top: rgba(255,255,255,.045);
-      --panel-grad-bot: rgba(255,255,255,.018);
-      --border: rgba(148,163,184,.20);
-      --shadow: rgba(0,0,0,.28);
-      --hr: rgba(148,163,184,.24);
-
-      --blue:#38bdf8;
-      --purple:#818cf8;
-      --cyan:#22d3ee;
-      --green:#4ade80;
+      --bg:#0f172a;
+      --panel:#111827;
+      --panel2:#0b1220;
+      --fg:#e5e7eb;
+      --muted:#94a3b8;
+      --border:rgba(148,163,184,.22);
+      --shadow:rgba(0,0,0,.28);
+      --blue:#7aa2f7;
+      --cyan:#7dcfff;
+      --green:#9ece6a;
+      --purple:#bb9af7;
       --white:#f8fafc;
-
-      --ansi0:#020617;
-      --ansi1:#f87171;
-      --ansi2:#4ade80;
-      --ansi3:#fbbf24;
-      --ansi4:#38bdf8;
-      --ansi5:#818cf8;
-      --ansi6:#22d3ee;
-      --ansi7:#cbd5e1;
     }
 
     [data-theme="light"]{
-      --bg: #f8fafc;
-      --fg: #0f172a;
-      --fg2: rgba(15,23,42,.70);
-      --panel-grad-top: rgba(15,23,42,.035);
-      --panel-grad-bot: rgba(15,23,42,.012);
-      --border: rgba(15,23,42,.13);
-      --shadow: rgba(15,23,42,.08);
-      --hr: rgba(15,23,42,.18);
-
-      --blue:#0284c7;
-      --purple:#4f46e5;
+      --bg:#f8fafc;
+      --panel:#ffffff;
+      --panel2:#f1f5f9;
+      --fg:#0f172a;
+      --muted:#475569;
+      --border:rgba(15,23,42,.14);
+      --shadow:rgba(15,23,42,.08);
+      --blue:#2563eb;
       --cyan:#0891b2;
       --green:#16a34a;
+      --purple:#7c3aed;
       --white:#020617;
-
-      --ansi0:#e2e8f0;
-      --ansi1:#dc2626;
-      --ansi2:#16a34a;
-      --ansi3:#d97706;
-      --ansi4:#0284c7;
-      --ansi5:#4f46e5;
-      --ansi6:#0891b2;
-      --ansi7:#334155;
     }
 
+    html{ scroll-behavior:smooth; }
     body{
-      font-family:'Fira Code','Noto Sans Mono','Noto Sans Mono CJK JP',monospace;
-      background:var(--bg);
+      font-family:Inter,system-ui,sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(122,162,247,.18), transparent 34rem),
+        radial-gradient(circle at top right, rgba(187,154,247,.14), transparent 30rem),
+        var(--bg);
       color:var(--fg);
     }
 
-    .fetch-os{ color:var(--blue); }
-    .fetch-kernel{ color:var(--purple); }
-    .fetch-shell{ color:var(--cyan); }
-    .fetch-label{ color:var(--green); font-weight:700; }
-    .fetch-data{ color:var(--white); }
-
-    .ansi-0{ background:var(--ansi0); } .ansi-1{ background:var(--ansi1); }
-    .ansi-2{ background:var(--ansi2); } .ansi-3{ background:var(--ansi3); }
-    .ansi-4{ background:var(--ansi4); } .ansi-5{ background:var(--ansi5); }
-    .ansi-6{ background:var(--ansi6); } .ansi-7{ background:var(--ansi7); }
-
-    .caret{ display:inline-block; width:.6ch; transform:translateY(1px); animation:caretBlink 1s steps(1) infinite; }
-    @keyframes caretBlink{ 0%,49%{opacity:1} 50%,100%{opacity:0} }
-
+    .mono{ font-family:'Fira Code',monospace; }
     .glass{
-      background: linear-gradient(180deg, var(--panel-grad-top), var(--panel-grad-bot));
-      border: 1px solid var(--border);
-      box-shadow: 0 10px 30px var(--shadow);
-      border-radius: 18px;
-      backdrop-filter: blur(10px);
-    }
-
-    .pill{
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      border-radius: 999px;
-      padding: .22rem .55rem;
-      white-space: nowrap;
-      display: inline-flex;
-      align-items: center;
-    }
-    [data-theme="light"] .pill{ background: rgba(15,23,42,.035); }
-
-    .tag{
+      background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
       border:1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      border-radius: 999px;
-      padding:.18rem .55rem;
+      box-shadow:0 18px 50px var(--shadow);
+      border-radius:24px;
+      backdrop-filter:blur(12px);
     }
-    [data-theme="light"] .tag{ background: rgba(15,23,42,.035); }
-
-    .muted{ color: var(--fg2); }
-    .hr{ border-top: 1px dashed var(--hr); }
-    .quote{ opacity:.85; }
-    .lang-tag{ opacity:.55; margin-right:.6ch; }
-
-    a.link{ text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-    a.link:hover{ color: #ffffff; }
-    [data-theme="light"] a.link:hover{ color:#000000; }
-
-    .ascii{ white-space: pre; line-height: 1.15; }
+    [data-theme="light"] .glass{ background:rgba(255,255,255,.78); }
 
     .card{
+      background:rgba(255,255,255,.035);
       border:1px solid var(--border);
-      background:rgba(255,255,255,.02);
-      border-radius: 18px;
+      border-radius:20px;
     }
-    [data-theme="light"] .card{ background: rgba(15,23,42,.025); }
+    [data-theme="light"] .card{ background:rgba(255,255,255,.86); }
 
-    .term-line { white-space: pre-wrap; word-break: break-word; }
-    .term-dim  { opacity: .85; }
-    .kbd {
+    .pill{
       border:1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      padding: .08rem .35rem;
-      border-radius: .5rem;
-      font-size: 11px;
+      background:rgba(255,255,255,.045);
+      border-radius:999px;
+      padding:.38rem .72rem;
+      display:inline-flex;
+      align-items:center;
+      gap:.35rem;
+      white-space:nowrap;
     }
-    [data-theme="light"] .kbd{ background: rgba(15,23,42,.035); }
+    [data-theme="light"] .pill{ background:rgba(15,23,42,.035); }
 
-    #matrix-wrap{
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:50;
-      opacity:0;
-      transition: opacity .25s ease;
+    .btn{
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:.72rem 1rem;
+      font-weight:700;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.5rem;
+      transition:transform .16s ease, border-color .16s ease, background .16s ease;
     }
-    #matrix-wrap.active{ opacity:1; }
-    #matrix-canvas{ width:100%; height:100%; display:block; }
+    .btn:hover{ transform:translateY(-1px); border-color:rgba(122,162,247,.62); }
+    .btn-primary{ background:var(--fg); color:var(--bg); }
+    .btn-secondary{ background:rgba(255,255,255,.045); color:var(--fg); }
+
+    .accent-blue{ color:var(--blue); }
+    .accent-cyan{ color:var(--cyan); }
+    .accent-green{ color:var(--green); }
+    .accent-purple{ color:var(--purple); }
+    .muted{ color:var(--muted); }
+    .hr{ border-top:1px dashed var(--border); }
+    a.link{ text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px; }
+    a.link:hover{ color:var(--cyan); }
+
+    .metric{
+      border-left:3px solid var(--blue);
+      padding-left:.8rem;
+    }
+
+    .terminal{
+      background:#050816;
+      color:#cbd5e1;
+      border:1px solid rgba(148,163,184,.22);
+      border-radius:20px;
+      overflow:hidden;
+    }
+    [data-theme="light"] .terminal{ background:#0f172a; color:#e2e8f0; }
+    .term-top{ background:rgba(255,255,255,.06); }
+    .term-dot{ width:.72rem; height:.72rem; border-radius:999px; display:inline-block; }
+    .term-input{ background:transparent; outline:none; color:#fff; width:100%; }
+    .term-line{ white-space:pre-wrap; word-break:break-word; }
 
     .toast{
       position:fixed;
-      right: 18px;
-      bottom: 18px;
+      right:18px;
+      bottom:18px;
       z-index:60;
       border:1px solid var(--border);
-      background: linear-gradient(180deg, var(--panel-grad-top), var(--panel-grad-bot));
-      box-shadow: 0 10px 30px var(--shadow);
-      border-radius: 16px;
-      padding: 10px 12px;
+      background:var(--panel);
+      box-shadow:0 12px 36px var(--shadow);
+      border-radius:16px;
+      padding:10px 12px;
       opacity:0;
-      transform: translateY(8px);
-      transition: opacity .2s ease, transform .2s ease;
+      transform:translateY(8px);
+      transition:opacity .2s ease, transform .2s ease;
       pointer-events:none;
-      max-width: min(420px, calc(100vw - 36px));
+      max-width:min(420px, calc(100vw - 36px));
     }
-    .toast.show{ opacity:1; transform: translateY(0); }
+    .toast.show{ opacity:1; transform:translateY(0); }
 
-    .ok{ color: var(--green); font-weight: 700; }
-    .warn{ color: var(--ansi3); font-weight: 700; }
-    .info{ color: var(--cyan); }
+    @media print{
+      body{ background:#fff; color:#0f172a; }
+      .glass,.card{ box-shadow:none; background:#fff; }
+      .terminal, .no-print{ display:none !important; }
+    }
   </style>
 </head>
 
-<body class="p-6 md:p-12 antialiased" data-theme="dark">
+<body data-theme="dark" class="antialiased">
+  <div id="toast" class="toast text-xs mono"></div>
 
-  <!-- Matrix overlay -->
-  <div id="matrix-wrap" aria-hidden="true">
-    <canvas id="matrix-canvas"></canvas>
-  </div>
-
-  <div id="toast" class="toast text-xs"></div>
-
-  <!-- TOP BAR -->
-  <header class="max-w-6xl mx-auto mb-6 md:mb-8">
-    <div class="glass px-4 py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-      <div class="flex flex-wrap items-center gap-2">
-        <span class="fetch-os font-semibold">Andy Huynh</span>
-        <span class="pill text-xs muted">Software Engineer · Systems · Algorithms</span>
-        <span class="pill text-xs muted">B.S. Applied Mathematics @ SJSU · 2028</span>
+  <header class="max-w-6xl mx-auto px-5 pt-6 md:pt-8">
+    <nav class="glass px-4 py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+      <a href="#top" class="font-extrabold tracking-tight text-lg">Andy M. Huynh</a>
+      <div class="flex flex-wrap items-center gap-2 text-sm">
+        <a class="pill" href="#projects">Projects</a>
+        <a class="pill" href="#skills">Skills</a>
+        <a class="pill" href="#education">Education</a>
+        <a class="pill" href="#contact">Contact</a>
+        <button id="btnTheme" class="pill">Theme</button>
       </div>
-
-      <div class="flex flex-wrap items-center gap-2 text-xs">
-        <span class="pill"><span class="fetch-label">status</span><span class="muted">: open to internships</span></span>
-        <span class="pill"><span class="fetch-label">loc</span><span class="muted">: San José</span></span>
-
-        <button id="btnTheme" class="pill text-xs">
-          <span class="fetch-label">theme</span><span class="muted">: toggle</span>
-        </button>
-        <button id="btnMatrix" class="pill text-xs">
-          <span class="fetch-label">matrix</span><span class="muted">: off</span>
-        </button>
-        <button id="btnSound" class="pill text-xs">
-          <span class="fetch-label">sound</span><span class="muted">: off</span>
-        </button>
-        <button id="btnMusic" class="pill text-xs">
-          <span class="fetch-label">music</span><span class="muted">: off</span>
-        </button>
-      </div>
-    </div>
+    </nav>
   </header>
 
-  <main class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+  <main id="top" class="max-w-6xl mx-auto px-5 py-6 md:py-10 space-y-6">
+    <section class="glass p-6 md:p-9">
+      <div class="grid grid-cols-1 lg:grid-cols-[1.45fr_.9fr] gap-8 items-center">
+        <div>
+          <div class="flex flex-wrap gap-2 mb-5 text-xs mono">
+            <span class="pill"><span class="accent-green">status</span>: open to internships</span>
+            <span class="pill"><span class="accent-cyan">location</span>: San José, CA</span>
+            <span class="pill"><span class="accent-purple">degree</span>: Applied Math @ SJSU</span>
+          </div>
 
-    <!-- LEFT: TERMINAL / MOTD -->
-    <section class="glass p-5 lg:col-span-1">
-      <div class="flex items-center justify-between mb-3">
-        <div class="text-sm">
-          <span class="muted">andy@portfolio</span><span class="muted">:</span><span class="fetch-kernel">~</span><span class="muted">$</span>
-          <span class="fetch-shell"> whoami</span>
+          <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.02]">
+            Software engineer focused on <span class="accent-blue">systems</span>, <span class="accent-cyan">algorithms</span>, and reliable tools.
+          </h1>
+
+          <p class="mt-5 text-base md:text-lg muted max-w-2xl leading-relaxed">
+            I build measurable, performance-conscious software using C++, Python, Java, and Linux tooling. Currently pursuing a B.S. in Applied Mathematics at San José State University with a Discrete Mathematics concentration.
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a class="btn btn-primary" href="resume.pdf" target="_blank" rel="noreferrer">View Resume</a>
+            <a class="btn btn-secondary" href="mailto:ahuyn5@gmail.com">Email Me</a>
+            <a class="btn btn-secondary" href="https://github.com/andymhuynh" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/in/andymhuynh/" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
         </div>
 
-        <div class="flex gap-1">
-          <span class="w-2.5 h-2.5 rounded-full" style="background:#f87171"></span>
-          <span class="w-2.5 h-2.5 rounded-full" style="background:#fbbf24"></span>
-          <span class="w-2.5 h-2.5 rounded-full" style="background:#4ade80"></span>
-        </div>
-      </div>
-
-      <div class="fetch-os text-sm ascii select-none mb-4">
-<span id="kaomoji">(｀・ω・´)</span><span class="quote">「</span><span id="langTag" class="lang-tag">EN</span><span id="jpText"></span><span class="caret">▌</span><span class="quote">」</span>
-      </div>
-
-      <div class="space-y-2 text-sm">
-        <div><span class="fetch-label">Clock:</span> <span id="clock" class="fetch-data">--:--:--</span></div>
-        <div><span class="fetch-label">Uptime:</span> <span id="uptime" class="fetch-data">Calculating...</span></div>
-        <div><span class="fetch-label">Shell:</span> <span class="fetch-data">zsh</span></div>
-      </div>
-
-      <div class="hr my-4"></div>
-
-      <div class="text-xs uppercase tracking-widest muted mb-2">core stack</div>
-      <div class="flex flex-wrap gap-2 text-sm">
-        <span class="tag">C++</span>
-        <span class="tag">Python</span>
-        <span class="tag">Java</span>
-        <span class="tag">Assembly</span>
-        <span class="tag">Algorithms</span>
-        <span class="tag">Data Structures</span>
-        <span class="tag">Linux</span>
-        <span class="tag">Git</span>
-      </div>
-
-      <div class="hr my-4"></div>
-
-      <!-- GitHub live stats -->
-      <div class="text-xs uppercase tracking-widest muted mb-2">github (live)</div>
-      <div class="card p-3 text-xs space-y-1">
-        <div class="flex items-center justify-between">
-          <div class="muted">User</div>
-          <div id="ghUser" class="fetch-data">andymhuynh</div>
-        </div>
-        <div class="flex items-center justify-between">
-          <div class="muted">Repos</div>
-          <div id="ghRepos" class="fetch-data">—</div>
-        </div>
-        <div class="flex items-center justify-between">
-          <div class="muted">Followers</div>
-          <div id="ghFollowers" class="fetch-data">—</div>
-        </div>
-        <div class="flex items-center justify-between">
-          <div class="muted">Stars</div>
-          <div id="ghStars" class="fetch-data">—</div>
-        </div>
-        <div class="hr my-2"></div>
-        <div class="muted">Latest activity</div>
-        <div id="ghLatest" class="fetch-data">Fetching…</div>
-      </div>
-
-      <div class="hr my-4"></div>
-
-      <!-- Contact -->
-      <div class="text-xs uppercase tracking-widest muted mb-2">contact</div>
-      <div class="flex flex-col gap-2 text-sm">
-        <a class="link" href="mailto:ahuyn5@gmail.com">ahuyn5@gmail.com</a>
-        <div class="flex gap-3">
-          <a class="link" href="https://github.com/andymhuynh" target="_blank" rel="noreferrer">github</a>
-          <a class="link" href="https://www.linkedin.com/in/andymhuynh/" target="_blank" rel="noreferrer">linkedin</a>
-        </div>
-        <div class="text-xs muted">
-          San Jose, CA · <span class="muted">(669)</span> 251-7811
-        </div>
-      </div>
-
-      <div class="hr my-4"></div>
-
-      <!-- Interactive terminal -->
-      <div class="text-xs uppercase tracking-widest muted mb-2">terminal</div>
-      <div class="card p-3">
-        <div class="text-[11px] muted mb-2">
-          try:
-          <span class="kbd">help</span>
-          <span class="kbd">projects</span>
-          <span class="kbd">matrix</span>
-          <span class="kbd">theme</span>
-          <span class="kbd">sound</span>
-          <span class="kbd">music</span>
-          <span class="kbd">github</span>
-          <span class="kbd">ls</span>
-          <span class="kbd">cd projects</span>
-          <span class="kbd">cat about.txt</span>
-          <span class="kbd">boot</span>
-          <span class="kbd">clear</span>
-          <span class="kbd">Tab</span>
-          <span class="kbd">↑</span>/<span class="kbd">↓</span>
-        </div>
-
-        <div id="terminal-output" class="space-y-1 text-xs max-h-56 overflow-auto pr-1"></div>
-
-        <div class="mt-2 text-xs flex items-center gap-2">
-          <span class="muted">andy@portfolio</span><span class="muted">:</span><span class="fetch-kernel">~</span><span class="muted">$</span>
-          <input
-            id="terminal-input"
-            class="bg-transparent outline-none w-full text-[12px] text-white"
-            autocomplete="off"
-            spellcheck="false"
-            aria-label="terminal input"
-          />
-        </div>
-
-        <div id="term-hint" class="mt-2 text-[11px] muted">
-          Tip: click here (or press <span class="kbd">b</span>) to boot the terminal. No auto-scroll on load.
-        </div>
-      </div>
-
-      <div class="flex mt-5 gap-0">
-        <div class="w-7 h-3 ansi-0"></div><div class="w-7 h-3 ansi-1"></div>
-        <div class="w-7 h-3 ansi-2"></div><div class="w-7 h-3 ansi-3"></div>
-        <div class="w-7 h-3 ansi-4"></div><div class="w-7 h-3 ansi-5"></div>
-        <div class="w-7 h-3 ansi-6"></div><div class="w-7 h-3 ansi-7"></div>
-      </div>
-      <div class="flex gap-0 opacity-50">
-        <div class="w-7 h-3 ansi-0"></div><div class="w-7 h-3 ansi-1"></div>
-        <div class="w-7 h-3 ansi-2"></div><div class="w-7 h-3 ansi-3"></div>
-        <div class="w-7 h-3 ansi-4"></div><div class="w-7 h-3 ansi-5"></div>
-        <div class="w-7 h-3 ansi-6"></div><div class="w-7 h-3 ansi-7"></div>
+        <aside class="terminal mono text-sm">
+          <div class="term-top px-4 py-3 flex items-center justify-between">
+            <div class="muted">andy@portfolio:~$ recruiter-scan</div>
+            <div class="flex gap-1.5">
+              <span class="term-dot" style="background:#f7768e"></span>
+              <span class="term-dot" style="background:#e0af68"></span>
+              <span class="term-dot" style="background:#9ece6a"></span>
+            </div>
+          </div>
+          <div class="p-4 space-y-3">
+            <div><span class="accent-green">Role:</span> Software Engineering Intern</div>
+            <div><span class="accent-green">Strengths:</span> Algorithms · Systems · Debugging</div>
+            <div><span class="accent-green">Languages:</span> C++ · Python · Java · C · Assembly</div>
+            <div><span class="accent-green">Tools:</span> Linux · Git · Data Structures</div>
+            <div><span class="accent-green">Availability:</span> Internship-ready</div>
+            <div class="hr my-3"></div>
+            <div class="muted">Tip: use the buttons above for the fastest recruiter path.</div>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <!-- RIGHT: CONTENT -->
-    <section class="glass p-5 lg:col-span-2">
-      <div class="mb-5">
-        <div class="text-xs uppercase tracking-widest muted mb-2">summary</div>
-        <p class="text-sm leading-relaxed">
-          I build measurable, reliable software with an emphasis on clean architecture and performance.
-          Primary tools: <span class="fetch-data">C++</span> and <span class="fetch-data">Python</span>.
-        </p>
+    <section class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div class="card p-5 metric">
+        <div class="text-2xl font-extrabold">&lt;15ms</div>
+        <div class="text-sm muted">Sudoku solve time</div>
+      </div>
+      <div class="card p-5 metric">
+        <div class="text-2xl font-extrabold">98%</div>
+        <div class="text-sm muted">Runtime errors reduced</div>
+      </div>
+      <div class="card p-5 metric">
+        <div class="text-2xl font-extrabold">~30%</div>
+        <div class="text-sm muted">Compression reduction</div>
+      </div>
+      <div class="card p-5 metric">
+        <div class="text-2xl font-extrabold">45%</div>
+        <div class="text-sm muted">BST retrieval improvement</div>
+      </div>
+    </section>
+
+    <section id="projects" class="glass p-6 md:p-8">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-6">
+        <div>
+          <div class="mono text-xs uppercase tracking-widest muted mb-2">selected projects</div>
+          <h2 class="text-2xl md:text-3xl font-extrabold">Proof of technical depth</h2>
+        </div>
+        <p class="muted text-sm max-w-xl">Each project is written to be skimmed quickly by recruiters while still showing concrete engineering impact.</p>
       </div>
 
-      <div class="hr my-5"></div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <article class="card p-5">
+          <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+            <h3 class="text-lg font-extrabold accent-cyan">Sudoku Solver</h3>
+            <span class="pill text-xs mono">Python · Algorithm X</span>
+          </div>
+          <p class="muted text-sm leading-relaxed">Exact-cover solver using Knuth’s Algorithm X with early constraint validation.</p>
+          <ul class="mt-4 list-disc pl-5 text-sm space-y-2">
+            <li>Solved complex 9×9 puzzles in <strong>&lt;15ms</strong>.</li>
+            <li>Reduced runtime error rate by <strong>98%</strong> through validation before search.</li>
+            <li>Designed clean separation between board parsing, constraint generation, and solver logic.</li>
+          </ul>
+        </article>
 
-      <div class="mb-5">
-        <div class="flex items-baseline justify-between gap-3 mb-2">
-          <div class="text-xs uppercase tracking-widest muted">projects</div>
-          <div class="text-xs muted">algorithmic + quantified</div>
-        </div>
+        <article class="card p-5">
+          <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+            <h3 class="text-lg font-extrabold accent-cyan">Huffman Coding Algorithm</h3>
+            <span class="pill text-xs mono">C++ · Compression</span>
+          </div>
+          <p class="muted text-sm leading-relaxed">Encoder/decoder with efficient tree construction and safer memory ownership.</p>
+          <ul class="mt-4 list-disc pl-5 text-sm space-y-2">
+            <li>Decreased file sizes by <strong>~30%</strong> versus uncompressed data.</li>
+            <li>Lowered peak RAM usage by <strong>15%</strong> using smart pointers.</li>
+            <li>Implemented deterministic encoding and decoding paths for testability.</li>
+          </ul>
+        </article>
 
+        <article class="card p-5 md:col-span-2">
+          <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+            <h3 class="text-lg font-extrabold accent-cyan">Binary Search Tree</h3>
+            <span class="pill text-xs mono">C++ · Data Structures</span>
+          </div>
+          <p class="muted text-sm leading-relaxed">Recursive insertion, search, deletion, and input validation for simulated datasets.</p>
+          <ul class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 list-disc pl-5 text-sm">
+            <li>Improved retrieval speed by <strong>45%</strong> on 10,000+ simulated records.</li>
+            <li>Reduced application crashes by <strong>100%</strong> through strict validation and error handling.</li>
+            <li>Practiced edge-case testing for empty trees, duplicate values, and deletion cases.</li>
+            <li>Focused on readable implementation and maintainable interfaces.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="glass p-6 md:p-7 lg:col-span-2">
+        <div class="mono text-xs uppercase tracking-widest muted mb-2">technical skills</div>
+        <h2 class="text-2xl font-extrabold mb-5">Stack</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-
           <div class="card p-4">
-            <div class="flex items-center justify-between mb-1 gap-2">
-              <div class="fetch-shell font-semibold">Sudoku Solver</div>
-              <span class="pill text-[11px] muted">Python · Algorithm X</span>
-            </div>
-            <div class="muted text-xs mb-2">Exact-cover solver using Knuth’s Algorithm X with constraints validation.</div>
-            <ul class="list-disc pl-5 space-y-1 text-xs">
-              <li>Solved complex 9×9 puzzles in <span class="fetch-data">&lt;15ms</span>.</li>
-              <li>Reduced runtime error rate by <span class="fetch-data">98%</span> via early constraint checks.</li>
-            </ul>
+            <h3 class="font-extrabold mb-2">Languages</h3>
+            <div class="flex flex-wrap gap-2"><span class="pill">C++</span><span class="pill">Python</span><span class="pill">Java</span><span class="pill">C</span><span class="pill">Assembly</span></div>
           </div>
-
           <div class="card p-4">
-            <div class="flex items-center justify-between mb-1 gap-2">
-              <div class="fetch-shell font-semibold">Huffman Coding Algorithm</div>
-              <span class="pill text-[11px] muted">C++ · Compression</span>
-            </div>
-            <div class="muted text-xs mb-2">Built Huffman encoder/decoder with efficient tree construction.</div>
-            <ul class="list-disc pl-5 space-y-1 text-xs">
-              <li>Decreased file sizes by <span class="fetch-data">~30%</span> vs uncompressed data.</li>
-              <li>Lowered peak RAM usage by <span class="fetch-data">15%</span> using smart pointers.</li>
-            </ul>
+            <h3 class="font-extrabold mb-2">Core CS</h3>
+            <div class="flex flex-wrap gap-2"><span class="pill">Algorithms</span><span class="pill">Data Structures</span><span class="pill">Systems</span><span class="pill">Debugging</span></div>
           </div>
-
-          <div class="card p-4 md:col-span-2">
-            <div class="flex items-center justify-between mb-1 gap-2">
-              <div class="fetch-shell font-semibold">Binary Search Tree</div>
-              <span class="pill text-[11px] muted">C++ · Data Structures</span>
-            </div>
-            <div class="muted text-xs mb-2">Optimized recursive insertion/search/deletion + robust input validation.</div>
-            <ul class="list-disc pl-5 space-y-1 text-xs">
-              <li>Improved retrieval speed by <span class="fetch-data">45%</span> on simulated datasets (10,000+ records).</li>
-              <li>Reduced application crashes by <span class="fetch-data">100%</span> via strict validation/error handling.</li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="hr my-5"></div>
-
-      <div class="mb-5">
-        <div class="text-xs uppercase tracking-widest muted mb-2">education</div>
-
-        <div class="grid grid-cols-1 gap-3 text-sm">
           <div class="card p-4">
-            <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <div class="fetch-shell font-semibold">San José State University</div>
-              <div class="text-xs muted">Aug 2025 – Present · San Jose, CA</div>
-            </div>
-            <div class="text-xs muted mt-1">
-              B.S. in Applied Mathematics · Discrete Mathematics Concentration
-            </div>
+            <h3 class="font-extrabold mb-2">Tools</h3>
+            <div class="flex flex-wrap gap-2"><span class="pill">Linux</span><span class="pill">Git</span><span class="pill">CLI</span><span class="pill">VS Code</span></div>
           </div>
-
           <div class="card p-4">
-            <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <div class="fetch-shell font-semibold">Ohlone College</div>
-              <div class="text-xs muted">Aug 2020 – Jun 2025 · Fremont, CA</div>
-            </div>
-            <div class="text-xs muted mt-1">
-              A.S. in Mathematics for Transfer · Ohlone Math Gateway Program (OMG)
-            </div>
+            <h3 class="font-extrabold mb-2">Coursework</h3>
+            <p class="muted">Data Structures · Computer Systems · C Programming · Discrete Math · Linear Algebra · Calculus I–III</p>
           </div>
         </div>
       </div>
 
-      <div class="hr my-5"></div>
+      <aside id="contact" class="glass p-6 md:p-7">
+        <div class="mono text-xs uppercase tracking-widest muted mb-2">contact</div>
+        <h2 class="text-2xl font-extrabold mb-4">Reach me</h2>
+        <div class="space-y-3 text-sm">
+          <div><div class="muted">Email</div><a class="link" href="mailto:ahuyn5@gmail.com">ahuyn5@gmail.com</a></div>
+          <div><div class="muted">Phone</div><span>(669) 251-7811</span></div>
+          <div><div class="muted">GitHub</div><a class="link" href="https://github.com/andymhuynh" target="_blank" rel="noreferrer">github.com/andymhuynh</a></div>
+          <div><div class="muted">LinkedIn</div><a class="link" href="https://www.linkedin.com/in/andymhuynh/" target="_blank" rel="noreferrer">linkedin.com/in/andymhuynh</a></div>
+        </div>
+        <button id="copyEmail" class="btn btn-secondary w-full mt-6">Copy Email</button>
+      </aside>
+    </section>
 
-      <div>
-        <div class="text-xs uppercase tracking-widest muted mb-2">coursework</div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
-          <div class="card p-3">
-            <div class="fetch-shell font-semibold mb-1">Math</div>
-            <div class="text-xs muted">Calc I–III · Linear Algebra · Discrete Math</div>
+    <section id="education" class="glass p-6 md:p-8">
+      <div class="mono text-xs uppercase tracking-widest muted mb-2">education</div>
+      <h2 class="text-2xl font-extrabold mb-5">Education</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+        <div class="card p-5">
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <h3 class="font-extrabold accent-cyan">San José State University</h3>
+            <span class="muted">Aug 2025 – Present</span>
           </div>
-          <div class="card p-3">
-            <div class="fetch-shell font-semibold mb-1">CS</div>
-            <div class="text-xs muted">Data Structures · Comp Systems · C Programming</div>
+          <p class="muted mt-2">B.S. in Applied Mathematics · Discrete Mathematics Concentration</p>
+        </div>
+        <div class="card p-5">
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <h3 class="font-extrabold accent-cyan">Ohlone College</h3>
+            <span class="muted">Aug 2020 – Jun 2025</span>
           </div>
-          <div class="card p-3">
-            <div class="fetch-shell font-semibold mb-1">Active</div>
-            <div class="text-xs muted">Prob & Stats · Diff Eq · Java</div>
-          </div>
+          <p class="muted mt-2">A.S. in Mathematics for Transfer · Ohlone Math Gateway Program</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="terminal mono text-sm no-print">
+      <div class="term-top px-4 py-3 flex items-center justify-between">
+        <div class="muted">optional terminal</div>
+        <div class="flex gap-1.5">
+          <span class="term-dot" style="background:#f7768e"></span>
+          <span class="term-dot" style="background:#e0af68"></span>
+          <span class="term-dot" style="background:#9ece6a"></span>
+        </div>
+      </div>
+      <div class="p-4">
+        <div class="text-xs muted mb-3">Recruiters can ignore this. Developers can type: help, projects, contact, github, clear.</div>
+        <div id="terminal-output" class="space-y-1 text-xs max-h-48 overflow-auto pr-1"></div>
+        <div class="mt-3 flex items-center gap-2 text-xs">
+          <span class="muted">andy@portfolio:~$</span>
+          <input id="terminal-input" class="term-input" autocomplete="off" spellcheck="false" aria-label="terminal input" />
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="max-w-6xl mx-auto mt-6 space-y-2">
-    <div class="text-[10px] uppercase tracking-widest opacity-30 select-none text-right">
-      andy@portfolio:~$ ./contact
-    </div>
-
-    <div class="glass px-4 py-3 text-xs leading-relaxed">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-        <div class="muted">
-          © <span id="copyrightYear"></span> Andy Huynh. All rights reserved.
-        </div>
-        <div class="muted">
-          <a class="link" href="https://andymhuynh.github.io/" target="_blank" rel="noreferrer">andymhuynh.github.io</a>
-        </div>
-      </div>
-
-      <div class="muted mt-2">
-        This website’s content (including text, design, layout, graphics, and code) is protected by applicable copyright laws and the
-        Digital Millennium Copyright Act (DMCA). Unauthorized copying, reproduction, redistribution, or modification is prohibited.
-      </div>
+  <footer class="max-w-6xl mx-auto px-5 pb-8">
+    <div class="glass px-4 py-3 text-xs muted flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+      <div>© <span id="year"></span> Andy Huynh. All rights reserved.</div>
+      <a class="link" href="https://andymhuynh.github.io/" target="_blank" rel="noreferrer">andymhuynh.github.io</a>
     </div>
   </footer>
 
-  <!-- Background music -->
-  <audio id="bg-music" loop preload="auto">
-    <source src="Morning.mp3" type="audio/mpeg">
-  </audio>
-
   <script>
-    // ============================================================
-    // SETTINGS (not persisted)
-    // ============================================================
-    function clamp(n, a, b){ return Math.max(a, Math.min(b, n)); }
-
-    // Clear any old saved values from previous site versions
-    try{
-      localStorage.removeItem("andy_terminal_settings_v2");
-      localStorage.removeItem("andy_github_cache_v1");
-    }catch(_){}
-
-    function loadSettings(){
-      return {
-        theme: "dark",
-        matrix: false,
-        sound: false,
-        music: false,
-        musicVol: 35
-      };
-    }
-
-    function saveSettings(){
-      // disabled: do not persist anything
-    }
-
-    let SETTINGS = loadSettings();
-
-    // ============================================================
-    // Tiny UX helpers
-    // ============================================================
-    const toastEl = document.getElementById("toast");
+    const toastEl = document.getElementById('toast');
     function toast(msg){
       toastEl.textContent = msg;
-      toastEl.classList.add("show");
+      toastEl.classList.add('show');
       clearTimeout(toastEl._t);
-      toastEl._t = setTimeout(()=>toastEl.classList.remove("show"), 1400);
+      toastEl._t = setTimeout(()=>toastEl.classList.remove('show'), 1400);
     }
 
-    // ============================================================
-    // SUBTLE SOUND (no external files)
-    // ============================================================
-    let SOUND_ON = SETTINGS.sound;
-    let audioCtx = null;
-
-    function ensureAudio(){
-      if (!audioCtx){
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-      if (audioCtx.state === "suspended") audioCtx.resume();
+    const btnTheme = document.getElementById('btnTheme');
+    function setTheme(theme){
+      document.body.setAttribute('data-theme', theme);
+      btnTheme.textContent = theme === 'light' ? 'Dark Mode' : 'Light Mode';
     }
-
-    function blip(freq=440, ms=30, gain=0.03){
-      if (!SOUND_ON) return;
-      try{
-        ensureAudio();
-        const o = audioCtx.createOscillator();
-        const g = audioCtx.createGain();
-        o.type = "square";
-        o.frequency.value = freq;
-        g.gain.value = gain;
-
-        o.connect(g);
-        g.connect(audioCtx.destination);
-
-        o.start();
-        setTimeout(()=>{ o.stop(); }, ms);
-      }catch(_){}
-    }
-
-    // ============================================================
-    // THEME TOGGLE
-    // ============================================================
-    const btnTheme = document.getElementById("btnTheme");
-    function setTheme(now){
-      const root = document.body;
-      root.setAttribute("data-theme", now);
-      SETTINGS.theme = now;
-      saveSettings(SETTINGS);
-
-      const input = document.getElementById("terminal-input");
-      input.classList.toggle("text-white", now === "dark");
-      input.classList.toggle("text-black", now === "light");
-    }
-    function toggleTheme(){
-      const now = document.body.getAttribute("data-theme") === "light" ? "dark" : "light";
-      setTheme(now);
-      blip(520, 26, 0.025);
-      toast(`theme: ${now}`);
-    }
-    btnTheme.addEventListener("click", toggleTheme);
-
-    // ============================================================
-    // MATRIX MODE
-    // ============================================================
-    const btnMatrix = document.getElementById("btnMatrix");
-    const matrixWrap = document.getElementById("matrix-wrap");
-    const canvas = document.getElementById("matrix-canvas");
-    const ctx = canvas.getContext("2d");
-
-    let MATRIX_ON = false;
-    let matrixCols = [];
-    let matrixTimer = null;
-
-    const glyphs = "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-    function resizeMatrix(){
-      const dpr = Math.max(1, window.devicePixelRatio || 1);
-      canvas.width = Math.floor(window.innerWidth * dpr);
-      canvas.height = Math.floor(window.innerHeight * dpr);
-      canvas.style.width = window.innerWidth + "px";
-      canvas.style.height = window.innerHeight + "px";
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      const fontSize = 16;
-      const cols = Math.floor(window.innerWidth / fontSize);
-      matrixCols = new Array(cols).fill(0).map(()=>Math.random()*window.innerHeight);
-      ctx.font = `${fontSize}px "Fira Code", monospace`;
-    }
-
-    function drawMatrix(){
-      ctx.fillStyle = "rgba(0,0,0,0.08)";
-      ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
-
-      ctx.fillStyle = "rgba(34,197,94,0.92)";
-      const fontSize = 16;
-      for (let i=0; i<matrixCols.length; i++){
-        const x = i * fontSize;
-        const y = matrixCols[i];
-        const ch = glyphs[Math.floor(Math.random() * glyphs.length)];
-        ctx.fillText(ch, x, y);
-
-        if (y > window.innerHeight + Math.random()*2000) matrixCols[i] = 0;
-        matrixCols[i] += fontSize;
-      }
-    }
-
-    function setMatrix(on){
-      MATRIX_ON = on;
-      SETTINGS.matrix = on;
-      saveSettings(SETTINGS);
-
-      matrixWrap.classList.toggle("active", on);
-      btnMatrix.innerHTML = `<span class="fetch-label">matrix</span><span class="muted">: ${on ? "on" : "off"}</span>`;
-      blip(on ? 680 : 320, 30, 0.03);
-
-      if (on){
-        resizeMatrix();
-        ctx.fillStyle = "black";
-        ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
-        if (matrixTimer) clearInterval(matrixTimer);
-        matrixTimer = setInterval(drawMatrix, 50);
-        toast("matrix: enabled");
-      }else{
-        if (matrixTimer) clearInterval(matrixTimer);
-        matrixTimer = null;
-        ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
-        toast("matrix: disabled");
-      }
-    }
-
-    btnMatrix.addEventListener("click", ()=> setMatrix(!MATRIX_ON));
-    window.addEventListener("resize", ()=>{ if (MATRIX_ON) resizeMatrix(); });
-
-    // ============================================================
-    // SOUND TOGGLE
-    // ============================================================
-    const btnSound = document.getElementById("btnSound");
-    function renderSoundButton(){
-      btnSound.innerHTML = `<span class="fetch-label">sound</span><span class="muted">: ${SOUND_ON ? "on" : "off"}</span>`;
-    }
-    function toggleSound(){
-      SOUND_ON = !SOUND_ON;
-      SETTINGS.sound = SOUND_ON;
-      saveSettings(SETTINGS);
-
-      renderSoundButton();
-      if (SOUND_ON) blip(880, 24, 0.03);
-      toast(`sound: ${SOUND_ON ? "on" : "off"}`);
-    }
-    btnSound.addEventListener("click", toggleSound);
-
-    // ============================================================
-    // MUSIC (MP3) TOGGLE + Terminal support
-    // ============================================================
-    const btnMusic = document.getElementById("btnMusic");
-    const bgMusic = document.getElementById("bg-music");
-
-    let MUSIC_ON = SETTINGS.music;
-    let MUSIC_VOL = SETTINGS.musicVol;
-    let MUSIC_UNLOCKED = false;
-
-    function applyMusicVolume(){
-      if (!bgMusic) return;
-      bgMusic.volume = clamp(MUSIC_VOL / 100, 0, 1);
-    }
-    function renderMusicButton(){
-      btnMusic.innerHTML = `<span class="fetch-label">music</span><span class="muted">: ${MUSIC_ON ? "on" : "off"}</span>`;
-    }
-
-    async function startMusic(){
-      if (!bgMusic) return;
-      applyMusicVolume();
-      try{
-        await bgMusic.play();
-        toast(`music: on (${MUSIC_VOL}%)`);
-      }catch(_){
-        toast("music blocked (click/keypress once)");
-        throw _;
-      }
-    }
-    function stopMusic(){
-      if (!bgMusic) return;
-      bgMusic.pause();
-      toast("music: off");
-    }
-
-    async function setMusic(on){
-      MUSIC_ON = !!on;
-      SETTINGS.music = MUSIC_ON;
-      SETTINGS.musicVol = MUSIC_VOL;
-      saveSettings(SETTINGS);
-      renderMusicButton();
-
-      if (MUSIC_ON){
-        if (MUSIC_UNLOCKED) { try{ await startMusic(); }catch(_){} }
-        else toast("music: armed (interact once)");
-      } else {
-        stopMusic();
-      }
-    }
-
-    function setMusicVolume(v){
-      MUSIC_VOL = clamp(Math.floor(Number(v)), 0, 100);
-      SETTINGS.musicVol = MUSIC_VOL;
-      saveSettings(SETTINGS);
-      applyMusicVolume();
-      toast(`music volume: ${MUSIC_VOL}%`);
-    }
-
-    btnMusic.addEventListener("click", async () => {
-      MUSIC_UNLOCKED = true;
-      try{ ensureAudio(); }catch(_){}
-      await setMusic(!MUSIC_ON);
+    btnTheme.addEventListener('click', () => {
+      const next = document.body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      setTheme(next);
+      toast(`theme: ${next}`);
     });
 
-    function unlockOnce(){
-      if (MUSIC_UNLOCKED) return;
-      MUSIC_UNLOCKED = true;
-      try{ ensureAudio(); }catch(_){}
-      if (MUSIC_ON) startMusic().catch(()=>{});
-      window.removeEventListener("keydown", unlockOnce);
-      window.removeEventListener("mousedown", unlockOnce);
-      window.removeEventListener("touchstart", unlockOnce);
-    }
-    window.addEventListener("keydown", unlockOnce);
-    window.addEventListener("mousedown", unlockOnce);
-    window.addEventListener("touchstart", unlockOnce);
-
-    applyMusicVolume();
-    renderMusicButton();
-
-    // ============================================================
-    // CLOCK (Real-time)
-    // ============================================================
-    function pad2(n){ return String(n).padStart(2,"0"); }
-    function updateClock(){
-      const now = new Date();
-      document.getElementById("clock").innerText = `${pad2(now.getHours())}:${pad2(now.getMinutes())}:${pad2(now.getSeconds())}`;
-    }
-    updateClock();
-    setInterval(updateClock, 1000);
-
-    // ============================================================
-    // UPTIME
-    // ============================================================
-    function updateUptime() {
-      const startDate = new Date('2026-01-26T08:00:00');
-      const now = new Date();
-      const diff = now - startDate;
-
-      if (diff < 0) {
-        document.getElementById('uptime').innerText = "Semester starting soon...";
-        return;
-      }
-
-      const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const cycleDays = totalDays % 7;
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const mins = Math.floor((diff / (1000 * 60)) % 60);
-
-      document.getElementById('uptime').innerText = `${cycleDays} days, ${hours} hours, ${mins} mins`;
-    }
-    updateUptime();
-    setInterval(updateUptime, 60000);
-
-    // ============================================================
-    // BLINKING KAOMOJI + TYPING MULTILINGUAL MOTD (FAIR)
-    // ============================================================
-    const kaomojiEl = document.getElementById('kaomoji');
-    const textEl = document.getElementById('jpText');
-    const langTagEl = document.getElementById('langTag');
-
-    const TYPE_MS = 45;
-    const HOLD_MS = 2200;
-    const ERASE_MS = 18;
-    const GAP_MS = 350;
-
-    const languageOrder = ["EN", "VI", "JP", "ZH-TW", "KO"];
-    let currentLangIndex = 0;
-
-    const motdSet = [
-      { key: "env_ready",  t: { EN:"Environment ready.", VI:"Môi trường sẵn sàng.", JP:"環境は整った。", "ZH-TW":"環境就緒。", KO:"환경 세팅 완료." } },
-      { key: "build_small", t: { EN:"Build one small thing.", VI:"Làm một thứ nhỏ thôi.", JP:"小さく作ろう。", "ZH-TW":"先做小一步。", KO:"작은 것부터 만들자." } },
-      { key: "ship_polish", t: { EN:"Ship, then polish.", VI:"Cứ triển khai đã.", JP:"まず動かす。", "ZH-TW":"先跑起來再說。", KO:"먼저 돌아가게 하자." } },
-      { key: "breathe_commit", t: { EN:"Breathe, then commit.", VI:"Hít thở rồi commit.", JP:"深呼吸してcommit。", "ZH-TW":"深呼吸再 commit。", KO:"커밋 전 심호흡." } },
-      { key: "keep_simple", t: { EN:"Keep it simple.", VI:"Giữ mọi thứ đơn giản.", JP:"シンプルにいこう。", "ZH-TW":"保持簡單。", KO:"단순하게 가자." } },
-    ];
-
-    function setLangTag(tag) { langTagEl.textContent = tag; }
-
-    function startBlinking() {
-      function blinkOnce() {
-        kaomojiEl.textContent = "(｀-ω-´)";
-        setTimeout(() => { kaomojiEl.textContent = "(｀・ω・´)"; }, 140);
-      }
-      function scheduleBlink() {
-        const nextIn = 3000 + Math.random() * 4000;
-        setTimeout(() => {
-          blinkOnce();
-          if (Math.random() < 0.18) setTimeout(blinkOnce, 260);
-          scheduleBlink();
-        }, nextIn);
-      }
-      scheduleBlink();
-    }
-
-    async function typeText(str) {
-      textEl.textContent = "";
-      for (let i = 0; i < str.length; i++) {
-        textEl.textContent += str[i];
-        await new Promise(r => setTimeout(r, TYPE_MS));
-      }
-    }
-
-    async function eraseText() {
-      const s = textEl.textContent;
-      for (let i = s.length; i > 0; i--) {
-        textEl.textContent = s.slice(0, i - 1);
-        await new Promise(r => setTimeout(r, ERASE_MS));
-      }
-    }
-
-    function pickMotdForLang(lang){
-      const item = motdSet[Math.floor(Math.random() * motdSet.length)];
-      return item.t[lang] || item.t.EN;
-    }
-
-    async function motdLoop() {
-      while (true) {
-        const lang = languageOrder[currentLangIndex];
-        const sentence = pickMotdForLang(lang);
-
-        setLangTag(lang);
-        await typeText(sentence);
-
-        await new Promise(r => setTimeout(r, HOLD_MS));
-        await eraseText();
-        await new Promise(r => setTimeout(r, GAP_MS));
-
-        currentLangIndex = (currentLangIndex + 1) % languageOrder.length;
-      }
-    }
-
-    startBlinking();
-    motdLoop();
-
-    // ============================================================
-    // GitHub Live Stats (no local cache)
-    // ============================================================
-    const GH_USER = "andymhuynh";
-
-    function loadGitHubCache(){
-      return null;
-    }
-    function saveGitHubCache(){
-      // disabled
-    }
-    function renderGitHubStats(st){
-      document.getElementById("ghUser").textContent = GH_USER;
-      document.getElementById("ghRepos").textContent = st.repos ?? "—";
-      document.getElementById("ghFollowers").textContent = st.followers ?? "—";
-      document.getElementById("ghStars").textContent = st.stars ?? "—";
-      document.getElementById("ghLatest").textContent = st.latest ?? "—";
-    }
-
-    async function fetchGitHubStats(){
-      const latestEl = document.getElementById("ghLatest");
-
+    document.getElementById('copyEmail').addEventListener('click', async () => {
       try{
-        const u = await fetch(`https://api.github.com/users/${GH_USER}`, { headers: { "Accept":"application/vnd.github+json" }});
-        if (!u.ok) throw new Error("User fetch failed");
-        const ud = await u.json();
-
-        let stars = 0;
-        let page = 1;
-        while (page <= 3) {
-          const r = await fetch(`https://api.github.com/users/${GH_USER}/repos?per_page=100&page=${page}&sort=updated`, { headers: { "Accept":"application/vnd.github+json" }});
-          if (!r.ok) break;
-          const rd = await r.json();
-          if (!Array.isArray(rd) || rd.length === 0) break;
-          for (const repo of rd) stars += (repo.stargazers_count || 0);
-          if (rd.length < 100) break;
-          page++;
-        }
-
-        let latest = "No recent public events.";
-        const e = await fetch(`https://api.github.com/users/${GH_USER}/events/public?per_page=10`, { headers: { "Accept":"application/vnd.github+json" }});
-        if (e.ok){
-          const ed = await e.json();
-          if (Array.isArray(ed) && ed.length){
-            const push = ed.find(x => x.type === "PushEvent");
-            if (push){
-              const repo = push.repo?.name || "repo";
-              const n = push.payload?.commits?.length || 1;
-              const when = new Date(push.created_at);
-              latest = `PushEvent → ${repo} (${n} commit${n===1?"":"s"}) · ${when.toLocaleString()}`;
-            } else {
-              const top = ed[0];
-              latest = `${top.type} → ${top.repo?.name || "repo"} · ${new Date(top.created_at).toLocaleString()}`;
-            }
-          }
-        }
-
-        const payload = {
-          repos: ud.public_repos ?? "—",
-          followers: ud.followers ?? "—",
-          stars,
-          latest,
-        };
-
-        renderGitHubStats(payload);
-        saveGitHubCache(payload);
+        await navigator.clipboard.writeText('ahuyn5@gmail.com');
+        toast('copied email');
       }catch(_){
-        latestEl.textContent = "GitHub fetch blocked (rate limit / offline).";
+        toast('clipboard blocked');
       }
-    }
+    });
 
-    // ============================================================
-    // TERMINAL
-    // ============================================================
-    const termInput = document.getElementById("terminal-input");
-    const termOut = document.getElementById("terminal-output");
-    const termHint = document.getElementById("term-hint");
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    function writeLine(text, cls="term-line"){
-      const div = document.createElement("div");
-      div.className = cls + " term-line";
+    const termInput = document.getElementById('terminal-input');
+    const termOut = document.getElementById('terminal-output');
+
+    function writeLine(text){
+      const div = document.createElement('div');
+      div.className = 'term-line';
       div.textContent = text;
       termOut.appendChild(div);
       termOut.scrollTop = termOut.scrollHeight;
     }
-    function writePrompt(cmd){
-      writeLine(`andy@portfolio:~$ ${cmd}`, "term-line term-dim");
-    }
 
-    const FS = {
-      type: "dir",
-      children: {
-        home: {
-          type: "dir",
-          children: {
-            andy: {
-              type: "dir",
-              children: {
-                "about.txt": { type:"file", content:
-`Andy Huynh
-
-I build measurable, reliable software with an emphasis on performance and clean architecture.
-Primary tools: C++ and Python.` },
-                "contact.txt": { type:"file", content:
-`Use the Contact panel (left) for clickable links.
-Terminal tips:
-- open github | open linkedin | open email
-- copy email | copy phone` },
-                "resume.txt": { type:"file", content:
-`TODO: add your public resume link.
-Tip: upload /resume.pdf on your site and set: LINKS.resume = '/resume.pdf'` },
-                projects: {
-                  type:"dir",
-                  children: {
-                    "README.txt": { type:"file", content:
-`Projects are shown on the right panel.` },
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+    const commands = {
+      help(){
+        writeLine('Available commands: help, about, projects, skills, contact, github, linkedin, email, resume, clear');
+      },
+      about(){
+        writeLine('Andy Huynh: software engineering intern candidate focused on systems, algorithms, and reliable tooling.');
+      },
+      projects(){
+        writeLine('Projects: Sudoku Solver, Huffman Coding Algorithm, Binary Search Tree.');
+      },
+      skills(){
+        writeLine('C++, Python, Java, C, Assembly, Algorithms, Data Structures, Linux, Git.');
+      },
+      contact(){
+        writeLine('Email: ahuyn5@gmail.com | Phone: (669) 251-7811');
+      },
+      github(){
+        window.open('https://github.com/andymhuynh', '_blank', 'noopener,noreferrer');
+        writeLine('Opened GitHub.');
+      },
+      linkedin(){
+        window.open('https://www.linkedin.com/in/andymhuynh/', '_blank', 'noopener,noreferrer');
+        writeLine('Opened LinkedIn.');
+      },
+      email(){
+        window.location.href = 'mailto:ahuyn5@gmail.com';
+        writeLine('Opening email client.');
+      },
+      resume(){
+        window.open('resume.pdf', '_blank', 'noopener,noreferrer');
+        writeLine('Opened resume.pdf.');
+      },
+      clear(){ termOut.innerHTML = ''; }
     };
 
-    const LINKS = {
-      github: "https://github.com/andymhuynh",
-      linkedin: "https://www.linkedin.com/in/andymhuynh/",
-      email: "mailto:ahuyn5@gmail.com"
-    };
+    writeLine('Recruiter-friendly mode loaded. Type help.');
 
-    let CWD = "/home/andy";
-
-    function normPath(p){
-      if (!p) return CWD;
-      let path = p.startsWith("/") ? p : (CWD.replace(/\/+$/,"") + "/" + p);
-      const parts = path.split("/").filter(Boolean);
-      const out = [];
-      for (const part of parts){
-        if (part === ".") continue;
-        if (part === "..") { out.pop(); continue; }
-        out.push(part);
-      }
-      return "/" + out.join("/");
-    }
-
-    function getNode(path){
-      const parts = path.split("/").filter(Boolean);
-      let node = FS;
-      for (const part of parts){
-        if (!node || node.type !== "dir") return null;
-        node = node.children?.[part];
-      }
-      return node || null;
-    }
-
-    function listDir(path){
-      const node = getNode(path);
-      if (!node) return { ok:false, err:`ls: cannot access '${path}': No such file or directory` };
-      if (node.type !== "dir") return { ok:false, err:`ls: '${path}': Not a directory` };
-      const names = Object.keys(node.children || {}).sort();
-      return { ok:true, items:names };
-    }
-
-    function readFile(path){
-      const node = getNode(path);
-      if (!node) return { ok:false, err:`cat: ${path}: No such file or directory` };
-      if (node.type !== "file") return { ok:false, err:`cat: ${path}: Is a directory` };
-      return { ok:true, content: node.content || "" };
-    }
-
-    function tree(path, maxDepth=4){
-      const node = getNode(path);
-      if (!node) return { ok:false, err:`tree: '${path}': No such file or directory` };
-
-      const lines = [];
-      function walk(n, prefix, depth){
-        if (depth > maxDepth) return;
-        if (n.type !== "dir") return;
-        const keys = Object.keys(n.children || {}).sort();
-        keys.forEach((k, idx) => {
-          const last = idx === keys.length - 1;
-          const branch = last ? "└── " : "├── ";
-          const nextPrefix = prefix + (last ? "    " : "│   ");
-          lines.push(prefix + branch + k);
-          const child = n.children[k];
-          if (child.type === "dir") walk(child, nextPrefix, depth + 1);
-        });
-      }
-      lines.push(path);
-      if (node.type === "dir") walk(node, "", 1);
-      return { ok:true, content: lines.join("\n") };
-    }
-
-    const HISTORY = [];
-    let histIdx = 0;
-
-    function commonPrefix(arr){
-      if (!arr.length) return "";
-      let p = arr[0];
-      for (let i=1;i<arr.length;i++){
-        while (!arr[i].startsWith(p) && p.length) p = p.slice(0,-1);
-      }
-      return p;
-    }
-    function splitCmd(input){
-      return input.trim().split(/\s+/).filter(Boolean);
-    }
-    function pathCompletions(partial){
-      const base = partial.includes("/") ? partial.slice(0, partial.lastIndexOf("/")+1) : "";
-      const frag = partial.includes("/") ? partial.slice(partial.lastIndexOf("/")+1) : partial;
-
-      const baseResolved = normPath(base || ".");
-      const dirNode = getNode(baseResolved);
-      if (!dirNode || dirNode.type !== "dir") return [];
-
-      const kids = Object.keys(dirNode.children || {});
-      const matches = kids.filter(n => n.startsWith(frag)).sort();
-      return matches.map(m => base + m);
-    }
-
-    // ============================================================
-    // BOOT
-    // ============================================================
-    let BOOT_LOCK = false;
-    let BOOTED = false;
-    function randInt(a,b){ return Math.floor(a + Math.random()*(b-a+1)); }
-    function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
-
-    function focusTerminalSafely(){
-      try{
-        termInput.focus({ preventScroll: true });
-      }catch(_){
-        termInput.focus();
-      }
-    }
-
-    async function bootSequence({fast=false} = {}){
-      if (BOOT_LOCK) return;
-      BOOT_LOCK = true;
-      BOOTED = true;
-      if (termHint) termHint.style.display = "none";
-
-      termInput.disabled = true;
-      termInput.placeholder = "booting…";
-
-      writeLine("");
-      writeLine("Portfolio Terminal (andy) · tty1");
-      writeLine(`Last login: ${new Date().toLocaleString()} · portfolio session`);
-      writeLine("");
-
-      const steps = [
-        { name: "Loading profile", ms: randInt(120, 260) },
-        { name: "Initializing UI components", ms: randInt(120, 260) },
-        { name: "Starting interactive terminal", ms: randInt(160, 320) },
-        { name: "Warming performance cache", ms: randInt(120, 240) },
-        { name: "Fetching GitHub activity", ms: randInt(160, 320) },
-        { name: "Indexing projects", ms: randInt(120, 220) },
-        { name: "Verifying links", ms: randInt(180, 340) },
-        { name: "Preparing resume endpoint", ms: randInt(160, 320) },
-        { name: "Launching portfolio services", ms: randInt(200, 360) },
-        { name: "Ready", ms: randInt(160, 280) },
-      ];
-
-      for (const s of steps){
-        const line = document.createElement("div");
-        line.className = "term-line term-dim";
-        const spinner = ["⠋","⠙","⠹","⠸","⠼","⠴","⠦","⠧","⠇","⠏"];
-        let i = 0;
-        line.textContent = `${spinner[i]} ${s.name}…`;
-        termOut.appendChild(line);
-        termOut.scrollTop = termOut.scrollHeight;
-
-        const total = fast ? Math.round(s.ms * 0.45) : s.ms;
-        const ticks = fast ? 6 : 10;
-        const per = Math.max(18, Math.round(total / ticks));
-
-        for (let t=0; t<ticks; t++){
-          await sleep(per);
-          i = (i+1) % spinner.length;
-          line.textContent = `${spinner[i]} ${s.name}…`;
-          blip(240 + Math.random()*40, 6, 0.006);
-        }
-
-        const tag = Math.random() < 0.06 ? "warn" : "ok";
-        const msg = tag === "warn" ? "DEGRADED" : "OK";
-        line.innerHTML = `<span class="${tag}">[ ${msg} ]</span> <span class="info">${s.name}</span>`;
-        blip(tag === "ok" ? 720 : 420, 14, 0.012);
-      }
-
-      writeLine("");
-      writeLine("Welcome. Type 'help' for commands.");
-      writeLine("Tip: 'make portfolio' looks sick in interviews.");
-      writeLine("");
-
-      termInput.disabled = false;
-      termInput.placeholder = "";
-      focusTerminalSafely();
-
-      BOOT_LOCK = false;
-
-      fetchGitHubStats();
-    }
-
-    // ============================================================
-    // Core commands
-    // ============================================================
-    const baseCommands = {
-      help: () => {
-        writeLine("Available commands:");
-        writeLine("  help, about, projects, skills, contact, resume, clear");
-        writeLine("  ls [path], cd <dir>, pwd, cat <file>, tree [path]");
-        writeLine("  open <github|linkedin|email|resume>, copy <email|phone|github|linkedin>");
-        writeLine("  boot            (start/replay boot animation)");
-        writeLine("  make portfolio  (compile animation)");
-        writeLine("  github          (refresh live stats)");
-        writeLine("  matrix          (toggle matrix overlay)");
-        writeLine("  theme           (toggle theme)");
-        writeLine("  sound           (toggle sound)");
-        writeLine("  music [on|off|play|stop|vol <0-100>]");
-      },
-
-      about: () => writeLine("See the Summary panel (right). Or: cat about.txt"),
-      skills: () => writeLine("See Core Stack tags (left)."),
-      projects: () => {
-        writeLine("Projects are listed on the right panel.");
-        writeLine("Tip: cd projects; ls; cat README.txt");
-      },
-      contact: () => {
-        writeLine("Contact info is in the left panel.");
-        writeLine("Tip: open github | open linkedin | open email");
-        writeLine("Tip: copy email | copy phone");
-      },
-      resume: () => writeLine("Set a resume link: add LINKS.resume = '/resume.pdf' then run: open resume"),
-      clear: () => { termOut.innerHTML = ""; },
-
-      theme: () => toggleTheme(),
-      matrix: () => setMatrix(!MATRIX_ON),
-      sound: () => toggleSound(),
-
-      music: async (args) => {
-        const sub = (args[0] || "").toLowerCase();
-        if (!sub){
-          writeLine(`music: ${MUSIC_ON ? "on" : "off"} · volume ${MUSIC_VOL}%`);
-          writeLine("usage: music on|off|play|stop|vol <0-100>");
-          return;
-        }
-        if (sub === "on" || sub === "play"){
-          MUSIC_UNLOCKED = true;
-          try{ ensureAudio(); }catch(_){}
-          await setMusic(true);
-          return;
-        }
-        if (sub === "off" || sub === "stop"){
-          await setMusic(false);
-          return;
-        }
-        if (sub === "vol" || sub === "volume"){
-          const n = Number(args[1]);
-          if (!Number.isFinite(n)) return writeLine("music vol: provide a number 0-100");
-          setMusicVolume(n);
-          return;
-        }
-        writeLine("usage: music on|off|play|stop|vol <0-100>");
-      },
-
-      github: async () => {
-        writeLine("Refreshing GitHub stats…");
-        await fetchGitHubStats();
-        writeLine("Done.");
-      },
-
-      boot: async () => {
-        termOut.innerHTML = "";
-        await bootSequence({fast:false});
-      },
-
-      pwd: () => writeLine(CWD),
-      ls: (args) => {
-        const p = normPath(args[0] || ".");
-        const res = listDir(p);
-        if (!res.ok) return writeLine(res.err);
-        writeLine(res.items.join("  "));
-      },
-      cd: (args) => {
-        if (!args[0]) { CWD = "/home/andy"; return; }
-        const p = normPath(args[0]);
-        const node = getNode(p);
-        if (!node) return writeLine(`cd: no such file or directory: ${args[0]}`);
-        if (node.type !== "dir") return writeLine(`cd: not a directory: ${args[0]}`);
-        CWD = p;
-      },
-      cat: (args) => {
-        if (!args[0]) return writeLine("cat: missing file operand");
-        const p = normPath(args[0]);
-        const res = readFile(p);
-        if (!res.ok) return writeLine(res.err);
-        writeLine(res.content);
-      },
-      tree: (args) => {
-        const p = normPath(args[0] || ".");
-        const res = tree(p, 5);
-        if (!res.ok) return writeLine(res.err);
-        writeLine(res.content);
-      },
-
-      open: (args) => {
-        const key = (args[0] || "").toLowerCase();
-        const url = LINKS[key];
-        if (!url) return writeLine("open: usage: open github | linkedin | email | resume");
-        window.open(url, "_blank", "noopener,noreferrer");
-        toast(`opened: ${key}`);
-      },
-      copy: async (args) => {
-        const key = (args[0] || "").toLowerCase();
-        const map = {
-          email: "ahuyn5@gmail.com",
-          phone: "(669) 251-7811",
-          github: "https://github.com/andymhuynh",
-          linkedin: "https://www.linkedin.com/in/andymhuynh/"
-        };
-        const val = map[key];
-        if (!val) return writeLine("copy: usage: copy email | phone | github | linkedin");
-        try{
-          await navigator.clipboard.writeText(val);
-          toast(`copied: ${key}`);
-        }catch(_){
-          writeLine("copy: clipboard blocked by browser permissions");
-        }
-      }
-    };
-
-    async function compileAnimation(){
-      const steps = [
-        { msg: "Compiling projects…", ms: 420 },
-        { msg: "Linking achievements…", ms: 420 },
-        { msg: "Optimizing algorithms…", ms: 420 },
-        { msg: "Running tests…", ms: 420 },
-        { msg: "Build successful. ✅", ms: 300 },
-      ];
-      for (const s of steps){
-        writeLine(s.msg);
-        blip(660, 18, 0.02);
-        await sleep(s.ms);
-      }
-    }
-
-    function runCommand(cmdRaw){
-      const cmd = cmdRaw.trim();
-      if (!cmd) return;
-
-      HISTORY.push(cmdRaw);
-      histIdx = HISTORY.length;
-
-      const lower = cmd.toLowerCase();
-      if (lower === "make portfolio" || lower === "make" || lower === "make all"){
-        return compileAnimation();
-      }
-
-      const parts = splitCmd(cmd);
-      const name = (parts[0] || "").toLowerCase();
-      const args = parts.slice(1);
-
-      const fn = baseCommands[name];
-      if (fn){
-        return fn(args);
-      } else {
-        writeLine(`command not found: ${cmdRaw}`);
-      }
-    }
-
-    function allCommandNames(){
-      return Object.keys(baseCommands).concat(["make portfolio"]).sort();
-    }
-
-    function doAutocomplete(){
-      const raw = termInput.value;
-      const endsWithSpace = /\s$/.test(raw);
-      const parts = splitCmd(raw);
-
-      if (!raw.trim()){
-        writeLine(allCommandNames().join("  "));
-        return;
-      }
-
-      if (parts.length === 1 && !endsWithSpace){
-        const frag = parts[0].toLowerCase();
-        const options = allCommandNames().filter(c => c.startsWith(frag)).sort();
-        if (!options.length) return;
-
-        if (options.length === 1){
-          termInput.value = options[0] + " ";
-          blip(540, 16, 0.015);
-          return;
-        }
-        const cp = commonPrefix(options);
-        termInput.value = cp;
-        writeLine(options.join("  "));
-        blip(420, 12, 0.012);
-        return;
-      }
-
-      const cmd = (parts[0] || "").toLowerCase();
-      const fsCmds = new Set(["cd","ls","cat","tree"]);
-      if (!fsCmds.has(cmd)) return;
-
-      let partial = "";
-      if (endsWithSpace){
-        partial = "";
-      } else {
-        partial = parts[parts.length - 1] || "";
-      }
-
-      const opts = pathCompletions(partial);
-      if (!opts.length) return;
-
-      if (opts.length === 1){
-        if (endsWithSpace){
-          termInput.value = raw + opts[0] + " ";
-        } else {
-          const before = raw.slice(0, raw.lastIndexOf(partial));
-          termInput.value = before + opts[0] + " ";
-        }
-        blip(540, 16, 0.015);
-        return;
-      }
-
-      const cp = commonPrefix(opts);
-      if (cp && cp !== partial){
-        if (endsWithSpace){
-          termInput.value = raw + cp;
-        } else {
-          const before = raw.slice(0, raw.lastIndexOf(partial));
-          termInput.value = before + cp;
-        }
-      }
-      writeLine(opts.join("  "));
-      blip(420, 12, 0.012);
-    }
-
-    termInput.addEventListener("keydown", async (e) => {
-      if (e.key === "Tab") {
-        e.preventDefault();
-        doAutocomplete();
-        return;
-      }
-
-      if (e.key === "ArrowUp") {
-        e.preventDefault();
-        if (!HISTORY.length) return;
-        histIdx = Math.max(0, histIdx - 1);
-        termInput.value = HISTORY[histIdx] ?? "";
-        return;
-      }
-      if (e.key === "ArrowDown") {
-        e.preventDefault();
-        if (!HISTORY.length) return;
-        histIdx = Math.min(HISTORY.length, histIdx + 1);
-        termInput.value = (histIdx === HISTORY.length) ? "" : (HISTORY[histIdx] ?? "");
-        return;
-      }
-
-      if (e.key === "Enter") {
-        const cmdRaw = termInput.value.trim();
-        if (!cmdRaw) return;
-
-        blip(880, 16, 0.02);
-
-        writePrompt(cmdRaw);
-        termInput.value = "";
-
-        const res = runCommand(cmdRaw);
-        if (res instanceof Promise) await res;
-        return;
-      }
-
-      if (e.key.length === 1) blip(220 + Math.random()*50, 6, 0.008);
+    termInput.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      const raw = termInput.value.trim();
+      if (!raw) return;
+      writeLine(`andy@portfolio:~$ ${raw}`);
+      termInput.value = '';
+      const cmd = raw.toLowerCase();
+      if (commands[cmd]) commands[cmd]();
+      else writeLine(`command not found: ${raw}`);
     });
 
-    // ============================================================
-    // Click-to-boot + "b" hotkey
-    // ============================================================
-    const termCard = termOut.parentElement;
-    let BOOT_ARMED = true;
-
-    function primeTerminal(){
-      termOut.innerHTML = "";
-      writeLine("Terminal is idle.");
-      writeLine("Click here or press 'b' to boot.");
-      termInput.disabled = true;
-      termInput.placeholder = "boot first…";
-    }
-
-    async function bootOnceFast(){
-      if (!BOOT_ARMED) return;
-      BOOT_ARMED = false;
-      termOut.innerHTML = "";
-      await bootSequence({ fast:true });
-    }
-
-    termCard.addEventListener("mousedown", () => {
-      if (!BOOTED) bootOnceFast();
-      focusTerminalSafely();
-    });
-
-    window.addEventListener("keydown", (e) => {
-      if (e.key.toLowerCase() === "b" && !BOOTED && !BOOT_LOCK){
-        bootOnceFast();
-      }
-    });
-
-    // ============================================================
-    // APPLY DEFAULT SETTINGS (fresh every visit)
-    // ============================================================
-    setTheme(SETTINGS.theme);
-    renderSoundButton();
-    btnMatrix.innerHTML = `<span class="fetch-label">matrix</span><span class="muted">: ${SETTINGS.matrix ? "on" : "off"}</span>`;
-    if (SETTINGS.matrix) setMatrix(true);
-
-    // No auto-arming from saved state; always starts off
-    if (SETTINGS.music) toast(`music: armed (${SETTINGS.musicVol}%)`);
-
-    const y = document.getElementById("copyrightYear");
-    if (y) y.textContent = new Date().getFullYear();
-
-    fetchGitHubStats();
-    primeTerminal();
+    setTheme('dark');
   </script>
 </body>
 </html>
