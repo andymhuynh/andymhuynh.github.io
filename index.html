@@ -7,7 +7,7 @@
 
   <!-- FAVICON -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <meta name="theme-color" content="#1a1b26">
+  <meta name="theme-color" content="#0f172a">
 
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -16,53 +16,54 @@
 
   <style>
     :root{
-      --bg: #1a1b26;
-      --fg: #a9b1d6;
-      --fg2: rgba(169,177,214,.75);
-      --panel-grad-top: rgba(255,255,255,.04);
-      --panel-grad-bot: rgba(255,255,255,.02);
-      --border: rgba(148,163,184,.18);
-      --shadow: rgba(0,0,0,.25);
-      --hr: rgba(148,163,184,.28);
+      /* Recruiter-friendly dark tech palette */
+      --bg: #0f172a;
+      --fg: #cbd5e1;
+      --fg2: rgba(203,213,225,.72);
+      --panel-grad-top: rgba(255,255,255,.045);
+      --panel-grad-bot: rgba(255,255,255,.018);
+      --border: rgba(148,163,184,.20);
+      --shadow: rgba(0,0,0,.28);
+      --hr: rgba(148,163,184,.24);
 
-      --blue:#7aa2f7;
-      --purple:#bb9af7;
-      --cyan:#7dcfff;
-      --green:#9ece6a;
-      --white:#c0caf5;
+      --blue:#38bdf8;
+      --purple:#818cf8;
+      --cyan:#22d3ee;
+      --green:#4ade80;
+      --white:#f8fafc;
 
-      --ansi0:#15161e;
-      --ansi1:#f7768e;
-      --ansi2:#9ece6a;
-      --ansi3:#e0af68;
-      --ansi4:#7aa2f7;
-      --ansi5:#bb9af7;
-      --ansi6:#7dcfff;
-      --ansi7:#a9b1d6;
+      --ansi0:#020617;
+      --ansi1:#f87171;
+      --ansi2:#4ade80;
+      --ansi3:#fbbf24;
+      --ansi4:#38bdf8;
+      --ansi5:#818cf8;
+      --ansi6:#22d3ee;
+      --ansi7:#cbd5e1;
     }
 
     [data-theme="light"]{
-      --bg: #f7f7fb;
-      --fg: #1f2937;
-      --fg2: rgba(31,41,55,.72);
-      --panel-grad-top: rgba(17,24,39,.03);
-      --panel-grad-bot: rgba(17,24,39,.01);
-      --border: rgba(17,24,39,.12);
-      --shadow: rgba(0,0,0,.08);
-      --hr: rgba(17,24,39,.18);
+      --bg: #f8fafc;
+      --fg: #0f172a;
+      --fg2: rgba(15,23,42,.70);
+      --panel-grad-top: rgba(15,23,42,.035);
+      --panel-grad-bot: rgba(15,23,42,.012);
+      --border: rgba(15,23,42,.13);
+      --shadow: rgba(15,23,42,.08);
+      --hr: rgba(15,23,42,.18);
 
-      --blue:#2563eb;
-      --purple:#7c3aed;
+      --blue:#0284c7;
+      --purple:#4f46e5;
       --cyan:#0891b2;
       --green:#16a34a;
-      --white:#111827;
+      --white:#020617;
 
-      --ansi0:#f1f5f9;
-      --ansi1:#ef4444;
-      --ansi2:#22c55e;
-      --ansi3:#f59e0b;
-      --ansi4:#2563eb;
-      --ansi5:#7c3aed;
+      --ansi0:#e2e8f0;
+      --ansi1:#dc2626;
+      --ansi2:#16a34a;
+      --ansi3:#d97706;
+      --ansi4:#0284c7;
+      --ansi5:#4f46e5;
       --ansi6:#0891b2;
       --ansi7:#334155;
     }
@@ -104,7 +105,7 @@
       display: inline-flex;
       align-items: center;
     }
-    [data-theme="light"] .pill{ background: rgba(17,24,39,.03); }
+    [data-theme="light"] .pill{ background: rgba(15,23,42,.035); }
 
     .tag{
       border:1px solid var(--border);
@@ -112,7 +113,7 @@
       border-radius: 999px;
       padding:.18rem .55rem;
     }
-    [data-theme="light"] .tag{ background: rgba(17,24,39,.03); }
+    [data-theme="light"] .tag{ background: rgba(15,23,42,.035); }
 
     .muted{ color: var(--fg2); }
     .hr{ border-top: 1px dashed var(--hr); }
@@ -130,7 +131,7 @@
       background:rgba(255,255,255,.02);
       border-radius: 18px;
     }
-    [data-theme="light"] .card{ background: rgba(17,24,39,.02); }
+    [data-theme="light"] .card{ background: rgba(15,23,42,.025); }
 
     .term-line { white-space: pre-wrap; word-break: break-word; }
     .term-dim  { opacity: .85; }
@@ -141,7 +142,7 @@
       border-radius: .5rem;
       font-size: 11px;
     }
-    [data-theme="light"] .kbd{ background: rgba(17,24,39,.03); }
+    [data-theme="light"] .kbd{ background: rgba(15,23,42,.035); }
 
     #matrix-wrap{
       position:fixed;
@@ -227,9 +228,9 @@
         </div>
 
         <div class="flex gap-1">
-          <span class="w-2.5 h-2.5 rounded-full" style="background:#f7768e"></span>
-          <span class="w-2.5 h-2.5 rounded-full" style="background:#e0af68"></span>
-          <span class="w-2.5 h-2.5 rounded-full" style="background:#9ece6a"></span>
+          <span class="w-2.5 h-2.5 rounded-full" style="background:#f87171"></span>
+          <span class="w-2.5 h-2.5 rounded-full" style="background:#fbbf24"></span>
+          <span class="w-2.5 h-2.5 rounded-full" style="background:#4ade80"></span>
         </div>
       </div>
 
