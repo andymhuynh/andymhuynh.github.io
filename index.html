@@ -2,465 +2,470 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Andy M. Huynh | Software Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <meta name="theme-color" content="#111827">
-  <meta name="description" content="Andy M. Huynh — software engineering intern candidate focused on systems, algorithms, C++, Python, Java, and reliable tooling." />
+  <title>Andy M. Huynh | Software Engineering Intern</title>
+  <meta
+    name="description"
+    content="Andy M. Huynh — software engineering intern candidate studying Applied Mathematics at San José State University."
+  />
 
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
-    :root{
-      --bg:#0f172a;
-      --panel:#111827;
-      --panel2:#0b1220;
-      --fg:#e5e7eb;
-      --muted:#94a3b8;
-      --border:rgba(148,163,184,.22);
-      --shadow:rgba(0,0,0,.28);
-      --blue:#7aa2f7;
-      --cyan:#7dcfff;
-      --green:#9ece6a;
-      --purple:#bb9af7;
-      --white:#f8fafc;
+    :root {
+      --bg: #ffffff;
+      --fg: #111111;
+      --muted: #666666;
+      --soft: #f6f6f6;
+      --border: #e8e8e8;
     }
 
-    [data-theme="light"]{
-      --bg:#f8fafc;
-      --panel:#ffffff;
-      --panel2:#f1f5f9;
-      --fg:#0f172a;
-      --muted:#475569;
-      --border:rgba(15,23,42,.14);
-      --shadow:rgba(15,23,42,.08);
-      --blue:#2563eb;
-      --cyan:#0891b2;
-      --green:#16a34a;
-      --purple:#7c3aed;
-      --white:#020617;
+    [data-theme="dark"] {
+      --bg: #0f0f0f;
+      --fg: #f5f5f5;
+      --muted: #a3a3a3;
+      --soft: #171717;
+      --border: #2a2a2a;
     }
 
-    html{ scroll-behavior:smooth; }
-    body{
-      font-family:Inter,system-ui,sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(122,162,247,.18), transparent 34rem),
-        radial-gradient(circle at top right, rgba(187,154,247,.14), transparent 30rem),
-        var(--bg);
-      color:var(--fg);
+    html {
+      scroll-behavior: smooth;
     }
 
-    .mono{ font-family:'Fira Code',monospace; }
-    .glass{
-      background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
-      border:1px solid var(--border);
-      box-shadow:0 18px 50px var(--shadow);
-      border-radius:24px;
-      backdrop-filter:blur(12px);
-    }
-    [data-theme="light"] .glass{ background:rgba(255,255,255,.78); }
-
-    .card{
-      background:rgba(255,255,255,.035);
-      border:1px solid var(--border);
-      border-radius:20px;
-    }
-    [data-theme="light"] .card{ background:rgba(255,255,255,.86); }
-
-    .pill{
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.045);
-      border-radius:999px;
-      padding:.38rem .72rem;
-      display:inline-flex;
-      align-items:center;
-      gap:.35rem;
-      white-space:nowrap;
-    }
-    [data-theme="light"] .pill{ background:rgba(15,23,42,.035); }
-
-    .btn{
-      border:1px solid var(--border);
-      border-radius:999px;
-      padding:.72rem 1rem;
-      font-weight:700;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:.5rem;
-      transition:transform .16s ease, border-color .16s ease, background .16s ease;
-    }
-    .btn:hover{ transform:translateY(-1px); border-color:rgba(122,162,247,.62); }
-    .btn-primary{ background:var(--fg); color:var(--bg); }
-    .btn-secondary{ background:rgba(255,255,255,.045); color:var(--fg); }
-
-    .accent-blue{ color:var(--blue); }
-    .accent-cyan{ color:var(--cyan); }
-    .accent-green{ color:var(--green); }
-    .accent-purple{ color:var(--purple); }
-    .muted{ color:var(--muted); }
-    .hr{ border-top:1px dashed var(--border); }
-    a.link{ text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px; }
-    a.link:hover{ color:var(--cyan); }
-
-    .metric{
-      border-left:3px solid var(--blue);
-      padding-left:.8rem;
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--fg);
     }
 
-    .terminal{
-      background:#050816;
-      color:#cbd5e1;
-      border:1px solid rgba(148,163,184,.22);
-      border-radius:20px;
-      overflow:hidden;
+    .muted {
+      color: var(--muted);
     }
-    [data-theme="light"] .terminal{ background:#0f172a; color:#e2e8f0; }
-    .term-top{ background:rgba(255,255,255,.06); }
-    .term-dot{ width:.72rem; height:.72rem; border-radius:999px; display:inline-block; }
-    .term-input{ background:transparent; outline:none; color:#fff; width:100%; }
-    .term-line{ white-space:pre-wrap; word-break:break-word; }
 
-    .toast{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      z-index:60;
-      border:1px solid var(--border);
-      background:var(--panel);
-      box-shadow:0 12px 36px var(--shadow);
-      border-radius:16px;
-      padding:10px 12px;
-      opacity:0;
-      transform:translateY(8px);
-      transition:opacity .2s ease, transform .2s ease;
-      pointer-events:none;
-      max-width:min(420px, calc(100vw - 36px));
+    .border-soft {
+      border-color: var(--border);
     }
-    .toast.show{ opacity:1; transform:translateY(0); }
 
-    @media print{
-      body{ background:#fff; color:#0f172a; }
-      .glass,.card{ box-shadow:none; background:#fff; }
-      .terminal, .no-print{ display:none !important; }
+    .card {
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+    }
+
+    .tag {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.35rem 0.7rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0.75rem 1rem;
+      font-weight: 700;
+      border: 1px solid var(--fg);
+      transition: opacity 150ms ease, transform 150ms ease;
+    }
+
+    .button:hover {
+      opacity: 0.72;
+      transform: translateY(-1px);
+    }
+
+    .button-primary {
+      background: var(--fg);
+      color: var(--bg);
+    }
+
+    .button-secondary {
+      background: transparent;
+      color: var(--fg);
+    }
+
+    a.text-link {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    a.text-link:hover {
+      opacity: 0.72;
+    }
+
+    .section {
+      border-top: 1px solid var(--border);
+      padding: 4.5rem 0;
+    }
+
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 50;
+      background: var(--fg);
+      color: var(--bg);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 0.85rem;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 180ms ease, transform 180ms ease;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        color: #000000;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+
+      .card {
+        background: #ffffff;
+      }
     }
   </style>
 </head>
 
-<body data-theme="dark" class="antialiased">
-  <div id="toast" class="toast text-xs mono"></div>
+<body data-theme="light">
+  <div id="toast" class="toast">Copied</div>
 
-  <header class="max-w-6xl mx-auto px-5 pt-6 md:pt-8">
-    <nav class="glass px-4 py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-      <a href="#top" class="font-extrabold tracking-tight text-lg">Andy M. Huynh</a>
-      <div class="flex flex-wrap items-center gap-2 text-sm">
-        <a class="pill" href="#projects">Projects</a>
-        <a class="pill" href="#skills">Skills</a>
-        <a class="pill" href="#education">Education</a>
-        <a class="pill" href="#contact">Contact</a>
-        <button id="btnTheme" class="pill">Theme</button>
+  <header class="max-w-5xl mx-auto px-5 py-5">
+    <nav class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <a href="#top" class="font-extrabold tracking-tight text-lg">
+        Andy M. Huynh
+      </a>
+
+      <div class="flex flex-wrap items-center gap-4 text-sm muted">
+        <a href="#projects" class="hover:opacity-70">Projects</a>
+        <a href="#skills" class="hover:opacity-70">Skills</a>
+        <a href="#education" class="hover:opacity-70">Education</a>
+        <a href="#contact" class="hover:opacity-70">Contact</a>
+        <button id="themeButton" type="button" class="hover:opacity-70 no-print">
+          Dark
+        </button>
       </div>
     </nav>
   </header>
 
-  <main id="top" class="max-w-6xl mx-auto px-5 py-6 md:py-10 space-y-6">
-    <section class="glass p-6 md:p-9">
-      <div class="grid grid-cols-1 lg:grid-cols-[1.45fr_.9fr] gap-8 items-center">
+  <main id="top" class="max-w-5xl mx-auto px-5">
+    <section class="pt-20 pb-24">
+      <div class="max-w-3xl">
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="tag">Software Engineering Intern Candidate</span>
+          <span class="tag">San José, CA</span>
+          <span class="tag">Applied Mathematics @ SJSU</span>
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-[0.98]">
+          Andy Huynh.
+        </h1>
+
+        <p class="mt-6 text-2xl md:text-3xl font-semibold leading-tight max-w-2xl">
+          I’m studying applied math and building software with clean logic, strong fundamentals, and practical results.
+        </p>
+
+        <p class="mt-6 text-lg muted leading-relaxed max-w-2xl">
+          I work mainly with C++, Python, and Java, with interests in data structures,
+          algorithms, systems, and backend engineering.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a class="button button-primary" href="resume.pdf" target="_blank" rel="noreferrer">
+            Resume
+          </a>
+          <a class="button button-secondary" href="#projects">
+            Projects
+          </a>
+          <a class="button button-secondary" href="mailto:ahuyn5@gmail.com">
+            Email
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
         <div>
-          <div class="flex flex-wrap gap-2 mb-5 text-xs mono">
-            <span class="pill"><span class="accent-green">status</span>: open to internships</span>
-            <span class="pill"><span class="accent-cyan">location</span>: San José, CA</span>
-            <span class="pill"><span class="accent-purple">degree</span>: Applied Math @ SJSU</span>
+          <div class="text-3xl font-extrabold">&lt;15ms</div>
+          <div class="muted text-sm mt-1">Sudoku solve time</div>
+        </div>
+
+        <div>
+          <div class="text-3xl font-extrabold">98%</div>
+          <div class="muted text-sm mt-1">Runtime errors reduced</div>
+        </div>
+
+        <div>
+          <div class="text-3xl font-extrabold">~30%</div>
+          <div class="muted text-sm mt-1">Compression reduction</div>
+        </div>
+
+        <div>
+          <div class="text-3xl font-extrabold">45%</div>
+          <div class="muted text-sm mt-1">BST retrieval improvement</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="grid grid-cols-1 md:grid-cols-[0.35fr_0.65fr] gap-10">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-widest muted">Projects</p>
+          <h2 class="text-3xl font-extrabold mt-2">Selected work</h2>
+        </div>
+
+        <div class="space-y-5">
+          <article class="card p-6">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+              <h3 class="text-xl font-extrabold">Sudoku Solver</h3>
+              <span class="muted text-sm">Python · Algorithm X</span>
+            </div>
+
+            <p class="muted mt-3 leading-relaxed">
+              Exact-cover solver using Knuth’s Algorithm X with validation before search.
+            </p>
+
+            <ul class="mt-4 list-disc pl-5 space-y-2 text-sm leading-relaxed">
+              <li>Solved complex 9×9 puzzles in <strong>&lt;15ms</strong>.</li>
+              <li>Reduced runtime errors by <strong>98%</strong> through early validation.</li>
+              <li>Separated board parsing, constraint generation, and solver logic.</li>
+            </ul>
+          </article>
+
+          <article class="card p-6">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+              <h3 class="text-xl font-extrabold">Huffman Coding Algorithm</h3>
+              <span class="muted text-sm">C++ · Compression</span>
+            </div>
+
+            <p class="muted mt-3 leading-relaxed">
+              File encoder and decoder built around efficient tree construction and safer memory ownership.
+            </p>
+
+            <ul class="mt-4 list-disc pl-5 space-y-2 text-sm leading-relaxed">
+              <li>Reduced file sizes by <strong>~30%</strong> compared with uncompressed data.</li>
+              <li>Lowered peak RAM usage by <strong>15%</strong> using smart pointers.</li>
+              <li>Built deterministic encode/decode paths for easier testing.</li>
+            </ul>
+          </article>
+
+          <article class="card p-6">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+              <h3 class="text-xl font-extrabold">Binary Search Tree</h3>
+              <span class="muted text-sm">C++ · Data Structures</span>
+            </div>
+
+            <p class="muted mt-3 leading-relaxed">
+              Recursive insertion, search, deletion, and validation for simulated datasets.
+            </p>
+
+            <ul class="mt-4 list-disc pl-5 space-y-2 text-sm leading-relaxed">
+              <li>Improved retrieval speed by <strong>45%</strong> on 10,000+ simulated records.</li>
+              <li>Reduced crashes by <strong>100%</strong> with validation and error handling.</li>
+              <li>Tested empty trees, duplicates, and deletion edge cases.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="grid grid-cols-1 md:grid-cols-[0.35fr_0.65fr] gap-10">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-widest muted">Skills</p>
+          <h2 class="text-3xl font-extrabold mt-2">Technical foundation</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div>
+            <h3 class="font-extrabold mb-2">Languages</h3>
+            <p class="muted">C++ · Python · Java · C · Assembly</p>
           </div>
 
-          <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.02]">
-            Software engineer focused on <span class="accent-blue">systems</span>, <span class="accent-cyan">algorithms</span>, and reliable tools.
-          </h1>
+          <div>
+            <h3 class="font-extrabold mb-2">Core CS</h3>
+            <p class="muted">Algorithms · Data Structures · Systems · Debugging</p>
+          </div>
 
-          <p class="mt-5 text-base md:text-lg muted max-w-2xl leading-relaxed">
-            I build measurable, performance-conscious software using C++, Python, Java, and Linux tooling. Currently pursuing a B.S. in Applied Mathematics at San José State University with a Discrete Mathematics concentration.
+          <div>
+            <h3 class="font-extrabold mb-2">Tools</h3>
+            <p class="muted">Linux · Git · CLI · VS Code</p>
+          </div>
+
+          <div>
+            <h3 class="font-extrabold mb-2">Coursework</h3>
+            <p class="muted">
+              Data Structures · Computer Systems · C Programming · Discrete Math ·
+              Linear Algebra · Calculus I–III
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="section">
+      <div class="grid grid-cols-1 md:grid-cols-[0.35fr_0.65fr] gap-10">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-widest muted">Education</p>
+          <h2 class="text-3xl font-extrabold mt-2">Background</h2>
+        </div>
+
+        <div class="space-y-8">
+          <div>
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+              <h3 class="font-extrabold">San José State University</h3>
+              <span class="muted text-sm">Aug 2025 – Present</span>
+            </div>
+
+            <p class="muted mt-1">
+              B.S. in Applied Mathematics · Discrete Mathematics Concentration
+            </p>
+          </div>
+
+          <div>
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+              <h3 class="font-extrabold">Ohlone College</h3>
+              <span class="muted text-sm">Aug 2020 – Jun 2025</span>
+            </div>
+
+            <p class="muted mt-1">
+              A.S. in Mathematics for Transfer · Ohlone Math Gateway Program
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="grid grid-cols-1 md:grid-cols-[0.35fr_0.65fr] gap-10">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-widest muted">Contact</p>
+          <h2 class="text-3xl font-extrabold mt-2">Let’s connect</h2>
+        </div>
+
+        <div>
+          <p class="muted text-lg leading-relaxed max-w-xl">
+            I’m open to software engineering internship opportunities.
           </p>
 
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a class="btn btn-primary" href="resume.pdf" target="_blank" rel="noreferrer">View Resume</a>
-            <a class="btn btn-secondary" href="mailto:ahuyn5@gmail.com">Email Me</a>
-            <a class="btn btn-secondary" href="https://github.com/andymhuynh" target="_blank" rel="noreferrer">GitHub</a>
-            <a class="btn btn-secondary" href="https://www.linkedin.com/in/andymhuynh/" target="_blank" rel="noreferrer">LinkedIn</a>
-          </div>
-        </div>
+          <div class="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-5 text-sm">
+            <div>
+              <div class="muted">Email</div>
+              <a class="text-link font-semibold" href="mailto:ahuyn5@gmail.com">
+                ahuyn5@gmail.com
+              </a>
+            </div>
 
-        <aside class="terminal mono text-sm">
-          <div class="term-top px-4 py-3 flex items-center justify-between">
-            <div class="muted">andy@portfolio:~$ recruiter-scan</div>
-            <div class="flex gap-1.5">
-              <span class="term-dot" style="background:#f7768e"></span>
-              <span class="term-dot" style="background:#e0af68"></span>
-              <span class="term-dot" style="background:#9ece6a"></span>
+            <div>
+              <div class="muted">Phone</div>
+              <span class="font-semibold">(669) 251-7811</span>
+            </div>
+
+            <div>
+              <div class="muted">GitHub</div>
+              <a
+                class="text-link font-semibold"
+                href="https://github.com/andymhuynh"
+                target="_blank"
+                rel="noreferrer"
+              >
+                github.com/andymhuynh
+              </a>
+            </div>
+
+            <div>
+              <div class="muted">LinkedIn</div>
+              <a
+                class="text-link font-semibold"
+                href="https://www.linkedin.com/in/andymhuynh/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                linkedin.com/in/andymhuynh
+              </a>
             </div>
           </div>
-          <div class="p-4 space-y-3">
-            <div><span class="accent-green">Role:</span> Software Engineering Intern</div>
-            <div><span class="accent-green">Strengths:</span> Algorithms · Systems · Debugging</div>
-            <div><span class="accent-green">Languages:</span> C++ · Python · Java · C · Assembly</div>
-            <div><span class="accent-green">Tools:</span> Linux · Git · Data Structures</div>
-            <div><span class="accent-green">Availability:</span> Internship-ready</div>
-            <div class="hr my-3"></div>
-            <div class="muted">Tip: use the buttons above for the fastest recruiter path.</div>
-          </div>
-        </aside>
-      </div>
-    </section>
 
-    <section class="grid grid-cols-1 md:grid-cols-4 gap-4">
-      <div class="card p-5 metric">
-        <div class="text-2xl font-extrabold">&lt;15ms</div>
-        <div class="text-sm muted">Sudoku solve time</div>
-      </div>
-      <div class="card p-5 metric">
-        <div class="text-2xl font-extrabold">98%</div>
-        <div class="text-sm muted">Runtime errors reduced</div>
-      </div>
-      <div class="card p-5 metric">
-        <div class="text-2xl font-extrabold">~30%</div>
-        <div class="text-sm muted">Compression reduction</div>
-      </div>
-      <div class="card p-5 metric">
-        <div class="text-2xl font-extrabold">45%</div>
-        <div class="text-sm muted">BST retrieval improvement</div>
-      </div>
-    </section>
-
-    <section id="projects" class="glass p-6 md:p-8">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-6">
-        <div>
-          <div class="mono text-xs uppercase tracking-widest muted mb-2">selected projects</div>
-          <h2 class="text-2xl md:text-3xl font-extrabold">Proof of technical depth</h2>
-        </div>
-        <p class="muted text-sm max-w-xl">Each project is written to be skimmed quickly by recruiters while still showing concrete engineering impact.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <article class="card p-5">
-          <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
-            <h3 class="text-lg font-extrabold accent-cyan">Sudoku Solver</h3>
-            <span class="pill text-xs mono">Python · Algorithm X</span>
-          </div>
-          <p class="muted text-sm leading-relaxed">Exact-cover solver using Knuth’s Algorithm X with early constraint validation.</p>
-          <ul class="mt-4 list-disc pl-5 text-sm space-y-2">
-            <li>Solved complex 9×9 puzzles in <strong>&lt;15ms</strong>.</li>
-            <li>Reduced runtime error rate by <strong>98%</strong> through validation before search.</li>
-            <li>Designed clean separation between board parsing, constraint generation, and solver logic.</li>
-          </ul>
-        </article>
-
-        <article class="card p-5">
-          <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
-            <h3 class="text-lg font-extrabold accent-cyan">Huffman Coding Algorithm</h3>
-            <span class="pill text-xs mono">C++ · Compression</span>
-          </div>
-          <p class="muted text-sm leading-relaxed">Encoder/decoder with efficient tree construction and safer memory ownership.</p>
-          <ul class="mt-4 list-disc pl-5 text-sm space-y-2">
-            <li>Decreased file sizes by <strong>~30%</strong> versus uncompressed data.</li>
-            <li>Lowered peak RAM usage by <strong>15%</strong> using smart pointers.</li>
-            <li>Implemented deterministic encoding and decoding paths for testability.</li>
-          </ul>
-        </article>
-
-        <article class="card p-5 md:col-span-2">
-          <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
-            <h3 class="text-lg font-extrabold accent-cyan">Binary Search Tree</h3>
-            <span class="pill text-xs mono">C++ · Data Structures</span>
-          </div>
-          <p class="muted text-sm leading-relaxed">Recursive insertion, search, deletion, and input validation for simulated datasets.</p>
-          <ul class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 list-disc pl-5 text-sm">
-            <li>Improved retrieval speed by <strong>45%</strong> on 10,000+ simulated records.</li>
-            <li>Reduced application crashes by <strong>100%</strong> through strict validation and error handling.</li>
-            <li>Practiced edge-case testing for empty trees, duplicate values, and deletion cases.</li>
-            <li>Focused on readable implementation and maintainable interfaces.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section id="skills" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <div class="glass p-6 md:p-7 lg:col-span-2">
-        <div class="mono text-xs uppercase tracking-widest muted mb-2">technical skills</div>
-        <h2 class="text-2xl font-extrabold mb-5">Stack</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-          <div class="card p-4">
-            <h3 class="font-extrabold mb-2">Languages</h3>
-            <div class="flex flex-wrap gap-2"><span class="pill">C++</span><span class="pill">Python</span><span class="pill">Java</span><span class="pill">C</span><span class="pill">Assembly</span></div>
-          </div>
-          <div class="card p-4">
-            <h3 class="font-extrabold mb-2">Core CS</h3>
-            <div class="flex flex-wrap gap-2"><span class="pill">Algorithms</span><span class="pill">Data Structures</span><span class="pill">Systems</span><span class="pill">Debugging</span></div>
-          </div>
-          <div class="card p-4">
-            <h3 class="font-extrabold mb-2">Tools</h3>
-            <div class="flex flex-wrap gap-2"><span class="pill">Linux</span><span class="pill">Git</span><span class="pill">CLI</span><span class="pill">VS Code</span></div>
-          </div>
-          <div class="card p-4">
-            <h3 class="font-extrabold mb-2">Coursework</h3>
-            <p class="muted">Data Structures · Computer Systems · C Programming · Discrete Math · Linear Algebra · Calculus I–III</p>
-          </div>
-        </div>
-      </div>
-
-      <aside id="contact" class="glass p-6 md:p-7">
-        <div class="mono text-xs uppercase tracking-widest muted mb-2">contact</div>
-        <h2 class="text-2xl font-extrabold mb-4">Reach me</h2>
-        <div class="space-y-3 text-sm">
-          <div><div class="muted">Email</div><a class="link" href="mailto:ahuyn5@gmail.com">ahuyn5@gmail.com</a></div>
-          <div><div class="muted">Phone</div><span>(669) 251-7811</span></div>
-          <div><div class="muted">GitHub</div><a class="link" href="https://github.com/andymhuynh" target="_blank" rel="noreferrer">github.com/andymhuynh</a></div>
-          <div><div class="muted">LinkedIn</div><a class="link" href="https://www.linkedin.com/in/andymhuynh/" target="_blank" rel="noreferrer">linkedin.com/in/andymhuynh</a></div>
-        </div>
-        <button id="copyEmail" class="btn btn-secondary w-full mt-6">Copy Email</button>
-      </aside>
-    </section>
-
-    <section id="education" class="glass p-6 md:p-8">
-      <div class="mono text-xs uppercase tracking-widest muted mb-2">education</div>
-      <h2 class="text-2xl font-extrabold mb-5">Education</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-        <div class="card p-5">
-          <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 class="font-extrabold accent-cyan">San José State University</h3>
-            <span class="muted">Aug 2025 – Present</span>
-          </div>
-          <p class="muted mt-2">B.S. in Applied Mathematics · Discrete Mathematics Concentration</p>
-        </div>
-        <div class="card p-5">
-          <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 class="font-extrabold accent-cyan">Ohlone College</h3>
-            <span class="muted">Aug 2020 – Jun 2025</span>
-          </div>
-          <p class="muted mt-2">A.S. in Mathematics for Transfer · Ohlone Math Gateway Program</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="terminal mono text-sm no-print">
-      <div class="term-top px-4 py-3 flex items-center justify-between">
-        <div class="muted">optional terminal</div>
-        <div class="flex gap-1.5">
-          <span class="term-dot" style="background:#f7768e"></span>
-          <span class="term-dot" style="background:#e0af68"></span>
-          <span class="term-dot" style="background:#9ece6a"></span>
-        </div>
-      </div>
-      <div class="p-4">
-        <div class="text-xs muted mb-3">Recruiters can ignore this. Developers can type: help, projects, contact, github, clear.</div>
-        <div id="terminal-output" class="space-y-1 text-xs max-h-48 overflow-auto pr-1"></div>
-        <div class="mt-3 flex items-center gap-2 text-xs">
-          <span class="muted">andy@portfolio:~$</span>
-          <input id="terminal-input" class="term-input" autocomplete="off" spellcheck="false" aria-label="terminal input" />
+          <button id="copyEmailButton" class="button button-secondary mt-8 no-print" type="button">
+            Copy email
+          </button>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="max-w-6xl mx-auto px-5 pb-8">
-    <div class="glass px-4 py-3 text-xs muted flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-      <div>© <span id="year"></span> Andy Huynh. All rights reserved.</div>
-      <a class="link" href="https://andymhuynh.github.io/" target="_blank" rel="noreferrer">andymhuynh.github.io</a>
+  <footer class="max-w-5xl mx-auto px-5 py-8 border-t border-soft">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm muted">
+      <div>© <span id="year"></span> Andy Huynh</div>
+      <a class="text-link" href="https://andymhuynh.github.io/" target="_blank" rel="noreferrer">
+        andymhuynh.github.io
+      </a>
     </div>
   </footer>
 
   <script>
-    const toastEl = document.getElementById('toast');
-    function toast(msg){
-      toastEl.textContent = msg;
-      toastEl.classList.add('show');
-      clearTimeout(toastEl._t);
-      toastEl._t = setTimeout(()=>toastEl.classList.remove('show'), 1400);
+    const themeButton = document.getElementById("themeButton");
+    const copyEmailButton = document.getElementById("copyEmailButton");
+    const toast = document.getElementById("toast");
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      clearTimeout(toast.timeout);
+      toast.timeout = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 1400);
     }
 
-    const btnTheme = document.getElementById('btnTheme');
-    function setTheme(theme){
-      document.body.setAttribute('data-theme', theme);
-      btnTheme.textContent = theme === 'light' ? 'Dark Mode' : 'Light Mode';
+    function setTheme(theme) {
+      document.body.setAttribute("data-theme", theme);
+      themeButton.textContent = theme === "dark" ? "Light" : "Dark";
+      localStorage.setItem("theme", theme);
     }
-    btnTheme.addEventListener('click', () => {
-      const next = document.body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      setTheme(next);
-      toast(`theme: ${next}`);
+
+    themeButton.addEventListener("click", () => {
+      const currentTheme = document.body.getAttribute("data-theme");
+      setTheme(currentTheme === "dark" ? "light" : "dark");
     });
 
-    document.getElementById('copyEmail').addEventListener('click', async () => {
-      try{
-        await navigator.clipboard.writeText('ahuyn5@gmail.com');
-        toast('copied email');
-      }catch(_){
-        toast('clipboard blocked');
+    copyEmailButton.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText("ahuyn5@gmail.com");
+        showToast("Email copied");
+      } catch {
+        showToast("Could not copy email");
       }
     });
 
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    const termInput = document.getElementById('terminal-input');
-    const termOut = document.getElementById('terminal-output');
-
-    function writeLine(text){
-      const div = document.createElement('div');
-      div.className = 'term-line';
-      div.textContent = text;
-      termOut.appendChild(div);
-      termOut.scrollTop = termOut.scrollHeight;
-    }
-
-    const commands = {
-      help(){
-        writeLine('Available commands: help, about, projects, skills, contact, github, linkedin, email, resume, clear');
-      },
-      about(){
-        writeLine('Andy Huynh: software engineering intern candidate focused on systems, algorithms, and reliable tooling.');
-      },
-      projects(){
-        writeLine('Projects: Sudoku Solver, Huffman Coding Algorithm, Binary Search Tree.');
-      },
-      skills(){
-        writeLine('C++, Python, Java, C, Assembly, Algorithms, Data Structures, Linux, Git.');
-      },
-      contact(){
-        writeLine('Email: ahuyn5@gmail.com | Phone: (669) 251-7811');
-      },
-      github(){
-        window.open('https://github.com/andymhuynh', '_blank', 'noopener,noreferrer');
-        writeLine('Opened GitHub.');
-      },
-      linkedin(){
-        window.open('https://www.linkedin.com/in/andymhuynh/', '_blank', 'noopener,noreferrer');
-        writeLine('Opened LinkedIn.');
-      },
-      email(){
-        window.location.href = 'mailto:ahuyn5@gmail.com';
-        writeLine('Opening email client.');
-      },
-      resume(){
-        window.open('resume.pdf', '_blank', 'noopener,noreferrer');
-        writeLine('Opened resume.pdf.');
-      },
-      clear(){ termOut.innerHTML = ''; }
-    };
-
-    writeLine('Recruiter-friendly mode loaded. Type help.');
-
-    termInput.addEventListener('keydown', (e) => {
-      if (e.key !== 'Enter') return;
-      const raw = termInput.value.trim();
-      if (!raw) return;
-      writeLine(`andy@portfolio:~$ ${raw}`);
-      termInput.value = '';
-      const cmd = raw.toLowerCase();
-      if (commands[cmd]) commands[cmd]();
-      else writeLine(`command not found: ${raw}`);
-    });
-
-    setTheme('dark');
+    const savedTheme = localStorage.getItem("theme");
+    setTheme(savedTheme === "dark" ? "dark" : "light");
   </script>
 </body>
 </html>
