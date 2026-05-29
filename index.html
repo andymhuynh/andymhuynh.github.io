@@ -4,14 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Andy Huynh</title>
+  <title>Andy Huynh | Software Engineering Portfolio</title>
 
-  <!-- Favicon -->
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 
   <meta
     name="description"
-    content="Andy Huynh — Applied Mathematics student at San José State University focused on algorithms, systems, and backend engineering."
+    content="Andy Huynh — Applied Mathematics student at San José State University pursuing software engineering internships."
   />
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -41,13 +40,9 @@
       --card: #171717;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -56,9 +51,7 @@
       color: var(--fg);
     }
 
-    .muted {
-      color: var(--muted);
-    }
+    .muted { color: var(--muted); }
 
     .section {
       padding: 5rem 0;
@@ -69,10 +62,7 @@
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 20px;
-      transition:
-        transform 160ms ease,
-        border-color 160ms ease,
-        box-shadow 160ms ease;
+      transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
     }
 
     .card:hover {
@@ -92,9 +82,7 @@
       transition: opacity 150ms ease;
     }
 
-    .button:hover {
-      opacity: 0.72;
-    }
+    .button:hover { opacity: 0.72; }
 
     .button-primary {
       background: var(--fg);
@@ -102,9 +90,7 @@
       border-color: var(--fg);
     }
 
-    .button-secondary {
-      color: var(--fg);
-    }
+    .button-secondary { color: var(--fg); }
 
     a {
       color: inherit;
@@ -127,10 +113,7 @@
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
 
-        <button
-          id="themeButton"
-          class="hover:opacity-70"
-        >
+        <button id="themeButton" class="hover:opacity-70">
           Dark
         </button>
       </div>
@@ -139,12 +122,8 @@
 
   <main class="max-w-5xl mx-auto px-6">
 
-    <!-- HERO -->
-
     <section class="pt-24 pb-28">
-
       <div class="max-w-3xl">
-
         <p class="text-sm font-semibold uppercase tracking-[0.18em] muted">
           Software Engineering Intern Candidate
         </p>
@@ -154,44 +133,32 @@
         </h1>
 
         <p class="mt-8 text-xl md:text-2xl leading-relaxed max-w-2xl">
-          Applied mathematics student at San José State University focused on
-          algorithms, systems, and backend engineering.
+          Applied Mathematics student at San José State University pursuing
+          software engineering internships. Interested in algorithms,
+          backend systems, and scalable software development.
         </p>
 
         <div class="mt-10 flex flex-wrap gap-4">
-
-          <a
-            class="button button-primary"
-            href="resume.pdf"
-            target="_blank"
-          >
+          <a class="button button-primary" href="resume.pdf" target="_blank">
             Resume
           </a>
 
-          <a
-            class="button button-secondary"
-            href="https://github.com/andymhuynh"
-            target="_blank"
-          >
+          <a class="button button-secondary" href="https://github.com/andymhuynh" target="_blank">
             GitHub
           </a>
 
-          <a
-            class="button button-secondary"
-            href="mailto:ahuyn5@gmail.com"
-          >
-            Email
+          <a class="button button-secondary" href="https://linkedin.com/in/andymhuynh" target="_blank">
+            LinkedIn
           </a>
 
+          <a class="button button-secondary" href="mailto:ahuyn5@gmail.com">
+            Email
+          </a>
         </div>
       </div>
-
     </section>
 
-    <!-- PROJECTS -->
-
     <section id="projects" class="section">
-
       <div class="flex items-end justify-between mb-12">
         <div>
           <p class="text-sm font-semibold uppercase tracking-[0.18em] muted">
@@ -206,116 +173,67 @@
 
       <div class="space-y-6">
 
-        <!-- Sudoku -->
-
         <article class="card p-7">
-
           <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-
             <div>
-              <h3 class="text-2xl font-bold">
-                Sudoku Solver
-              </h3>
-
-              <p class="muted text-sm mt-1">
-                Python · Algorithm X
-              </p>
+              <h3 class="text-2xl font-bold">Sudoku Solver</h3>
+              <p class="muted text-sm mt-1">Python · Backtracking · Constraint Solving</p>
             </div>
 
-            <a
-              class="button button-secondary text-sm"
-              href="https://github.com/andymhuynh/sudoku-solver"
-              target="_blank"
-            >
+            <a class="button button-secondary text-sm" href="https://github.com/andymhuynh/sudoku-solver" target="_blank">
               GitHub
             </a>
-
           </div>
 
           <ul class="mt-6 list-disc pl-5 space-y-2 text-sm leading-relaxed">
-            <li>Solved complex 9×9 Sudoku puzzles in under 15ms.</li>
-            <li>Implemented exact-cover search using Knuth’s Algorithm X.</li>
-            <li>Separated parsing, constraints, and solver logic for maintainability.</li>
+            <li>Built a recursive backtracking solver for standard 9×9 Sudoku puzzles.</li>
+            <li>Validated candidate numbers across rows, columns, and 3×3 boxes.</li>
+            <li>Structured puzzle parsing and solving logic for readability and reuse.</li>
           </ul>
-
         </article>
 
-        <!-- Huffman -->
-
         <article class="card p-7">
-
           <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-
             <div>
-              <h3 class="text-2xl font-bold">
-                Huffman Coding Compressor
-              </h3>
-
-              <p class="muted text-sm mt-1">
-                C++ · Data Structures · File I/O
-              </p>
+              <h3 class="text-2xl font-bold">Huffman Coding Compressor</h3>
+              <p class="muted text-sm mt-1">C++ · Data Structures · File I/O</p>
             </div>
 
-            <a
-              class="button button-secondary text-sm"
-              href="https://github.com/andymhuynh/huffman-compression"
-              target="_blank"
-            >
+            <a class="button button-secondary text-sm" href="https://github.com/andymhuynh/huffman-compression" target="_blank">
               GitHub
             </a>
-
           </div>
 
           <ul class="mt-6 list-disc pl-5 space-y-2 text-sm leading-relaxed">
-            <li>Built Huffman tree encoder and decoder for text compression.</li>
-            <li>Implemented binary file storage and restoration workflows.</li>
-            <li>Reduced text file sizes by approximately 30% on sample datasets.</li>
+            <li>Implemented Huffman tree construction using frequency analysis and binary trees.</li>
+            <li>Built lossless text compression and decompression workflows in C++.</li>
+            <li>Designed file storage and restoration logic for compressed text data.</li>
           </ul>
-
         </article>
 
-        <!-- BST -->
-
         <article class="card p-7">
-
           <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-
             <div>
-              <h3 class="text-2xl font-bold">
-                Binary Search Tree
-              </h3>
-
-              <p class="muted text-sm mt-1">
-                C++ · Recursion · Data Structures
-              </p>
+              <h3 class="text-2xl font-bold">Binary Search Tree</h3>
+              <p class="muted text-sm mt-1">C++ · Recursion · Data Structures</p>
             </div>
 
-            <a
-              class="button button-secondary text-sm"
-              href="https://github.com/andymhuynh/binary-search-tree"
-              target="_blank"
-            >
+            <a class="button button-secondary text-sm" href="https://github.com/andymhuynh/binary-search-tree" target="_blank">
               GitHub
             </a>
-
           </div>
 
           <ul class="mt-6 list-disc pl-5 space-y-2 text-sm leading-relaxed">
-            <li>Implemented insertion, search, deletion, and traversal operations.</li>
-            <li>Added deep-copy support using copy constructors and assignment operators.</li>
-            <li>Handled edge cases including duplicates and root-node deletion.</li>
+            <li>Implemented insertion, search, deletion, and traversal operations in a custom BST.</li>
+            <li>Developed deep-copy functionality using copy constructors and assignment operators.</li>
+            <li>Managed customer records while handling duplicates and root-node deletion cases.</li>
           </ul>
-
         </article>
 
       </div>
-
     </section>
 
-    <!-- SKILLS -->
-
     <section id="skills" class="section">
-
       <div class="mb-12">
         <p class="text-sm font-semibold uppercase tracking-[0.18em] muted">
           Skills
@@ -327,45 +245,24 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-
         <div>
-          <h3 class="font-bold mb-3">
-            Languages
-          </h3>
-
-          <p class="muted leading-relaxed">
-            C++ · Python · Java · C · Assembly
-          </p>
+          <h3 class="font-bold mb-3">Languages</h3>
+          <p class="muted leading-relaxed">C++ · Python · Java · C · Assembly</p>
         </div>
 
         <div>
-          <h3 class="font-bold mb-3">
-            Core CS
-          </h3>
-
-          <p class="muted leading-relaxed">
-            Algorithms · Data Structures · Systems Programming
-          </p>
+          <h3 class="font-bold mb-3">Core CS</h3>
+          <p class="muted leading-relaxed">Algorithms · Data Structures · Systems Programming</p>
         </div>
 
         <div>
-          <h3 class="font-bold mb-3">
-            Tools
-          </h3>
-
-          <p class="muted leading-relaxed">
-            Linux · Git · CLI · VS Code · CMake
-          </p>
+          <h3 class="font-bold mb-3">Tools</h3>
+          <p class="muted leading-relaxed">Linux · Git · CLI · VS Code · CMake</p>
         </div>
-
       </div>
-
     </section>
 
-    <!-- EDUCATION -->
-
     <section id="education" class="section">
-
       <div class="mb-12">
         <p class="text-sm font-semibold uppercase tracking-[0.18em] muted">
           Education
@@ -377,16 +274,10 @@
       </div>
 
       <div class="space-y-10">
-
         <div>
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-            <h3 class="font-bold text-lg">
-              San José State University
-            </h3>
-
-            <span class="muted text-sm">
-              Aug 2025 – Present
-            </span>
+            <h3 class="font-bold text-lg">San José State University</h3>
+            <span class="muted text-sm">Aug 2025 – Present</span>
           </div>
 
           <p class="muted mt-2">
@@ -396,28 +287,18 @@
 
         <div>
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-            <h3 class="font-bold text-lg">
-              Ohlone College
-            </h3>
-
-            <span class="muted text-sm">
-              Aug 2020 – Jun 2025
-            </span>
+            <h3 class="font-bold text-lg">Ohlone College</h3>
+            <span class="muted text-sm">Aug 2020 – Jun 2025</span>
           </div>
 
           <p class="muted mt-2">
             A.S. Mathematics for Transfer
           </p>
         </div>
-
       </div>
-
     </section>
 
-    <!-- CONTACT -->
-
     <section id="contact" class="section pb-24">
-
       <div class="mb-12">
         <p class="text-sm font-semibold uppercase tracking-[0.18em] muted">
           Contact
@@ -429,60 +310,30 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-
         <div>
-          <div class="muted text-sm">
-            Email
-          </div>
-
-          <a
-            class="font-semibold"
-            href="mailto:ahuyn5@gmail.com"
-          >
-            ahuyn5@gmail.com
-          </a>
+          <div class="muted text-sm">Email</div>
+          <a class="font-semibold" href="mailto:ahuyn5@gmail.com">ahuyn5@gmail.com</a>
         </div>
 
         <div>
-          <div class="muted text-sm">
-            GitHub
-          </div>
-
-          <a
-            class="font-semibold"
-            href="https://github.com/andymhuynh"
-            target="_blank"
-          >
+          <div class="muted text-sm">GitHub</div>
+          <a class="font-semibold" href="https://github.com/andymhuynh" target="_blank">
             github.com/andymhuynh
           </a>
         </div>
 
         <div>
-          <div class="muted text-sm">
-            LinkedIn
-          </div>
-
-          <a
-            class="font-semibold"
-            href="https://linkedin.com/in/andymhuynh"
-            target="_blank"
-          >
+          <div class="muted text-sm">LinkedIn</div>
+          <a class="font-semibold" href="https://linkedin.com/in/andymhuynh" target="_blank">
             linkedin.com/in/andymhuynh
           </a>
         </div>
 
         <div>
-          <div class="muted text-sm">
-            Location
-          </div>
-
-          <div class="font-semibold">
-            San José, California
-          </div>
+          <div class="muted text-sm">Location</div>
+          <div class="font-semibold">San José, California</div>
         </div>
-
       </div>
-
     </section>
 
   </main>
@@ -492,31 +343,17 @@
 
     function setTheme(theme) {
       document.body.setAttribute("data-theme", theme);
-      themeButton.textContent = theme === "dark"
-        ? "Light"
-        : "Dark";
-
+      themeButton.textContent = theme === "dark" ? "Light" : "Dark";
       localStorage.setItem("theme", theme);
     }
 
     themeButton.addEventListener("click", () => {
-      const currentTheme =
-        document.body.getAttribute("data-theme");
-
-      setTheme(
-        currentTheme === "dark"
-          ? "light"
-          : "dark"
-      );
+      const currentTheme = document.body.getAttribute("data-theme");
+      setTheme(currentTheme === "dark" ? "light" : "dark");
     });
 
     const savedTheme = localStorage.getItem("theme");
-
-    setTheme(
-      savedTheme === "dark"
-        ? "dark"
-        : "light"
-    );
+    setTheme(savedTheme === "dark" ? "dark" : "light");
   </script>
 
 </body>
