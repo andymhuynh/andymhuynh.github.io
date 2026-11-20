@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Andy Huynh</title>
+
+  <meta
+    name="description"
+    content="Andy Huynh - Applied Mathematics student at San José State University focused on software engineering, backend systems, and algorithms."
+  />
+
+  <meta name="author" content="Andy Huynh" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #6b6b6b;
+      --border: #e8e8e8;
+
+      /* Keeps the desktop width/feel essentially the same. */
+      --content-width: 780px;
+
+      /* Responsive side spacing that also respects iPhone safe areas. */
+      --page-pad: clamp(18px, 5vw, 32px);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      min-width: 0;
+      width: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    img,
+    svg,
+    video,
+    canvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a:hover {
+      opacity: 0.55;
+    }
+
+    a:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
+    .container {
+      width: min(
+        var(--content-width),
+        calc(
+          100% -
+          max(var(--page-pad), env(safe-area-inset-left)) -
+          max(var(--page-pad), env(safe-area-inset-right))
+        )
+      );
+      margin-inline: auto;
+      min-width: 0;
+    }
+
+    /* NAV */
+
+    header {
+      padding:
+        max(clamp(18px, 3vw, 28px), env(safe-area-inset-top))
+        0
+        clamp(18px, 3vw, 28px);
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      min-width: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px clamp(14px, 2.4vw, 24px);
+      width: 100%;
+      min-width: 0;
+      color: var(--muted);
+      font-size: clamp(13px, 1.5vw, 14px);
+      line-height: 1.35;
+    }
+
+    .nav-links a {
+      flex: 0 0 auto;
+      white-space: nowrap;
+      padding-block: 4px;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: clamp(56px, 9vw, 110px) 0 clamp(68px, 10vw, 120px);
+      min-width: 0;
+    }
+
+    .hero h1 {
+      margin: 0;
+      max-width: 100%;
+      font-size: clamp(46px, 8vw, 76px);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      font-weight: 700;
+
+      /* Prevent clipping while still preserving normal words. */
+      overflow-wrap: break-word;
+      word-break: normal;
+      hyphens: none;
+    }
+
+    .hero-description {
+      margin-top: clamp(22px, 3vw, 30px);
+      max-width: 620px;
+      font-size: clamp(17px, 2.3vw, 20px);
+      line-height: 1.5;
+      overflow-wrap: break-word;
+    }
+
+    .hero-focus {
+      margin-top: 8px;
+      max-width: 100%;
+      color: var(--muted);
+      font-size: clamp(14px, 1.8vw, 16px);
+      line-height: 1.5;
+      overflow-wrap: break-word;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px clamp(18px, 2.8vw, 22px);
+      margin-top: clamp(26px, 3vw, 32px);
+      min-width: 0;
+      font-size: clamp(14px, 1.7vw, 15px);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .hero-links a,
+    .more-projects {
+      border-bottom: 1px solid var(--text);
+      padding-bottom: 2px;
+    }
+
+    .hero-links a {
+      white-space: nowrap;
+    }
+
+    /* SECTIONS */
+
+    section {
+      border-top: 1px solid var(--border);
+      padding: clamp(52px, 7vw, 72px) 0;
+      min-width: 0;
+    }
+
+    .section-title {
+      margin: 0 0 clamp(32px, 5vw, 42px);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      line-height: 1.4;
+    }
+
+    /* PROJECTS */
+
+    .project {
+      padding: 30px 0;
+      border-bottom: 1px solid var(--border);
+      min-width: 0;
+    }
+
+    .project:first-of-type {
+      padding-top: 0;
+    }
+
+    .project-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: baseline;
+      gap: 8px clamp(12px, 3vw, 24px);
+      min-width: 0;
+    }
+
+    .project h2 {
+      margin: 0;
+      min-width: 0;
+      max-width: 100%;
+      font-size: clamp(20px, 2.4vw, 21px);
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+      overflow-wrap: break-word;
+    }
+
+    .project-link {
+      justify-self: end;
+      flex-shrink: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+
+    .project-tech {
+      margin: 6px 0 0;
+      max-width: 100%;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+      overflow-wrap: break-word;
+    }
+
+    .project-description {
+      margin: 16px 0 0;
+      max-width: 650px;
+      font-size: clamp(14px, 1.8vw, 15px);
+      line-height: 1.7;
+      overflow-wrap: break-word;
+      word-break: normal;
+    }
+
+    .more-projects {
+      display: inline-block;
+      max-width: 100%;
+      margin-top: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.5;
+      overflow-wrap: break-word;
+    }
+
+    /* EDUCATION */
+
+    .education-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px clamp(16px, 4vw, 30px);
+      padding: 25px 0;
+      border-bottom: 1px solid var(--border);
+      min-width: 0;
+    }
+
+    .education-item:first-of-type {
+      padding-top: 0;
+    }
+
+    .school {
+      min-width: 0;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.45;
+      overflow-wrap: break-word;
+    }
+
+    .date {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+      white-space: nowrap;
+    }
+
+    .degree {
+      grid-column: 1 / -1;
+      min-width: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+      overflow-wrap: break-word;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 44px 0 max(60px, env(safe-area-inset-bottom));
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 22px;
+      min-width: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .footer-links a {
+      white-space: nowrap;
+    }
+
+    /*
+      TABLET + SMALL LAPTOP
+      Keeps the desktop design but slightly reduces large spacing.
+    */
+    @media (max-width: 900px) {
+      .hero {
+        padding-top: clamp(54px, 8vw, 82px);
+      }
+    }
+
+    /*
+      PHONE
+      Important change: rows are allowed to reflow instead of forcing text
+      outside the screen.
+    */
+    @media (max-width: 640px) {
+      :root {
+        --page-pad: 18px;
+      }
+
+      header {
+        padding:
+          max(14px, env(safe-area-inset-top))
+          0
+          14px;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+        gap: 8px 18px;
+        font-size: 13px;
+      }
+
+      .hero {
+        padding: 36px 0 52px;
+      }
+
+      .hero h1 {
+        font-size: clamp(38px, 11vw, 46px);
+        line-height: 1;
+        letter-spacing: -0.045em;
+      }
+
+      .hero-description {
+        margin-top: 20px;
+        font-size: 17px;
+        line-height: 1.45;
+      }
+
+      .hero-focus {
+        margin-top: 8px;
+        font-size: 15px;
+        line-height: 1.5;
+      }
+
+      .hero-links {
+        margin-top: 24px;
+        gap: 10px 20px;
+        font-size: 14px;
+      }
+
+      section {
+        padding: 46px 0;
+      }
+
+      .section-title {
+        margin-bottom: 32px;
+      }
+
+      .project {
+        padding: 26px 0;
+      }
+
+      .project-header {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
+      }
+
+      .project h2 {
+        font-size: 20px;
+      }
+
+      .project-description {
+        font-size: 15px;
+        line-height: 1.65;
+      }
+
+      .education-item {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 6px 14px;
+        padding: 22px 0;
+      }
+
+      footer {
+        padding: 38px 0 max(48px, env(safe-area-inset-bottom));
+      }
+    }
+
+    /*
+      SMALL IPHONES / NARROW ANDROID PHONES
+      This is where your old CSS was most likely to clip.
+    */
+    @media (max-width: 430px) {
+      :root {
+        --page-pad: 16px;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+        gap: 6px 14px;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding-top: 32px;
+      }
+
+      .hero h1 {
+        font-size: clamp(36px, 10.8vw, 42px);
+      }
+
+      .hero-description {
+        font-size: 16px;
+      }
+
+      .hero-focus {
+        font-size: 14px;
+      }
+
+      .project-header {
+        grid-template-columns: minmax(0, 1fr) auto;
+        column-gap: 12px;
+      }
+
+      .project-link,
+      .project-tech,
+      .degree,
+      .date {
+        font-size: 13px;
+      }
+
+      .education-item {
+        grid-template-columns: 1fr;
+      }
+
+      .date,
+      .degree {
+        grid-column: 1;
+      }
+
+      .date {
+        white-space: normal;
+      }
+    }
+
+    /*
+      EXTRA-NARROW DEVICES / LARGE ACCESSIBILITY TEXT.
+      Stacking removes the last remaining source of horizontal clipping.
+    */
+    @media (max-width: 360px) {
+      :root {
+        --page-pad: 14px;
+      }
+
+      .nav-links {
+        gap: 4px 12px;
+        font-size: 11.5px;
+      }
+
+      .hero {
+        padding: 28px 0 44px;
+      }
+
+      .hero h1 {
+        font-size: clamp(34px, 10.5vw, 38px);
+      }
+
+      .hero-links {
+        gap: 8px 16px;
+      }
+
+      .project-header {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      .project-link {
+        justify-self: start;
+      }
+    }
+
+    /*
+      If a user increases browser/system text size, do not hide content.
+      Let the layout stack instead.
+    */
+    @media (max-width: 320px) {
+      .nav-links {
+        font-size: 11px;
+      }
+
+      .hero h1 {
+        font-size: 33px;
+      }
+
+      .hero-links,
+      .footer-links {
+        gap: 8px 14px;
+      }
+    }
+
+    /* Better touch behavior without visually changing the design. */
+    @media (hover: none) and (pointer: coarse) {
+      a {
+        min-height: 32px;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .nav-links a,
+      .hero-links a,
+      .footer-links a,
+      .project-link {
+        padding-block: 6px;
+      }
+    }
+
+    /* Respect reduced-motion accessibility settings. */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <nav aria-label="Primary navigation">
+        <div class="nav-links">
+          <a href="#work">Work</a>
+          <a href="#education">Education</a>
+          <a href="https://github.com/andymhuynh" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://linkedin.com/in/andymhuynh" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="container">
+      <section class="hero" style="border-top: 0;">
+
+        <h1>Andy Huynh</h1>
+
+        <div class="hero-description">
+          Applied Mathematics student at San José State University.
+        </div>
+
+        <div class="hero-focus">
+          Software Engineering · Backend · Algorithms
+        </div>
+
+        <div class="hero-links">
+          <a href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume ↗</a>
+          <a href="https://github.com/andymhuynh" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="mailto:ahuyn5@gmail.com">Email ↗</a>
+        </div>
+
+      </section>
+    </div>
+
+    <section id="work">
+      <div class="container">
+
+        <h2 class="section-title">Selected Work</h2>
+
+        <article class="project">
+          <div class="project-header">
+            <h2>Sudoku Solver</h2>
+            <a
+              class="project-link"
+              href="https://github.com/andymhuynh/sudoku-solver"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub ↗
+            </a>
+          </div>
+
+          <p class="project-tech">
+            Python · Algorithm X · Exact Cover
+          </p>
+
+          <p class="project-description">
+            Sudoku solver using Algorithm X and exact-cover constraint
+            modeling for standard 9×9 puzzles.
+          </p>
+        </article>
+
+        <article class="project">
+          <div class="project-header">
+            <h2>SmartRoute</h2>
+            <a
+              class="project-link"
+              href="https://github.com/andymhuynh/SmartRoute"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub ↗
+            </a>
+          </div>
+
+          <p class="project-tech">
+            Python · Graph Algorithms
+          </p>
+
+          <p class="project-description">
+            Route-planning software using graph algorithms and data
+            structures for pathfinding problems.
+          </p>
+        </article>
+
+        <article class="project">
+          <div class="project-header">
+            <h2>ASL Detector</h2>
+            <a
+              class="project-link"
+              href="https://github.com/andymhuynh/asl-detector"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub ↗
+            </a>
+          </div>
+
+          <p class="project-tech">
+            Python · OpenCV · MediaPipe
+          </p>
+
+          <p class="project-description">
+            Real-time American Sign Language detection using computer
+            vision and hand landmark tracking.
+          </p>
+        </article>
+
+        <a
+          class="more-projects"
+          href="https://github.com/andymhuynh?tab=repositories"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          More projects on GitHub ↗
+        </a>
+
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+
+        <h2 class="section-title">Education</h2>
+
+        <div class="education-item">
+          <div class="school">San José State University</div>
+          <div class="date">2025 - 2027</div>
+          <div class="degree">
+            B.S. Applied Mathematics · Discrete Mathematics Concentration
+          </div>
+        </div>
+
+        <div class="education-item">
+          <div class="school">Ohlone College</div>
+          <div class="date">2020 - 2025</div>
+          <div class="degree">
+            A.S. Mathematics for Transfer
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://github.com/andymhuynh" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://linkedin.com/in/andymhuynh" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:ahuyn5@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
